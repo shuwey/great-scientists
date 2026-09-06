@@ -514,29 +514,25 @@
 
       var exits = [];
       for (var i = 0; i < 7; i++) {
-        var eta = 1 / (1.50 + i * 0.012 * spread);
-        var d1 = refract(dirIn, nIn, eta);
+        var eta = 1 / (1.40 + i * 0.014 * spread);
+        var d1 = refract(dirIn, nOut, eta);
         if (!d1) continue;
-        // 在棱镜内传播，找最近的出射面（非入射面）
-        var best = null;
+        // 在棱镜内传播，依次尝试每个非入射面，取第一个能成功折射出射的面
+        // （某面全反射时自动改走其他面，避免色光凭空消失）
+        var d2 = null, X = null;
         for (var e = 0; e < EDGES.length; e++) {
           var A = EDGES[e][0], B = EDGES[e][1];
           if ((A === TOP && B === L) || (A === L && B === TOP)) continue;
           var t = rayHit(M, d1, A, B);
-          if (t !== null && (!best || t < best.t)) best = { t: t, a: A, b: B };
+          if (t === null) continue;
+          var Xc = { x: M.x + d1.x * t, y: M.y + d1.y * t };
+          var fx = B.x - A.x, fy = B.y - A.y, fl = Math.hypot(fx, fy);
+          var n2out = { x: fy / fl, y: -fx / fl };
+          if (n2out.x * d1.x + n2out.y * d1.y < 0) { n2out.x = -n2out.x; n2out.y = -n2out.y; }
+          var d2c = refract(d1, n2out, 1 / eta);
+          if (d2c) { d2 = d2c; X = Xc; break; }
         }
-        if (!best) continue;
-        var X = { x: M.x + d1.x * best.t, y: M.y + d1.y * best.t };
-
-        // 出射面朝外法线
-        var fx = best.b.x - best.a.x, fy = best.b.y - best.a.y;
-        var fl = Math.hypot(fx, fy);
-        var n2out = { x: fy / fl, y: -fx / fl };
-        if (n2out.x * d1.x + n2out.y * d1.y < 0) { n2out.x = -n2out.x; n2out.y = -n2out.y; }
-        var n2in = { x: -n2out.x, y: -n2out.y };
-        var eta2 = 1 / eta;
-        var d2 = refract(d1, n2in, eta2);
-        if (!d2) continue;                                  // 全反射则不出射
+        if (!d2) continue;
 
         // 棱镜内部光线（细）
         ctx.strokeStyle = COLORS[i] + "66"; ctx.lineWidth = 1.4;
@@ -552,25 +548,27 @@
 
       // 色带标注
       if (exits.length) {
-        var baseX = 690;
-        ctx.globalAlpha = .28;
+        var baseX = 680;
+        var startY = 48;
+        var gap = 22;
+        ctx.globalAlpha = .25;
         exits.forEach(function (ex, i) {
           ctx.fillStyle = ex.color;
-          ctx.fillRect(baseX, 70 + i * 26, 22, 22);
+          ctx.fillRect(baseX, startY + i * gap, 18, 18);
         });
         ctx.globalAlpha = 1;
-        ctx.font = "600 13px -apple-system, sans-serif";
+        ctx.font = "600 12px -apple-system, sans-serif";
         exits.forEach(function (ex, i) {
           ctx.fillStyle = "#5B6675";
-          ctx.fillText(ex.name + "光", baseX + 30, 86 + i * 26);
+          ctx.fillText(ex.name + "光", baseX + 24, startY + i * gap + 14);
         });
-        ctx.fillStyle = "#8B96AA"; ctx.font = "600 12px -apple-system, sans-serif";
-        ctx.fillText("光谱", baseX, 62);
+        ctx.fillStyle = "#8B96AA"; ctx.font = "600 11px -apple-system, sans-serif";
+        ctx.fillText("光谱", baseX, startY - 8);
       }
 
       ctx.restore();
       if (out) {
-        out.innerHTML = "入射角 " + fmt(angDeg, 0) + "°　·　" +
+        out.innerHTML = "光线方向 " + fmt(angDeg, 0) + "°　·　" +
           (spread < 0.15 ? "几乎不色散（牛顿的“单色光”实验）" : "七色分开 → 白光是混合光");
       }
     }
@@ -738,10 +736,11 @@
       ctx.setLineDash([7, 5]); ctx.stroke(); ctx.setLineDash([]);
 
       // 已飞过的部分
-      var tp = (progress === undefined ? null : progress * Tf);
-      if (tp !== null) {
+      var tp = (progress === undefined ? null : Math.max(0, progress) * Tf);
+      if (tp !== null && tp > 0) {
+        var segs = 90, dt2 = tp / segs;
         ctx.beginPath();
-        for (var t2 = 0; t2 <= tp; t2 += tp / 90) {
+        for (var t2 = 0; t2 <= tp + 1e-9; t2 += dt2) {
           var x2 = vx * t2, y2 = vy * t2 - 0.5 * p.g * t2 * t2;
           if (t2 === 0) ctx.moveTo(X(x2), Y(y2)); else ctx.lineTo(X(x2), Y(y2));
         }

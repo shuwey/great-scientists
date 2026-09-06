@@ -51,31 +51,41 @@ SVG["prism-dispersion.svg"] = f"""{HEAD}
 <stop offset="0" stop-color="#CFE0FF"/><stop offset="1" stop-color="#E8EFFF"/>
 </linearGradient></defs>
 
-{arrow(60, 240, 330, 240, INK, 4)}
-{txt(70, 218, "白光", 19, INK)}
+<!-- 白光入射：终点精确落在棱镜左面 (359,214) -->
+{arrow(40, 214, 359, 214, INK, 4.5)}
+{txt(46, 198, "白光", 19, INK)}
 
 <path d="M400 92 L318 336 L482 336 Z" fill="url(#pg)" stroke="#94A9D6" stroke-width="3" stroke-linejoin="round"/>
 
+<!-- 棱镜内部：未分开的单束光，从入射点到出射点 -->
+<line x1="359" y1="214" x2="441" y2="214" stroke="#8B96AA" stroke-width="3" opacity=".7"/>
+<circle cx="359" cy="214" r="3.4" fill="#1B2530"/>
+<circle cx="441" cy="214" r="3.4" fill="#1B2530"/>
+
+<!-- 出射色散：所有色光朝同一方向（底面）偏折，红偏少、紫偏多 -->
 <g stroke-width="4.5" stroke-linecap="round" fill="none">
-<line x1="404" y1="214" x2="760" y2="176" stroke="#E03131"/>
-<line x1="404" y1="214" x2="756" y2="192" stroke="#F76707"/>
-<line x1="404" y1="214" x2="752" y2="208" stroke="#FAB005"/>
-<line x1="404" y1="214" x2="750" y2="224" stroke="#51CF66"/>
-<line x1="404" y1="214" x2="752" y2="240" stroke="#3B5BDB"/>
-<line x1="404" y1="214" x2="756" y2="256" stroke="#5F3DC4"/>
-<line x1="404" y1="214" x2="760" y2="272" stroke="#9C36B5"/>
+<line x1="441" y1="214" x2="752" y2="224" stroke="#E03131"/>
+<line x1="441" y1="214" x2="752" y2="247" stroke="#F76707"/>
+<line x1="441" y1="214" x2="752" y2="270" stroke="#FAB005"/>
+<line x1="441" y1="214" x2="752" y2="292" stroke="#51CF66"/>
+<line x1="441" y1="214" x2="752" y2="315" stroke="#3B5BDB"/>
+<line x1="441" y1="214" x2="752" y2="337" stroke="#5F3DC4"/>
+<line x1="441" y1="214" x2="752" y2="360" stroke="#9C36B5"/>
 </g>
-<line x1="334" y1="214" x2="404" y2="214" stroke="#8B96AA" stroke-width="2.5" opacity=".55"/>
 
-{txt(676, 132, "红", 17, "#E03131")}
-{txt(676, 172, "橙", 17, "#F76707")}
-{txt(676, 212, "黄", 17, "#D9A400")}
-{txt(676, 252, "绿", 17, "#2F9E44")}
-{txt(676, 292, "蓝", 17, B)}
-{txt(676, 332, "紫", 17, "#9C36B5")}
+<!-- 屏（墙） -->
+<line x1="750" y1="200" x2="750" y2="376" stroke="#D4DBE5" stroke-width="2.5" stroke-dasharray="6 6"/>
+{txt(750, 190, "屏（墙）", 15, GR, "600", "middle")}
 
-<path d="M640 120 A 300 300 0 0 1 640 348" fill="none" stroke="{GL}" stroke-width="2" stroke-dasharray="6 6"/>
-{txt(400, 400, "白光进入棱镜 → 不同颜色偏折角度不同 → 散成七色光带（光谱）", 20, GR, "600", "middle")}
+{txt(762, 229, "红", 16, "#E03131")}
+{txt(762, 252, "橙", 16, "#F76707")}
+{txt(762, 275, "黄", 16, "#D9A400")}
+{txt(762, 297, "绿", 16, "#2F9E44")}
+{txt(762, 320, "蓝", 16, B)}
+{txt(762, 342, "靛", 16, "#5F3DC4")}
+{txt(762, 365, "紫", 16, "#9C36B5")}
+
+{txt(400, 442, "白光进入棱镜 → 各色偏折角度不同（都朝底面偏） → 在墙上散成七色光带", 19, GR, "600", "middle")}
 </svg>"""
 
 # ---------------------------------------------------------------- 2 反射望远镜

@@ -1,0 +1,67 @@
+{
+  "pages": {
+    "index.html": {
+      "desktop": [],
+      "mobile": []
+    },
+    "timeline.html": {
+      "desktop": [],
+      "mobile": []
+    },
+    "detail/optics.html": {
+      "desktop": [],
+      "mobile": []
+    },
+    "detail/calculus.html": {
+      "desktop": [],
+      "mobile": []
+    },
+    "detail/gravity.html": {
+      "desktop": [],
+      "mobile": []
+    },
+    "detail/laws.html": {
+      "desktop": [],
+      "mobile": []
+    },
+    "labs.html": {
+      "desktop": [],
+      "mobile": []
+    },
+    "glossary.html": {
+      "desktop": [],
+      "mobile": []
+    },
+    "about.html": {
+      "desktop": [],
+      "mobile": []
+    }
+  },
+  "interactions": {
+    "termPopup": true,
+    "timelineExpand": true,
+    "glossarySearch": 22,
+    "projectileFire": true
+  },
+  "canvas": {
+    "count": 3,
+    "prism": {
+      "ok": true,
+      "w": 1068,
+      "h": 469,
+      "ratio": 1
+    },
+    "gravity": {
+      "ok": true,
+      "w": 1068,
+      "h": 391,
+      "ratio": 1
+    },
+    "projectile": {
+      "ok": true,
+      "w": 1068,
+      "h": 495,
+      "ratio": 1
+    }
+  }
+}

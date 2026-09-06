@@ -37,7 +37,7 @@ window.NEWTON_TERMS = {
     plain: "重量是一种<span class='hl'>力</span>，等于质量乘以重力加速度（G = mg）。同一个物体在月球上的重量只有地球上的六分之一，但质量没变。",
     analogy: "同样的你，站在月球上的体重秤读数会变成约 1/6——可你身上的“东西”一点没少。",
     extra: "单位：牛顿（N）。1 千克质量的物体在地球上的重量约 9.8 N。",
-    page: "gravity", anchor: "#law-second",
+    page: "laws", anchor: "#law-second",
     related: ["mass", "gravity", "free-fall"]
   },
   force: {

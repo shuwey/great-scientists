@@ -347,7 +347,9 @@ section.tight { padding: 34px 0; }
 .tl-panel p { font-size: 15.5px; color: var(--ink-2); margin: 14px 0; }
 .tl-panel figure { margin: 0 0 14px; }
 .tl-panel figure img {
-  border-radius: 12px; border: 1px solid var(--line); width: 100%; max-height: 300px; object-fit: cover;
+  border-radius: 12px; border: 1px solid var(--line);
+  display: block; width: 100%; height: auto; max-height: 360px; object-fit: contain;
+  background: #F4F6FA; margin: 0 auto;
 }
 .tl-panel figcaption { font-size: 13px; color: var(--ink-3); margin-top: 7px; line-height: 1.6; }
 .tl-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px; }
@@ -545,7 +547,7 @@ figure.fig figcaption b { color: var(--ink-2); }
 
 /* ---------- 13. 页脚 ---------- */
 .foot {
-  background: #1B2530; color: #A9B4C4; padding: 42px 0 30px; margin-top: 40px;
+  background: #1B2530; color: #A9B4C4; padding: 42px 0 30px; margin-top: 0;
   font-size: 14px;
 }
 .foot a { color: #CBD5E1; }

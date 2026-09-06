@@ -2,3 +2,6 @@
 .DS_Store
 __pycache__/
 *.pyc
+
+# 测试截图产物（不入库）
+tools/shots/
