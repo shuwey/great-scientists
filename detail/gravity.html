@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>万有引力 · 把天空和地面连起来的同一只手 | 读懂牛顿</title>
+<meta name="description" content="让苹果落地的力，和拽住月亮的力，是同一个力。通俗讲清万有引力定律、平方反比、椭圆轨道，以及牛顿如何用它统一天上与地上。">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-base="">
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../index.html"><span class="apple">🍎</span>读懂牛顿</a>
+    <button class="nav-toggle" aria-label="打开菜单"><i></i><i></i><i></i></button>
+    <div class="nav-links">
+      <a href="../index.html">首页</a>
+      <a href="../timeline.html">时间轴</a>
+      <a href="optics.html">光学</a>
+      <a href="calculus.html">微积分</a>
+      <a href="gravity.html">万有引力</a>
+      <a href="laws.html">三大定律</a>
+      <a href="../labs.html">玩一玩</a>
+      <a href="../glossary.html">词典</a>
+    </div>
+  </div>
+  <div id="progress"></div>
+</nav>
+
+<div class="page-head">
+  <div class="wrap">
+    <div class="crumb"><a href="../index.html">首页</a> · <a href="../timeline.html">时间轴</a> · 万有引力</div>
+    <h1>万有引力</h1>
+    <p class="big-claim">让苹果落地的力，和拽住月亮不掉下来的力，是同一只手。这就是牛顿最了不起的统一。</p>
+    <div class="meta-row">
+      <span class="tag b">1666 萌芽</span>
+      <span class="tag p">1687《原理》</span>
+      <span class="tag">难度 · 进阶</span>
+    </div>
+  </div>
+</div>
+
+<div class="detail-wrap">
+  <article class="article" data-terms>
+
+    <h2 id="question">一、一个改变历史的问题</h2>
+    <p>据说，牛顿在老家果园看到苹果落下，心里冒出一个别人没认真想过的问题：</p>
+    <div class="callout amber">
+      <span class="ct">🍎 那个关键的问题</span>
+      <p>苹果会被地球拉向地面。可地球引力有没有"尽头"？它能不能一直延伸到月亮那么远，甚至把月亮"拉"住，让月亮不掉下来、也不飞走？</p>
+    </div>
+    <p>如果答案是"能"，那就意味着：<b>天上和地上，用的是同一条规律。</b>在牛顿之前，人们默认"天上"归天使和完美圆周，"地上"才归普通力学——两者井水不犯河水。牛顿偏偏要把它们拧成一股绳。</p>
+
+    <h2 id="samedrop">二、苹果和月亮，同一个力</h2>
+    <p>牛顿的洞见是：月亮其实一直在"掉"，只是它横向跑得足够快，永远"错过"地球的表面。想象你从高山上水平扔一块石头：扔得越用力，它落得越远；如果快到一定程度，它就会绕着地球转圈，永远落不到地面——这就是<b>人造卫星</b>的原理，月亮就是天然的那颗"卫星"。</p>
+    <figure class="fig">
+      <img src="../assets/img/draw/apple-moon.svg" alt="苹果落地与月球绕地球，受同一个引力">
+      <figcaption><b>同一直觉：</b>苹果往下掉、月亮绕圈"掉"，本质都是被地球引力拉着。区别只在于月亮有很快的横向速度。</figcaption>
+    </figure>
+    <p>所以，苹果落地和月球绕地，是<b>同一件事的两种表现</b>。这个想法漂亮得近乎简单，但要把它变成精确的数学，牛顿花了二十多年。</p>
+
+    <h2 id="inverse">三、平方反比：距离越远，力弱得有多快？</h2>
+    <p>引力肯定随距离变大而变弱，但是"按什么比例"变弱？这是关键。牛顿（以及之前的胡克等人）推断，引力随距离的<b>平方</b>反比变化——</p>
+    <figure class="fig">
+      <img src="../assets/img/draw/inverse-square.svg" alt="距离翻倍，引力变成四分之一">
+      <figcaption><b>平方反比：</b>两个物体距离变成 2 倍，引力只剩下 1/4；变成 3 倍，只剩 1/9。弱得很快。</figcaption>
+    </figure>
+    <div class="callout green">
+      <span class="ct">🔢 用一句话记住</span>
+      <p>距离翻 <b>2 倍</b>，引力变成 <b>1/4</b>；翻 <b>3 倍</b>，变成 <b>1/9</b>。因为要和面积一样，按"距离的平方"来分摊。</p>
+    </div>
+
+    <h2 id="law">四、万有引力定律：一个公式统一一切</h2>
+    <p>把这些想法合起来，就是一个惊天简洁的公式：</p>
+    <div class="formula">
+      <div class="eq">
+        <span class="sym" data-sym="F">F</span> =
+        <span class="sym" data-sym="G">G</span>
+        ×
+        <span class="sym" data-sym="m1m2">m₁ · m₂</span>
+        ÷
+        <span class="sym" data-sym="r2">r²</span>
+      </div>
+      <div class="eq-note">点公式里的符号，看每个部分的意思</div>
+      <div class="sym-notes">
+        <div class="sym-note" data-sym="F"><b>F</b>　两个物体之间的引力大小，单位牛顿（N）。</div>
+        <div class="sym-note" data-sym="G"><b>G</b>　引力常数，一个极小的固定数字（约 6.67×10⁻¹¹），代表"引力本身有多弱"。卡文迪许后来用实验测出了它。</div>
+        <div class="sym-note" data-sym="m1m2"><b>m₁ · m₂</b>　两个物体的质量相乘。质量越大，引力越强——所以地球拉你很轻松，你拉地球几乎没感觉。</div>
+        <div class="sym-note" data-sym="r2"><b>r²</b>　两物体中心之间的距离的平方。这就体现了"平方反比"：距离越远，力按平方迅速变小。</div>
+      </div>
+    </div>
+    <p>这个公式的厉害之处在于：它同时管着苹果、月亮、行星、彗星、潮水，甚至你扔出去的纸团。牛顿证明了——只要承认这条规律，<b>行星的椭圆轨道、彗星的回归、潮汐的涨落，全都能算出来</b>。</p>
+
+    <h2 id="orbit">五、它能解释什么？（而且都验证对了）</h2>
+    <ul>
+      <li><b>行星为什么走椭圆？</b> 牛顿用数学证明：平方反比的引力，必然让天体走椭圆（或抛物线、双曲线）。这就把开普勒几十年前总结的"行星轨道是椭圆"，从现象提升成了<b>可以推导的定理</b>。</li>
+      <li><b>潮水为什么每天涨落？</b> 月亮和太阳对地球不同位置的拉力有微小差别，海洋就被"拉"出了潮汐。</li>
+      <li><b>彗星为什么还会回来？</b> 哈雷用这套公式算出了后来以他命名的彗星，预言它约 76 年回归一次——后来真的应验了。</li>
+      <li><b>连一颗还没看见的行星都能"算"出来。</b> 后来人们发现天王星轨道有点"歪"，推断是外面还有一颗行星在拉它，于是按引力公式反推出位置，果然找到了海王星。这是万有引力最帅的一次"预言成真"。</li>
+    </ul>
+
+    <h2 id="halley">六、一本书的诞生：牛顿与哈雷</h2>
+    <figure class="fig">
+      <img src="../assets/img/history/newton-room-cambridge.jpg" alt="牛顿在剑桥的房间复原">
+      <figcaption><b>牛顿在剑桥的房间（复原）：</b>正是在这样一间朴素的书房里，他把引力、运动与数学编织成了《原理》。</figcaption>
+    </figure>
+    <p>1684 年，天文学家哈雷跑来问牛顿一个难题：如果引力按平方反比，轨道该是什么形状？牛顿答："椭圆。"哈雷惊了，追问证明，牛顿说手稿找不到了。于是哈雷出资、催稿、亲自校对，硬是把牛顿重新算出来的成果，印成了 1687 年的《自然哲学的数学原理》。</p>
+    <p>没有哈雷的"逼问"和资助，这本改变物理学的书，可能还要在牛顿的抽屉里躺很多年。</p>
+
+    <h2 id="today">七、它今天还在管着我们</h2>
+    <p>你今天能用手机导航、看卫星电视、看火箭发射直播，底层都跑着这个 300 多年前的公式：</p>
+    <ul>
+      <li>发射卫星，要算准它绕着地球的<b>轨道</b>和<b>速度</b>；</li>
+      <li>登月、去火星，每一步都是万有引力在指路；</li>
+      <li>就连你手里的 GPS，也要同时考虑引力和相对论带来的时间差，否则会偏出十万八千里。</li>
+    </ul>
+    <p>所以牛顿那句被反复引用的话，名副其实：<b>"如果说我看得更远，那是因为我站在巨人的肩膀上。"</b>他站在哥白尼、第谷、开普勒、伽利略的肩上，又给后来所有人，立起了一座更高的肩膀。</p>
+
+    <div class="page-nav">
+      <a class="pn prev" href="calculus.html"><div class="lab">← 上一篇</div><div class="tt">微积分</div></a>
+      <a class="pn next" href="laws.html"><div class="lab">下一篇 →</div><div class="tt">三大运动定律</div></a>
+    </div>
+
+  </article>
+
+  <aside class="side">
+    <div class="side-box">
+      <h4>本节目录</h4>
+      <ul class="toc">
+        <li><a href="#question">改变历史的问题</a></li>
+        <li><a href="#samedrop">苹果与月亮</a></li>
+        <li><a href="#inverse">平方反比</a></li>
+        <li><a href="#law">万有引力定律</a></li>
+        <li><a href="#orbit">它能解释什么</a></li>
+        <li><a href="#halley">牛顿与哈雷</a></li>
+        <li><a href="#today">今天还在用</a></li>
+      </ul>
+    </div>
+    <div class="side-box">
+      <h4>关键概念（点开看）</h4>
+      <div class="side-terms">
+        <span class="term" data-term="gravity" tabindex="0" role="button">万有引力</span>
+        <span class="term" data-term="inverse-square" tabindex="0" role="button">平方反比</span>
+        <span class="term" data-term="gravitational-constant" tabindex="0" role="button">引力常数</span>
+        <span class="term" data-term="orbit" tabindex="0" role="button">轨道</span>
+        <span class="term" data-term="tide" tabindex="0" role="button">潮汐</span>
+        <span class="term" data-term="free-fall" tabindex="0" role="button">自由落体</span>
+        <span class="term" data-term="apple-story" tabindex="0" role="button">苹果落地</span>
+        <span class="term" data-term="halley" tabindex="0" role="button">哈雷</span>
+      </div>
+    </div>
+    <div class="side-box">
+      <h4>一句话记住</h4>
+      <p class="fact">任何两个有质量的物体都互相吸引，力 = G·m₁m₂/r²。<b>距离翻倍，力变 1/4。</b></p>
+    </div>
+  </aside>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand-f"><span class="apple" style="width:26px;height:26px;font-size:14px;border-radius:7px;background:linear-gradient(140deg,#3B5BDB,#6E8BFF);display:grid;place-items:center">🍎</span>读懂牛顿</div>
+        <p style="margin:0;color:#8B96AA;font-size:13.5px">一个面向中学生的牛顿科普小站。按时间顺序讲故事，把难词讲成人话。</p>
+      </div>
+      <div>
+        <h5>四处走走</h5>
+        <ul>
+          <li><a href="../index.html">首页</a></li>
+          <li><a href="../timeline.html">生平时间轴</a></li>
+          <li><a href="optics.html">光学与颜色</a></li>
+          <li><a href="calculus.html">微积分</a></li>
+          <li><a href="gravity.html">万有引力</a></li>
+          <li><a href="laws.html">三大运动定律</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>更多</h5>
+        <ul>
+          <li><a href="../labs.html">动手玩一玩</a></li>
+          <li><a href="../glossary.html">术语词典</a></li>
+          <li><a href="../about.html">资料来源与延伸阅读</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>课堂与自学用途 · 内容依据公开史料编写</span>
+      <span>历史图片来自 Wikimedia Commons</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" aria-label="回到顶部">↑</button>
+<script src="../assets/js/terms.js"></script>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

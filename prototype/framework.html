@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="RAf1S4jCW1SM4AkVHMlqpE">
+<head data-page-node-id="neLE2IfFK5mXC7unhOrbsl">
+<meta charset="UTF-8" data-page-node-id="nZ8tEeC5wtHRyfW6TBeJF9">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="fwZwHHBEQ7WJyCVc8afmxc">
+<title>《读懂牛顿》网站框架确认稿 v1</title>
+<style>
+  :root{
+    --brand:#3B5BDB;      /* 主色 靛蓝 */
+    --accent:#F59F00;     /* 强调 琥珀 */
+    --green:#0CA678;      /* 辅助 青绿 */
+    --pink:#E8590C;       /* 辅助 橘 */
+    --bg:#F7F9FC;
+    --card:#FFFFFF;
+    --line:#E3E8EF;
+    --ink:#1F2937;
+    --ink-2:#5B6675;
+    --ink-3:#94A0B0;
+    --wire:#E8EDF4;       /* 线框占位底色 */
+    --wire-line:#C3CEDD;  /* 线框虚线 */
+    --radius:14px;
+    --font:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.7;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+  /* ---------- 页头 ---------- */
+  .doc-head{background:linear-gradient(135deg,#3B5BDB,#5C7CFA);color:#fff;padding:44px 0 38px}
+  .doc-head .tag{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);
+    font-size:12.5px;padding:4px 12px;border-radius:999px;letter-spacing:.5px;margin-bottom:14px}
+  .doc-head h1{font-size:34px;font-weight:800;letter-spacing:-.5px}
+  .doc-head p{opacity:.9;margin-top:10px;font-size:15px;max-width:760px}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+  .meta span{background:rgba(255,255,255,.14);font-size:12.5px;padding:5px 12px;border-radius:8px}
+
+  /* ---------- 章节 ---------- */
+  section{padding:46px 0 8px}
+  .sec-no{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;
+    background:var(--brand);color:#fff;font-size:13px;font-weight:700;margin-right:10px}
+  h2{font-size:23px;font-weight:800;display:flex;align-items:center;letter-spacing:-.3px;margin-bottom:6px}
+  .sec-desc{color:var(--ink-2);font-size:14.5px;margin:0 0 22px 36px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+
+  /* ---------- 线框通用 ---------- */
+  .wire{background:var(--wire);border:1.5px dashed var(--wire-line);border-radius:10px;
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    color:var(--ink-2);font-size:12.5px;padding:10px}
+  .wire.solid{background:#fff;border-style:solid;border-color:var(--line)}
+  .wire.dark{background:#2B3A55;border-color:#2B3A55;color:#CBD5E1}
+  .wire img-ico{font-size:26px;display:block;margin-bottom:4px;opacity:.55}
+  .lbl{display:inline-block;font-size:11px;font-weight:700;color:var(--brand);background:#EDF1FD;
+    padding:2px 8px;border-radius:6px;margin-bottom:8px;letter-spacing:.3px}
+  .note{font-size:13px;color:var(--ink-2);background:#FFF8E9;border-left:3px solid var(--accent);
+    padding:10px 14px;border-radius:0 8px 8px 0;margin-top:14px}
+  .note b{color:#B45309}
+
+  /* ---------- 站点地图 ---------- */
+  .sitemap{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .sm-lv{font-size:11px;font-weight:700;color:var(--ink-3);letter-spacing:1px;margin-bottom:8px}
+  .sm-box{border:1.5px solid var(--line);border-radius:10px;padding:12px;background:#fff;position:relative}
+  .sm-box.root{background:#EDF1FD;border-color:#C7D2FE}
+  .sm-box b{display:block;font-size:14px;margin-bottom:4px}
+  .sm-box small{color:var(--ink-2);font-size:12px;line-height:1.55;display:block}
+  .sm-box .file{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;color:var(--ink-3);margin-top:6px;display:block}
+
+  /* ---------- 页面线框 ---------- */
+  .browser{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+  .browser-bar{background:#F1F4F9;border-bottom:1px solid var(--line);padding:8px 12px;display:flex;align-items:center;gap:6px}
+  .dot{width:9px;height:9px;border-radius:50%;background:#D5DCE6}
+  .browser-bar .url{margin-left:10px;font-size:11.5px;color:var(--ink-3);background:#fff;border:1px solid var(--line);
+    padding:2px 10px;border-radius:6px;flex:1}
+  .browser-bar .tagp{font-size:11px;font-weight:700;color:var(--brand);background:#EDF1FD;padding:2px 8px;border-radius:6px}
+  .page-body{padding:16px;display:flex;flex-direction:column;gap:12px}
+
+  .row{display:grid;gap:12px}
+  .r-12{grid-template-columns:1fr}
+  .r-8-4{grid-template-columns:2fr 1fr}
+  .r-4-4-4{grid-template-columns:repeat(3,1fr)}
+  .r-6-6{grid-template-columns:1fr 1fr}
+
+  .nav-wire{height:44px;background:#fff;border:1.5px solid var(--line);border-radius:10px;
+    display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:12.5px;color:var(--ink-2)}
+  .nav-wire .links{display:flex;gap:16px}
+  .hero-wire{height:180px;background:linear-gradient(135deg,#EDF1FD,#E3F2FD);border:1.5px dashed #A5B4FC;border-radius:10px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;padding:16px}
+  .hero-wire b{font-size:17px;color:#2F3E75}
+  .hero-wire span{font-size:12.5px;color:#4C5B85}
+  .tl-wire{display:flex;flex-direction:column;gap:10px}
+  .tl-node{display:grid;grid-template-columns:66px 1fr;gap:12px;align-items:center}
+  .tl-year{background:#EDF1FD;border:1px solid #C7D2FE;border-radius:8px;padding:8px 0;text-align:center;
+    font-size:12.5px;font-weight:800;color:var(--brand)}
+  .tl-card{border:1.5px dashed var(--wire-line);background:var(--wire);border-radius:10px;padding:12px 14px;text-align:left}
+  .tl-card b{font-size:13.5px;display:block}
+  .tl-card small{color:var(--ink-2);font-size:12px}
+  .tl-card .term{display:inline-block;margin-top:6px;font-size:11.5px;color:var(--brand);
+    border-bottom:1.5px dotted var(--brand);padding-bottom:1px}
+
+  /* ---------- 两栏对照 ---------- */
+  .compare{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start}
+  .phone{border:10px solid #2B3A55;border-radius:26px;overflow:hidden;background:#fff}
+  .phone .browser{border:none;border-radius:0}
+  .phone .browser-bar{display:none}
+  .notch{height:20px;background:#2B3A55;display:flex;align-items:center;justify-content:center}
+  .notch i{width:44px;height:4px;background:#4A5B78;border-radius:3px;display:block}
+
+  /* ---------- 交互说明 ---------- */
+  .ix-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .ix{border:1px solid var(--line);border-radius:12px;padding:18px;background:#fff}
+  .ix h4{font-size:15px;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+  .ix .pos{font-size:11.5px;color:var(--green);font-weight:700;background:#E6FCF5;padding:2px 8px;border-radius:6px;display:inline-block;margin-bottom:10px}
+  .ix ul{list-style:none;font-size:13px;color:var(--ink-2)}
+  .ix li{padding-left:16px;position:relative;margin-bottom:5px}
+  .ix li::before{content:"›";position:absolute;left:2px;color:var(--brand);font-weight:700}
+
+  /* ---------- 弹窗示意 ---------- */
+  .modal-demo{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;max-width:420px}
+  .modal-demo .m-head{padding:14px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  .modal-demo .m-head b{font-size:15px}
+  .modal-demo .m-head .x{color:var(--ink-3);font-size:18px;line-height:1}
+  .modal-demo .m-body{padding:16px;font-size:13.5px;color:var(--ink-2)}
+  .modal-demo .m-body .kw{background:#FFF3BF;padding:1px 5px;border-radius:4px;color:#8B5E00;font-weight:600}
+  .modal-demo .m-body p{margin-bottom:10px}
+  .modal-demo .m-foot{padding:12px 16px;border-top:1px solid var(--line);background:#FAFBFD;display:flex;justify-content:space-between;align-items:center;font-size:12.5px}
+  .btn-go{background:var(--brand);color:#fff;padding:7px 14px;border-radius:8px;font-size:12.5px;font-weight:600}
+
+  /* ---------- 配色 ---------- */
+  .palette{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+  .sw{border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+  .sw .c{height:56px}
+  .sw .t{padding:8px;background:#fff;font-size:11.5px;text-align:center}
+  .sw .t b{display:block;font-size:12px}
+  .sw .t span{color:var(--ink-3);font-family:ui-monospace,Menlo,monospace}
+
+  /* ---------- 表格 ---------- */
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th,td{border-bottom:1px solid var(--line);padding:11px 10px;text-align:left;vertical-align:top}
+  th{background:#F1F4F9;font-size:12.5px;color:var(--ink-2);font-weight:700}
+  td .pill{font-size:11px;padding:2px 8px;border-radius:6px;font-weight:700;white-space:nowrap}
+  .p-blue{background:#EDF1FD;color:var(--brand)}
+  .p-amber{background:#FFF3BF;color:#8B5E00}
+  .p-green{background:#E6FCF5;color:#087F5B}
+  .p-gray{background:#EEF1F5;color:#5B6675}
+
+  /* ---------- 待确认 ---------- */
+  .qa{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .qa-item{border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;padding:14px 16px;background:#fff}
+  .qa-item b{font-size:14px;display:block;margin-bottom:4px}
+  .qa-item span{font-size:13px;color:var(--ink-2)}
+  .qa-item .def{color:var(--brand);font-weight:600}
+
+  footer{margin-top:50px;padding:26px 0 40px;border-top:1px solid var(--line);color:var(--ink-3);font-size:12.5px;text-align:center}
+
+  @media (max-width:900px){
+    .sitemap,.ix-grid,.qa,.palette{grid-template-columns:repeat(2,1fr)}
+    .compare{grid-template-columns:1fr}
+    .r-8-4,.r-4-4-4,.r-6-6{grid-template-columns:1fr}
+    .doc-head h1{font-size:26px}
+  }
+</style>
+</head>
+<body data-page-node-id="4KQYHKtZWvBN0Kemhv78nV">
+
+<div class="doc-head" data-page-node-id="sBth98OxL3LnON86KdmL78">
+  <div class="wrap" data-page-node-id="OXHtNYy1tDJRKBagpZBH7g">
+    <span class="tag" data-page-node-id="k0mGXKbwCYIqh44ohgQsfO">阶段一 · 框架确认稿</span>
+    <h1 data-page-node-id="gnrhOte0WvIL629XbfWFQX">《读懂牛顿》—— 中学生牛顿科普站</h1>
+    <p data-page-node-id="E2OAFjENUFQRPtXHHBm1p2">本文件只呈现<strong data-page-node-id="DSa7TwKpFTT0Y5uNwWtKCE">页面结构、栏目划分、交互位置与视觉规范</strong>，不含正文内容。请确认结构与交互方案后，我再进入第二阶段：填充真实内容、实现全部交互、做响应式与细节打磨。</p>
+    <div class="meta" data-page-node-id="XhMvFy42OxaviMCqGOxsAf">
+      <span data-page-node-id="XQL8q3s1kDCpQ1JwwWdPJ4">目标读者：初中生 / 高中生</span>
+      <span data-page-node-id="1xnnf8ZS8ohtKxQrlXOFiQ">页面总数：1 首页 + 4 详解页 + 2 辅助页</span>
+      <span data-page-node-id="SilBZW56m6XU457DZra1Li">技术：纯静态 HTML + CSS + 原生 JS（无依赖，易部署）</span>
+      <span data-page-node-id="mGJlOFiWZthzqAE6F4Rtk8">适配：桌面宽屏 / 平板 / 手机</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" data-page-node-id="CVwvdjAty2zP8gyIEopkLr">
+
+<!-- ============ 1. 站点地图 ============ -->
+<section data-page-node-id="udi4Rn6lKARCMwandg6Tsy">
+  <h2 data-page-node-id="H4yYW7SAnmSlhJx6GtT5yZ"><span class="sec-no" data-page-node-id="GtjwRhxRVCxgDvsDPELVFA">1</span>站点地图与栏目划分</h2>
+  <p class="sec-desc" data-page-node-id="ADP6PoMPbabcXRwJ3Dtm5K">全站 7 个页面，层级只有两级，中学生点两下就能到任何内容。</p>
+  <div class="card" data-page-node-id="VU8An6WKDE3sHV33IFTGTc">
+    <div class="sitemap" data-page-node-id="6M8GfTHazJEvYcZ16EEnwg">
+      <div data-page-node-id="zCcazjWBgp9EwFiF6iS3MT">
+        <div class="sm-lv" data-page-node-id="ZZG5aAS75DVx3RgXnMuuNz">入口</div>
+        <div class="sm-box root" data-page-node-id="C4jD1wRUKQ5rcZWlu1gUlc">
+          <b data-page-node-id="Bacl00gbn6scUAT4mEDlc3">首页</b>
+          <small data-page-node-id="lFg7Nzozu2CVh5j20q6GJH">三分钟认识牛顿：一句话定位 + 高光成就 + 时间轴预览 + 术语云入口</small>
+          <span class="file" data-page-node-id="RAmiZq0XRMc2tDfL4g5Hol">index.html</span>
+        </div>
+      </div>
+      <div data-page-node-id="T036AvKaoYdf5TB9GiaKf0">
+        <div class="sm-lv" data-page-node-id="UNMuNdmm1jeFskbCSs7ZWA">主线</div>
+        <div class="sm-box" style="margin-bottom:12px" data-page-node-id="tSI7qkKHxS7g3rceSLKemJ">
+          <b data-page-node-id="I4tBLr5bk96LSJ30gTL7rd">生平时间轴</b>
+          <small data-page-node-id="kbqHLMZDsYRuvYe2BuoCGG">12 个关键年份节点，按时间顺序串起一生与成就</small>
+          <span class="file" data-page-node-id="w2ZdWIQmmg8CTLDBHUtmP8">timeline.html</span>
+        </div>
+        <div class="sm-box" data-page-node-id="onhozOXsog86TOTpV2Iubv">
+          <b data-page-node-id="xHX7t8CK8CeV3JIFIAdTb1">术语小词典</b>
+          <small data-page-node-id="sZZ10gHAo4xBdQ50DMNMvF">全站可点击术语的汇总索引，支持搜索</small>
+          <span class="file" data-page-node-id="WlFPPJD7QBl7Cj5oJRwnkd">glossary.html</span>
+        </div>
+      </div>
+      <div data-page-node-id="t2BrfXu24XQsP2qDedBR7R">
+        <div class="sm-lv" data-page-node-id="ouBVPQAuT9tFugEcfHYGeo">四大成就 · 独立详解页</div>
+        <div class="sm-box" style="margin-bottom:10px" data-page-node-id="lmf4cE08xXaEyaNoiDOJ7f">
+          <b data-page-node-id="hMGDSbEyA1C7AuDFndsu96">光学与颜色</b>
+          <small data-page-node-id="ueSEKNscamDg1HIKAoHHFc">棱镜实验、白光的秘密、反射望远镜</small>
+          <span class="file" data-page-node-id="j9EJCANXUAvE7aj6L9x1zP">detail/optics.html</span>
+        </div>
+        <div class="sm-box" style="margin-bottom:10px" data-page-node-id="cLHzPg1rXJX4UYCS2cVSXK">
+          <b data-page-node-id="5ZQgAmDiDiuqC4ZJElfNIf">微积分</b>
+          <small data-page-node-id="XiM5EDQaZ7eMyeu47n0f0e">变化率、面积、切线、"流数术"在算什么</small>
+          <span class="file" data-page-node-id="pAP32vGWG4OzHFHWgW4I2Q">detail/calculus.html</span>
+        </div>
+        <div class="sm-box" style="margin-bottom:10px" data-page-node-id="Eit4GMCGQbgQSRteyHqljl">
+          <b data-page-node-id="eDYBP5txMUkbo4k0vmBCPV">万有引力</b>
+          <small data-page-node-id="z2GCG8mHCAD0SsXewrmZ2T">苹果与月亮为什么是同一件事、平方反比</small>
+          <span class="file" data-page-node-id="Y4ttsfkfbH0O0ap0ECsvWh">detail/gravity.html</span>
+        </div>
+        <div class="sm-box" data-page-node-id="oeanho2oreW4yKv1eICW1P">
+          <b data-page-node-id="JyUolVAsPhH38w8AHMG7Pc">三大运动定律</b>
+          <small data-page-node-id="4HqFJIJA3d0SA1teKECPOc">惯性、F=ma、作用力与反作用力</small>
+          <span class="file" data-page-node-id="qUZPtZK5AgNjVxruAuFXfl">detail/laws.html</span>
+        </div>
+      </div>
+      <div data-page-node-id="VE6L2vTeUWYFn3aJswevzj">
+        <div class="sm-lv" data-page-node-id="8wLhhwNGOMr4fjFAmCuZSU">辅助</div>
+        <div class="sm-box" style="margin-bottom:12px" data-page-node-id="mb3799Y8xiPubboADQcBJ2">
+          <b data-page-node-id="Uix1A3wfj500u4oiazYQTa">动手玩一玩</b>
+          <small data-page-node-id="smKoS53TmbGUl9syTUMDl0">可交互小演示（棱镜分光、抛物线、力的合成），纯前端 Canvas</small>
+          <span class="file" data-page-node-id="QzbSrGBgQgjxQUauy1PMkG">labs.html</span>
+        </div>
+        <div class="sm-box" data-page-node-id="wYdBNos4JAPyCo1dTT8Mso">
+          <b data-page-node-id="lTCTguPVsriGLIFNc4wIcB">关于与出处</b>
+          <small data-page-node-id="XHEApDHKtq0kR9Aza5oE2g">资料来源、图片版权、适合延伸阅读的书目</small>
+          <span class="file" data-page-node-id="nEo4zQktoVipKiQ8HjwTVA">about.html</span>
+        </div>
+      </div>
+    </div>
+    <div class="note" data-page-node-id="M8WSVOsNnD9esgA9D4DUHE"><b data-page-node-id="izC58E0VuqQrtqLQ2nosS6">设计取舍：</b>详解页只保留 4 个（对应四大成就），不做更多层级——层级越深，中学生越容易走丢。时间轴上的每个节点都有"深入阅读 →"按钮，直接跳到对应详解页。</div>
+  </div>
+</section>
+
+<!-- ============ 2. 首页线框 ============ -->
+<section data-page-node-id="99mEX2PJUzQB8BGMYjrg1A">
+  <h2 data-page-node-id="IOt757VPPUFq7mKhqEVF3Z"><span class="sec-no" data-page-node-id="kUkTPePzpjfG0esiQnXlPu">2</span>首页线框（桌面端）</h2>
+  <p class="sec-desc" data-page-node-id="SyIxPZbkaHx09Bi8DqN9w3">单页纵向滚动，共 6 个板块。虚线框内的文字为内容占位说明。</p>
+  <div class="card" data-page-node-id="BpffcXDnVuUPmghcIcCWqs">
+    <div class="browser" data-page-node-id="H1i9yBzuNLsOV70PdsbDFa">
+      <div class="browser-bar" data-page-node-id="UVu2BfF568nFHbGKmi60DR">
+        <i class="dot" data-page-node-id="94fPsnGnnuneGbjgLktEAW"></i><i class="dot" data-page-node-id="tjsIJJMJvQxdtvn8n86Nar"></i><i class="dot" data-page-node-id="GXQgDMNYLk5EgEL1JAaiRN"></i>
+        <span class="url" data-page-node-id="Ed3dIsZeqiqODnFflDtESD">du-dong-niu-dun.pages.dev</span>
+        <span class="tagp" data-page-node-id="rDPTXA4yk5DVDUlsJPqohO">index.html</span>
+      </div>
+      <div class="page-body" data-page-node-id="2UJkpmrMVjQaOsL0QHenaH">
+
+        <div class="nav-wire" data-page-node-id="5vJmo0B2DkKIX8unz843z6">
+          <b style="color:var(--brand)" data-page-node-id="0QsLiUJok2Ia4EQzBdwuQv">🍎 读懂牛顿</b>
+          <div class="links" data-page-node-id="5vfGTrtgkbHADX1gSW1hRU"><span data-page-node-id="ShrAd6xrIAjn4pCggs7B0u">首页</span><span data-page-node-id="snRD3RWbxcHhN7VHFpw1AC">时间轴</span><span data-page-node-id="DxmrDPrhchMrifMg2YmJXU">四大成就</span><span data-page-node-id="xORxOHBO0m03meK6jeB3xm">玩一玩</span><span data-page-node-id="F80gxiuJPnydBREdz4F1H1">关于</span></div>
+          <span data-page-node-id="n11N0FO6gcWFP5nfSSzi8P">🔍 搜索</span>
+        </div>
+
+        <div class="hero-wire" data-page-node-id="yZ2NNQz0yLzA2OiexCL4Dj">
+          <b data-page-node-id="oZ0PhHP84fepeivo2NBRpK">大标题：那个把天空和地面连起来的人</b>
+          <span data-page-node-id="W9z45LqzHx5d0jwMBCcJn6">一句话副标题（初中生能懂的定位句） · 生卒年份 1643–1727 · 主视觉插图位</span>
+          <span style="font-size:11.5px;color:#6B7BA8" data-page-node-id="ZCH91Ec1AvI2y2U3htDuOG">[ 插图：统一的"扁平线描 + 低饱和配色"风格主图，右侧留白放人物/苹果/棱镜元素 ]</span>
+        </div>
+
+        <div class="row r-4-4-4" data-page-node-id="fay0dEDJBQDGXtt0ziEGil">
+          <div class="wire" style="height:96px;flex-direction:column" data-page-node-id="exVNOLA5Stzo8FBf9D4gUv"><b data-page-node-id="jGdrJx8GT2r42flG2zzHwg">数据卡 1</b><span data-page-node-id="WwVHINkj6vBtpoag6avw38">享年 84 岁</span></div>
+          <div class="wire" style="height:96px;flex-direction:column" data-page-node-id="pmsFi4VEJYFk0bjqVNLGg8"><b data-page-node-id="9XE1JCGuA28znBE4HHm2WS">数据卡 2</b><span data-page-node-id="Hj3ePf2ckRImcjBjvv6nRC">1 本书改变物理学</span></div>
+          <div class="wire" style="height:96px;flex-direction:column" data-page-node-id="4KCaNsLDqu3F4zx7uNzQmE"><b data-page-node-id="fA82JgiykGeTufzvKZ7e3G">数据卡 3</b><span data-page-node-id="WCXA1Xs7Jv8iSviYPMPiO7">20 年酝酿《原理》</span></div>
+        </div>
+
+        <div class="wire" style="height:34px;background:#EDF1FD;border-color:#C7D2FE;color:var(--brand);font-weight:700" data-page-node-id="aMC5RXAhhlAkYnOiP9eDSc">
+          ▸ 板块二：四大成就卡片区（点击进入详解页）
+        </div>
+        <div class="row r-4-4-4" data-page-node-id="U9LTJe1iE7rIu36C3BK4u6">
+          <div class="wire" style="height:150px;flex-direction:column" data-page-node-id="A7AhvGlvvjaxj3VPbtF7Fl"><span class="img-ico" data-page-node-id="8uEBWWXgNSJbsn4gp6w9Ep">🔬</span><b data-page-node-id="6uDGEKIgK84rkuZlz3cYv9">光学</b><span data-page-node-id="TjVEyVnTlmr2qQXgeDChSX">插图位 + 一句话梗概</span></div>
+          <div class="wire" style="height:150px;flex-direction:column" data-page-node-id="KpNWcalK4s9BjdqpdTgRD7"><span class="img-ico" data-page-node-id="b1h8SNovHydUQGb2rcZsb6">📐</span><b data-page-node-id="Zh12zaJ0zjceEfWIOgRu9E">微积分</b><span data-page-node-id="IuhxntbBSXD6Cb7fM08LLU">插图位 + 一句话梗概</span></div>
+          <div class="wire" style="height:150px;flex-direction:column" data-page-node-id="pJLC7ttzVcVKIh4be0FGuF"><span class="img-ico" data-page-node-id="BsIRNEEnwTchTiGjjWP1yn">🌙</span><b data-page-node-id="GW9DyUTYuPIrVjlQMnfwGH">万有引力</b><span data-page-node-id="QoIp8sKEFyCEaucPL7QM4O">插图位 + 一句话梗概</span></div>
+          <div class="wire" style="height:150px;flex-direction:column" data-page-node-id="RhqmCHtzFdCHtRk8dwWzvj"><span class="img-ico" data-page-node-id="d2qWxlUoPkOnxhR6HsBSnx">🎯</span><b data-page-node-id="6qIypHl91Qo3AHdKygND2s">三大定律</b><span data-page-node-id="RF5ZQv0mINzBFl2fCYuIcC">插图位 + 一句话梗概</span></div>
+        </div>
+
+        <div class="wire" style="height:34px;background:#EDF1FD;border-color:#C7D2FE;color:var(--brand);font-weight:700" data-page-node-id="xSwnzN986GMq3ENpPbuUnI">
+          ▸ 板块三：生平时间轴预览（前 5 个节点，尾部"查看完整时间轴 →"）
+        </div>
+        <div class="tl-wire" data-page-node-id="Q87m9RBjgXEUxW3ig3Hzq7">
+          <div class="tl-node" data-page-node-id="M2AxLrVW1THvyic6drNFEo"><div class="tl-year" data-page-node-id="taH9IoRoULL4pffwxe7dL7">1643</div><div class="tl-card" data-page-node-id="5usZKRHBCp4w0dSCs0y3FP"><b data-page-node-id="hfol4ApRJOQntyVw1fpBXb">出生在英格兰的一个小村庄</b><small data-page-node-id="HxuPS7dbPV1CB7toETLXzU">早产、遗腹子，谁也没想到他会改变科学</small></div></div>
+          <div class="tl-node" data-page-node-id="7IUVKvOQyHNBCNDZRs29w1"><div class="tl-year" data-page-node-id="DL1b49JeP8hd9MwjnBbpOQ">1665</div><div class="tl-card" data-page-node-id="wHb0WbAu7CwHC3f8SAZBKl"><b data-page-node-id="wCa2pxDvg1toyB7WGBLZA7">瘟疫停课，回乡的两年"奇迹年"</b><small data-page-node-id="EGqbCeQBvKqoK8SF1haUE4">微积分、<span class="term" data-page-node-id="r8sah78LgytMHHFLzjxoR3">光的颜色</span>、引力想法，都在这两年冒头</small></div></div>
+          <div class="tl-node" data-page-node-id="0ZWrd589yzcOtCwwAOBkjC"><div class="tl-year" data-page-node-id="WUJA3VyLojqya1iVxHH2ka">1687</div><div class="tl-card" data-page-node-id="UfrglSy2GSC3GtvUryPJ0X"><b data-page-node-id="gB2NwDiPtEkawOKGebnZMX">《自然哲学的数学原理》出版</b><small data-page-node-id="cGbEBQGLg3K3ufnjBV8Ydm">提出<span class="term" data-page-node-id="2qiURjcz6z1FBFC4iihwKW">万有引力</span>与三大运动定律</small></div></div>
+        </div>
+
+        <div class="wire" style="height:34px;background:#EDF1FD;border-color:#C7D2FE;color:var(--brand);font-weight:700" data-page-node-id="EGIoH3QS6EMmNjPbptrKGY">
+          ▸ 板块四：术语云（点击任一术语即弹出解释卡）
+        </div>
+        <div class="row r-6-6" data-page-node-id="0f29TnYnrW6jEj8ThSlT3E">
+          <div class="wire" style="height:76px" data-page-node-id="w5iO4mw2lmh6DIM5ex30uA">惯性 · 质量 · 力 · 加速度 · 棱镜 · 色散 · 轨道 <span style="color:var(--brand)" data-page-node-id="B4wJEj8FkwaAHOHGE7NXHp">（虚线下划线样式）</span></div>
+          <div class="wire" style="height:76px" data-page-node-id="L6KaSyxiUf19PqHlvDAXLo">切线 · 变化率 · 平方反比 · 反射望远镜 · 流数 · 以太</div>
+        </div>
+
+        <div class="row r-8-4" data-page-node-id="OfSp8JwItjcvFceij9Vzdg">
+          <div class="wire" style="height:110px;flex-direction:column" data-page-node-id="rrCRAB76HiEnS5bX5DqCeQ"><b data-page-node-id="P1lKqV9MnZdWIYRztdZdGF">板块五：动手玩一玩（入口横幅）</b><span data-page-node-id="AxvVP2EV2lX5udOEaVL2gW">三个可交互演示 → labs.html</span></div>
+          <div class="wire" style="height:110px;flex-direction:column" data-page-node-id="R4SHYjODxB226WOMFBMTBh"><b data-page-node-id="E45ACUYoG4mSGiK2xywrIA">板块六：延伸阅读</b><span data-page-node-id="iFo23z5FJGgSuSh6Yguoi4">推荐书目 / 常见误解辟谣</span></div>
+        </div>
+
+        <div class="wire" style="height:70px;background:#F1F4F9" data-page-node-id="bByAFtXom5SJxuWnDtdFHA">页脚：资料出处 · 图片版权 · 站点说明</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. 移动端 ============ -->
+<section data-page-node-id="1QgfCttGiqXlhuCuFsQXXH">
+  <h2 data-page-node-id="O8mlbajx9hGNb0kONw0KLi"><span class="sec-no" data-page-node-id="IhbOuyoKGWTKqyGNuZPrpL">3</span>移动端适配方案</h2>
+  <p class="sec-desc" data-page-node-id="75m7AujpqRjjPUYsD7RGIo">同一套代码，断点在 900px / 640px 两处切换。右侧为手机端实际布局预览。</p>
+  <div class="card compare" data-page-node-id="sKZRiHX8kyxcIEH0VL1t92">
+    <div data-page-node-id="ySf9c4bRXe4mEO6IgO5nd8">
+      <div class="browser" data-page-node-id="QXVEygmaKiVfgTzivW7zZB">
+        <div class="browser-bar" data-page-node-id="4wXRDhyDaCDz5CWAyYjn73"><span class="tagp" data-page-node-id="tG5EviptxdqgXtH4HMV1rU">桌面 ≥900px</span><span class="url" data-page-node-id="UoSqq2pIUUmK2ZP60zcNI9">宽屏</span></div>
+        <div class="page-body" data-page-node-id="d9xTtPJleAdSA2NACMSFV5">
+          <div class="row r-8-4" data-page-node-id="DOCG1ETZmWrTZgQemHSDiG">
+            <div class="wire" style="height:120px" data-page-node-id="21fzQMJ66SDb9NtwhIzDOn">正文主栏（时间轴 / 内容）</div>
+            <div class="wire" style="height:120px" data-page-node-id="EnPvkjRnE43nhMh8ecEsGD">侧边栏：本页目录 + 相关术语</div>
+          </div>
+          <div class="row r-4-4-4" data-page-node-id="WjYFAx3EFVtuEp5iNtDXDh">
+            <div class="wire" style="height:80px" data-page-node-id="sz4w6dHpXpmO4GOrXzRzOc">卡片</div>
+            <div class="wire" style="height:80px" data-page-node-id="SdAfds5sWB81H4DN4zzyvM">卡片</div>
+            <div class="wire" style="height:80px" data-page-node-id="Ebe9CwsmQf2qHaL95TH08H">卡片</div>
+          </div>
+        </div>
+      </div>
+      <div class="note" data-page-node-id="TRYMlQHyQdnpXBDygRYV3H"><b data-page-node-id="fTvBVn6oLVp2el5Gal6coC">断点规则：</b>≥900px 双栏 + 三列卡片；640–900px 单栏 + 两列卡片；&lt;640px 全单栏、导航折叠为汉堡菜单、时间轴改为左侧单线竖排、弹窗改为底部抽屉式（更易单手操作）。</div>
+    </div>
+    <div data-page-node-id="CnpDneH1WQZnZcDi7aNwas">
+      <div class="phone" data-page-node-id="PgxVYIkZz0K5VznOWkCiT6">
+        <div class="notch" data-page-node-id="u9ZOu85tQGWZ9LIKxV9m8R"><i data-page-node-id="9wvDP58Eo3xEhhymEDEaBj"></i></div>
+        <div class="browser" data-page-node-id="fa9fEFHhOZi2mjHEUdAsJK">
+          <div class="page-body" data-page-node-id="gC4eaQKAOsXP98VVZZpCcV">
+            <div class="nav-wire" style="height:38px" data-page-node-id="njkYlnpIM511SFqbyqXA2K"><b style="color:var(--brand)" data-page-node-id="NEqmgFJpunKMsOPvnGuAVk">🍎 读懂牛顿</b><span data-page-node-id="SRcNsFc2sFommo80OHzPe8">☰</span></div>
+            <div class="hero-wire" style="height:130px" data-page-node-id="CsNAbG2bAxydsYCr2DMBFs"><b data-page-node-id="6pwKk6195lK42WfInuDTjS">大标题</b><span data-page-node-id="0N7VhWSxDqkCtrWVZtVIm1">副标题</span></div>
+            <div class="wire" style="height:60px" data-page-node-id="DhgAsQbiEcuq44EsGMMcFJ">卡片（单列）</div>
+            <div class="wire" style="height:60px" data-page-node-id="lgwKBhD1riTO9D2HT34kO1">卡片（单列）</div>
+            <div class="tl-node" data-page-node-id="SD3wULHXCxiIAAJGtRVdJ6"><div class="tl-year" style="width:52px" data-page-node-id="HevhhA92a8AfSZVdnKGWkS">1643</div><div class="tl-card" data-page-node-id="zLvraSiAYMprEYUQH6Effk"><b data-page-node-id="HPBDpuc9QDPsXMWEAqFF3J">时间轴单线竖排</b></div></div>
+            <div class="tl-node" data-page-node-id="17RQGAvr0snUtmP7Rqgnv5"><div class="tl-year" style="width:52px" data-page-node-id="regsCLspCKXCe48UDigoV4">1687</div><div class="tl-card" data-page-node-id="PhCRF0CMh16PbcMb0UJTpb"><b data-page-node-id="pY1CedkiWrp4H3KkseayvT">点击展开详情</b></div></div>
+            <div class="wire dark" style="height:120px;border-radius:12px" data-page-node-id="13zCyU1XnDBGWVV2gJIEkn">术语弹窗 → 底部抽屉</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. 详解页线框 ============ -->
+<section data-page-node-id="vDNzajxUyZcmv9erMn9cEH">
+  <h2 data-page-node-id="fHhTAeDMkGggifxNYMydud"><span class="sec-no" data-page-node-id="wJmAA38hVCwjvTRaNw8S04">4</span>成就详解页线框（4 页结构相同）</h2>
+  <p class="sec-desc" data-page-node-id="fnpYHP93o60znApXK9r0dz">这是"弹窗讲不清就跳转"的落脚页。结构固定，学生熟悉一次就能走通四页。</p>
+  <div class="card" data-page-node-id="kAjNvHuoalT8PtY0S7HhiH">
+    <div class="browser" data-page-node-id="5QiEo9CBvYJlx1omOA2EQ4">
+      <div class="browser-bar" data-page-node-id="0RuK9U2bMX2dhxXQYZce15"><i class="dot" data-page-node-id="D3aIui1zl5ShBuIMwr1JzC"></i><i class="dot" data-page-node-id="nVGYbzbgVTxS0lSXfroxAD"></i><i class="dot" data-page-node-id="JKp2GiEhpkjBoI2gICBle6"></i>
+        <span class="url" data-page-node-id="NRCkh3r36bBCqll6zoImU6">du-dong-niu-dun.pages.dev/detail/gravity.html</span><span class="tagp" data-page-node-id="pzQ2TADD3mz9GHmhgP50n5">detail/*.html</span></div>
+      <div class="page-body" data-page-node-id="mLAaSR3QFdOYVeAAJCWZFD">
+        <div class="row r-8-4" data-page-node-id="dT7koaHCAKdQrTsqfPsW1N">
+          <div style="display:flex;flex-direction:column;gap:12px" data-page-node-id="qHvftYynEcCX4KBeK5bFGF">
+            <div class="wire" style="height:130px;flex-direction:column;background:#EDF1FD;border-color:#C7D2FE" data-page-node-id="4TKlvF4HT8wOBMYb6PaSKR">
+              <b style="color:var(--brand);font-size:15px" data-page-node-id="Ho8HQHOSIJzWpci5A1g23D">页头：万有引力</b>
+              <span data-page-node-id="tfRBXZyRsMQvJLhsRXIMND">一句话结论（大字）：苹果落地和月亮不掉下来，是同一件事</span>
+            </div>
+            <div class="wire" style="height:60px" data-page-node-id="G1CJrAkyGJIkUNcq1o258x">① 先看个故事（情境引入，200 字以内）</div>
+            <div class="row r-6-6" data-page-node-id="XyHXbwH1Gj7V4KMwAh3oTT">
+              <div class="wire" style="height:130px;flex-direction:column" data-page-node-id="ZgIL3lXWrOJQmmVt13vJnP"><span class="img-ico" data-page-node-id="xVaAI95k3GzNAjamCkM3DZ">🖼</span>② 原理图（统一插画风格）</div>
+              <div class="wire" style="height:130px;flex-direction:column" data-page-node-id="EmVr0eHH6cDoDogPDGnoPO"><b data-page-node-id="SxM90pzIM1qBTq17ianFe3">③ 核心解释</b><span data-page-node-id="6GrFuTsRK1vkTCoPMYQaj8">初中水平文字，全篇术语可点</span></div>
+            </div>
+            <div class="wire" style="height:70px;background:#FFF3BF;border-color:#F2D675;color:#8B5E00" data-page-node-id="gwpQB9Jlw5Js2FrDs1vxnb">④ 公式卡：F = G·m₁m₂ / r² —— 每个符号逐个拆解</div>
+            <div class="wire" style="height:90px;flex-direction:column" data-page-node-id="H7UxrVxDZlxzYLKKvzccDp"><b data-page-node-id="M6La7z26A3OVoSC77Fwudr">⑤ 试一试（Canvas 交互演示）</b><span data-page-node-id="BiCC2okqKmAX28gJqvmSYE">拖动滑块看引力如何变化</span></div>
+            <div class="wire" style="height:70px;flex-direction:column" data-page-node-id="cBo0LN3Om7adjMn3unwnpt"><b data-page-node-id="nQRQH0VVpUICHclpcFFfKJ">⑥ 常见误解</b><span data-page-node-id="Ucr3PbG0o4suRKqBRBll2D">辟谣问答，2–3 条</span></div>
+            <div class="row r-6-6" data-page-node-id="RAT78BdzyFrYHpjCUOb4YL">
+              <div class="wire" style="height:54px" data-page-node-id="Afe8Eu1KqG3nJn6CCj2bag">← 上一篇：微积分</div>
+              <div class="wire" style="height:54px" data-page-node-id="VWxIPtgjXOiYEuPVBf9For">下一篇：三大运动定律 →</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px" data-page-node-id="qKSsdeLis1zjcl0ea4g74M">
+            <div class="wire" style="height:150px;flex-direction:column" data-page-node-id="SE4CmeBDs3EPWAwzVg72DT"><b data-page-node-id="0EQvXiA6zMHi3gCAwkNTNs">侧栏：本页目录</b><span data-page-node-id="jR8FAnL7tzdKCN1sqk2lgm">①–⑥ 锚点跳转，滚动高亮</span></div>
+            <div class="wire" style="height:110px;flex-direction:column" data-page-node-id="FNfAEYtHGuJBc78yBWXQAT"><b data-page-node-id="pETQVPYoPoCHmIubJsrTX6">侧栏：本页术语</b><span data-page-node-id="dTxbjXIJvdnwrmW2FXmC13">本页出现的可点击术语清单</span></div>
+            <div class="wire" style="height:90px;flex-direction:column" data-page-node-id="QfFFiHgNLPWancsnL0sJdF"><b data-page-node-id="ARhcJv1XhjwNENut7kKxpg">侧栏：时间定位</b><span data-page-node-id="fVBFXJ2xysOGGUfZygvnt7">这件事发生在哪一年</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="note" data-page-node-id="bHCYCdjhrExj7Md2zXpzAV"><b data-page-node-id="KiL7JSOL9DWjmUIhMyqv6t">移动端：</b>侧栏自动降为正文下方的"本页速览"折叠块，目录改为顶部吸顶下拉条。</div>
+  </div>
+</section>
+
+<!-- ============ 5. 交互功能 ============ -->
+<section data-page-node-id="Z9maSNeAjvSqOWq0ZUANR3">
+  <h2 data-page-node-id="BLC60748Kon54R3fGeYKDQ"><span class="sec-no" data-page-node-id="bSekq5UGPNHsLMBSNwJdsD">5</span>交互功能清单与位置</h2>
+  <p class="sec-desc" data-page-node-id="PkWdP8yTXzfDRyacbDREJF">共 7 项交互，全部用原生 JS 实现，不引入任何框架，保证加载快、手机上不卡。</p>
+  <div class="card" data-page-node-id="j2aJV3REAWZeM7c7zbXeRC">
+    <div class="ix-grid" data-page-node-id="hwRLJKnO8cEcBADIaF3nlL">
+      <div class="ix" data-page-node-id="pbVOLTCKGJ9LEphvevjYiS">
+        <h4 data-page-node-id="ZNuYfIsqw5pbONW0SIXlbK">① 术语弹窗（核心功能）</h4>
+        <div class="pos" data-page-node-id="ohecKZCcYIpoqvxQs7mYNU">出现位置：全站正文任意位置</div>
+        <ul data-page-node-id="84t9xiw5ePMHHjBFPTB6al">
+          <li data-page-node-id="yD8thEJAhXAf6o957Sv3Fh">专业名词显示为<strong data-page-node-id="A9GMJseVCDKgO3PvvP50qp">虚线下划线</strong>的主色文字，鼠标悬停有轻微底色提示</li>
+          <li data-page-node-id="qzWJMVwP4JGX3Cjp8rjt2f">点击 → 居中弹窗：一句话通俗解释 + 一个生活类比 + （可选）一张小图</li>
+          <li data-page-node-id="e7tgJXapDuEne15O3KOWZS">弹窗底部固定两个出口：<strong data-page-node-id="JHrrY3QZhuIXvTEOnCyPf1">关闭</strong> / <strong data-page-node-id="49ColpPIm56jrBPzavCQrR">了解更多 →</strong>（跳转对应详解页）</li>
+          <li data-page-node-id="TMHgAiXOeJztJ9nDc5aCEh">支持 ESC 关闭、点遮罩关闭；手机上改为<strong data-page-node-id="eyaH2qwSRyYParG1vVgzUQ">底部抽屉</strong>，可下滑关闭</li>
+        </ul>
+      </div>
+      <div class="ix" data-page-node-id="WNYlkIo6k5t58Xa2DlxCU9">
+        <h4 data-page-node-id="8FVqJFnXf5DBjCQ6IF1C5T">② 顶部导航 + 阅读进度条</h4>
+        <div class="pos" data-page-node-id="N6fV9gQ4S2pQr7HrXbnCHi">出现位置：全站顶部，固定吸顶</div>
+        <ul data-page-node-id="rftuaplqMqUB0nS8KcqEMd">
+          <li data-page-node-id="SNNEk62TSxbyAZvCOYZ36S">桌面端：Logo + 5 个栏目 + 搜索框；滚动时加毛玻璃背景和阴影</li>
+          <li data-page-node-id="ncKydFw9K9wRq3LTQUo4HA">移动端：折叠为汉堡菜单，点击展开全屏菜单</li>
+          <li data-page-node-id="t1gK2vWxwiwItBaSFJ6fux">导航条底部有一条 2px 进度条，随页面滚动增长</li>
+        </ul>
+      </div>
+      <div class="ix" data-page-node-id="IOqpsiUrjHASgJluVLJDj7">
+        <h4 data-page-node-id="9cFrn5TRh8m0GnVquKyEBi">③ 时间轴节点展开</h4>
+        <div class="pos" data-page-node-id="nomALfiNj4zZptYJDcrg1T">出现位置：timeline.html、首页预览区</div>
+        <ul data-page-node-id="46yTtt3HA7pIZLcOOtBsEZ">
+          <li data-page-node-id="DZGvItDpGDHHOj63wz19X4">默认显示年份 + 一句话标题，点击展开 100–150 字详情 + 插图</li>
+          <li data-page-node-id="gDXRE2EKiDR53LEr3AQVEH">滚动进入视口时节点有淡入动画（尊重 prefers-reduced-motion）</li>
+          <li data-page-node-id="lHlOtJH5EF3JEQU3JJLCfR">每个节点带"深入阅读 →"按钮，跳到对应详解页</li>
+        </ul>
+      </div>
+      <div class="ix" data-page-node-id="mjNorelGOvJtPZ85nwiCRP">
+        <h4 data-page-node-id="zmlyU1eGtWGvy3Gex8g9lA">④ 公式符号拆解</h4>
+        <div class="pos" data-page-node-id="4N8tBrCZFmXpvIo2gQ7GLi">出现位置：详解页公式卡</div>
+        <ul data-page-node-id="ji82BRLCM1RIUv1kGpvE2Y">
+          <li data-page-node-id="OQOEjIe18Wf2BrmTjtuxL0">公式中每个符号（如 G、m、r）可单独点击</li>
+          <li data-page-node-id="xtjAYbplTabC5xEMJ7eH4K">点击后公式下方就地展开该符号的含义与单位，不打断阅读</li>
+        </ul>
+      </div>
+      <div class="ix" data-page-node-id="AW1MzYDVYqUd4dmu3DmV62">
+        <h4 data-page-node-id="rEINDZLSaJzqwgNGHWx63T">⑤ 可交互演示</h4>
+        <div class="pos" data-page-node-id="JvOlwc8gBo6XDI1R6gIH3n">出现位置：labs.html + 各详解页"试一试"</div>
+        <ul data-page-node-id="290wkH8jW6R0KFqHG3Ld0Q">
+          <li data-page-node-id="LxW0FyHSxIZtEPdjDtXIzZ">棱镜分光：拖动入射角看七色光分开</li>
+          <li data-page-node-id="oSehOGksGAAEuRfYVHxfu9">引力滑块：改变质量/距离，看引力大小实时变化</li>
+          <li data-page-node-id="eNTTiAeqasEolZYzvTVvZC">抛体运动：调整初速度与角度，看落点</li>
+          <li data-page-node-id="vGZy8qsmeGwBDIwZDF75g2">纯 Canvas 实现，无外部库，支持触屏拖动</li>
+        </ul>
+      </div>
+      <div class="ix" data-page-node-id="4M0d2f4rxAqGdzmfD4w12b">
+        <h4 data-page-node-id="py4JFuK6JbMrhed5MUNzaY">⑥ 术语词典搜索</h4>
+        <div class="pos" data-page-node-id="yAXeoGJMGqvDksiPnZdyIH">出现位置：glossary.html</div>
+        <ul data-page-node-id="FhJqnyiRELz96vrfJO5Xs7">
+          <li data-page-node-id="an6Vqmtp2z353NK4fBukPY">全站术语汇总，支持中文关键词实时过滤</li>
+          <li data-page-node-id="hDaTb9u5jii26pHayTJf4G">每个词条卡片点击查看完整解释，可跳转到相关详解页</li>
+        </ul>
+      </div>
+      <div class="ix" style="grid-column:1/-1" data-page-node-id="OoAipcGKAoilQf1WnN9iMP">
+        <h4 data-page-node-id="ELFXspwFezfycOhz2LQ80K">⑦ 插图与图文配合</h4>
+        <div class="pos" data-page-node-id="nytAafe6fzMiF4wy01wirj">出现位置：全站</div>
+        <ul data-page-node-id="FVVjAemL0sq0lOM308u5m4">
+          <li data-page-node-id="DA6T7BZ4XWow0NWCXwy0YG"><strong data-page-node-id="HEVxxscW7rn317HLSBYxMK">统一插画风格：扁平线描 + 单色底 + 低饱和强调色</strong>（与站点主色同源的靛蓝/琥珀/青绿三色体系），不使用写实油画或 AI 生成人像，保证风格一致、无版权风险</li>
+          <li data-page-node-id="QS2bz2EzCCbl90ioUoBBbn">每张插图配一句话图注，说明"这张图在讲什么"</li>
+          <li data-page-node-id="cytTurzCkIhpXBxFcB1T5d">图片全部本地化、带宽度自适应（srcset）与懒加载</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top:18px" class="row r-8-4" data-page-node-id="psECjTC10EksIrIZIqERfa">
+      <div data-page-node-id="TsgLpx2qnaXT9hBKvqWPUX">
+        <div class="modal-demo" data-page-node-id="FgifGnnsbAQCKCXCmGHrzr">
+          <div class="m-head" data-page-node-id="yQ9fVBDWRzRpX12xLWHFrw"><b data-page-node-id="RTSLIBJXOHPEUtRoEY0XwO">万有引力</b><span class="x" data-page-node-id="SGHPtKMzEIHC1egONh5r1g">✕</span></div>
+          <div class="m-body" data-page-node-id="LK602GXk2cUXx7CmbDCT7y">
+            <p data-page-node-id="A34E1PsEV9gkcRP0lJJ3i4"><span class="kw" data-page-node-id="qNalPNYhajGJ0rwEtvW9Ub">通俗解释：</span>任何两个有质量的东西，都会互相吸引。质量越大吸得越狠，离得越远吸得越弱。</p>
+            <p data-page-node-id="vshGZnb1KA3DFkIAgIQMIx"><span class="kw" data-page-node-id="QTWOhIZtLz3qWMw9YinkRF">生活类比：</span>你和同桌之间也有引力，只是你俩太轻了，这股力量小到完全感觉不到；换成地球这么大的家伙，就牢牢把你按在地面上了。</p>
+            <p style="color:var(--ink-3);font-size:12.5px;margin-bottom:0" data-page-node-id="uSm9f90ZbdrvEqDJJ6rre6">🔗 相关：质量 · 平方反比 · 轨道</p>
+          </div>
+          <div class="m-foot" data-page-node-id="SSGeIhdjtvIZQBjc0U1cz9"><span style="color:var(--ink-3)" data-page-node-id="cdNFjaZMt9cLEsfIgdvwko">还想深入？</span><span class="btn-go" data-page-node-id="D7DYvGMmz9jQDV52IBPQcm">了解更多 →</span></div>
+        </div>
+      </div>
+      <div class="note" style="margin-top:0" data-page-node-id="T1IdqSqgrMsVQ3PFu8QJrd"><b data-page-node-id="HXHwqQ0HD4hTcdEOUd6Arw">三级解释机制：</b>正文一句话 → 弹窗通俗化 → 详解页完整讲。学生读到哪一层都可以停，不会被一堵墙挡住，也不会被迫跳走丢失阅读位置（弹窗默认无痕关闭）。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. 视觉规范 ============ -->
+<section data-page-node-id="d8flzbKbgNc3pt7kxU4DP2">
+  <h2 data-page-node-id="ECZWzgfgOFjsCeDHLGmH2Z"><span class="sec-no" data-page-node-id="SQfLjAGh8rNEeUe1C1kPkR">6</span>视觉规范（简洁明快 · 适读）</h2>
+  <p class="sec-desc" data-page-node-id="yizNOxEX2BLWouuqrvqdKP">整体走"教材 + Apple 官网"的干净感：大留白、高对比、克制的强调色。</p>
+  <div class="card" data-page-node-id="sihelLHnnYpt7KTvFXqtVL">
+    <div class="palette" data-page-node-id="iifUs6sn4eIZX3I2uPZmDu">
+      <div class="sw" data-page-node-id="tpoJiy5j8GRBgSwmDEk4p5"><div class="c" style="background:#3B5BDB" data-page-node-id="9kFwliui82DlZlFU9YOmQE"></div><div class="t" data-page-node-id="wog5eONF5loWA0edOe4V7c"><b data-page-node-id="67ESl5oh3yDTgDPxpSHIb9">主色 靛蓝</b><span data-page-node-id="JftjhkRg7oTgGg2nGg3hZg">#3B5BDB</span></div></div>
+      <div class="sw" data-page-node-id="Ai8Mz9nSvAc3XuowfwlzEW"><div class="c" style="background:#F59F00" data-page-node-id="NTZxk1XyjN2LpaCrvBFMe7"></div><div class="t" data-page-node-id="8fKuyoRPERQu2tuBSJFALq"><b data-page-node-id="GwoMYGlFnEOF1cCiGIiS4V">强调 琥珀</b><span data-page-node-id="4fpqpGjzLTLbdXHtKz2NoS">#F59F00</span></div></div>
+      <div class="sw" data-page-node-id="nCHPYwKsqQLh2NOmR5hDBw"><div class="c" style="background:#0CA678" data-page-node-id="o81khzkoCxDru7X3mCZjag"></div><div class="t" data-page-node-id="fDFBTebiKdXVwshE0Giz0S"><b data-page-node-id="VHReMb3pjAIvgYTeW6IeKA">辅助 青绿</b><span data-page-node-id="EhwNA85DYEMsBw7CD6itgC">#0CA678</span></div></div>
+      <div class="sw" data-page-node-id="ENzc4oIzFQCFQhslE6qrRa"><div class="c" style="background:#F7F9FC" data-page-node-id="ShRHLUvfG8S2G7G6ay75Jb"></div><div class="t" data-page-node-id="y8AZSQIl7RSRLakfzBv2sT"><b data-page-node-id="29RzbpFeBnTfEW1qOGhBYH">页面底色</b><span data-page-node-id="zkX18tGpi1OgzFVsjnJe1E">#F7F9FC</span></div></div>
+      <div class="sw" data-page-node-id="jpuPJgGbeM5CFHiHH6Y5lp"><div class="c" style="background:#1F2937" data-page-node-id="CcBQT5DJ2JClJVnSrsK4eb"></div><div class="t" data-page-node-id="W1goEtyJsxhVK6KqaRYgsf"><b data-page-node-id="uKWsevBe89oy2ICcXwwWHI">正文文字</b><span data-page-node-id="1Nv2VOx4Y50EzVnRCC7Mds">#1F2937</span></div></div>
+      <div class="sw" data-page-node-id="iyCQpKKLqpJ9QAVy3OP5Gj"><div class="c" style="background:#5B6675" data-page-node-id="PVx0uLnwoIEtFeXKcf0tLm"></div><div class="t" data-page-node-id="7QQGQUcndKRCldhFdIZPcx"><b data-page-node-id="Yto23tGgH01lkUyDT1tpbD">辅助文字</b><span data-page-node-id="DXYSpeFIHCJuLz6UcPCIQd">#5B6675</span></div></div>
+    </div>
+    <div class="row r-4-4-4" style="margin-top:18px" data-page-node-id="XXAyFVzfBRV1X7aDYSSrO6">
+      <div class="wire solid" style="height:auto;flex-direction:column;align-items:flex-start;padding:16px" data-page-node-id="jSQqZWL6rOZt8TZEeaLP6K">
+        <span class="lbl" data-page-node-id="F1naB3aADRkR5nWRU68ZH8">字体</span>
+        <div style="font-size:13px;color:var(--ink-2);line-height:1.8" data-page-node-id="GuEwJh7W0smF0X5jTA0cuO">
+          正文 17px / 行高 1.8（手机 16px）<br data-page-node-id="okt8NE4oFvG1fxM5m97Bjf">
+          标题使用系统黑体加粗<br data-page-node-id="Pv0zXc9d9lme8IdjoUgcrb">
+          数字与年份用等宽字体增强辨识
+        </div>
+      </div>
+      <div class="wire solid" style="height:auto;flex-direction:column;align-items:flex-start;padding:16px" data-page-node-id="8xhPHLoJtrGZgiABgnS0B2">
+        <span class="lbl" data-page-node-id="pjEueLOE3idWAeFQvsfyJ9">节奏</span>
+        <div style="font-size:13px;color:var(--ink-2);line-height:1.8" data-page-node-id="blthSumExZFvIEzSP5SXuj">
+          卡片圆角 14px，留白充足<br data-page-node-id="cvAOsOEgyvepglCIXtb8Xq">
+          单段文字不超过 5 行<br data-page-node-id="AksmGhSp18DWVvYmDRCcya">
+          每屏至多 1 个视觉重点
+        </div>
+      </div>
+      <div class="wire solid" style="height:auto;flex-direction:column;align-items:flex-start;padding:16px" data-page-node-id="hA3s0XMSQ4KMN1BBuBT4Ep">
+        <span class="lbl" data-page-node-id="w7l5K8PlVFKADXVzhCbcuv">易读性</span>
+        <div style="font-size:13px;color:var(--ink-2);line-height:1.8" data-page-node-id="hCQ9Pi2lxWHif1UAXQAxFM">
+          正文纯白底，避免彩色背景压字<br data-page-node-id="QgNLirM2tyvUj2Kx5iF0qT">
+          关键句用底色高亮而非变色<br data-page-node-id="pbDxQHED7lGdy2s6YGVOar">
+          所有可点元素有明确视觉标识
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. 内容清单 ============ -->
+<section data-page-node-id="SV4Ea7E2nbs54FOKqsrDv9">
+  <h2 data-page-node-id="kzz4VNp05oEyWoWhrNgZaJ"><span class="sec-no" data-page-node-id="DAJc5LsunnJax4cBgmq368">7</span>第二阶段待填充内容清单</h2>
+  <p class="sec-desc" data-page-node-id="13LNDqP8E5ATpDUcqDjNtF">框架确认后，我按下面这张表逐项写内容。时间轴节点与术语库可先过一遍，看是否需要增删。</p>
+  <div class="card" data-page-node-id="pHODlga19xq4wGpEsnIlKm">
+    <table data-page-node-id="JPLc25y53TL1u4APDZkywQ">
+      <thead data-page-node-id="gW13Mg3xsxy0RBIkYmQgWu"><tr data-page-node-id="iU7rJV1sTwBs86wCW1zLFq"><th style="width:88px" data-page-node-id="YzYYfEWXoUg7tTYih6sBHB">年份</th><th data-page-node-id="DVNYcZCga6xDY7FhBDqGFi">时间轴节点</th><th style="width:110px" data-page-node-id="ltOCbv1lDFJn58bmkcx1nJ">关联详解页</th><th style="width:90px" data-page-node-id="qoSSsitiGFxq1J5uVVsxTR">优先级</th></tr></thead>
+      <tbody data-page-node-id="aDhBoKUlXBdvYsicBVfnxk">
+        <tr data-page-node-id="ktbCKZR7bXFQZyh0rS4bkX"><td data-page-node-id="svPkxTHpDEE3B1DCunDHZS"><b data-page-node-id="2qyEUrm8XaLgaDgsumKeJG">1643</b></td><td data-page-node-id="vZKv0qj5Hbv1gMfxmb59og">出生：英格兰林肯郡伍尔索普，遗腹子、早产的乡下孩子</td><td data-page-node-id="1YzEvQLHzLhFVLKTj5hJKn"><span class="pill p-gray" data-page-node-id="5qPRFkH5YJ73JoleW2qfIs">—</span></td><td data-page-node-id="C6JukTb1NeFyiNRYw94vBD"><span class="pill p-gray" data-page-node-id="Arw5XXxMCwLBpxkF7YMT8e">基础</span></td></tr>
+        <tr data-page-node-id="kxORWAu5ud4PoFdqRf3HVc"><td data-page-node-id="piFr7hsKgKBxhFPKiCpCxu"><b data-page-node-id="SqN4WITEGUYbg1Cq1av5xT">1661</b></td><td data-page-node-id="4XtHU7Prz9MVkF5CIe8Ilz">进入剑桥三一学院：减费生，靠做杂务抵学费</td><td data-page-node-id="HAAZT2lGZCO7wOJqdhOT7z"><span class="pill p-gray" data-page-node-id="KlCEozn3AFHavRNLHqUuRK">—</span></td><td data-page-node-id="lkDBPhd1TFFSgZXXYzjZaO"><span class="pill p-gray" data-page-node-id="D7PCijpPEAeUZR028YQo6D">基础</span></td></tr>
+        <tr data-page-node-id="SIWAlvs1dQZCx9mvjmHCOs"><td data-page-node-id="XMBzDPkSCoedNbP72RNylp"><b data-page-node-id="DROdtBqUBaFYnrtrhDZNeW">1665–67</b></td><td data-page-node-id="vU2gpA0CZfzqQudWqZnPUf">瘟疫停课回乡的"奇迹年"：微积分、光学、引力想法同时冒头</td><td data-page-node-id="u39r0QckBYmAICBKnE4YFU"><span class="pill p-blue" data-page-node-id="OCRu4uRppk6b0ED592trLC">光学/微积分</span></td><td data-page-node-id="YVTRUNwz4D0SpGa7VCrpqp"><span class="pill p-amber" data-page-node-id="7LdUM091FXHmnm2PeISyaz">重点</span></td></tr>
+        <tr data-page-node-id="HkzXLyOgr9tkW633UBI6NM"><td data-page-node-id="3WexvsPdRU4KiEZe2ldrKa"><b data-page-node-id="vE2lpsVQmValQeDtNS31rP">1668</b></td><td data-page-node-id="BNzUboVdIbjUGP6nT8LWa3">造出第一架反射望远镜：解决色差问题</td><td data-page-node-id="6PYBcsYUGScKu59vAzut1P"><span class="pill p-blue" data-page-node-id="lcW3Ojw6sciwETOgxEzzyB">光学</span></td><td data-page-node-id="lkLCgXVD8sELoaLqnmZPzC"><span class="pill p-green" data-page-node-id="OToqHDs783xJJYbHfDjWf5">一般</span></td></tr>
+        <tr data-page-node-id="RFPdQClShAw9HitdwyPxsA"><td data-page-node-id="BVfNqCll7oows9imeDJ6Vr"><b data-page-node-id="EkenXBsg7EJbwLKRP9UUzG">1672</b></td><td data-page-node-id="4iMASU5Aw795xb2alfCnOo">发表光的颜色论文：白光其实是七色光混在一起</td><td data-page-node-id="Tcnj8P6oi4CSw0J2rUXoqk"><span class="pill p-blue" data-page-node-id="PgEBltTdd0MBuvXDikTWLZ">光学</span></td><td data-page-node-id="t6HHrlLzsFJpo9dTLCOX9R"><span class="pill p-amber" data-page-node-id="kQBGFrzSGoZ8lyh3vjJ7sB">重点</span></td></tr>
+        <tr data-page-node-id="SIbJa9dmV1wYGSNTJlcPI3"><td data-page-node-id="zRUCe5MYB4AF5yWnSga8bP"><b data-page-node-id="1pJSpNF66YjZwsL6E1TEQ0">1684</b></td><td data-page-node-id="CbFwSGZd21dF1LBzSVn17h">哈雷登门请教：行星轨道为什么是椭圆</td><td data-page-node-id="9udWxpctMVLhNt6tyu9VUI"><span class="pill p-blue" data-page-node-id="vp4FEYfWzDViO2J7CKItqs">万有引力</span></td><td data-page-node-id="TvBvYzIEMmvr1qtHZyIeo3"><span class="pill p-amber" data-page-node-id="gWeM4zn5zAIDSOHQDf9QLp">重点</span></td></tr>
+        <tr data-page-node-id="8VPQNuChhKo04OoboiTj6I"><td data-page-node-id="QZmGnBZQy9AJn9emPR4JNR"><b data-page-node-id="p2BHId3qZMne82rcNsFGbP">1687</b></td><td data-page-node-id="0v8FrAAQV2WlwzX9kVNbJW">《自然哲学的数学原理》出版：三大定律 + 万有引力</td><td data-page-node-id="q4zAZRFnKaBKLUuniQEeyG"><span class="pill p-blue" data-page-node-id="5q8J2ByLemEFwyfB4RRxcE">引力/定律</span></td><td data-page-node-id="9V7EnmcKp6G3EG6wuHjak6"><span class="pill p-amber" data-page-node-id="7NMs7mLNz2DYQ2DwC7TnTx">重点</span></td></tr>
+        <tr data-page-node-id="2VFhGJpJUfW7QzDiKLEdXv"><td data-page-node-id="qNvo22mFVvXLuhdOIsnUTX"><b data-page-node-id="7eENUwWQA7TxtxFVrJKDOM">1696</b></td><td data-page-node-id="5yBlCh0SmbyLWBAJmPxdyh">离开剑桥去伦敦，任造币厂监管（认真抓假币）</td><td data-page-node-id="SmfGy8z2SGIVqvD48vGykq"><span class="pill p-gray" data-page-node-id="Tp7zHYZRKsoEpGUlhDfRFh">—</span></td><td data-page-node-id="A9oRQWhX4EyGCL3Y58mHZc"><span class="pill p-green" data-page-node-id="SME0CbyWD8NeNiVDLnZcVW">一般</span></td></tr>
+        <tr data-page-node-id="NMEJGGnsfIsPDAZeCBnBRS"><td data-page-node-id="HvSPoqkJCvrYsFuEvEYc8c"><b data-page-node-id="ah1R1qiG1cHstHwflMQ5o3">1703</b></td><td data-page-node-id="H1cutnof7TpAClor0JJfI8">当选皇家学会会长，连任直至去世</td><td data-page-node-id="EidNprQfb8MqkaZDHu3cpA"><span class="pill p-gray" data-page-node-id="v6IsFnTrF4IRpiaIusSQLI">—</span></td><td data-page-node-id="u2lCmQdqAuxf5LkRPtV7Uu"><span class="pill p-green" data-page-node-id="Bk5MviBAynWTSrKiMrAvFI">一般</span></td></tr>
+        <tr data-page-node-id="hCdoJ9Gx3laEqEN1VD3tLn"><td data-page-node-id="EVtzP4G8r1UFCo4VNZH4vF"><b data-page-node-id="nkzEf1cdl39W8CBc1Yvdh8">1704</b></td><td data-page-node-id="GjpRkMwH6Bs29AeDZGrEkI">《光学》出版：把二十多年前的研究写成书</td><td data-page-node-id="vdeIiKTKt3NUID5jN0sBHT"><span class="pill p-blue" data-page-node-id="tA43vPP4Uy2FPapR5jAAfv">光学</span></td><td data-page-node-id="uDsAU1KNhdDebNR9TbNzi8"><span class="pill p-green" data-page-node-id="6dOajtKkiSoN5oBNH8VC3D">一般</span></td></tr>
+        <tr data-page-node-id="O23DVNCvxVaJHTv4DXSpCu"><td data-page-node-id="Gzvut4Ausc262LEIG7Ih6y"><b data-page-node-id="Wt27YsSZgohsIxxWKdI9dz">1705</b></td><td data-page-node-id="P18OEPf2ZmJlTOlJ29AQAf">被安妮女王封爵：科学家第一次因科学获此荣誉</td><td data-page-node-id="YFdnYw5QWPSv37atyMneop"><span class="pill p-gray" data-page-node-id="BPw6gvdGaqvHpIK2Z41dM9">—</span></td><td data-page-node-id="PwGjPfXqz2QqM2via7CE2s"><span class="pill p-green" data-page-node-id="LItGTEjloVz08wL2EVSLCB">一般</span></td></tr>
+        <tr data-page-node-id="L95rjburx65ghhlcG18luE"><td data-page-node-id="K1zqybFM1xHOLAT9SrrRLS"><b data-page-node-id="Bi5HLdYCvlsyK44QHdkVab">1727</b></td><td data-page-node-id="MQCYLkiLqgV2g9fuEqAAIb">逝世，葬于西敏寺：墓志铭写"让人类欢呼吧"</td><td data-page-node-id="DFeuNlv35L1QYkLgeeccAM"><span class="pill p-gray" data-page-node-id="3lPa8HENhKZ6qVmDk2HYkD">—</span></td><td data-page-node-id="MwFqMnC06OgzSz2hGjbZpq"><span class="pill p-gray" data-page-node-id="nINV0dPxL5WsCtdoFLFsYA">基础</span></td></tr>
+      </tbody>
+    </table>
+
+    <table style="margin-top:22px" data-page-node-id="9rcEeiduOPA4X14hgYfVLJ">
+      <thead data-page-node-id="0IFpkqRgE9tkbf1OD7uFRE"><tr data-page-node-id="rafYV4CDa6Jph6oERjU2tX"><th style="width:150px" data-page-node-id="jtoUVYMVJxaBAMsvTG8J2j">术语库（首版约 24 条）</th><th data-page-node-id="tAuanTg1HVV9EDECcveZEb">弹窗内一句话解释方向</th><th style="width:130px" data-page-node-id="ztze4kd1GJNRtlNGfixxCI">跳转深入</th></tr></thead>
+      <tbody data-page-node-id="7BwtELU9kznMkS8GShTdaG">
+        <tr data-page-node-id="2kA6xZfTZLNhjf9Rdm2dkU"><td data-page-node-id="uXymhLgKvz0psJRnHvZT0H">惯性 / 质量 / 力 / 加速度</td><td data-page-node-id="IhMretYmDODAzvAYPuqWC7">用"公交车刹车""推购物车"等日常场景类比</td><td data-page-node-id="EOk1DVSHQh5pkMdqSCmIeI"><span class="pill p-blue" data-page-node-id="JUUtox86SAXENHjqEVY2Lj">三大运动定律</span></td></tr>
+        <tr data-page-node-id="1lV9brbDsgBYYBLMY0TpkV"><td data-page-node-id="VKTD1F98BAHt2CEVEP4ZEx">棱镜 / 色散 / 光谱 / 色差</td><td data-page-node-id="vpi4gtwM4XPDgU5pNOxGV5">用"彩虹怎么来的""为什么老式望远镜有彩边"切入</td><td data-page-node-id="ejfh7FSilEVp79NXAXwzY2"><span class="pill p-blue" data-page-node-id="avWoxuTKftbkJZNMzhp9e8">光学与颜色</span></td></tr>
+        <tr data-page-node-id="evAN5XDmrLgODG45BjpZcP"><td data-page-node-id="vaHAmbFnXZQ1sbaIU6CPN0">切线 / 变化率 / 面积 / 流数</td><td data-page-node-id="0P6KBDiRwtpBysCUgv3UrA">用"汽车速度表""不规则图形怎么算面积"切入</td><td data-page-node-id="zS1L5LwpByrSz4wRdFlJcI"><span class="pill p-blue" data-page-node-id="kWGQQaeQFi7353FnkOmggB">微积分</span></td></tr>
+        <tr data-page-node-id="x3PWHXqwcpODLW3W6rAUEe"><td data-page-node-id="f3ZEkBz894Tt6yDtFLTnuK">轨道 / 平方反比 / 引力常数 G / 逃逸速度</td><td data-page-node-id="RJqmdn0hADwktyzWzSKtGe">用"手甩绳子上的小球""距离翻倍力变几倍"切入</td><td data-page-node-id="oiRXfgVT5xFqKuhrKrzZfE"><span class="pill p-blue" data-page-node-id="wX9RTHz1gLZCntTDxupFl8">万有引力</span></td></tr>
+        <tr data-page-node-id="xEGC7m9hpnQVYN1m9iYMCq"><td data-page-node-id="xgaitxtxjwRaAFixNylzBw">以太 / 炼金术 / 神学手稿 / 胡克之争</td><td data-page-node-id="EfSSOdp9LFkM0joVinw6CM">补一段"牛顿也会犯错"的真实面，破除神化</td><td data-page-node-id="oWQSQEDoUl7jmKYcnskGID"><span class="pill p-gray" data-page-node-id="vI0T1bvWtv3rFcA9afAiOD">关于页</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 8. 待确认 ============ -->
+<section data-page-node-id="SSoUqDdAfWB6LXHVKGKMhZ">
+  <h2 data-page-node-id="My9i4mE0aLEUN7v32cKrPC"><span class="sec-no" data-page-node-id="zzZOjSMlnfzCWJk6dryJ5Y">8</span>请你确认（或提出修改）</h2>
+  <p class="sec-desc" data-page-node-id="5QM5zir2Sx0ybsWiNeblMJ">下面 6 条是我做的默认决策，如果和你想法不同，直接说第几条改成什么，我按你的来。</p>
+  <div class="card" data-page-node-id="dQouaMsX63kTDvO4qGSBG9">
+    <div class="qa" data-page-node-id="VfofCsJ30us8Nkxs4yF7FN">
+      <div class="qa-item" data-page-node-id="CBX1WW4UobiY9uIG7xJD7D"><b data-page-node-id="x2JTYEc30zBpH1kEjTJLPq">1. 页面数量与层级</b><span data-page-node-id="fg7485oe74ifOBIVL3jjpX">默认 7 页、两级层级。要不要精简到 5 页（去掉 labs 和 glossary）？<span class="def" data-page-node-id="6KFLGOgxjty9DyZqzCmSsF">默认：保留 7 页</span></span></div>
+      <div class="qa-item" data-page-node-id="Uear2IBOMDh4IHtLlmTtnQ"><b data-page-node-id="tc5aGdTpIbLFQEdfE0YbbE">2. 插画风格</b><span data-page-node-id="plLWe0Ddvcyi3YyCAhljP2">默认统一扁平线描 SVG（我手绘代码绘制，风格完全可控、无版权风险）。如果你希望用真实历史图片或照片，我另换方案。<span class="def" data-page-node-id="1jGH0PcZoXwRtz3CDlmilw">默认：扁平线描 SVG</span></span></div>
+      <div class="qa-item" data-page-node-id="Inhu8F6y7NxpNBDNdHbljg"><b data-page-node-id="kVbh4YjSGBikcn0lqawYt7">3. 讲解深度</b><span data-page-node-id="gTKFZTDpwNggklwotVddS2">默认面向<span class="def" data-page-node-id="T4xjZZaG5fQbqf3ioyF9MC">初二到高二</span>，公式只出现必要的一两个，且逐符号拆解。需要更浅（小学高年级）或更深（含推导）请说明。</span></div>
+      <div class="qa-item" data-page-node-id="N19O5F0yj2IwDh6tEQhsGH"><b data-page-node-id="wI3bXj1x0gHQ8jQ0exSWP5">4. 术语密度</b><span data-page-node-id="ccSfcmh0Ry3UvFqZP158U7">默认每 100 字埋 1–2 个可点术语，首版约 24 条。<span class="def" data-page-node-id="PkDmnjPyTqpy04FY2g8Ztr">默认 24 条左右</span></span></div>
+      <div class="qa-item" data-page-node-id="4NiT2CJ8PdkBd5l1EmZAC4"><b data-page-node-id="NCGBu6h2eBXGz0HxCYP6hr">5. 交互演示</b><span data-page-node-id="tmaVIZHPdaKoXBlhBROwab">默认做 3 个 Canvas 小演示（棱镜分光 / 引力滑块 / 抛体运动）。<span class="def" data-page-node-id="fWWtvVVb2ZrCRc5OFbsD4A">默认：全部做</span></span></div>
+      <div class="qa-item" data-page-node-id="Sv2sYmFMksZ8265ensnUgg"><b data-page-node-id="CQRDtnHwveZWDlFTaYAciD">6. 部署方式</b><span data-page-node-id="vUCRfkho87kpImT8omC8xc">纯静态站点，可一键部署到 Cloudflare Pages 或腾讯云 CloudBase。<span class="def" data-page-node-id="OZgbsPoSJfYQIo8394owOh">默认：先本地跑通，最后再问你要不要上线</span></span></div>
+    </div>
+    <div class="note" style="margin-bottom:0" data-page-node-id="exAzYKs4jt3jOaXnSb0UJX"><b data-page-node-id="G1TFeF1nnZkSexnYdg4pAN">下一步：</b>你回复"可以，开始填充"或指出要改的条目，我就直接进入第二阶段——按上表写完全部正文、画完全部插图、实现全部 7 项交互，并做桌面/平板/手机三端调试。</div>
+  </div>
+</section>
+
+<footer data-page-node-id="V3D7oCBU586zcnfly4OUmM">《读懂牛顿》· 框架确认稿 v1 · 本页仅为结构示意，不含正式内容</footer>
+</div>
+
+</body>
+</html>

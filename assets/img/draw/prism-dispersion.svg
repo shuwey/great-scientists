@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="800" height="480" role="img">
+<rect width="800" height="480" fill="#FFFFFF"/>
+<defs><linearGradient id="pg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#CFE0FF"/><stop offset="1" stop-color="#E8EFFF"/>
+</linearGradient></defs>
+
+<line x1="60" y1="240" x2="330" y2="240" stroke="#1B2530" stroke-width="4" stroke-linecap="round"/><circle cx="330" cy="240" r="3.6" fill="#1B2530"/>
+<text x="70" y="218" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="19" font-weight="700" fill="#1B2530" text-anchor="start">白光</text>
+
+<path d="M400 92 L318 336 L482 336 Z" fill="url(#pg)" stroke="#94A9D6" stroke-width="3" stroke-linejoin="round"/>
+
+<g stroke-width="4.5" stroke-linecap="round" fill="none">
+<line x1="404" y1="214" x2="760" y2="176" stroke="#E03131"/>
+<line x1="404" y1="214" x2="756" y2="192" stroke="#F76707"/>
+<line x1="404" y1="214" x2="752" y2="208" stroke="#FAB005"/>
+<line x1="404" y1="214" x2="750" y2="224" stroke="#51CF66"/>
+<line x1="404" y1="214" x2="752" y2="240" stroke="#3B5BDB"/>
+<line x1="404" y1="214" x2="756" y2="256" stroke="#5F3DC4"/>
+<line x1="404" y1="214" x2="760" y2="272" stroke="#9C36B5"/>
+</g>
+<line x1="334" y1="214" x2="404" y2="214" stroke="#8B96AA" stroke-width="2.5" opacity=".55"/>
+
+<text x="676" y="132" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="17" font-weight="700" fill="#E03131" text-anchor="start">红</text>
+<text x="676" y="172" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="17" font-weight="700" fill="#F76707" text-anchor="start">橙</text>
+<text x="676" y="212" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="17" font-weight="700" fill="#D9A400" text-anchor="start">黄</text>
+<text x="676" y="252" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="17" font-weight="700" fill="#2F9E44" text-anchor="start">绿</text>
+<text x="676" y="292" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="17" font-weight="700" fill="#3B5BDB" text-anchor="start">蓝</text>
+<text x="676" y="332" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="17" font-weight="700" fill="#9C36B5" text-anchor="start">紫</text>
+
+<path d="M640 120 A 300 300 0 0 1 640 348" fill="none" stroke="#D4DBE5" stroke-width="2" stroke-dasharray="6 6"/>
+<text x="400" y="400" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="20" font-weight="600" fill="#8B96AA" text-anchor="middle">白光进入棱镜 → 不同颜色偏折角度不同 → 散成七色光带（光谱）</text>
+</svg>

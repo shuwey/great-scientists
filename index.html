@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>读懂牛顿 · 一个把天空和地面连起来的人</title>
+<meta name="description" content="面向中学生的牛顿科普站：按时间顺序梳理牛顿的生平与四大成就，关键概念点开就有通俗解释。">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-base="">
+
+<!-- ===== 导航 ===== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="apple">🍎</span>读懂牛顿</a>
+    <button class="nav-toggle" aria-label="打开菜单"><i></i><i></i><i></i></button>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="timeline.html">时间轴</a>
+      <a href="detail/optics.html">光学</a>
+      <a href="detail/calculus.html">微积分</a>
+      <a href="detail/gravity.html">万有引力</a>
+      <a href="detail/laws.html">三大定律</a>
+      <a href="labs.html">玩一玩</a>
+      <a href="glossary.html">词典</a>
+    </div>
+  </div>
+  <div id="progress"></div>
+</nav>
+
+<!-- ===== Hero ===== -->
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="sec-kicker">初中 · 高中 都能读得懂</span>
+      <h1>读懂牛顿</h1>
+      <p class="sub">那个把「天空」和「地面」用同一条规律连起来的人</p>
+      <p class="lead" data-terms>三百多年前，一个英格兰乡下的少年开始在笔记本上涂涂画画。他后来写下的东西，让我们第一次算出了月亮为什么不会掉下来，也让我们今天能造出卫星、过山车和手机里的导航。这个网站用你能听懂的话，讲清楚他到底做了什么。</p>
+      <div class="hero-actions">
+        <a class="btn" href="timeline.html">从他的故事开始 →</a>
+        <a class="btn ghost" href="#achievements">直接看四大成就</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="n">84</div><div class="l">岁 · 1643–1727</div></div>
+        <div class="stat"><div class="n">1687</div><div class="l">《原理》出版</div></div>
+        <div class="stat"><div class="n">4</div><div class="l">大成就领域</div></div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <figure class="hero-portrait">
+        <img src="assets/img/history/newton-portrait-1702.jpg" alt="牛顿 1702 年肖像" width="300" height="364">
+        <figcaption>牛顿 56 岁肖像（1702 年）<br>戈弗雷·内勒绘 · 现藏英国国家肖像馆</figcaption>
+      </figure>
+    </div>
+  </div>
+</header>
+
+<!-- ===== 四大成就 ===== -->
+<section id="achievements">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">四大成就</span>
+      <h2>他到底做出了什么</h2>
+      <p>四件事，任何一件都足以让他被写进历史。点开任意一张卡片，可以看到完整的来龙去脉。</p>
+    </div>
+    <div class="grid g4" data-terms>
+      <a class="ach-card" href="detail/optics.html">
+        <div class="thumb" style="background:#E6FCF5">
+          <img src="assets/img/draw/thumb-optics.svg" alt="棱镜分光示意图">
+        </div>
+        <div class="body">
+          <span class="year">1666 · 1672 · 1704</span>
+          <h3>光学与颜色</h3>
+          <p>他用一块三棱镜证明：白光不是"干净"的光，而是一堆颜色混在一起。彩虹的秘密，就藏在这块玻璃里。</p>
+          <span class="more">读这一篇 →</span>
+        </div>
+      </a>
+      <a class="ach-card" href="detail/calculus.html">
+        <div class="thumb" style="background:#EDF1FD">
+          <img src="assets/img/draw/thumb-calculus.svg" alt="曲线与切线示意图">
+        </div>
+        <div class="body">
+          <span class="year">1665 · 1666</span>
+          <h3>微积分</h3>
+          <p>为了算清楚"一直在变的东西"，他发明了一套新数学。今天所有搞工程、经济、人工智能的人，都还在用它。</p>
+          <span class="more">读这一篇 →</span>
+        </div>
+      </a>
+      <a class="ach-card" href="detail/gravity.html">
+        <div class="thumb" style="background:#F1EBFF">
+          <img src="assets/img/draw/thumb-gravity.svg" alt="地球与月球轨道示意图">
+        </div>
+        <div class="body">
+          <span class="year">1666 · 1687</span>
+          <h3>万有引力</h3>
+          <p>让苹果落地的力，和拽住月球的力，是同一个力。这句话听起来平常，却第一次把"天上"和"地上"统一了。</p>
+          <span class="more">读这一篇 →</span>
+        </div>
+      </a>
+      <a class="ach-card" href="detail/laws.html">
+        <div class="thumb" style="background:#FFF0E8">
+          <img src="assets/img/draw/thumb-laws.svg" alt="运动定律示意图">
+        </div>
+        <div class="body">
+          <span class="year">1687</span>
+          <h3>三大运动定律</h3>
+          <p>物体什么时候动、什么时候停、动多快——三条定律把这一切说得清清楚楚，初中物理课本还在原样教。</p>
+          <span class="more">读这一篇 →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 时间轴预览 ===== -->
+<section style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">一生</span>
+      <h2>他这一辈子</h2>
+      <p>点开每一个年份，看看那一年发生了什么。<a href="timeline.html">查看完整时间轴 →</a></p>
+    </div>
+    <div class="timeline" data-terms>
+
+      <div class="tl-item" data-year="1643">
+        <div class="tl-year">1643</div>
+        <div class="tl-rail"><span class="tl-dot"></span></div>
+        <div class="tl-card">
+          <div class="tl-head">
+            <div style="flex:1">
+              <p class="t">出生：一个没人看好的早产儿</p>
+              <p class="s">英格兰林肯郡，伍尔索普庄园</p>
+            </div>
+            <svg class="tl-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <div class="tl-panel">
+            <figure>
+              <img src="assets/img/history/woolsthorpe-manor.jpg" alt="伍尔索普庄园" loading="lazy">
+              <figcaption>牛顿出生并度过童年、也度过"奇迹年"的伍尔索普庄园，至今仍在。</figcaption>
+            </figure>
+            <p>牛顿出生在圣诞节那天，是个早产儿，小到据说能装进一升的杯子里。他父亲在他出生前三个月就去世了，母亲在他三岁时改嫁，把他留给外祖母抚养。</p>
+            <p>没有人会想到，这个从小跟外祖母长大的乡下孩子，将来会改变人类看待世界的方式。</p>
+            <div class="tl-tags"><span class="tag">起点</span><span class="tag b">1643</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item" data-year="1665">
+        <div class="tl-year">1665</div>
+        <div class="tl-rail"><span class="tl-dot"></span></div>
+        <div class="tl-card">
+          <div class="tl-head">
+            <div style="flex:1">
+              <p class="t">瘟疫停课：史上最著名的"休学两年"</p>
+              <p class="s">奇迹年 · 微积分、光学、引力同时冒头</p>
+            </div>
+            <svg class="tl-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <div class="tl-panel">
+            <figure>
+              <img src="assets/img/draw/prism-dispersion.svg" alt="棱镜色散示意图" loading="lazy">
+              <figcaption>牛顿在窗户上钻了个小孔，让一束阳光穿过棱镜 —— 墙上出现了彩虹色的光带。</figcaption>
+            </figure>
+            <p>1665 年伦敦爆发大瘟疫，剑桥大学停课，23 岁的牛顿收拾行李回到乡下老家。接下来的两年里，他几乎同时开始了三件大事：琢磨"一直在变的东西该怎么算"（后来的微积分）、用三棱镜拆开阳光（光学）、思考让苹果落地的力能不能一直延伸到月球（万有引力）。</p>
+            <p>他后来自己回忆说："在那两年里，我正处于发明的盛年，对数学和哲学的思考，比此后任何时候都多。"</p>
+            <div class="tl-tags">
+              <span class="tag a">奇迹年</span><span class="tag b">微积分</span>
+              <span class="tag g">光学</span><span class="tag p">引力</span>
+            </div>
+            <p style="margin-top:14px"><a class="btn ghost sm" href="detail/calculus.html">看微积分的故事 →</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item" data-year="1687">
+        <div class="tl-year">1687</div>
+        <div class="tl-rail"><span class="tl-dot"></span></div>
+        <div class="tl-card highlight">
+          <div class="tl-head">
+            <div style="flex:1">
+              <p class="t">《原理》出版：一本书改变物理学</p>
+              <p class="s">三大运动定律 + 万有引力定律</p>
+            </div>
+            <svg class="tl-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <div class="tl-panel">
+            <figure>
+              <img src="assets/img/history/principia-title-1687.jpg" alt="《自然哲学的数学原理》1687 年版扉页" loading="lazy">
+              <figcaption>《自然哲学的数学原理》1687 年初版扉页。全书用拉丁文写成，通篇是几何证明。</figcaption>
+            </figure>
+            <p>这本书的篇幅厚得像块砖，通篇是几何证明，当时全世界能读懂的人不超过几十个。但它回答的问题极其朴素：行星为什么这样走？苹果为什么向下掉？答案只有一个——因为同一个力。</p>
+            <p>有意思的是，这本书是被一位朋友"问"出来的：<a href="detail/gravity.html">哈雷登门请教</a>，牛顿当场答不上来，回去重算，越算越多，最后算成了一本书。</p>
+            <div class="tl-tags">
+              <span class="tag b">《原理》</span><span class="tag p">万有引力</span><span class="tag o">三大定律</span>
+            </div>
+            <p style="margin-top:14px"><a class="btn ghost sm" href="detail/gravity.html">看万有引力 →</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item" data-year="1704">
+        <div class="tl-year">1704</div>
+        <div class="tl-rail"><span class="tl-dot"></span></div>
+        <div class="tl-card">
+          <div class="tl-head">
+            <div style="flex:1">
+              <p class="t">《光学》出版：三十年前的发现终于成书</p>
+              <p class="s">系统讲清颜色、反射、折射与"牛顿环"</p>
+            </div>
+            <svg class="tl-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <div class="tl-panel">
+            <p>牛顿早在三十多岁就完成了光学的核心实验，却因为和胡克的争论闹得心力交瘁，一直拖着不发表。等到胡克去世的第二年（1704 年），他才把《光学》写成书出版。</p>
+            <p>书里不只有棱镜实验，还有他对"牛顿环"的观察、对光的本性的猜测，以及一大堆他承认自己还搞不明白的问题——这些"我不知道"，后来成了别人研究的起点。</p>
+            <div class="tl-tags"><span class="tag g">光学</span><span class="tag a">1704</span></div>
+            <p style="margin-top:14px"><a class="btn ghost sm" href="detail/optics.html">看光学与颜色 →</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item" data-year="1727">
+        <div class="tl-year">1727</div>
+        <div class="tl-rail"><span class="tl-dot"></span></div>
+        <div class="tl-card">
+          <div class="tl-head">
+            <div style="flex:1">
+              <p class="t">葬于西敏寺：一个科学家的最高规格</p>
+              <p class="s">1727 年 3 月 31 日，享年 84 岁</p>
+            </div>
+            <svg class="tl-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <div class="tl-panel">
+            <figure>
+              <img src="assets/img/history/newton-grave-westminster.jpg" alt="西敏寺的牛顿墓" loading="lazy">
+              <figcaption>牛顿安葬在西敏寺，与英国的国王和英雄们在一起。</figcaption>
+            </figure>
+            <p>牛顿终身未婚，晚年由外甥女照顾。他去世后享受国葬待遇，安葬在西敏寺——那是英国给国家英雄的最高礼遇，此前几乎没有科学家享受过。</p>
+            <p>他墓碑上的拉丁文铭文大意是："让人类欢呼吧，因为曾经有过这样一位为人类增添光彩的人。"</p>
+            <div class="tl-tags"><span class="tag">终点</span><span class="tag b">1727</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <p style="text-align:center;margin-top:28px">
+      <a class="btn ghost" href="timeline.html">查看全部 15 个年份 →</a>
+    </p>
+  </div>
+</section>
+
+<!-- ===== 术语云 ===== -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">随时可查</span>
+      <h2>看到不懂的词，点一下就有解释</h2>
+      <p>全站所有带<span style="color:var(--brand);font-weight:700;border-bottom:1.5px dotted var(--brand)">虚线下划线</span>的词都可以点击。下面这些也行，试试看。</p>
+    </div>
+    <div class="card" style="display:flex;flex-wrap:wrap;gap:9px">
+      <span class="term" data-term="inertia" tabindex="0" role="button">惯性</span>
+      <span class="term" data-term="mass" tabindex="0" role="button">质量</span>
+      <span class="term" data-term="weight" tabindex="0" role="button">重量</span>
+      <span class="term" data-term="net-force" tabindex="0" role="button">合力</span>
+      <span class="term" data-term="acceleration" tabindex="0" role="button">加速度</span>
+      <span class="term" data-term="friction" tabindex="0" role="button">摩擦力</span>
+      <span class="term" data-term="reference-frame" tabindex="0" role="button">参考系</span>
+      <span class="term" data-term="gravity" tabindex="0" role="button">万有引力</span>
+      <span class="term" data-term="inverse-square" tabindex="0" role="button">平方反比</span>
+      <span class="term" data-term="gravitational-constant" tabindex="0" role="button">引力常数</span>
+      <span class="term" data-term="orbit" tabindex="0" role="button">轨道</span>
+      <span class="term" data-term="escape-velocity" tabindex="0" role="button">逃逸速度</span>
+      <span class="term" data-term="free-fall" tabindex="0" role="button">自由落体</span>
+      <span class="term" data-term="tide" tabindex="0" role="button">潮汐</span>
+      <span class="term" data-term="prism" tabindex="0" role="button">棱镜</span>
+      <span class="term" data-term="dispersion" tabindex="0" role="button">色散</span>
+      <span class="term" data-term="spectrum" tabindex="0" role="button">光谱</span>
+      <span class="term" data-term="chromatic-aberration" tabindex="0" role="button">色差</span>
+      <span class="term" data-term="reflecting-telescope" tabindex="0" role="button">反射望远镜</span>
+      <span class="term" data-term="newtons-rings" tabindex="0" role="button">牛顿环</span>
+      <span class="term" data-term="tangent" tabindex="0" role="button">切线</span>
+      <span class="term" data-term="rate-of-change" tabindex="0" role="button">变化率</span>
+      <span class="term" data-term="derivative" tabindex="0" role="button">导数</span>
+      <span class="term" data-term="integration" tabindex="0" role="button">积分</span>
+      <span class="term" data-term="infinitesimal" tabindex="0" role="button">无穷小</span>
+      <span class="term" data-term="fluxion" tabindex="0" role="button">流数</span>
+      <span class="term" data-term="apple-story" tabindex="0" role="button">苹果落地</span>
+      <span class="term" data-term="plague-years" tabindex="0" role="button">奇迹年</span>
+      <span class="term" data-term="halley" tabindex="0" role="button">哈雷</span>
+      <span class="term" data-term="calculus-priority" tabindex="0" role="button">发明权之争</span>
+      <span class="term" data-term="alchemy" tabindex="0" role="button">炼金术</span>
+      <span class="term" data-term="ether" tabindex="0" role="button">以太</span>
+    </div>
+    <p style="text-align:center;margin-top:20px"><a class="btn ghost" href="glossary.html">打开完整术语词典（53 条）→</a></p>
+  </div>
+</section>
+
+<!-- ===== 玩一玩 ===== -->
+<section style="background:linear-gradient(135deg,#EDF1FD,#FFF8E9);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">动手玩一玩</span>
+      <h2>自己动手拖一拖，比读十遍都管用</h2>
+      <p>三个可以直接在网页上操作的小演示：拉一拉棱镜、调一调引力、打一发炮弹。</p>
+    </div>
+    <div class="grid g3">
+      <div class="card">
+        <h3 style="font-size:18px;margin-bottom:8px">🔬 棱镜分光</h3>
+        <p style="font-size:15px;color:var(--ink-2);margin-bottom:16px">拖动入射角，看白光怎么散成七色；把色散调到零，就是牛顿那个"判决性实验"。</p>
+        <a class="btn ghost sm" href="labs.html#prism">去玩 →</a>
+      </div>
+      <div class="card">
+        <h3 style="font-size:18px;margin-bottom:8px">🌙 引力有多大</h3>
+        <p style="font-size:15px;color:var(--ink-2);margin-bottom:16px">改变两个物体的质量和距离，实时看到引力变成多少——顺便数数相当于几个苹果。</p>
+        <a class="btn ghost sm" href="labs.html#gravity">去玩 →</a>
+      </div>
+      <div class="card">
+        <h3 style="font-size:18px;margin-bottom:8px">🎯 打一发炮弹</h3>
+        <p style="font-size:15px;color:var(--ink-2);margin-bottom:16px">调整初速度和角度，看炮弹落在哪里；换个星球的重力，看看会飞多远。</p>
+        <a class="btn ghost sm" href="labs.html#projectile">去玩 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 常见误解 ===== -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">先说清楚</span>
+      <h2>关于牛顿，你可能听错了三件事</h2>
+    </div>
+    <div class="grid g3" data-terms>
+      <div class="card">
+        <h3 style="font-size:17px;margin-bottom:8px">❌ 苹果砸中了他的头</h3>
+        <p style="font-size:15px;color:var(--ink-2);margin:0">苹果大概没有砸到他头上。更可靠的说法是：他在老家果园看到苹果落下，于是开始琢磨"这个拉力能延伸多远"。真正厉害的不是苹果，是他问出的那个问题。</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size:17px;margin-bottom:8px">❌ 他是个纯粹的理性机器</h3>
+        <p style="font-size:15px;color:var(--ink-2);margin:0">事实上，牛顿留下的手稿里，关于炼金术和神学的字数远远超过物理和数学。他也会跟人吵架、记仇、几十年不发表成果。他是天才，但首先是个真人。</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size:17px;margin-bottom:8px">❌ 他闭门造车、没靠任何人</h3>
+        <p style="font-size:15px;color:var(--ink-2);margin:0">那句"站在巨人的肩膀上"不只是客套：他站在哥白尼、第谷、开普勒、伽利略的肩膀上，也被哈雷推着、被胡克激着。科学的进步从来是接力赛。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 页脚 ===== -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand-f"><span class="apple" style="width:26px;height:26px;font-size:14px;border-radius:7px;background:linear-gradient(140deg,#3B5BDB,#6E8BFF);display:grid;place-items:center">🍎</span>读懂牛顿</div>
+        <p style="margin:0;color:#8B96AA;font-size:13.5px">一个面向中学生的牛顿科普小站。按时间顺序讲故事，把难词讲成人话。</p>
+      </div>
+      <div>
+        <h5>四处走走</h5>
+        <ul>
+          <li><a href="timeline.html">生平时间轴</a></li>
+          <li><a href="detail/optics.html">光学与颜色</a></li>
+          <li><a href="detail/calculus.html">微积分</a></li>
+          <li><a href="detail/gravity.html">万有引力</a></li>
+          <li><a href="detail/laws.html">三大运动定律</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>更多</h5>
+        <ul>
+          <li><a href="labs.html">动手玩一玩</a></li>
+          <li><a href="glossary.html">术语词典</a></li>
+          <li><a href="about.html">资料来源与延伸阅读</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>课堂与自学用途 · 内容依据公开史料编写</span>
+      <span>历史图片来自 Wikimedia Commons</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" aria-label="回到顶部">↑</button>
+<script src="assets/js/terms.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

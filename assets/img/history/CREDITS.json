@@ -1,0 +1,72 @@
+[
+  {
+    "file": "assets/img/history/newton-portrait-1702.jpg",
+    "desc": "牛顿 56 岁肖像",
+    "author": "Godfrey Kneller (1702)",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Sir_Isaac_Newton_by_Sir_Godfrey_Kneller,_Bt.jpg"
+  },
+  {
+    "file": "assets/img/history/woolsthorpe-manor.jpg",
+    "desc": "牛顿出生地伍尔索普庄园",
+    "author": "DeFacto / Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Woolsthorpe_Manor_-_west_facade.jpg"
+  },
+  {
+    "file": "assets/img/history/apple-tree.jpg",
+    "desc": "伍尔索普庄园的苹果树后代",
+    "author": "Fritzbruno / Wikimedia Commons",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Newtons_Apfelbaum.jpg"
+  },
+  {
+    "file": "assets/img/history/reflecting-telescope-1668.jpg",
+    "desc": "牛顿 1668 年反射望远镜复制品（英国科学博物馆藏）",
+    "author": "The Science Museum UK / Wikimedia Commons",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Newton_telescope_replica_1668.jpg"
+  },
+  {
+    "file": "assets/img/history/principia-title-1687.png",
+    "desc": "《自然哲学的数学原理》1687 年初版扉页",
+    "author": "Wikimedia Commons",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Newton's_Principia_title_page.png"
+  },
+  {
+    "file": "assets/img/history/principia-copy-1687.jpg",
+    "desc": "《原理》1687 年呈献英王詹姆斯二世的赠阅本",
+    "author": "Wikimedia Commons",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Newton's_Philosophiae_Naturalis_Principia_Mathematica_1687_(presentation_copy_to_James_II).jpg"
+  },
+  {
+    "file": "assets/img/history/newton-grave-westminster.jpg",
+    "desc": "西敏寺中的牛顿墓",
+    "author": "Klaus-Dieter Keller / Wikimedia Commons",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Isaac_Newton_grave_in_Westminster_Abbey.jpg"
+  },
+  {
+    "file": "assets/img/history/newton-room-cambridge.jpg",
+    "desc": "剑桥三一学院牛顿故居房间",
+    "author": "Wikimedia Commons",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Newtons_room_in_Cambridge.jpg"
+  },
+  {
+    "file": "assets/img/history/edmond-halley.jpg",
+    "desc": "埃德蒙·哈雷肖像",
+    "author": "Richard Phillips / Wikimedia Commons",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Edmond_Halley_072.jpg"
+  },
+  {
+    "file": "assets/img/history/trinity-college-cambridge.jpg",
+    "desc": "剑桥大学三一学院",
+    "author": "Richard Rogerson / geograph.org.uk",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Trinity_College,_Cambridge_-_geograph.org.uk_-_1261502.jpg"
+  }
+]

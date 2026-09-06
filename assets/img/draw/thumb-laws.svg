@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160" width="240" height="160" role="img">
+<rect width="240" height="160" fill="#FFFFFF"/>
+<rect x="34" y="86" width="76" height="46" rx="8" fill="#F4F7FC" stroke="#D4DBE5" stroke-width="3"/>
+<circle cx="56" cy="138" r="10" fill="#fff" stroke="#1B2530" stroke-width="3"/>
+<circle cx="90" cy="138" r="10" fill="#fff" stroke="#1B2530" stroke-width="3"/>
+<line x1="120" y1="108" x2="176" y2="108" stroke="#3B5BDB" stroke-width="4" stroke-linecap="round"/><circle cx="176" cy="108" r="3.6" fill="#3B5BDB"/>
+<rect x="180" y="30" width="44" height="96" rx="8" fill="#F59F00" opacity=".16"/>
+<g fill="#0CA678" opacity=".3"><circle cx="200" cy="46" r="14"/><circle cx="200" cy="76" r="14"/><circle cx="200" cy="106" r="14"/></g>
+<text x="120" y="152" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="17" font-weight="700" fill="#8B96AA" text-anchor="middle">三大运动定律</text>
+</svg>
