@@ -696,3 +696,25 @@ figure.fig figcaption b { color: var(--ink-2); }
 
 @media (max-width: 980px) { .roster { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 620px) { .roster { grid-template-columns: repeat(2, 1fr); } }
+
+/* ---------- 18. 通用补丁：bio / labs 画布上限 / 时间轴配图 ---------- */
+/* 说明：这三条是历史上反复返工过的关键尺寸上限（肖像撑开、画布过高、
+   时间轴图片盖住年代），原先只存在于各子站的 style.css 副本里。
+   现补齐到根样式表，使根成为完整的一份「参考样式」。
+   注意：各子站目前仍引用自己那份 style.css（保持自包含、可单独预览），
+   因此这里的新增不会影响任何子站的现有表现。 */
+.bio { display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: start; margin-top: 8px; }
+.bio-photo { width: 240px; max-width: 100%; border-radius: 14px; border: 1px solid var(--line); }
+@media (max-width: 720px) { .bio { grid-template-columns: 1fr; } .bio-photo { width: 100%; } }
+.lab canvas {
+  width: 100%; height: auto; display: block; border-radius: 12px;
+  background: #FBFCFE; border: 1px solid var(--line); touch-action: none;
+  max-height: 320px;
+}
+.tl-body figure { margin: 0 0 14px; }
+.tl-body figure img {
+  border-radius: 12px; border: 1px solid var(--line);
+  display: block; width: 100%; height: auto; max-height: 280px;
+  object-fit: contain; background: #F4F6FA;
+}
+.tl-body figcaption { font-size: 13px; color: var(--ink-3); margin-top: 7px; line-height: 1.6; }
