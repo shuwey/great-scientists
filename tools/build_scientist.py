@@ -886,6 +886,26 @@ TL_CSS_PATCH = """
 """
 
 
+# 返回系列门户入口的样式（入口由 tools/add_portal_link.py 注入，幂等）
+PORTAL_LINK_CSS_PATCH = """
+/* ===== 通用补丁：返回系列门户入口 ===== */
+.portal-link {
+  display: inline-flex; align-items: center; flex: none; margin-right: 14px;
+  height: 30px; padding: 0 13px; border-radius: 999px; white-space: nowrap;
+  background: var(--bg-alt); border: 1px solid var(--line);
+  color: var(--ink-2); font-size: 13.5px; font-weight: 700;
+  transition: background .18s, color .18s, border-color .18s;
+}
+.portal-link:hover { background: #fff; color: var(--brand); border-color: var(--brand-line); text-decoration: none; }
+.nav-portal { display: none; }
+@media (max-width: 640px) {
+  .nav-inner { gap: 10px; }
+  .portal-link { display: none; }
+  .nav-portal { display: block; font-weight: 700; color: var(--brand); }
+}
+"""
+
+
 def patch_css(dst):
     path = os.path.join(dst, "assets", "css", "style.css")
     css = open(path, encoding="utf-8").read()
@@ -894,8 +914,14 @@ def patch_css(dst):
         app += CSS_PATCH
     if ".hero-grid" not in css:
         app += HERO_CSS_PATCH
-    if "tl-rail / .tl-head / .tl-body" not in css:
+    # 只在时间轴确为静态结构（.tl-rail/.tl-head/.tl-body）时注入；
+    # 牛顿/爱因斯坦等旧结构（.tl-card/.tl-panel）不能套用，否则两列布局会破坏原三列
+    tl_html = os.path.join(dst, "timeline.html")
+    tl_static = os.path.exists(tl_html) and 'class="tl-body"' in open(tl_html, encoding="utf-8").read()
+    if tl_static and "tl-rail / .tl-head / .tl-body" not in css:
         app += TL_CSS_PATCH
+    if ".portal-link" not in css:
+        app += PORTAL_LINK_CSS_PATCH
     if app:
         open(path, "a", encoding="utf-8").write(app)
 
