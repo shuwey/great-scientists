@@ -16,6 +16,16 @@ const ROOT = path.resolve(__dirname, '..');
 const PORT = 8098;
 const BASE = `http://localhost:${PORT}`;
 const PY = '/Users/shuwei/.workbuddy/binaries/python/versions/3.13.12/bin/python3';
+
+// 期望卡片数从门户生成器动态读取，避免每次扩员都要改这里
+const { execSync } = require('child_process');
+const EXPECTED = (function(){
+  try {
+    const src = fs.readFileSync(path.join(__dirname, 'build_portal.py'), 'utf-8');
+    const m = src.match(/SCIENTISTS\s*=\s*\[([\s\S]*?)\n\]/);
+    return m ? (m[1].match(/^\s*\("/gm) || []).length : 13;
+  } catch (e) { return 13; }
+})();
 const SHOTS = ROOT + '/tools/shots';
 fs.mkdirSync(SHOTS, { recursive: true });
 
@@ -52,24 +62,24 @@ function startServer() {
   const cards = await page.locator('.ach-card').count();
   const roster = await page.locator('.roster-item.done').count();
   const plan = await page.locator('.pill-plan').count();
-  console.log(`卡片数量: ${cards} ${cards === 13 ? '✅' : '❌ 应为 13'}`);
-  console.log(`路线图已上线: ${roster} ${roster === 13 ? '✅' : '❌ 应为 13'}`);
+  console.log(`卡片数量: ${cards} ${cards === EXPECTED ? '✅' : '❌ 应为 ' + EXPECTED}`);
+  console.log(`路线图已上线: ${roster} ${roster === EXPECTED ? '✅' : '❌ 应为 ' + EXPECTED}`);
   console.log(`筹备中残留: ${plan} ${plan === 0 ? '✅' : '❌ 应为 0'}`);
-  if (cards !== 13 || roster !== 13 || plan !== 0) failed++;
+  if (cards !== EXPECTED || roster !== EXPECTED || plan !== 0) failed++;
 
   // 缩略图是否都真的加载出来了
   const imgOk = await page.$$eval('.ach-card .thumb img', (els) =>
     els.filter((i) => i.complete && i.naturalWidth > 0).length);
-  console.log(`缩略图加载: ${imgOk}/13 ${imgOk === 13 ? '✅' : '❌'}`);
-  if (imgOk !== 13) failed++;
+  console.log(`缩略图加载: ${imgOk}/${EXPECTED} ${imgOk === EXPECTED ? '✅' : '❌'}`);
+  if (imgOk !== EXPECTED) failed++;
 
   // 检索：关键词过滤
   await page.fill('#sci-filter', '黑洞');
   await page.waitForTimeout(200);
   const vis1 = await page.locator('.ach-card:visible').count();
   const cnt1 = (await page.locator('#sci-count').textContent()).trim();
-  console.log(`搜索"黑洞": 可见 ${vis1} 张 · 计数 "${cnt1}" ${vis1 >= 1 && vis1 < 13 ? '✅' : '❌'}`);
-  if (!(vis1 >= 1 && vis1 < 13)) failed++;
+  console.log(`搜索"黑洞": 可见 ${vis1} 张 · 计数 "${cnt1}" ${vis1 >= 1 && vis1 < EXPECTED ? '✅' : '❌'}`);
+  if (!(vis1 >= 1 && vis1 < EXPECTED)) failed++;
 
   // 检索：空状态
   await page.fill('#sci-filter', 'zzzznotexist');
@@ -83,8 +93,8 @@ function startServer() {
   await page.fill('#sci-filter', '');
   await page.waitForTimeout(200);
   const vis3 = await page.locator('.ach-card:visible').count();
-  console.log(`清空搜索: 恢复 ${vis3} 张 ${vis3 === 13 ? '✅' : '❌'}`);
-  if (vis3 !== 13) failed++;
+  console.log(`清空搜索: 恢复 ${vis3} 张 ${vis3 === EXPECTED ? '✅' : '❌'}`);
+  if (vis3 !== EXPECTED) failed++;
 
   await page.screenshot({ path: SHOTS + '/portal-desktop.png', fullPage: true });
 

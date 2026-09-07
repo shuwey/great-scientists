@@ -547,6 +547,159 @@ def blackhole(params):
 """ + _tail()
 
 
+def induction(params):
+    """法拉第电磁感应：磁铁穿过线圈，磁通变化越快、匝数越多，感应电流越大。
+    ctrl: speed（磁铁速度）, turns（线圈匝数）
+    """
+    key = params.pop("_key")
+    return _head(key, params) + r"""
+  var cv=$("canvas",lab); var sS=$('[data-ctrl="speed"]',lab); var sN=$('[data-ctrl="turns"]',lab);
+  var out=$(".lab-readout",lab);
+  function _vs(el){ return el?el.closest(".ctrl").querySelector(".v"):null; }
+  var vS=_vs(sS), vN=_vs(sN);
+  var W=820,H=360, ph=0, last=0, hist=[];
+  var CX=430, CY=148;
+  function draw(ts){
+    if(typeof ts!=="number")ts=Date.now();
+    if(!last)last=ts; var dt=Math.min(0.05,(ts-last)/1000); last=ts;
+    var sp=sS?parseFloat(sS.value):1;
+    var N=sN?parseFloat(sN.value):4;
+    var w=sp*1.15; ph+=dt*w;
+    var mx=CX+175*Math.sin(ph);
+    var vx=175*w*Math.cos(ph);
+    var coup=Math.exp(-Math.pow((mx-CX)/115,2));
+    var emf=Math.max(-1,Math.min(1, N*vx*coup/250));
+    hist.push(emf); if(hist.length>300)hist.shift();
+    var S=setupCanvas(cv,H/W); var ctx=S.ctx,k=S.w/W;
+    ctx.save(); ctx.scale(k,k); ctx.clearRect(0,0,W,H);
+    ctx.fillStyle="#FBFCFE"; ctx.fillRect(0,0,W,H);
+    var turns=Math.round(N), i;
+    ctx.strokeStyle="#495057"; ctx.lineWidth=2;
+    for(i=0;i<turns;i++){
+      var ex=CX-46+(turns>1?(92/(turns-1))*i:0);
+      ctx.beginPath(); ctx.ellipse(ex,CY,10,62,0,0,Math.PI*2); ctx.stroke();
+    }
+    ctx.strokeStyle="#868E96"; ctx.lineWidth=1.6;
+    ctx.beginPath(); ctx.moveTo(CX+46,CY+62); ctx.lineTo(690,CY+62); ctx.lineTo(690,232); ctx.stroke();
+    var mw=118, mh=46;
+    ctx.fillStyle="#E03131"; ctx.fillRect(mx-mw/2,CY-mh/2,mw/2,mh);
+    ctx.fillStyle="#1C7ED6"; ctx.fillRect(mx,CY-mh/2,mw/2,mh);
+    ctx.strokeStyle="#343A40"; ctx.lineWidth=1.4; ctx.strokeRect(mx-mw/2,CY-mh/2,mw,mh);
+    ctx.fillStyle="#fff"; ctx.font="700 17px -apple-system,sans-serif"; ctx.textAlign="center";
+    ctx.fillText("N",mx-mw/4,CY+6); ctx.fillText("S",mx+mw/4,CY+6);
+    ctx.textAlign="left";
+    ctx.fillStyle="#FFD43B"; ctx.font="700 12px -apple-system,sans-serif";
+    ctx.fillText("磁铁",mx-mw/2,CY-32);
+    var gx=690, gy=286, gr=52;
+    ctx.fillStyle="#fff"; ctx.strokeStyle="#343A40"; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.arc(gx,gy,gr,0,Math.PI*2); ctx.fill(); ctx.stroke();
+    ctx.strokeStyle="#ADB5BD"; ctx.lineWidth=1.2;
+    for(i=-4;i<=4;i++){
+      var aa=-Math.PI/2+i*(Math.PI/2)/4;
+      ctx.beginPath(); ctx.moveTo(gx+Math.cos(aa)*(gr-8),gy+Math.sin(aa)*(gr-8));
+      ctx.lineTo(gx+Math.cos(aa)*(gr-3),gy+Math.sin(aa)*(gr-3)); ctx.stroke();
+    }
+    var na=-Math.PI/2+emf*1.05;
+    ctx.strokeStyle="#E03131"; ctx.lineWidth=3;
+    ctx.beginPath(); ctx.moveTo(gx,gy); ctx.lineTo(gx+Math.cos(na)*(gr-14),gy+Math.sin(na)*(gr-14)); ctx.stroke();
+    ctx.fillStyle="#343A40"; ctx.beginPath(); ctx.arc(gx,gy,4,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle="#868E96"; ctx.font="600 11px -apple-system,sans-serif"; ctx.textAlign="center";
+    ctx.fillText("电流计",gx,gy+gr-10); ctx.textAlign="left";
+    var bx=60, by=300, bw=520, bh=44;
+    ctx.strokeStyle="#DEE2E6"; ctx.lineWidth=1; ctx.beginPath();
+    ctx.moveTo(bx,by+bh/2); ctx.lineTo(bx+bw,by+bh/2); ctx.stroke();
+    ctx.strokeStyle="#1C7ED6"; ctx.lineWidth=2; ctx.beginPath();
+    for(i=0;i<hist.length;i++){
+      var xx=bx+bw*i/300, yy=by+bh/2-hist[i]*(bh/2-4);
+      if(i===0)ctx.moveTo(xx,yy); else ctx.lineTo(xx,yy);
+    }
+    ctx.stroke();
+    ctx.fillStyle="#495057"; ctx.font="600 12px -apple-system,sans-serif";
+    ctx.fillText("感应电流随时间（磁铁来回穿过线圈）",bx,by-6);
+    ctx.fillStyle="#868E96"; ctx.font="600 13px -apple-system,sans-serif";
+    ctx.fillText(P.label||"磁铁一动，线圈里就冒出电流", 14, 24);
+    ctx.restore();
+    if(vS)vS.textContent=sp.toFixed(1)+"×";
+    if(vN)vN.textContent=turns+" 匝";
+    if(out)out.innerHTML="磁铁速度 <b>"+sp.toFixed(1)+"×</b>、线圈 <b>"+turns+"</b> 匝：此刻感应电流 <b>"+emf.toFixed(2)+"</b>。磁通变化越快、匝数越多，电流越大——这就是法拉第电磁感应定律。";
+    requestAnimationFrame(draw);
+  }
+  if(sS)sS.addEventListener("input",draw);
+  if(sN)sN.addEventListener("input",draw);
+  requestAnimationFrame(draw);
+""" + _tail()
+
+
+def pathintegral(params):
+    """费曼路径积分：从 A 到 B 的每一条路径都走一遍，各自的相位箭头首尾相接。
+    ctrl: hbar（约化普朗克常数相对大小）
+    """
+    key = params.pop("_key")
+    return _head(key, params) + r"""
+  var cv=$("canvas",lab); var sH=$('[data-ctrl="hbar"]',lab);
+  var out=$(".lab-readout",lab);
+  function _vs(el){ return el?el.closest(".ctrl").querySelector(".v"):null; }
+  var vH=_vs(sH);
+  var W=820,H=360, t=0, last=0, i;
+  var AX=90, BX=730, AY=158, MIDX=410;
+  var M=21, SPREAD=132;
+  var phs=new Array(M), dsv=new Array(M);
+  function arrow(ctx,x,y,ang,len,col,lw){
+    var ex=x+Math.cos(ang)*len, ey=y+Math.sin(ang)*len;
+    ctx.strokeStyle=col; ctx.lineWidth=lw; ctx.beginPath();
+    ctx.moveTo(x,y); ctx.lineTo(ex,ey); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(ex,ey);
+    ctx.lineTo(ex-Math.cos(ang-0.42)*5,ey-Math.sin(ang-0.42)*5);
+    ctx.lineTo(ex-Math.cos(ang+0.42)*5,ey-Math.sin(ang+0.42)*5);
+    ctx.closePath(); ctx.fillStyle=col; ctx.fill();
+  }
+  function draw(ts){
+    if(typeof ts!=="number")ts=Date.now();
+    if(!last)last=ts; var dt=Math.min(0.05,(ts-last)/1000); last=ts;
+    var hb=sH?parseFloat(sH.value):1;
+    t+=dt*0.5;
+    for(i=0;i<M;i++){
+      var d=-SPREAD+(2*SPREAD/(M-1))*i;
+      dsv[i]=d; phs[i]=0.00045*d*d/hb+t;
+    }
+    var S=setupCanvas(cv,H/W); var ctx=S.ctx,k=S.w/W;
+    ctx.save(); ctx.scale(k,k); ctx.clearRect(0,0,W,H);
+    ctx.fillStyle="#FBFCFE"; ctx.fillRect(0,0,W,H);
+    for(i=0;i<M;i++){
+      var d=dsv[i], cls=Math.abs(d)<(2*SPREAD/(M-1))*0.5;
+      ctx.beginPath(); ctx.moveTo(AX,AY);
+      ctx.quadraticCurveTo(MIDX, AY+2*d, BX, AY);
+      ctx.strokeStyle= cls? "rgba(232,89,12,.9)" : "rgba(73,80,87,.26)";
+      ctx.lineWidth= cls? 2.6 : 1.1; ctx.stroke();
+      var px=0.25*AX+0.5*MIDX+0.25*BX, py=AY+d;
+      arrow(ctx,px,py,phs[i],9, cls? "#E8590C" : "#868E96", cls?1.8:1.2);
+    }
+    ctx.fillStyle="#495057"; ctx.font="700 14px -apple-system,sans-serif"; ctx.textAlign="center";
+    ctx.fillText("A",AX,AY+34); ctx.fillText("B",BX,AY+34);
+    ctx.fillStyle="#E8590C"; ctx.font="600 12px -apple-system,sans-serif";
+    ctx.fillText("直线＝经典路径（作用量最小）",MIDX,AY+SPREAD+42);
+    var sx=AX, sy=302, cxs=sx, cys=sy, L=6.4;
+    ctx.strokeStyle="rgba(26,115,232,.75)"; ctx.lineWidth=1.4; ctx.beginPath(); ctx.moveTo(cxs,cys);
+    for(i=0;i<M;i++){
+      cxs+=Math.cos(phs[i])*L; cys+=Math.sin(phs[i])*L; ctx.lineTo(cxs,cys);
+    }
+    ctx.stroke();
+    arrow(ctx,sx,sy,Math.atan2(cys-sy,cxs-sx),Math.sqrt((cxs-sx)*(cxs-sx)+(cys-sy)*(cys-sy)),"#E03131",2.6);
+    var amp=Math.sqrt((cxs-sx)*(cxs-sx)+(cys-sy)*(cys-sy))/(M*L);
+    ctx.textAlign="left"; ctx.fillStyle="#868E96"; ctx.font="600 12px -apple-system,sans-serif";
+    ctx.fillText("把每条路径的相位箭头首尾相接（红箭头＝叠加后的总概率幅）",sx,sy-14);
+    ctx.fillStyle="#868E96"; ctx.font="600 13px -apple-system,sans-serif";
+    ctx.fillText(P.label||"从 A 到 B：粒子把每一条路都走了一遍", 14, 24);
+    ctx.restore();
+    if(vH)vH.textContent=hb.toFixed(1)+"×";
+    if(out)out.innerHTML="约化普朗克常数 <b>"+hb.toFixed(1)+"×</b>：ℏ 越小，相邻路径的相位差越大、互相抵消得越厉害，最后只剩靠近直线的那几条——粒子看起来走直线（经典）。ℏ 越大，越多路径能相干叠加，量子效应越明显。当前净概率幅 <b>"+amp.toFixed(2)+"</b>。";
+    requestAnimationFrame(draw);
+  }
+  if(sH)sH.addEventListener("input",draw);
+  requestAnimationFrame(draw);
+""" + _tail()
+
+
 TEMPLATES = {
     "orbit": orbit,
     "pendulum": pendulum,
@@ -561,6 +714,8 @@ TEMPLATES = {
     "periodic": periodic,
     "turing": turing,
     "blackhole": blackhole,
+    "induction": induction,
+    "pathintegral": pathintegral,
 }
 
 

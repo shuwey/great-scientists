@@ -356,6 +356,37 @@ def field(label="场：看不见，却处处有力"):
 # ----------------------------------------------------------------------
 # 场景分发
 # ----------------------------------------------------------------------
+def feynman_diagram(label="两条电子线交换一个虚光子"):
+    """费曼图：时间向上、空间向右；两条电子线交换一个光子。"""
+    import math
+    inner = ""
+    xl, xr, ytop, ybot, ymid = 170, 330, 70, 250, 160
+    # 电子线（时间向上）
+    for x in (xl, xr):
+        inner += '<line x1="%d" y1="%d" x2="%d" y2="%d" stroke="%s" stroke-width="2.5"/>' % (x, ytop, x, ymid - 5, BRAND)
+        inner += '<line x1="%d" y1="%d" x2="%d" y2="%d" stroke="%s" stroke-width="2.5"/>' % (x, ymid + 5, x, ybot, BRAND)
+        inner += '<polygon points="%d,%d %d,%d %d,%d" fill="%s"/>' % (x - 6, ytop + 56, x + 6, ytop + 56, x, ytop + 44, BRAND)
+    # 光子交换（横向波浪线）
+    pts = []
+    for i in range(81):
+        xx = xl + (xr - xl) * i / 80.0
+        yy = ymid + 12 * math.sin(2 * math.pi * 3 * (xx - xl) / (xr - xl))
+        pts.append("%g,%g" % (xx, yy))
+    inner += '<polyline points="%s" fill="none" stroke="%s" stroke-width="2.2"/>' % (" ".join(pts), ACCENT)
+    # 相互作用顶点
+    for x in (xl, xr):
+        inner += '<circle cx="%d" cy="%d" r="4.5" fill="%s"/>' % (x, ymid, BRAND)
+    # 背景星点（量子真空涨落暗示）
+    for sx, sy, sr in [(70, 120, 1.8), (92, 200, 1.4), (420, 130, 1.8), (446, 214, 1.4)]:
+        inner += '<circle cx="%g" cy="%g" r="%g" fill="%s" opacity=".5"/>' % (sx, sy, sr, SOFT)
+    # 标签
+    inner += _t(xl, ytop - 12, "e\u207b", BRAND, 15, "700")
+    inner += _t(xr, ytop - 12, "e\u207b", BRAND, 15, "700")
+    inner += _t((xl + xr) / 2, ymid - 26, "\u03b3", ACCENT, 15, "700")
+    inner += _t(250, 288, label, SUB, 13, "600")
+    return make_svg(inner)
+
+
 SCENES = {
     "heliocentric": heliocentric,
     "ellipse": ellipse_orbit,
@@ -373,6 +404,8 @@ SCENES = {
     "turing": turing,
     "blackhole": blackhole,
     "field": field,
+    "feynman": feynman_diagram,
+    "feynman_diagram": feynman_diagram,
 }
 
 

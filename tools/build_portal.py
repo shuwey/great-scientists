@@ -2,7 +2,7 @@
 """《读懂科学家》系列 · 系列门户（根 index.html）生成器
 
 把 scientists/<id>/ 下的所有子站接进根目录总览页：
-  - 已上线卡片区（13 张，按出生年份排序，带关键词过滤）
+  - 已上线卡片区（15 张，按出生年份排序，带关键词过滤）
   - 路线图 roster（全部标记「已上线」并给链接）
   - 顶部导航、页脚站点目录
 
@@ -29,6 +29,9 @@ SCIENTISTS = [
     ("newton", "艾萨克·牛顿", "Isaac Newton", "1643 – 1727",
      "三大力学定律与万有引力，第一次把天体与地面连成同一种规律；还发明了微积分。",
      "thumb-optics.svg", "#E6FCF5"),
+    ("faraday", "迈克尔·法拉第", "Michael Faraday", "1791 – 1867",
+     "发现电磁感应、造出第一台发电机，提出「场」与力线——今天点亮世界的电，源头在他手上。",
+     "thumb-induction.svg", "#FFF9DB"),
     ("darwin", "查尔斯·达尔文", "Charles Darwin", "1809 – 1882",
      "进化论与「物竞天择」，重新解释所有生命的来处与彼此的关联。",
      "thumb-finches.svg", "#EBFBEE"),
@@ -53,6 +56,9 @@ SCIENTISTS = [
     ("turing", "阿兰·图灵", "Alan Turing", "1912 – 1954",
      "图灵机与可计算性，计算机科学与人工智能的思想源头。",
      "thumb-turing-machine.svg", "#EDF2FF"),
+    ("feynman", "理查德·费曼", "Richard Feynman", "1918 – 1988",
+     "路径积分与费曼图重塑量子力学，用一杯冰水找出挑战者号事故真相，也是最会讲物理的人。",
+     "thumb-qed.svg", "#FFF0F6"),
     ("hawking", "斯蒂芬·霍金", "Stephen Hawking", "1942 – 2018",
      "黑洞辐射与宇宙学普及，把最前沿的时空之谜讲给全世界听。",
      "thumb-blackhole.svg", "#F1F3F5"),
@@ -121,7 +127,7 @@ HTML = u"""<!DOCTYPE html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>读懂科学家 · 一个把天才讲成人话的科普系列</title>
-<meta name="description" content="面向中学生的科学家科普系列「影响世界的13个科学家」：哥白尼、伽利略、开普勒、牛顿、达尔文、巴斯德、麦克斯韦、门捷列夫、居里夫人、爱因斯坦、玻尔、图灵、霍金共 %(total)d 位全部上线。按时间顺序讲清一生与核心成就，难词点开就有解释。">
+<meta name="description" content="面向中学生的科学家科普系列「影响世界的15个科学家」：哥白尼、伽利略、开普勒、牛顿、法拉第、达尔文、巴斯德、麦克斯韦、门捷列夫、居里夫人、爱因斯坦、玻尔、图灵、费曼、霍金共 %(total)d 位全部上线。按时间顺序讲清一生与核心成就，难词点开就有解释。">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-base="">
@@ -224,7 +230,7 @@ HTML = u"""<!DOCTYPE html>
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-kicker">路线图</span>
-      <h2>影响世界的13个科学家</h2>
+      <h2>影响世界的15个科学家</h2>
       <p>这个系列要讲透 %(total)d 位真正改变了世界的头脑。下面按出生年份排列——全部已上线，点任意一张即可进入对应站点。从哥白尼到霍金，正好串起近 550 年科学如何重塑人类世界。</p>
     </div>
 

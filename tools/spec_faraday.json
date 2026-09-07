@@ -1,0 +1,766 @@
+{
+  "id": "faraday",
+  "name": "法拉第",
+  "en": "Michael Faraday",
+  "years": "1791–1867",
+  "kicker": "把磁变成电的人 · 1791—1867",
+  "lede": "他几乎没上过学，13 岁起在装订铺当学徒，靠读手里的书自学成才。1831 年，他发现磁铁一动、线圈里就冒出电流——今天点亮整个世界的电，源头就在他手上。",
+  "meta": "读懂法拉第：用中学生能听懂的话，讲清电磁感应怎么发电、“场”这个看不见的东西为什么重要，以及一个穷孩子怎样成为史上最伟大的实验家。",
+  "biotitle": "他把磁变成电，也把“场”写进了物理学",
+  "bio": [
+    "迈克尔·法拉第（1791—1867），英国物理学家、化学家。生于伦敦一个铁匠家庭，只受过两年正规教育，13 岁到装订铺当学徒，靠装订的书自学化学与电学。",
+    "1813 年他成为化学家戴维的助手，从此走上研究之路。1831 年发现电磁感应，造出世界上第一台发电机；他提出的“力线”与“场”，后来被麦克斯韦写成方程。",
+    "他还是科普的先行者：皇家研究所的“圣诞讲座”由他开创并主讲十九次。晚年他拒绝了封爵与皇家学会会长之职，也拒绝为战争研制毒气。"
+  ],
+  "portrait": "faraday-portrait.jpg",
+  "about_claim": "本页说明法拉第子站内容的依据与延伸去处。",
+  "about_body": "<h2>资料来源</h2><p>本子站内容依据公开科学史通识编写，核心事实（1791 年生、1813 年入皇家研究所、1821 年电磁旋转、1831 年电磁感应与圆盘发电机、1833 年电解定律、圣诞讲座、1867 年逝世）与主流科学史一致。历史图片均来自 Wikimedia Commons 公有领域或自由授权资源。</p><h2>延伸阅读</h2><p>想深入：法拉第《蜡烛的故事》（圣诞讲稿，至今仍是科普经典）；传记可看《法拉第传》。</p>",
+  "tl_desc": "从装订铺学徒到电磁学之父：一条靠自学走出来的路。",
+  "tl_claim": "1791 年出生，1867 年辞世。他没读过多少书，却改写了人类用电的方式。",
+  "cats": [
+    "物理",
+    "电磁",
+    "历史",
+    "科普"
+  ],
+  "hero_scene": "field",
+  "hero_params": {
+    "label": "铁屑自动排成的磁力线"
+  },
+  "pages": {
+    "induction": {
+      "title": "电磁感应：磁铁一动，电就来了",
+      "file": "detail/induction.html",
+      "claim": "1831 年 8 月 29 日，法拉第把一根磁铁插进线圈，发现线圈里瞬间冒出了电流——磁铁不动则没有，一动就有。这个现象叫电磁感应，它是一切发电机的祖先。",
+      "tags": [
+        "电磁感应",
+        "磁通量",
+        "1831"
+      ],
+      "year": "1831",
+      "card": "磁，只要“变化”，就能生出电。",
+      "scene": "field",
+      "scene_params": {
+        "label": "磁铁进出线圈，线圈里就有了电流"
+      },
+      "remember": "一句话记住：静止的磁铁不发电，动的磁铁才发电——关键不是“磁”，是“变化”。",
+      "sideterms": [
+        "induction",
+        "flux",
+        "coil",
+        "current"
+      ],
+      "sections": [
+        {
+          "id": "before",
+          "h": "一、前人卡在哪里",
+          "body": "1820 年奥斯特发现“电能生磁”之后，全欧洲都在问它的反问题：磁能不能生电？许多人都试过把磁铁放在导线旁边，却一无所获——因为磁铁静静地待着，什么也不会发生。",
+          "fig": "induction",
+          "figalt": "静止的磁铁与线圈",
+          "figcap": "不动，就什么都没有。"
+        },
+        {
+          "id": "ring",
+          "h": "二、那个铁环实验",
+          "body": "法拉第在一个软铁环上绕了两组线圈：一组接电池，一组接电流计。他发现，只有在接通或断开电池的那一瞬间，另一组线圈里才会跳出一丝电流。",
+          "figalt": "法拉第的铁环",
+          "figcap": "不连续的“一瞬间”，就是答案。"
+        },
+        {
+          "id": "flux",
+          "h": "三、关键不是磁，是“变化”",
+          "body": "他很快明白：决定电流的不是磁场有多强，而是穿过线圈的“磁通量”变化得有多快。磁铁插入得快，电流就大；插到底不动，电流立刻归零。",
+          "figalt": "磁通量在变化",
+          "figcap": "变，才生电。"
+        },
+        {
+          "id": "law",
+          "h": "四、法拉第定律",
+          "body": "这条规律后来被写成“法拉第电磁感应定律”：感应电动势的大小，正比于磁通量的变化率，也正比于线圈的匝数。匝数越多、动得越快，电就越强——你可以在上面的实验里亲手拖一拖。",
+          "figalt": "感应电流的大小",
+          "figcap": "越快越多，电就越猛。"
+        }
+      ]
+    },
+    "field": {
+      "title": "力线：他看见了看不见的“场”",
+      "file": "detail/field.html",
+      "claim": "在法拉第之前，人们认为电荷与磁体之间是隔着真空“超距作用”。法拉第说：不，它们周围充满了“场”，力是沿着一条条力线传过去的。",
+      "tags": [
+        "场",
+        "力线",
+        "磁力线"
+      ],
+      "year": "1830s–1850s",
+      "card": "空间不是空的，空间里有“场”。",
+      "scene": "field",
+      "scene_params": {
+        "label": "铁屑自动排成一条条磁力线"
+      },
+      "remember": "一句话记住：磁铁周围撒一把铁屑，铁屑会自己排成线——那不是画出来的，是“场”真的在那里。",
+      "sideterms": [
+        "magnetic-field",
+        "field-line",
+        "action-at-a-distance",
+        "maxwell"
+      ],
+      "sections": [
+        {
+          "id": "iron",
+          "h": "一、铁屑画出的图",
+          "body": "把磁铁放在纸下、铁屑撒在纸上，轻轻一敲，铁屑就会排列成一条条从 N 极到 S 极的曲线。法拉第把这些曲线叫做“力线”，它们是看得见的证据。",
+          "fig": "field",
+          "figalt": "铁屑排成的磁力线",
+          "figcap": "看不见的力，有看得见的形状。"
+        },
+        {
+          "id": "superaction",
+          "h": "二、与“超距作用”叫板",
+          "body": "当时主流相信牛顿式的超距作用：两个物体隔着真空直接互相吸引，不需要中间的东西。法拉第凭实验直觉拒绝了这个说法。",
+          "figalt": "超距作用与场",
+          "figcap": "是隔空发力，还是近处传递？"
+        },
+        {
+          "id": "concept",
+          "h": "三、“场”成了主角",
+          "body": "在法拉第手里，磁铁周围的空间本身成了研究对象：力线密的地方场强大，力线的走向就是力的方向。这是物理学第一次把“空间里的东西”当成真实存在。",
+          "figalt": "场的疏密",
+          "figcap": "线越密，力越强。"
+        },
+        {
+          "id": "maxwell",
+          "h": "四、麦克斯韦把它写成方程",
+          "body": "麦克斯韦坦承，自己的工作是把法拉第的力线思想翻译成数学。没有法拉第的“场”，就没有后来的麦克斯韦方程组，也不会有无线电与现代通信。",
+          "figalt": "从力线到方程",
+          "figcap": "一个画，一个数，接力跑完了全程。"
+        }
+      ]
+    },
+    "generator": {
+      "title": "发电机：把运动变成电",
+      "file": "detail/generator.html",
+      "claim": "既然变化的磁能生电，那么只要让线圈或磁铁不停地转，就能持续得到电流。1831 年底，法拉第造出了人类第一台发电机——“法拉第圆盘”。",
+      "tags": [
+        "发电机",
+        "电动机",
+        "法拉第圆盘"
+      ],
+      "year": "1821 / 1831",
+      "card": "让磁铁一直动，电就一直来。",
+      "scene": "wave",
+      "scene_params": {
+        "label": "线圈里流出的交流电波形"
+      },
+      "remember": "一句话记住：发电机是“把运动的力气换成电”的机器，今天电网里的每一度电，原理都还是法拉第那一套。",
+      "sideterms": [
+        "generator",
+        "motor",
+        "current",
+        "induction"
+      ],
+      "sections": [
+        {
+          "id": "rotation",
+          "h": "一、先让电变成动",
+          "body": "1821 年，法拉第做出“电磁旋转”装置：通电导线会绕着磁铁不停地转。这是电动机的雏形——它证明了电可以让东西动起来。",
+          "fig": "generator",
+          "figalt": "电磁旋转装置",
+          "figcap": "电一动，世界就转起来了。"
+        },
+        {
+          "id": "disk",
+          "h": "二、再让动变成电",
+          "body": "十年后他反过来做：让一个铜盘在磁铁的两极之间旋转，从盘心与盘边引出导线，就得到了持续的电流。这就是“法拉第圆盘”，人类第一台发电机。",
+          "figalt": "法拉第圆盘发电机",
+          "figcap": "转起来，电就流出来了。"
+        },
+        {
+          "id": "ac",
+          "h": "三、为什么是交流",
+          "body": "线圈在磁场里旋转时，穿过它的磁通量周期性地增增减减，电流也就一会儿正向、一会儿反向——这就是交流电。它的波形是一条起伏的正弦线。",
+          "figalt": "交流电的波形",
+          "figcap": "一来一回，就是交流。"
+        },
+        {
+          "id": "today",
+          "h": "四、今天的世界",
+          "body": "从三峡的巨型机组到自行车上的小摩擦灯，本质都是“让线圈在磁场中转”。法拉第的圆盘只有巴掌大，却撑起了整个电气时代。",
+          "figalt": "现代的发电机",
+          "figcap": "原理没变，只是变大了。"
+        }
+      ]
+    },
+    "chem": {
+      "title": "不止电磁：电解、苯与法拉第笼",
+      "file": "detail/chem.html",
+      "claim": "法拉第在化学上同样留下了自己的名字：电解定律、发现苯、发明“法拉第笼”。他还开创了面向公众的科学讲座传统，影响至今。",
+      "tags": [
+        "电解",
+        "苯",
+        "法拉第笼"
+      ],
+      "year": "1825–1836",
+      "card": "他给化学留下的词，今天还在用。",
+      "scene": "graph",
+      "scene_params": {
+        "label": "析出物质的质量与电量成正比"
+      },
+      "remember": "一句话记住：今天化学课本里的“法拉第常数”、有机化学里的“苯”、电梯里手机没信号的“法拉第笼”，都写着同一个名字。",
+      "sideterms": [
+        "electrolysis",
+        "benzene",
+        "faraday-cage",
+        "christmas-lecture"
+      ],
+      "sections": [
+        {
+          "id": "electrolysis",
+          "h": "一、电解定律",
+          "body": "他让电流通过溶液，发现析出物质的质量正比于通过的电量，并由此定下“法拉第常数”。这套定律把电与化学反应定量地连在了一起。",
+          "fig": "chem",
+          "figalt": "电解装置",
+          "figcap": "通多少电，就出多少物质。"
+        },
+        {
+          "id": "benzene",
+          "h": "二、发现苯",
+          "body": "1825 年，他从照明气的残余油状液体里分离出一种新物质，测定了它的组成——这就是苯。它是后来整个芳香族化学的起点。",
+          "figalt": "苯的分子结构",
+          "figcap": "一瓶剩油里的新世界。"
+        },
+        {
+          "id": "cage",
+          "h": "三、法拉第笼",
+          "body": "他发现金属外壳能把内部的电场“挡在外面”：他造了一间包着金属箔的房间，自己在里面安然无恙地看着外面放电。这就是静电屏蔽，也是“法拉第笼”的由来。",
+          "figalt": "法拉第笼",
+          "figcap": "罩上一层金属，电磁波就进不来了。"
+        },
+        {
+          "id": "lecture",
+          "h": "四、把科学讲给普通人",
+          "body": "他创办并主讲皇家研究所的“圣诞讲座”，前后十九次。《蜡烛的故事》就是他的讲稿——讲一根蜡烛的燃烧，讲出了整整一部化学与物理。这一传统延续至今。",
+          "figalt": "圣诞讲座",
+          "figcap": "他也是最好的科学老师。"
+        }
+      ]
+    }
+  },
+  "terms": {
+    "induction": {
+      "name": "电磁感应",
+      "cat": "物理",
+      "short": "磁变生电",
+      "plain": "当穿过闭合线圈的磁通量发生变化时，线圈中就会产生感应电动势与电流，这叫电磁感应。法拉第 1831 年发现它，它是一切发电机与变压器的基础。",
+      "analogy": "磁像是风，电像是风车——只有吹动时风车才转。",
+      "page": "induction",
+      "anchor": "#flux",
+      "related": [
+        "flux",
+        "coil",
+        "generator"
+      ]
+    },
+    "flux": {
+      "name": "磁通量",
+      "cat": "物理",
+      "short": "穿过线圈的磁场总量",
+      "plain": "磁通量衡量有多少磁场穿过某个面。线圈不动时它不变；磁铁靠近或离开时它变化，这种变化正是感应电流的来源。",
+      "analogy": "像穿过窗户的风的多少。",
+      "page": "induction",
+      "anchor": "#flux",
+      "related": [
+        "induction",
+        "magnetic-field"
+      ]
+    },
+    "coil": {
+      "name": "线圈",
+      "cat": "物理",
+      "short": "绕成一圈圈的导线",
+      "plain": "把导线绕成许多匝就成了线圈。匝数越多，同样的磁通变化产生的感应电动势越大，这是法拉第定律的直接结论。",
+      "analogy": "匝数像是把风车叠了好几层。",
+      "page": "induction",
+      "anchor": "#law",
+      "related": [
+        "induction",
+        "generator"
+      ]
+    },
+    "current": {
+      "name": "电流",
+      "cat": "物理",
+      "short": "电荷的定向移动",
+      "plain": "电流是电荷的定向流动。电磁感应产生的电流叫感应电流，其方向总是反抗引起它的磁通变化（楞次定律）。",
+      "analogy": "像水管里的水流。",
+      "page": "generator",
+      "anchor": "#ac",
+      "related": [
+        "induction",
+        "generator"
+      ]
+    },
+    "magnetic-field": {
+      "name": "磁场",
+      "cat": "电磁",
+      "short": "磁体周围的空间状态",
+      "plain": "磁场是磁体或电流周围空间的一种状态，会对运动电荷与磁体施加力。法拉第首次把“场”当作真实的研究对象。",
+      "analogy": "看不见的网，撒在磁铁周围。",
+      "page": "field",
+      "anchor": "#concept",
+      "related": [
+        "field-line",
+        "induction"
+      ]
+    },
+    "field-line": {
+      "name": "力线（磁感线）",
+      "cat": "电磁",
+      "short": "把场画出来的线",
+      "plain": "力线是法拉第用来描述场的一种图示：线上每点的切线方向就是该点场的方向，线的疏密表示场的强弱。铁屑实验可以直观显示它们。",
+      "analogy": "像地图上的等高线，画的是看不见的高低。",
+      "page": "field",
+      "anchor": "#iron",
+      "related": [
+        "magnetic-field",
+        "maxwell"
+      ]
+    },
+    "action-at-a-distance": {
+      "name": "超距作用",
+      "cat": "物理",
+      "short": "隔空直接发力",
+      "plain": "超距作用指两个物体不借助中间介质、隔着空间直接相互作用。法拉第用“场”的观念取代了它，认为力是通过场逐点传递的。",
+      "analogy": "不是隔空取物，而是一传一、一传一。",
+      "page": "field",
+      "anchor": "#superaction",
+      "related": [
+        "magnetic-field",
+        "field-line"
+      ]
+    },
+    "maxwell": {
+      "name": "麦克斯韦",
+      "cat": "历史",
+      "short": "把法拉第写成方程的人",
+      "plain": "麦克斯韦把法拉第的力线与场的思想数学化，得到麦克斯韦方程组，统一了电、磁与光。他自称只是把法拉第的想法翻译成数学语言。",
+      "analogy": "法拉第画了图，麦克斯韦配了公式。",
+      "page": "field",
+      "anchor": "#maxwell",
+      "related": [
+        "field-line",
+        "magnetic-field"
+      ]
+    },
+    "generator": {
+      "name": "发电机",
+      "cat": "电磁",
+      "short": "把运动变成电",
+      "plain": "发电机利用电磁感应，让线圈在磁场中旋转，把机械能转化为电能。法拉第 1831 年的圆盘发电机是第一台。",
+      "analogy": "一台把“转”换成“亮”的机器。",
+      "page": "generator",
+      "anchor": "#disk",
+      "related": [
+        "induction",
+        "motor"
+      ]
+    },
+    "motor": {
+      "name": "电动机",
+      "cat": "电磁",
+      "short": "把电变成运动",
+      "plain": "电动机是发电机的逆过程：通电的线圈在磁场中受力而转动。法拉第 1821 年的电磁旋转装置是它的雏形。",
+      "analogy": "发电机反过来开，就是电动机。",
+      "page": "generator",
+      "anchor": "#rotation",
+      "related": [
+        "generator",
+        "current"
+      ]
+    },
+    "electrolysis": {
+      "name": "电解",
+      "cat": "电磁",
+      "short": "用电推动化学反应",
+      "plain": "电解是让电流通过电解质溶液或熔融物，引起化学分解的过程。法拉第总结出电解定律，指出析出物的质量正比于通过的电量。",
+      "analogy": "用电流当“钥匙”，把化合物拆开。",
+      "page": "chem",
+      "anchor": "#electrolysis",
+      "related": [
+        "current",
+        "faraday"
+      ]
+    },
+    "benzene": {
+      "name": "苯",
+      "cat": "电磁",
+      "short": "法拉第发现的分子",
+      "plain": "苯是一种六元环状有机分子。法拉第 1825 年从照明气的残余液体中分离并测定了它，它是芳香族化学的起点。",
+      "analogy": "有机化学里的一块基石。",
+      "page": "chem",
+      "anchor": "#benzene",
+      "related": [
+        "faraday"
+      ]
+    },
+    "faraday-cage": {
+      "name": "法拉第笼",
+      "cat": "电磁",
+      "short": "金属罩住的安静空间",
+      "plain": "法拉第笼是由金属网或金属壳构成的封闭空间，外部电场无法进入其内部，这就是静电屏蔽。电梯里手机信号变差正是这个原理。",
+      "analogy": "给电磁波装了一道拉不上的门。",
+      "page": "chem",
+      "anchor": "#cage",
+      "related": [
+        "magnetic-field",
+        "faraday"
+      ]
+    },
+    "christmas-lecture": {
+      "name": "圣诞讲座",
+      "cat": "科普",
+      "short": "讲给孩子听的科学",
+      "plain": "圣诞讲座是英国皇家研究所面向青少年的科学讲座传统，由法拉第创办并主讲十九次。他的讲稿《蜡烛的故事》至今仍是科普经典。",
+      "analogy": "把实验室搬上讲台，搬进孩子心里。",
+      "page": "chem",
+      "anchor": "#lecture",
+      "related": [
+        "faraday",
+        "popular-science"
+      ]
+    },
+    "popular-science": {
+      "name": "科学普及",
+      "cat": "科普",
+      "short": "把专业讲给大众",
+      "plain": "科学普及是把专业研究用通俗方式讲给公众。法拉第是近代科普的开创者之一，麦克斯韦、霍金、费曼都延续了这条传统。",
+      "analogy": "把实验室的话，翻译成街头的话。",
+      "page": "chem",
+      "anchor": "#lecture",
+      "related": [
+        "christmas-lecture",
+        "faraday"
+      ]
+    },
+    "davy": {
+      "name": "戴维",
+      "cat": "历史",
+      "short": "发现法拉第的人",
+      "plain": "汉弗莱·戴维是英国化学家，法拉第听他的讲座后毛遂自荐，1813 年成为他的助手。据说戴维被问及一生最重要的发现时答：“法拉第。”",
+      "analogy": "他最好的发现，是一个人。",
+      "page": "induction",
+      "anchor": "#before",
+      "related": [
+        "faraday"
+      ]
+    },
+    "royal-institution": {
+      "name": "皇家研究所",
+      "cat": "历史",
+      "short": "法拉第的实验室",
+      "plain": "英国皇家研究所是法拉第度过几乎整个学术生涯的地方，他在此做出电磁感应等重大发现，也在此开创了圣诞讲座。",
+      "analogy": "一间老房子，装下半部电磁学史。",
+      "page": "field",
+      "anchor": "#iron",
+      "related": [
+        "davy",
+        "christmas-lecture"
+      ]
+    },
+    "faraday": {
+      "name": "法拉第",
+      "cat": "历史",
+      "short": "最伟大的实验家",
+      "plain": "迈克尔·法拉第是英国物理学家、化学家。他发现电磁感应、提出场与力线、造出第一台发电机，并在化学与科普上留下深远影响。他几乎全靠自学成才。",
+      "analogy": "没读过多少书，却改写了人类用电的方式。",
+      "page": "induction",
+      "anchor": "#ring",
+      "related": [
+        "induction",
+        "field-line",
+        "generator"
+      ]
+    },
+    "diamagnetism": {
+      "name": "抗磁性",
+      "cat": "物理",
+      "short": "被磁场排斥的物质",
+      "plain": "抗磁性指某些物质在磁场中被微弱排斥的现象。法拉第 1845 年系统研究了它，并据此把磁性分为顺磁与抗磁两类。",
+      "analogy": "有的东西往磁场里钻，有的往外躲。",
+      "page": "field",
+      "anchor": "#concept",
+      "related": [
+        "magnetic-field",
+        "faraday"
+      ]
+    }
+  },
+  "timeline": [
+    {
+      "year": 1791,
+      "id": "born",
+      "title": "生于伦敦贫寒之家",
+      "img": "faraday-portrait.jpg",
+      "alt": "法拉第",
+      "fig": "9 月 22 日，法拉第出生。",
+      "body": "他出生在伦敦郊区一个铁匠家庭，家中兄弟姐妹四人，父亲常年体弱，家境贫困。"
+    },
+    {
+      "year": 1805,
+      "id": "apprentice",
+      "title": "装订铺学徒",
+      "img": "bookbind.jpg",
+      "alt": "装订作坊",
+      "fig": "13 岁，开始装订书。",
+      "body": "他到一家装订铺当学徒。正是在装订的书里，他读到了《大英百科全书》的电学条目与化学书籍，自学起步。"
+    },
+    {
+      "year": 1812,
+      "id": "lecture",
+      "title": "听戴维的讲座",
+      "img": "lecture.jpg",
+      "alt": "讲座",
+      "fig": "四张票，改变一生。",
+      "body": "一位顾客送他四张皇家研究所的讲座票，他认真做了笔记，随后把笔记装订成册寄给主讲人戴维，请求一份工作。"
+    },
+    {
+      "year": 1813,
+      "id": "assistant",
+      "title": "成为戴维的助手",
+      "img": "davy.jpg",
+      "alt": "戴维",
+      "fig": "从装订工到实验助手。",
+      "body": "他被戴维聘为助手，随其游历欧洲。此后他几乎一生都待在皇家研究所。"
+    },
+    {
+      "year": 1821,
+      "id": "rotation",
+      "title": "电磁旋转",
+      "img": "rotation.jpg",
+      "alt": "电磁旋转装置",
+      "fig": "电，让东西转起来了。",
+      "body": "他造出通电导线绕磁铁旋转的装置，这是电动机的雏形，也让他第一次在电磁学上崭露头角。"
+    },
+    {
+      "year": 1825,
+      "id": "benzene",
+      "title": "发现苯",
+      "img": "benzene.jpg",
+      "alt": "苯的结构",
+      "fig": "一瓶剩油里的新分子。",
+      "body": "他从照明气的残余油状液体中分离出苯，并测定其组成。同年他出任皇家研究所实验室主任。"
+    },
+    {
+      "year": 1831,
+      "id": "induction",
+      "title": "发现电磁感应",
+      "img": "induction.jpg",
+      "alt": "电磁感应实验",
+      "fig": "磁铁一动，电就来了。",
+      "body": "8 月 29 日，他用铁环实验证明变化的磁能生电；随后又用磁铁插入线圈重复验证，并造出第一台发电机。"
+    },
+    {
+      "year": 1833,
+      "id": "electrolysis",
+      "title": "电解定律",
+      "img": "electrolysis.jpg",
+      "alt": "电解装置",
+      "fig": "电与化学的定量桥梁。",
+      "body": "他提出电解定律，把通过的电量与析出物质的质量定量地联系起来，并创造了沿用至今的一批术语。"
+    },
+    {
+      "year": 1836,
+      "id": "cage",
+      "title": "法拉第笼",
+      "img": "cage.jpg",
+      "alt": "法拉第笼",
+      "fig": "金属罩住的安静。",
+      "body": "他造出包着金属箔的房间，证明金属外壳能屏蔽外部电场，这就是静电屏蔽与“法拉第笼”。"
+    },
+    {
+      "year": 1855,
+      "id": "refuse",
+      "title": "两次拒绝",
+      "img": "ri.jpg",
+      "alt": "皇家研究所",
+      "fig": "他选择留下自己的名字。",
+      "body": "他婉拒了皇家学会会长之职，也谢绝了封爵，并拒绝参与为战争研制毒气——理由是那违背他的道德准则。"
+    },
+    {
+      "year": 1867,
+      "id": "died",
+      "title": "辞世",
+      "img": "faraday-portrait.jpg",
+      "alt": "法拉第",
+      "fig": "留下一个通电的世界。",
+      "body": "8 月 25 日，法拉第在汉普顿宫的住所逝世，享年 75 岁。他谢绝了威斯敏斯特教堂的墓穴，葬于普通墓地。"
+    }
+  ],
+  "images": [
+    {
+      "file": "faraday-portrait.jpg",
+      "wiki": "File:Michael Faraday.jpg",
+      "q": "Michael Faraday portrait",
+      "desc": "法拉第肖像",
+      "author": "Public domain",
+      "license": "Public domain"
+    },
+    {
+      "file": "bookbind.jpg",
+      "wiki": "File:Bookbinder's workshop.jpg",
+      "q": "bookbinding workshop 19th century",
+      "desc": "装订作坊",
+      "author": "Public domain",
+      "license": "Public domain"
+    },
+    {
+      "file": "lecture.jpg",
+      "wiki": "File:Royal Institution Christmas Lectures.jpg",
+      "q": "Royal Institution lecture theatre",
+      "desc": "皇家研究所讲座",
+      "author": "CC BY-SA",
+      "license": "CC BY-SA"
+    },
+    {
+      "file": "davy.jpg",
+      "wiki": "File:Humphry Davy by Thomas Phillips.jpg",
+      "q": "Humphry Davy portrait",
+      "desc": "汉弗莱·戴维",
+      "author": "Public domain",
+      "license": "Public domain"
+    },
+    {
+      "file": "rotation.jpg",
+      "wiki": "File:Faraday's electric motor.jpg",
+      "q": "Faraday electromagnetic rotation apparatus",
+      "desc": "电磁旋转装置",
+      "author": "Public domain",
+      "license": "Public domain"
+    },
+    {
+      "file": "benzene.jpg",
+      "wiki": "File:Benzene 3D balls.png",
+      "q": "benzene molecular structure",
+      "desc": "苯分子结构",
+      "author": "Public domain",
+      "license": "Public domain"
+    },
+    {
+      "file": "induction.jpg",
+      "wiki": "File:Electromagnetic induction experiment.svg",
+      "q": "Faraday induction coil magnet experiment",
+      "desc": "电磁感应实验",
+      "author": "Public domain",
+      "license": "Public domain"
+    },
+    {
+      "file": "electrolysis.jpg",
+      "wiki": "File:Electrolysis of water.png",
+      "q": "electrolysis apparatus diagram",
+      "desc": "电解装置",
+      "author": "Public domain",
+      "license": "Public domain"
+    },
+    {
+      "file": "cage.jpg",
+      "wiki": "File:Faraday cage.jpg",
+      "q": "Faraday cage demonstration",
+      "desc": "法拉第笼",
+      "author": "CC BY-SA",
+      "license": "CC BY-SA"
+    },
+    {
+      "file": "ri.jpg",
+      "wiki": "File:Royal Institution.jpg",
+      "q": "Royal Institution London building",
+      "desc": "皇家研究所",
+      "author": "CC BY-SA",
+      "license": "CC BY-SA"
+    }
+  ],
+  "labs": [
+    {
+      "key": "induction",
+      "kind": "induction",
+      "icon": "🧲",
+      "title": "磁铁穿过线圈",
+      "intro": "拖动“速度”和“匝数”，看磁铁进出线圈时电流计指针怎么摆——磁铁停下来，指针立刻归零。",
+      "desc": "不动就没有电，这是关键。",
+      "ctrl": [
+        {
+          "name": "speed",
+          "label": "速度",
+          "min": 0.2,
+          "max": 3,
+          "value": 1,
+          "step": 0.1,
+          "init": "1.0×"
+        },
+        {
+          "name": "turns",
+          "label": "匝数",
+          "min": 1,
+          "max": 8,
+          "value": 4,
+          "step": 1,
+          "init": "4 匝"
+        }
+      ],
+      "params": {
+        "label": "磁铁一动，线圈里就冒出电流"
+      }
+    },
+    {
+      "key": "lines",
+      "kind": "field",
+      "icon": "🧭",
+      "title": "铁屑排出的磁力线",
+      "intro": "拖动“强度”，看磁体周围的力线怎么变密——铁屑会沿着这些线排开。",
+      "desc": "线越密，磁场越强。",
+      "ctrl": [
+        {
+          "name": "strength",
+          "label": "强度",
+          "min": 0.3,
+          "max": 3,
+          "value": 1,
+          "step": 0.1,
+          "init": "1.0×"
+        }
+      ],
+      "params": {
+        "label": "铁屑自动排成的磁力线"
+      }
+    },
+    {
+      "key": "ac",
+      "kind": "wave",
+      "icon": "🌊",
+      "title": "线圈里流出的交流电",
+      "intro": "拖动“频率”与“幅度”，看线圈在磁场里转动时，电流怎样一来一回地变化。",
+      "desc": "一来一回，就是交流。",
+      "ctrl": [
+        {
+          "name": "freq",
+          "label": "频率",
+          "min": 0.3,
+          "max": 3,
+          "value": 1,
+          "step": 0.1,
+          "init": "1.0×"
+        },
+        {
+          "name": "amp",
+          "label": "幅度",
+          "min": 0.3,
+          "max": 2,
+          "value": 1,
+          "step": 0.1,
+          "init": "1.0×"
+        }
+      ],
+      "params": {
+        "label": "线圈在磁场中转，电流一来一回"
+      }
+    }
+  ]
+}
