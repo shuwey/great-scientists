@@ -63,22 +63,35 @@ def heliocentric(planets=6, label="太阳居中，行星绕日"):
 # ----------------------------------------------------------------------
 # 2. 椭圆轨道（开普勒）：焦点处的太阳 + 椭圆
 # ----------------------------------------------------------------------
-def ellipse_orbit(label="行星沿椭圆轨道绕日"):
+def ellipse_orbit(label="行星沿椭圆轨道绕日，太阳在一个焦点上"):
     import math
     cx, cy = 250, 160
-    fx = cx - 60  # 焦点
-    inner = ""
-    # 椭圆近似：用两段圆弧拼，简单起见画一个带偏心的椭圆 path
     rx, ry = 150, 95
-    inner += '<ellipse cx="%d" cy="%d" rx="%d" ry="%d" fill="none" stroke="%s" stroke-width="2"/>' % (cx, cy, rx, ry, BRAND)
-    # 焦点
-    inner += '<circle cx="%d" cy="%d" r="13" fill="%s"/>' % (fx, cy, ACCENT)
+    c = math.sqrt(rx * rx - ry * ry)  # 焦点偏距
+    fx, fx2 = cx - c, cx + c
+    inner = ""
+    # 背景星点
+    for sx, sy, sr in [(58, 52, 2), (110, 86, 1.5), (420, 60, 2), (452, 120, 1.5), (66, 250, 1.5), (430, 262, 2)]:
+        inner += '<circle cx="%g" cy="%g" r="%g" fill="%s" opacity=".55"/>' % (sx, sy, sr, SOFT)
+    # 椭圆轨道
+    inner += '<ellipse cx="%d" cy="%d" rx="%d" ry="%d" fill="none" stroke="%s" stroke-width="2.5"/>' % (cx, cy, rx, ry, BRAND)
+    # 长轴与两焦点（虚线）
+    inner += '<line x1="%g" y1="%d" x2="%g" y2="%d" stroke="%s" stroke-width="1.5" stroke-dasharray="5 5" opacity=".7"/>' % (cx - rx, cy, cx + rx, cy, SOFT)
+    inner += '<circle cx="%g" cy="%d" r="5" fill="none" stroke="%s" stroke-width="2"/>' % (fx2, cy, SUB)
+    inner += _t(fx2, cy - 12, "另一焦点", SUB, 11, "600")
+    # 太阳在焦点
+    inner += '<circle cx="%g" cy="%d" r="13" fill="%s"/>' % (fx, cy, ACCENT)
     inner += _t(fx, cy + 5, "日", "#fff", 13, "800")
-    # 行星在椭圆上
+    # 行星在椭圆上 + 连日半径线
     ang = 0.6
     px = cx + rx * math.cos(ang)
     py = cy + ry * math.sin(ang)
+    inner += '<line x1="%g" y1="%d" x2="%g" y2="%g" stroke="%s" stroke-width="1.5" stroke-dasharray="4 4"/>' % (fx, cy, px, py, GOLD)
     inner += '<circle cx="%g" cy="%g" r="8" fill="%s"/>' % (px, py, GOLD)
+    inner += _t(px + 2, py - 14, "行星", GOLD, 11, "700")
+    # 近日/远日标注（画在椭圆上缘内侧，避免贴边/出界）
+    inner += _t(fx - 34, cy - ry + 22, "近日", SUB, 11, "600")
+    inner += _t(fx2 + 34, cy - ry + 22, "远日", SUB, 11, "600")
     inner += _t(240, 300, label, SUB, 14, "600")
     return make_svg(inner)
 
@@ -346,6 +359,7 @@ def field(label="场：看不见，却处处有力"):
 SCENES = {
     "heliocentric": heliocentric,
     "ellipse": ellipse_orbit,
+    "ellipse_orbit": ellipse_orbit,
     "pendulum": pendulum,
     "wave": wave,
     "orbit": orbit,
@@ -366,7 +380,9 @@ def render(scene, params=None, w=480, h=320):
     """统一入口：scene 为场景名，params 为参数 dict（含可选 label 覆盖）。"""
     fn = SCENES.get(scene)
     if not fn:
-        # 未知场景：兜底画一个占位
+        # 未知场景：兜底画一个占位（并在构建日志里大声警告，避免静默上线占位图）
+        import sys as _sys
+        print("⚠️  svg_scenes: 未知场景 %r，输出占位图" % scene, file=_sys.stderr)
         return make_svg(_t(240, 160, "示意", SUB, 18, "700"), w, h)
     params = params or {}
     # 把 label 从 params 里抽出来传给函数
