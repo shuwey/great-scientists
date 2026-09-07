@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 280" font-family="-apple-system,Segoe UI,sans-serif">
+  <rect width="680" height="280" fill="#FBFCFE"/>
+  <text x="20" y="26" font-size="15" font-weight="700" fill="#1B2530">时空像一张绷紧的膜；大质量天体把它压出“坑”</text>
+
+  <!-- 网格膜 -->
+  <g stroke="#C9D3E0" stroke-width="1.5" fill="none">
+    <path d="M40,90 Q200,90 340,170 Q480,250 640,250"/>
+    <path d="M40,120 Q200,120 340,185 Q480,255 640,255"/>
+    <path d="M40,150 Q200,150 340,200 Q480,258 640,258"/>
+    <path d="M40,180 Q200,180 340,215 Q480,260 640,261"/>
+    <path d="M120,60 Q200,150 340,200 Q480,250 600,270"/>
+    <path d="M180,55 Q220,150 340,200 Q460,250 560,268"/>
+    <path d="M240,52 Q270,150 340,200 Q430,250 520,266"/>
+    <path d="M300,50 Q320,150 340,200 Q400,250 480,264"/>
+    <path d="M360,50 Q380,150 360,200 Q340,250 320,262"/>
+    <path d="M420,52 Q400,150 360,200 Q300,250 260,264"/>
+  </g>
+
+  <!-- 大质量天体 -->
+  <circle cx="340" cy="200" r="34" fill="#3B5BDB"/>
+  <circle cx="328" cy="190" r="12" fill="#6E8BFF" opacity="0.8"/>
+  <text x="340" y="205" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">恒星</text>
+
+  <!-- 沿测地线运动的行星 -->
+  <path d="M70,150 Q220,150 340,180 Q470,215 620,235" fill="none" stroke="#F59F00" stroke-width="3" stroke-dasharray="7 5"/>
+  <circle cx="620" cy="235" r="9" fill="#F59F00"/>
+  <path d="M430,205 L470,205" stroke="#F59F00" stroke-width="3"/>
+  <path d="M466,201 L470,205 L466,209" fill="#F59F00"/>
+
+  <text x="340" y="262" text-anchor="middle" font-size="12.5" fill="#8B96AA">行星沿弯曲时空中“最直的线”（测地线）运动 —— 看起来就像被引力吸引</text>
+</svg>

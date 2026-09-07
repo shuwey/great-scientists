@@ -1,0 +1,65 @@
+[
+  {
+    "file": "assets/img/history/hawking-portrait.jpg",
+    "desc": "霍金肖像",
+    "author": "Public domain",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3AStephen%20Hawking.StarChild.jpg"
+  },
+  {
+    "file": "assets/img/history/oxford.jpg",
+    "desc": "牛津大学",
+    "author": "Public domain",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3AOxford%20skyline.jpg"
+  },
+  {
+    "file": "assets/img/history/cambridge.jpg",
+    "desc": "剑桥大学",
+    "author": "Public domain",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3ACambridge%202013-23.png"
+  },
+  {
+    "file": "assets/img/history/als.jpg",
+    "desc": "霍金与轮椅",
+    "author": "CC BY-SA",
+    "license": "CC BY-SA",
+    "source": "https://commons.wikimedia.org/wiki/File%3AStephen%20Hawking%27s%20wheelchair%2C%20Science%20Museum%2C%20London.jpg"
+  },
+  {
+    "file": "assets/img/history/singularity.jpg",
+    "desc": "黑洞艺术想象",
+    "author": "Public domain",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3AArtist%E2%80%99s%20impression%20of%20the%20black%20hole%20inside%20NGC%20300%20X-1%20%28ESO%201004a%29.jpg"
+  },
+  {
+    "file": "assets/img/history/blackhole.jpg",
+    "desc": "M87 黑洞",
+    "author": "CC BY",
+    "license": "CC BY",
+    "source": "https://commons.wikimedia.org/wiki/File%3ABlack%20hole%20-%20Messier%2087.jpg"
+  },
+  {
+    "file": "assets/img/history/radiation.jpg",
+    "desc": "霍金辐射示意",
+    "author": "Public domain",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3AHow%20to%20Escape%20from%20a%20Black%20Hole.svg"
+  },
+  {
+    "file": "assets/img/history/brief-history.jpg",
+    "desc": "时间简史",
+    "author": "Public domain",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3APhoto%20during%20reading%20the%20book%20A%20BRIEF%20HISTORY%20OF%20TIME.jpg"
+  },
+  {
+    "file": "assets/img/history/cosmology.jpg",
+    "desc": "可观测宇宙",
+    "author": "CC BY-SA",
+    "license": "CC BY-SA",
+    "source": "https://commons.wikimedia.org/wiki/File%3AObservable%20Universe%20logarithmic%20illustration%20%28circular%20layout%20english%20annotations%29.png"
+  }
+]

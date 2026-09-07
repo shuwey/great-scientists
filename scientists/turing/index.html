@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>读懂图灵 · 给中学生的图灵科普</title>
+<meta name="description" content="读懂图灵：用中学生能听懂的话，讲清图灵机、可计算性、破译恩尼格玛，以及他如何点燃人工智能。">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-base="">
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="apple">🍎</span>读懂图灵</a>
+    <button class="nav-toggle" aria-label="打开菜单"><i></i><i></i><i></i></button>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="timeline.html">时间轴</a>
+      <a href="detail/turing-machine.html">图灵机：计算的“最小模型”</a>
+      <a href="detail/computability.html">可计算性：有些问题算不出</a>
+      <a href="detail/enigma.html">破译恩尼格玛：密码的战争</a>
+      <a href="detail/ai-test.html">机器能思考吗？图灵测试</a>
+      <a href="labs.html">玩一玩</a>
+      <a href="glossary.html">词典</a>
+    </div>
+  </div>
+  <div id="progress"></div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <span class="kicker">计算机与人工智能之父 · 1912—1954</span>
+      <h1>读懂<b>图灵</b></h1>
+      <p class="lede">他用一个假想的“纸带机器”定义了什么叫“可计算”，证明了有些问题机器永远算不出；二战中他破译德军密码拯救了无数生命，又率先追问“机器能思考吗”。</p>
+      <div class="hero-cta">
+        <a class="btn primary" href="detail/turing-machine.html">从核心成就说起 →</a>
+        <a class="btn ghost" href="timeline.html">看一生时间轴</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <img src="assets/img/draw/hero-turing.svg" alt="图灵插画" loading="lazy">
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">四大成就</span>
+      <h2>他最厉害的四件事</h2>
+      <p>点任意一张卡片，进入图文详解；看不懂的词，随时点开弹窗。</p>
+    </div>
+    <div class="grid g4">
+      <a class="ach-card" href="detail/turing-machine.html">
+        <div class="thumb" style="background:var(--brand-soft)">
+          <img src="assets/img/draw/thumb-turing-machine.svg" alt="图灵机：计算的“最小模型”">
+        </div>
+        <div class="body">
+          <span class="year">1936</span>
+          <h3>图灵机：计算的“最小模型”</h3>
+          <p>一条纸带，撑起了整个计算机世界。</p>
+          <span class="more">读这一篇 →</span>
+        </div>
+      </a>
+      <a class="ach-card" href="detail/computability.html">
+        <div class="thumb" style="background:var(--green-soft)">
+          <img src="assets/img/draw/thumb-computability.svg" alt="可计算性：有些问题算不出">
+        </div>
+        <div class="body">
+          <span class="year">1936</span>
+          <h3>可计算性：有些问题算不出</h3>
+          <p>机器很强，但有它永远够不着的问题。</p>
+          <span class="more">读这一篇 →</span>
+        </div>
+      </a>
+      <a class="ach-card" href="detail/enigma.html">
+        <div class="thumb" style="background:var(--purple-soft)">
+          <img src="assets/img/draw/thumb-enigma.svg" alt="破译恩尼格玛：密码的战争">
+        </div>
+        <div class="body">
+          <span class="year">1939–1945</span>
+          <h3>破译恩尼格玛：密码的战争</h3>
+          <p>和密码机赛跑，赢的是速度。</p>
+          <span class="more">读这一篇 →</span>
+        </div>
+      </a>
+      <a class="ach-card" href="detail/ai-test.html">
+        <div class="thumb" style="background:var(--orange-soft)">
+          <img src="assets/img/draw/thumb-ai-test.svg" alt="机器能思考吗？图灵测试">
+        </div>
+        <div class="body">
+          <span class="year">1950</span>
+          <h3>机器能思考吗？图灵测试</h3>
+          <p>能骗过人的机器，算不算“会想”？</p>
+          <span class="more">读这一篇 →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">先认识这个人</span>
+      <h2>他用“纸带与规则”定义了计算本身</h2>
+    </div>
+    <div class="bio">
+      <img src="assets/img/history/turing-portrait.jpg" alt="图灵肖像" class="bio-photo" loading="lazy">
+      <div>
+      <p>阿兰·图灵（1912—1954），英国数学家。1936 年他提出“图灵机”，把“计算”这件事用数学严格地说清楚。</p>
+      <p>二战期间，他在布莱切利园领导破译德军恩尼格玛密码，发明的“炸弹机”大幅缩短了战争。</p>
+      <p>战后他设计早期计算机，并提出“图灵测试”探讨机器智能；1954 年英年早逝，今天他被视为计算机科学与 AI 的先驱。</p>
+        <p style="margin-top:10px"><a class="btn ghost sm" href="timeline.html">看完整时间轴 →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">关于这个站</span>
+      <h2>给谁看、怎么用</h2>
+    </div>
+    <div class="callout">
+      <span class="ct">🎯 给谁看、怎么用</span>
+      <p>面向<b>中学生</b>的科普小站：按时间顺序讲故事，把难词讲成人话。每个核心概念都能点开弹窗看通俗解释；想深入就读“详解页”；想动手就玩“实验”；不确定哪个词什么意思，去<b>词典</b>里搜。</p>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand-f"><span class="apple" style="width:26px;height:26px;font-size:14px;border-radius:7px;background:linear-gradient(140deg,#3B5BDB,#6E8BFF);display:grid;place-items:center">🍎</span>读懂图灵</div>
+        <p style="margin:0;color:#8B96AA;font-size:13.5px">一个面向中学生的图灵科普小站。按时间顺序讲故事，把难词讲成人话。</p>
+      </div>
+      <div>
+        <h5>四处走走</h5>
+        <ul>
+          <li><a href="index.html">首页</a></li>
+          <li><a href="timeline.html">生平时间轴</a></li>
+          <li><a href="detail/turing-machine.html">图灵机：计算的“最小模型”</a></li>
+          <li><a href="detail/computability.html">可计算性：有些问题算不出</a></li>
+          <li><a href="detail/enigma.html">破译恩尼格玛：密码的战争</a></li>
+          <li><a href="detail/ai-test.html">机器能思考吗？图灵测试</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>更多</h5>
+        <ul>
+          <li><a href="labs.html">动手玩一玩</a></li>
+          <li><a href="glossary.html">术语词典</a></li>
+          <li><a href="about.html">资料来源与延伸阅读</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>课堂与自学用途 · 内容依据公开史料编写</span>
+      <span>历史图片来自 Wikimedia Commons</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" aria-label="回到顶部">↑</button>
+<script src="assets/js/terms.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

@@ -655,3 +655,44 @@ figure.fig figcaption b { color: var(--ink-2); }
   .tl-panel { display: block !important; }
   a { color: #000; }
 }
+
+/* ---------- 17. 影响世界的10个科学家 · 名单 ---------- */
+.roster { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 26px; }
+.roster-item {
+  border: 1px solid var(--line); border-radius: 14px; background: #fff;
+  padding: 15px 15px 16px; display: flex; flex-direction: column; gap: 4px;
+  transition: border-color .2s, box-shadow .2s, transform .2s;
+}
+.roster-item.done { border-color: var(--brand-line); box-shadow: var(--shadow-s); }
+.roster-item.done:hover { transform: translateY(-3px); box-shadow: var(--shadow-m); }
+.roster-idx { font-family: var(--mono); font-size: 12.5px; color: var(--ink-3); letter-spacing: .5px; }
+.roster-name { font-size: 16px; font-weight: 700; line-height: 1.25; margin: 2px 0 0; }
+.roster-en { font-size: 12px; color: var(--ink-3); }
+.roster-years { font-family: var(--mono); font-size: 12.5px; color: var(--brand); margin-top: 2px; }
+.roster-desc { font-size: 13px; color: var(--ink-2); line-height: 1.55; margin: 6px 0 8px; }
+.roster-pill {
+  align-self: flex-start; font-size: 11.5px; font-weight: 700;
+  padding: 2px 9px; border-radius: 7px; margin-top: auto;
+}
+.pill-done { background: var(--bg-alt); color: var(--brand); }
+.pill-plan { background: #FFF4E0; color: #B26A00; }
+.roster-note { font-size: 14px; color: var(--ink-2); margin-top: 18px; }
+
+/* 系列门户：科学家检索栏（仅根目录总览页使用） */
+.filter-bar {
+  display: flex; align-items: center; gap: 14px;
+  max-width: 620px; margin: 0 auto 28px;
+  background: var(--bg-alt); border: 1px solid var(--line);
+  border-radius: 12px; padding: 8px 14px;
+}
+.filter-bar input {
+  flex: 1; min-width: 0; border: 0; background: transparent; outline: none;
+  font-family: inherit; font-size: 15px; color: var(--ink);
+}
+.filter-bar input::placeholder { color: var(--ink-3); }
+.filter-bar input::-webkit-search-cancel-button { -webkit-appearance: none; }
+.filter-count { font-size: 13px; font-weight: 700; color: var(--brand); white-space: nowrap; }
+@media (max-width: 620px) { .filter-bar { margin-bottom: 20px; } }
+
+@media (max-width: 980px) { .roster { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 620px) { .roster { grid-template-columns: repeat(2, 1fr); } }

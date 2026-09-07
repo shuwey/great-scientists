@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="800" height="480" role="img">
+<rect width="800" height="480" fill="#FFFFFF"/>
+<rect x="150" y="196" width="470" height="120" rx="14" fill="#F4F7FC" stroke="#D4DBE5" stroke-width="3"/>
+<rect x="600" y="190" width="26" height="132" rx="8" fill="#EDF1F7" stroke="#D4DBE5" stroke-width="3"/>
+
+<path d="M176 208 Q 150 256 176 304" fill="none" stroke="#3B5BDB" stroke-width="7" stroke-linecap="round"/>
+<line x1="404" y1="336" x2="440" y2="266" stroke="#F59F00" stroke-width="8" stroke-linecap="round"/>
+<rect x="392" y="120" width="46" height="80" rx="10" fill="#FFF8E9" stroke="#F59F00" stroke-width="3"/>
+<circle cx="415" cy="110" r="15" fill="none" stroke="#F59F00" stroke-width="3"/>
+
+<g stroke="#E8590C" stroke-width="3" fill="none" stroke-linecap="round">
+<path d="M636 226 L176 226 Q 200 256 404 268 L415 210"/>
+<path d="M636 256 L180 256 Q 204 256 410 272 L415 210"/>
+<path d="M636 286 L180 286 Q 204 256 410 278 L415 210"/>
+</g>
+<circle cx="415" cy="206" r="7" fill="#E8590C"/>
+
+<text x="120" y="366" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#3B5BDB" text-anchor="middle">凹面主镜</text>
+<text x="404" y="392" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#F59F00" text-anchor="middle">45° 平面副镜</text>
+<text x="452" y="100" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#F59F00" text-anchor="start">目镜</text>
+<text x="636" y="348" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#E8590C" text-anchor="start">星光</text>
+<text x="400" y="448" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="20" font-weight="600" fill="#8B96AA" text-anchor="middle">光只被反射、不穿过玻璃 → 不会产生色差</text>
+</svg>

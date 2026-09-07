@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" font-family="-apple-system,Segoe UI,sans-serif">
+  <rect width="120" height="120" rx="16" fill="#EEF2FB"/>
+  <path d="M22,40 L70,40" stroke="#3B5BDB" stroke-width="3"/>
+  <polygon points="70,40 60,34 60,46" fill="#3B5BDB"/>
+  <rect x="72" y="22" width="14" height="76" rx="3" fill="#EDEFF4" stroke="#8B96AA" stroke-width="2"/>
+  <path d="M86,55 L102,40" stroke="#0CA678" stroke-width="3"/>
+  <circle cx="102" cy="40" r="6" fill="#0CA678"/>
+  <text x="60" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="#1B2530">光电效应</text>
+</svg>

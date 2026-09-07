@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="800" height="480" role="img">
+<rect width="800" height="480" fill="#FFFFFF"/>
+<defs><linearGradient id="pg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#CFE0FF"/><stop offset="1" stop-color="#E8EFFF"/>
+</linearGradient></defs>
+
+<!-- 白光入射（打在棱镜左面，y=214 处 x≈359，射线终点精确落在面上） -->
+<line x1="40" y1="214" x2="359" y2="214" stroke="#1B2530" stroke-width="4.5" stroke-linecap="round"/>
+<text x="46" y="198" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="19" font-weight="700" fill="#1B2530" text-anchor="start">白光（阳光）</text>
+
+<!-- 棱镜：顶角朝上，底面在下 -->
+<path d="M400 92 L318 336 L482 336 Z" fill="url(#pg)" stroke="#94A9D6" stroke-width="3" stroke-linejoin="round"/>
+
+<!-- 棱镜内部：仍是未分开的单束光，从入射点到出射点 -->
+<line x1="359" y1="214" x2="441" y2="214" stroke="#8B96AA" stroke-width="3" opacity=".7"/>
+<circle cx="359" cy="214" r="3.4" fill="#1B2530"/>
+<circle cx="441" cy="214" r="3.4" fill="#1B2530"/>
+
+<!-- 出射色散：所有色光朝同一方向（底面）偏折，红偏得少、紫偏得多 -->
+<g stroke-width="4.5" stroke-linecap="round" fill="none">
+<line x1="441" y1="214" x2="752" y2="224" stroke="#E03131"/>
+<line x1="441" y1="214" x2="752" y2="247" stroke="#F76707"/>
+<line x1="441" y1="214" x2="752" y2="270" stroke="#FAB005"/>
+<line x1="441" y1="214" x2="752" y2="292" stroke="#51CF66"/>
+<line x1="441" y1="214" x2="752" y2="315" stroke="#3B5BDB"/>
+<line x1="441" y1="214" x2="752" y2="337" stroke="#5F3DC4"/>
+<line x1="441" y1="214" x2="752" y2="360" stroke="#9C36B5"/>
+</g>
+
+<!-- 屏（墙）：麦克斯韦在窗上钻小孔，白光经棱镜后在墙上投出彩带 -->
+<line x1="750" y1="200" x2="750" y2="376" stroke="#D4DBE5" stroke-width="2.5" stroke-dasharray="6 6"/>
+<text x="750" y="190" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="15" font-weight="600" fill="#8B96AA" text-anchor="middle">屏（墙）</text>
+
+<!-- 色标 -->
+<text x="762" y="229" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#E03131" text-anchor="start">红</text>
+<text x="762" y="252" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#F76707" text-anchor="start">橙</text>
+<text x="762" y="275" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#D9A400" text-anchor="start">黄</text>
+<text x="762" y="297" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#2F9E44" text-anchor="start">绿</text>
+<text x="762" y="320" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#3B5BDB" text-anchor="start">蓝</text>
+<text x="762" y="342" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#5F3DC4" text-anchor="start">靛</text>
+<text x="762" y="365" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#9C36B5" text-anchor="start">紫</text>
+
+<text x="400" y="442" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="19" font-weight="600" fill="#8B96AA" text-anchor="middle">白光进入棱镜 → 各色偏折角度不同（都朝底面偏） → 在墙上散成七色光带</text>
+</svg>

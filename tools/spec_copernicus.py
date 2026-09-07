@@ -1,0 +1,211 @@
+# -*- coding: utf-8 -*-
+"""哥白尼子站内容规格（样板）。运行后生成 spec_copernicus.json。"""
+import json, os
+
+SPEC = {
+  "id": "copernicus",
+  "name": "哥白尼",
+  "en": "Nicolaus Copernicus",
+  "years": "1473–1543",
+  "kicker": "日心说之父 · 1473—1543",
+  "lede": "他把地球从宇宙的中心请了下来，让太阳坐了上去。一本临终才出版的书，悄悄改写了人类看天的方式。",
+  "meta": "读懂哥白尼：用中学生能听懂的话，讲清日心说如何颠覆了千年宇宙观。",
+  "biotitle": "他不是叛逆者，却掀翻了天空",
+  "bio": [
+    "尼古拉·哥白尼（1473—1543），波兰托伦人。他学过法律、医学和神学，却把最多心思花在星星上。",
+    "他一生大部分时间是个安静的教士兼医生，利用业余时间观测、计算，慢慢拼出一个大胆的想法：太阳，而不是地球，才是宇宙的中心。",
+    "他犹豫了很久才把想法写进书里；书出版时，他已躺在病床上，只来得及用目光与自己的著作告别。"
+  ],
+  "portrait": "copernicus-portrait.jpg",
+  "about_claim": "本页说明哥白尼子站内容的依据与延伸去处。",
+  "about_body": "<h2>资料来源</h2><p>本子站内容依据公开史料与科学史通识编写，核心事实（生卒、著作、日心说要点）与主流科学史一致。历史图片均来自 Wikimedia Commons 公有领域资源。</p><h2>延伸阅读</h2><p>想深入：哥白尼《天体运行论》（De revolutionibus orbium coelestium）中译或英译节选；以及《哥白尼革命》（托马斯·库恩）了解其思想史意义。</p>",
+  "tl_desc": "从托伦的少年到临终出版《天体运行论》：哥白尼一生的关键节点。",
+  "tl_claim": "1473 年出生在托伦，1543 年逝于弗龙堡。这七十年里，他用一个安静的念头——太阳在中心——把人类从宇宙中心的位置上请了下来。",
+  "cats": ["天文", "宇宙观", "方法", "历史"],
+  "hero_scene": "heliocentric",
+  "hero_params": {"label": "太阳居中，行星绕日运行"},
+
+  "pages": {
+    "heliocentric": {
+      "title": "日心说：太阳坐到中心",
+      "file": "detail/heliocentric.html",
+      "claim": "哥白尼最核心的一句：不是太阳绕地球转，而是地球和其他行星一起绕太阳转。",
+      "tags": ["日心说", "太阳系", "宇宙观"],
+      "year": "1543",
+      "card": "太阳在中心，地球只是绕日的一颗行星——这个念头，掀翻了千年宇宙观。",
+      "scene": "heliocentric",
+      "scene_params": {"label": "日心体系：太阳居中，行星绕日"},
+      "remember": "一句话记住：日心说不是“地球不动了”，而是“地球不再是宇宙唯一的主角”。",
+      "sideterms": ["heliocentrism", "geocentrism", "earth-orbit", "retrograde", "kepler"],
+      "sections": [
+        {"id": "solar", "h": "一、太阳坐在中心", "body": "哥白尼把宇宙的座位重新排了一次：太阳居中不动，水星、金星、地球、火星、木星、土星依次绕它转，最外一层是恒星天。地球，只是绕日行星中的普通一员。",
+         "fig": "heliocentric", "figalt": "日心体系示意图", "figcap": "太阳居中，行星按由近及远绕行——这就是日心说的骨架。"},
+        {"id": "earth", "h": "二、地球也会动", "body": "在地心说里，地球是静止的中心；哥白尼却让地球动了起来：它每天自转一圈（带来昼夜），每年绕太阳公转一圈（带来寒来暑往）。我们感觉不到“在动”，只因为我们在上面一起动。",
+         "figalt": "地球自转与公转", "figcap": "地球一边自转、一边绕日公转，这取代了“天穹每天绕地旋转”的旧说法。"},
+        {"id": "evidence", "h": "三、他能拿出证据吗", "body": "哥白尼的证据更多是“简洁”而非“观测碾压”：日心说能更自然地解释行星亮度的变化、逆行的成因，也顺带说清了为什么水星、金星从不远离太阳。真正用望远镜“实锤”的是后来的伽利略。",
+         "figalt": "行星逆行的解释", "figcap": "地心说要用复杂的“本轮”硬凑逆行；日心说里逆行只是地球超车外行星的视角错觉。"},
+        {"id": "legacy", "h": "四、为什么是革命", "body": "更重要的是“视角转换”：宇宙不再以人为中心。这个念头后来被开普勒、伽利略、牛顿接力推进，最终重塑了整个人类对自己在宇宙中位置的理解。",
+         "figalt": "哥白尼之后的连锁反应", "figcap": "一个安静的假设，撬动了整座天文学的骨架。"}
+      ]
+    },
+    "revolutionibus": {
+      "title": "《天体运行论》",
+      "file": "detail/revolutionibus.html",
+      "claim": "1543 年出版的这本书，把日心说写成了一套完整的数学模型——它更像一份“宇宙说明书”。",
+      "tags": ["1543", "著作", "数学模型"],
+      "year": "1543",
+      "card": "临终出版的一本书，用圆周运动把日心说写成可计算的体系。",
+      "scene": "orbit",
+      "scene_params": {"label": "书里的世界：行星按轨道运行"},
+      "remember": "一句话记住：《天体运行论》让“太阳在中心”从一个想法，变成了一组可以算、可以预言的公式。",
+      "sideterms": ["de-revolutionibus", "mathematics", "heliocentrism", "banned"],
+      "sections": [
+        {"id": "book", "h": "一、一本临终才出版的书", "body": "哥白尼很谨慎，怕自己的异想天开招来非议，书稿在抽屉里放了很久。直到朋友一再催促，才在 1543 年付印；传说书印好送到他床前时，他已奄奄一息。",
+         "fig": "revolutionibus", "figalt": "《天体运行论》书名页", "figcap": "书名页本身就是一件历史文物，标志着现代天文学的开端。"},
+        {"id": "content", "h": "二、书里到底写了什么", "body": "全书系统给出日心体系：太阳居中、地球自转并公转、行星次序与周期。它用大量几何推导，把“天怎么动”变成可以计算的题目。",
+         "figalt": "书中的宇宙模型", "figcap": "书里的宇宙：太阳居中，地球是绕日的一颗行星。"},
+        {"id": "math", "h": "三、用数学说话", "body": "哥白尼继承了古希腊“天球匀速圆周运动”的审美，用圆和圆 combinations 拟合行星位置。他相信：自然的真理，必须能用几何与数字精确表达。",
+         "figalt": "几何建模", "figcap": "把天文现象翻译成几何，是哥白尼方法的核心。"},
+        {"id": "ban", "h": "四、被禁与平反", "body": "起初教会反应平淡；直到伽利略用它支持日心说、挑战权威，这本书才在 1616 年被列为禁书，直到两个多世纪后才解除。思想的胜利，常常晚到。",
+         "figalt": "后来被列为禁书", "figcap": "一本科学书，曾因“说地球会动”而被禁。"}
+      ]
+    },
+    "earthmotion": {
+      "title": "地球真的在动",
+      "file": "detail/earthmotion.html",
+      "claim": "哥白尼最反直觉的一招：让“静止的大地”转起来——既自转，又公转。",
+      "tags": ["自转", "公转", "四季"],
+      "year": "约1510",
+      "card": "地球每天自转一圈、每年绕日一圈；我们感觉不到，只因一起在动。",
+      "scene": "orbit",
+      "scene_params": {"label": "地球绕日：公转带来四季"},
+      "remember": "一句话记住：不是天在绕着你我转，是脚下的地球带着你我一起转。",
+      "sideterms": ["earth-spin", "earth-orbit", "earth-axis", "geocentrism"],
+      "sections": [
+        {"id": "spin", "h": "一、地球自转：昼夜从哪来", "body": "哥白尼让地球绕地轴每天转一圈。于是我们看到的太阳东升西落，其实是地球自己在“翻身”。自转，解释了最日常的白昼与黑夜。",
+         "fig": "earthmotion", "figalt": "地球自转", "figcap": "地球自转带来昼夜——不必再让整个星空每天绕地旋转。"},
+        {"id": "orbit", "h": "二、地球公转：一年怎么走完", "body": "地球还沿着近乎圆形的轨道，每年绕太阳一圈。公转，是季节更替的根本原因。",
+         "figalt": "地球公转", "figcap": "公转一圈，就是一年。"},
+        {"id": "axis", "h": "三、地轴倾斜与四季", "body": "哥白尼之后的开普勒、牛顿进一步澄清：地轴是斜的（约 23.5°）。正是这点倾斜，让南北半球在不同时间接收阳光多少不同，形成春夏秋冬。",
+         "figalt": "地轴倾斜", "figcap": "地轴倾斜，是四季的真正作者。"},
+        {"id": "vs", "h": "四、和地心说比，好在哪", "body": "地心说也能“解释”昼夜与季节，却要叠无数复杂的本轮。日心说用更少的假设，得到更整齐的图景——科学的进步，常常就是“用更简单的道理，讲清更复杂的现象”。",
+         "figalt": "两种宇宙观对比", "figcap": "同样的现象，日心说给的解释更干净。"}
+      ]
+    },
+    "copernican": {
+      "title": "哥白尼革命",
+      "file": "detail/copernican.html",
+      "claim": "他做的事，远不止“换一个宇宙模型”——而是把人，从宇宙中心的宝座上请了下来。",
+      "tags": ["范式转换", "科学革命", "思想史"],
+      "year": "1514起",
+      "card": "一次视角的转换：宇宙不再以人为中心，这打开了现代科学的大门。",
+      "scene": "blackhole",
+      "scene_params": {"label": "视角转换：从“人为中心”到“地球只是行星”"},
+      "remember": "一句话记住：哥白尼革命不是“发现了新星球”，而是“换了一双看天的眼睛”。",
+      "sideterms": ["paradigm-shift", "geocentrism", "ptolemaic", "renaissance", "kepler", "galileo", "newton"],
+      "sections": [
+        {"id": "before", "h": "一、此前的宇宙观", "body": "在中世纪，托勒密的地心说加上“地球静止在中心”的观念，几乎是不可动摇的常识，还和宗教信仰绑在一起。天空，是为人类而存在的舞台。",
+         "fig": "copernican", "figalt": "此前的宇宙观", "figcap": "旧宇宙观：地球静止在中心，万物绕它运行。"},
+        {"id": "shift", "h": "二、视角转换", "body": "哥白尼把观察者“降格”为一颗普通行星上的居民。一旦承认地球也会动、也只是行星之一，许多旧难题（逆行、亮度变化）立刻变得自然。",
+         "figalt": "视角的转换", "figcap": "不是世界变了，是我们看世界的起点变了。"},
+        {"id": "after", "h": "三、连锁反应", "body": "开普勒用椭圆修正了哥白尼的圆轨道；伽利略用望远镜找到证据；牛顿用引力把这一切统一。哥白尼是点燃引线的人。",
+         "figalt": "科学的连锁反应", "figcap": "一人换视角，三代接力学。"},
+        {"id": "us", "h": "四、今天我们怎么看", "body": "今天我们知道太阳也不是宇宙中心（它绕银河系转）。但“人不是宇宙的特殊主角”这一课，从哥白尼开始，成了现代科学最谦逊也最有力的起点。",
+         "figalt": "今天的眼光", "figcap": "宇宙比他想的更大，但“换视角”的方法留了下来。"}
+      ]
+    }
+  },
+
+  "terms": {
+    "heliocentrism": {"name": "日心说", "cat": "宇宙观", "short": "太阳，而不是地球，坐在宇宙中心", "plain": "日心说认为太阳静止在中心，地球和其他行星一起绕太阳转。它取代了统治千年的地心说，是科学史上最大的观念翻盘之一。", "analogy": "以前以为自己是客厅正中的主角；日心说告诉我们：咱们只是绕着吊灯转的一盏小灯。", "page": "heliocentric", "anchor": "#solar", "related": ["geocentrism", "earth-orbit", "sun", "kepler"]},
+    "geocentrism": {"name": "地心说", "cat": "宇宙观", "short": "地球静止在宇宙中心，万物绕它转", "plain": "地心说认为地球不动、位居中心，日月星辰都绕地球运行。它统治了欧洲近两千年，代表人物是托勒密。", "analogy": "把自家院子当成全世界的中心——直觉上很自然，却经不起细算。", "page": "copernican", "anchor": "#before", "related": ["ptolemaic", "heliocentrism", "paradigm-shift"]},
+    "ptolemaic": {"name": "托勒密体系", "cat": "宇宙观", "short": "用地心+本轮硬凑出行星轨迹", "plain": "托勒密把地心说写成精巧的数学：行星在大圆（均轮）上再套小圆（本轮）运动，用复杂结构拟合观测。它能算得相当准，却越来越臃肿。", "analogy": "为了证明“地球不动”，不得不在天上画一层又一层的圆圈。", "page": "copernican", "anchor": "#before", "related": ["geocentrism", "epicycle", "heliocentrism"]},
+    "epicycle": {"name": "本轮", "cat": "天文", "short": "套在轨道上的小圆圈", "plain": "本轮是托勒密体系里的小圆：行星先绕一个小圆转，小圆的中心再绕大圆转。靠叠加足够多的本轮，可以逼近真实的复杂轨迹。", "analogy": "像在旋转木马上再转一圈——两层转叠加出拐弯的效果。", "page": "heliocentric", "anchor": "#evidence", "related": ["ptolemaic", "retrograde"]},
+    "retrograde": {"name": "行星逆行", "cat": "天文", "short": "行星偶尔“倒着走”的错觉", "plain": "从地球看，外行星有时会短暂“向后”移动，再恢复向前。地心说要用本轮硬凑；日心说里这只是地球公转超车外行星时的视角错觉。", "analogy": "你坐快车超过慢车时，对方好像在往后退——其实它还在往前。", "page": "heliocentric", "anchor": "#evidence", "related": ["epicycle", "earth-orbit", "heliocentrism"]},
+    "earth-orbit": {"name": "地球公转", "cat": "天文", "short": "地球每年绕太阳一圈", "plain": "哥白尼让地球沿近似圆形的轨道每年绕太阳一圈，这带来了寒来暑往的一年。公转是日心说成立的关键动作之一。", "analogy": "地球像在操场上绕旗杆慢跑，一年正好一圈。", "page": "earthmotion", "anchor": "#orbit", "related": ["earth-spin", "earth-axis", "heliocentrism"]},
+    "earth-spin": {"name": "地球自转", "cat": "天文", "short": "地球每天自己转一圈", "plain": "哥白尼让地球绕地轴每天转一圈，于是有了昼夜。我们看到的太阳东升西落，其实是地球在“翻身”。", "analogy": "你坐在旋转椅上转一圈，窗外的景就“绕着你转”——可真正动的是椅子。", "page": "earthmotion", "anchor": "#spin", "related": ["earth-orbit", "earth-axis"]},
+    "earth-axis": {"name": "地轴倾斜", "cat": "天文", "short": "地球斜着身子转，约23.5°", "plain": "地轴相对公转轨道面倾斜约 23.5°。正是这点倾斜，让南北半球接受到的阳光随季节变化，形成春夏秋冬。", "analogy": "一个斜着转的陀螺，顶面朝向会随位置变化——四季就这么来的。", "page": "earthmotion", "anchor": "#axis", "related": ["earth-spin", "earth-orbit"]},
+    "sun": {"name": "太阳", "cat": "天文", "short": "太阳系的中心恒星", "plain": "在日心说里，太阳静止在中心，是所有行星绕转的引力中心（引力的完整解释要等牛顿）。哥白尼把太阳请回了“C位”。", "analogy": "太阳是操场的旗杆，地球是绕它跑的那个人。", "page": "heliocentric", "anchor": "#solar", "related": ["heliocentrism", "earth-orbit"]},
+    "planet-order": {"name": "行星次序", "cat": "天文", "short": "水金地火木土，由近及远", "plain": "哥白尼排定了行星由近及远的次序：水星、金星、地球、火星、木星、土星。这个次序让亮度与逆行的变化有了自然的解释。", "analogy": "把跑道按里圈到外圈编号，谁快谁慢一目了然。", "page": "heliocentric", "anchor": "#solar", "related": ["heliocentrism", "earth-orbit"]},
+    "celestial-sphere": {"name": "恒星天", "cat": "天文", "short": "包裹一切的最外层天球", "plain": "哥白尼仍沿用“最外层是恒星天”的旧框架，认为恒星固定在遥远的天球上。他没料到恒星其实远得难以想象，也不绕地球转。", "analogy": "像把一个大圆顶扣在宇宙最外面，星星都钉在顶上。", "page": "heliocentric", "anchor": "#solar", "related": ["heliocentrism", "sun"]},
+    "paradigm-shift": {"name": "范式转换", "cat": "方法", "short": "不是改答案，是换看问题的方式", "plain": "哥白尼带来的不是某个新数据，而是观察起点的整体更换：从“地球为中心”到“地球只是行星”。这种整体框架的更替，后来被库恩称为“范式转换”。", "analogy": "不是把地图改个地名，而是把“上北下南”换成了另一种坐标。", "page": "copernican", "anchor": "#shift", "related": ["geocentrism", "heliocentrism", "renaissance"]},
+    "model": {"name": "数学模型", "cat": "方法", "short": "用圆和公式把天文写成可算的题", "plain": "哥白尼相信天体运行能用几何与数字精确描述。他用圆周运动建模行星轨道，让“天怎么动”变成可以计算的题目。", "analogy": "把天象翻译成一组公式，像给宇宙写使用说明书。", "page": "revolutionibus", "anchor": "#math", "related": ["mathematics", "de-revolutionibus"]},
+    "mathematics": {"name": "数学化", "cat": "方法", "short": "把自然规律写成公式", "plain": "哥白尼继承“自然之书用数学语言写成”的信念：物理真理必须能用几何与数字表达，而不只是定性描述。", "analogy": "看天不能只说“挺亮”，而要能算出“亮多少、怎么变”。", "page": "revolutionibus", "anchor": "#math", "related": ["model", "observation"]},
+    "observation": {"name": "观测", "cat": "方法", "short": "拿证据说话的第一步", "plain": "哥白尼长期用天文仪器（如星盘、象限仪）记录行星位置。他的体系建立在长期、细致的观测数据之上，而非空想。", "analogy": "先睁眼仔细量，再开口下结论。", "page": "revolutionibus", "anchor": "#content", "related": ["model", "mathematics"]},
+    "de-revolutionibus": {"name": "《天体运行论》", "cat": "历史", "short": "1543 年那本改变天文学的书", "plain": "哥白尼在 1543 年出版《天体运行论》，系统给出日心体系与全套数学推导，标志着现代天文学的开端。", "analogy": "相当于给宇宙发了一份正式的“新版说明书”。", "page": "revolutionibus", "anchor": "#book", "related": ["heliocentrism", "banned", "mathematics"]},
+    "banned": {"name": "被列为禁书", "cat": "历史", "short": "因为“说地球会动”", "plain": "起初教会反应平淡；直到伽利略用日心说挑战权威，这本书才在 1616 年被列为禁书，两个多世纪后才解除。", "analogy": "一个科学结论，曾因“不合旧观念”而被封口。", "page": "revolutionibus", "anchor": "#ban", "related": ["de-revolutionibus", "galileo", "church"]},
+    "renaissance": {"name": "文艺复兴", "cat": "历史", "short": "重新打量古典、也敢质疑权威的时代", "plain": "哥白尼生活在文艺复兴时期，人们重新研究古希腊文献、也重新敢于用理性审视旧权威。这种氛围，给了日心说生长的土壤。", "analogy": "一个大家都在“重新翻老书、也敢提新问题”的开明时代。", "page": "copernican", "anchor": "#before", "related": ["paradigm-shift", "humanism"]},
+    "humanism": {"name": "人文主义", "cat": "历史", "short": "把人重新放回思考的中心", "plain": "文艺复兴的人文主义重视人的理性与古典学问。它间接鼓励学者用自己的观察和推理，而非只引经据典。", "analogy": "少背教条、多用自己的眼睛和脑子。", "page": "copernican", "anchor": "#shift", "related": ["renaissance", "paradigm-shift"]},
+    "kepler": {"name": "开普勒", "cat": "历史", "short": "把圆改成椭圆的人", "plain": "开普勒在哥白尼之后提出行星沿椭圆轨道绕日，并给出周期与距离的定量定律，把日心说从“猜想的圆”变成“可计算的椭圆”。", "analogy": "哥白尼画了草图，开普勒把它改成了精确的建筑图纸。", "page": "copernican", "anchor": "#after", "related": ["heliocentrism", "ellipse", "newton"]},
+    "ellipse": {"name": "椭圆轨道", "cat": "天文", "short": "行星走的不是正圆，是椭圆", "plain": "开普勒发现行星轨道是椭圆、太阳位于其中一个焦点。这比哥白尼的正圆更准确地吻合观测，也奠定了天体力学。", "analogy": "把正圆的“O”轻轻压扁成“0”，轨迹就对了。", "page": "copernican", "anchor": "#after", "related": ["kepler", "heliocentrism"]},
+    "galileo": {"name": "伽利略", "cat": "历史", "short": "用望远镜为日心说找证据", "plain": "伽利略用望远镜看到木星卫星、金星盈亏，成为日心说的强力证据；他也因此与教会冲突。他接过了哥白尼点燃的引线。", "analogy": "哥白尼提出猜想，伽利略拿望远镜去“现场取证”。", "page": "copernican", "anchor": "#after", "related": ["heliocentrism", "telescope", "kepler"]},
+    "telescope": {"name": "望远镜", "cat": "天文", "short": "把人类的眼睛伸向星空", "plain": "伽利略之后的望远镜观测，让日心说从纸面计算变成肉眼可验证的事实。哥白尼时代还没有望远镜，他的证据更多是几何上的简洁。", "analogy": "哥白尼用脑子算出了答案，后来的人才用管子亲眼看见。", "page": "copernican", "anchor": "#after", "related": ["galileo", "heliocentrism"]},
+    "newton": {"name": "牛顿", "cat": "历史", "short": "用引力把一切统一", "plain": "牛顿用万有引力与运动定律，解释了为什么行星会绕太阳转。哥白尼的“日心”终于有了力学根基。", "analogy": "哥白尼说“地球在绕太阳转”，牛顿回答了“凭什么转”。", "page": "copernican", "anchor": "#after", "related": ["kepler", "heliocentrism", "gravity"]},
+    "gravity": {"name": "引力", "cat": "天文", "short": "让天体彼此吸引的力", "plain": "牛顿之后，太阳靠引力“拉住”行星，使它们绕日运行。日心说从此不只是几何模型，而是有因果的物理理论。", "analogy": "看不见的橡皮筋，把行星拴在太阳身边。", "page": "copernican", "anchor": "#after", "related": ["newton", "heliocentrism"]},
+    "church": {"name": "教会", "cat": "历史", "short": "当时掌握“真理解释权”的力量", "plain": "16—17 世纪，天主教会把地心说与教义绑在一起。日心说动摇了这套权威，因此招致抵制与审判。", "analogy": "一边是望远镜里的真实，一边是几百年来的规定。", "page": "revolutionibus", "anchor": "#ban", "related": ["banned", "galileo"]},
+    "canon": {"name": "教士", "cat": "历史", "short": "哥白尼的“正职”", "plain": "哥白尼大半生担任神职人员（教士/ canon），有稳定收入与时间钻研天文。科学研究，是他“业余”的热爱。", "analogy": "白天是神职人员，夜里是数星星的人。", "related": ["frombork", "copernicus-bio"]},
+    "frombork": {"name": "弗龙堡", "cat": "历史", "short": "他观测星空的地方", "plain": "哥白尼在波罗的海边的弗龙堡（Frombork）居住、行医并观测天象，他的许多计算就完成于这里的塔楼。", "analogy": "他真正的“天文台”，是一座位海边小城的塔楼。", "related": ["canon", "copernicus-bio"]},
+    "copernicus-bio": {"name": "尼古拉·哥白尼", "cat": "历史", "short": "1473—1543，日心说提出者", "plain": "波兰天文学家，提出日心说、写就《天体运行论》，被公认为现代天文学与科学革命的起点人物。", "analogy": "他像是悄悄把“地球从宇宙中心”请下来的人。", "related": ["heliocentrism", "de-revolutionibus", "torun"]},
+    "torun": {"name": "托伦", "cat": "历史", "short": "哥白尼的出生地", "plain": "哥白尼 1473 年生于波兰托伦（Toruń）一个商人家庭。这座中世纪老城至今仍以他为荣。", "analogy": "一切的起点，是一座维斯瓦河畔的小城。", "related": ["copernicus-bio"]},
+    "krakow": {"name": "克拉科夫大学", "cat": "历史", "short": "他最早求学的地方", "plain": "哥白尼在克拉科夫大学接触天文学与数学，那里是当时波兰学术的中心，点燃了他对星空的兴趣。", "analogy": "他“入坑”天文的第一站。", "related": ["copernicus-bio", "bolonga"]},
+    "bolonga": {"name": "博洛尼亚/帕多瓦", "cat": "历史", "short": "他留学意大利，学法律也学天文", "plain": "哥白尼曾赴意大利的博洛尼亚、帕多瓦等地求学，接触了更前沿的天文学与古希腊文献，日心说的种子在此萌芽。", "analogy": "在意大利，他既拿了法学学位，也偷偷把天文底子打厚了。", "related": ["krakow", "copernicus-bio"]},
+    "copernican-timid": {"name": "谨慎的发表", "cat": "方法", "short": "他犹豫了很久才出书", "plain": "哥白尼担心日心说招来非议，书稿长期未公开发表，直到友人催促、且以“假设”口吻写作，才在晚年付印。", "analogy": "一个颠覆性的想法，被他小心翼翼地揣在怀里很多年。", "page": "revolutionibus", "anchor": "#book", "related": ["de-revolutionibus", "paradigm-shift"]}
+  },
+
+  "timeline": [
+    {"year": 1473, "id": "torun", "title": "生于托伦", "img": "copernicus-portrait.jpg", "alt": "哥白尼肖像", "fig": "哥白尼 1473 年生于波兰托伦一个商人家庭。", "body": "2 月 19 日，尼古拉·哥白尼生于维斯瓦河畔的托伦。少年丧父后，由舅舅抚养，走上求学之路。"},
+    {"year": 1491, "id": "krakow", "title": "克拉科夫大学", "img": "copernicus-krakow.jpg", "alt": "克拉科夫大学", "fig": "克拉科夫大学，哥白尼最早求学之处。", "body": "进入克拉科夫大学，研习天文学与数学，第一次系统接触星空与测算，兴趣就此点燃。"},
+    {"year": 1496, "id": "bolonga", "title": "留学意大利", "img": "copernicus-bologna.jpg", "alt": "博洛尼亚大学", "fig": "意大利的大学，哥白尼在此接触前沿天文与古希腊文献。", "body": "赴意大利博洛尼亚、帕多瓦等地求学，钻研法律、医学与天文学，也读到了更完整的古希腊宇宙论。"},
+    {"year": 1503, "title": "拿到学位，回乡任职", "img": "copernicus-canon.jpg", "alt": "哥白尼担任教士", "fig": "回国后他担任教士，有了稳定收入与时间。", "body": "取得教会法学位后回到波兰，担任神职人员（教士），在安稳的职务之余持续观测星空。"},
+    {"year": 1510, "id": "frombork", "title": "定居弗龙堡", "img": "copernicus-frombork.jpg", "alt": "弗龙堡塔楼", "fig": "弗龙堡，哥白尼观测与研究的主要地点。", "body": "迁居波罗的海边的弗龙堡，在塔楼里安置仪器、记录行星位置，日心说的计算在此成形。"},
+    {"year": 1514, "title": "日心说初稿在友人间流传", "img": "copernicus-manuscript.jpg", "alt": "哥白尼手稿", "fig": "他的核心想法，先以简短手稿在朋友圈传阅。", "body": "哥白尼把日心说的初步想法写成简短手稿，只在信任的友人间流传，尚未公开挑战旧说。"},
+    {"year": 1530, "title": "体系渐成", "img": "copernicus-solar.jpg", "alt": "日心体系图", "fig": "日心体系：太阳居中，地球绕日。", "body": "经过数十年观测与计算，完整的日心体系日渐成熟：太阳居中、地球自转并公转、行星按次序绕行。"},
+    {"year": 1543, "id": "de-revolutionibus", "title": "《天体运行论》出版", "img": "copernicus-de-revolutionibus.jpg", "alt": "《天体运行论》", "fig": "1543 年出版的《天体运行论》，现代天文学开端的标志。", "body": "在友人与学生催促下，《天体运行论》终于付印。传说书送到时，哥白尼已临终，只得以目光与之告别。"},
+    {"year": 1543, "title": "逝于弗龙堡", "img": "copernicus-tomb.jpg", "alt": "哥白尼之墓", "fig": "哥白尼安葬于弗龙堡。", "body": "5 月 24 日，哥白尼逝世，享年 70 岁。他未能亲见自己的理论如何改变世界。"},
+    {"year": 1616, "id": "banned", "title": "被列为禁书", "img": "copernicus-banned.jpg", "alt": "禁书相关史料", "fig": "因伽利略的宣扬，日心说著作受到教会压制。", "body": "教会判定日心说“荒谬且与经文冲突”，《天体运行论》被列为禁书。思想的反扑，来得比预想猛烈。"},
+    {"year": 1619, "title": "开普勒修正为椭圆", "img": "copernicus-kepler.svg", "alt": "开普勒的椭圆轨道", "fig": "开普勒把正圆改成椭圆，日心说更精确。", "body": "开普勒提出行星沿椭圆轨道运行，并给出周期—距离的定量定律，把哥白尼的草图变成精确蓝图。"},
+    {"year": 1687, "title": "牛顿给出引力根基", "img": "copernicus-newton.jpg", "alt": "牛顿与引力", "fig": "牛顿用引力解释行星为何绕日。", "body": "牛顿发表万有引力与运动定律，回答了“行星凭什么绕太阳转”，日心说从此有了完整的力学根基。"},
+    {"year": 1835, "title": "从禁书目录移除", "img": "copernicus-monument.jpg", "alt": "哥白尼纪念碑", "fig": "后世为哥白尼立起的纪念碑。", "body": "《天体运行论》终于从教会禁书目录中移除。两个多世纪后，世界承认：那双“看天的眼睛”，确实换对了。"}
+  ],
+
+  "labs": [
+    {"key": "solar", "kind": "orbit", "icon": "🌞", "title": "太阳系：行星绕太阳转",
+     "intro": "拖动“动画速度”，看行星如何按由近及远的次序绕太阳运行。哥白尼让太阳坐到了中心。",
+     "desc": "水星最快、土星最慢；离太阳越远，转一圈越久。",
+     "ctrl": [{"name": "speed", "label": "动画速度", "min": 0.2, "max": 3, "value": 1, "step": 0.1, "init": "1.0×"}],
+     "params": {"center": "日", "centerColor": "#E8590C", "label": "行星绕太阳运行：由近及远，越远越慢",
+                "bodies": [{"name": "水", "r": 45, "period": 88, "color": "#E8590C"}, {"name": "金", "r": 80, "period": 225, "color": "#C98A3C"}, {"name": "地", "r": 120, "period": 365, "color": "#3B5BDB"}, {"name": "火", "r": 165, "period": 687, "color": "#6741D9"}, {"name": "木", "r": 215, "period": 4333, "color": "#2F9E44"}, {"name": "土", "r": 260, "period": 10759, "color": "#5C6B82"}]}},
+    {"key": "retro", "kind": "graph", "icon": "📉", "title": "行星的“逆行”错觉",
+     "intro": "拖动滑块，看一条会“折返”的曲线——这正是地心说要用复杂本轮去硬凑、日心说却自然解释的现象。",
+     "desc": "横轴是时间，纵轴是行星在天上的位置；中间的“折返”就是逆行。",
+     "ctrl": [{"name": "param1", "label": "振幅 A", "min": 0.5, "max": 2, "value": 1, "step": 0.1, "init": "1.0"}, {"name": "param2", "label": "频率 k", "min": 0.5, "max": 2, "value": 1, "step": 0.1, "init": "1.0"}],
+     "params": {"expr": "sine", "label": "行星视位置中的“逆行折返”（日心说视角下的自然结果）"}},
+    {"key": "speed", "kind": "graph", "icon": "🐢", "title": "越远越慢：距离与周期",
+     "intro": "拖动滑块改变增长速率，看曲线如何随距离变陡——离太阳越远的行星，公转一圈越久。",
+     "desc": "用一条上升曲线示意：距离越大，完成一圈所需的时间越长。",
+     "ctrl": [{"name": "param1", "label": "速率 r", "min": 0.3, "max": 1.5, "value": 0.6, "step": 0.1, "init": "0.6"}, {"name": "param2", "label": "形状", "min": 0.5, "max": 2, "value": 1, "step": 0.1, "init": "1.0"}],
+     "params": {"expr": "growth", "label": "越远的行星，公转周期越长（距离—周期关系）"}}
+  ],
+
+  "images": [
+    {"file": "copernicus-portrait.jpg", "wiki": "File:Nikolaus Kopernikus.jpg", "q": "Nicolaus Copernicus portrait", "desc": "哥白尼肖像", "author": "Public domain", "license": "Public domain"},
+    {"file": "copernicus-krakow.jpg", "wiki": "File:Collegium Maius Kraków.jpg", "q": "Collegium Maius Krakow university", "desc": "克拉科夫大学（哥白尼求学地）", "author": "Public domain", "license": "Public domain"},
+    {"file": "copernicus-bologna.jpg", "wiki": "File:Bust of Nicolaus Copernicus in Bologna University.jpg", "q": "Copernicus bust Bologna University", "desc": "博洛尼亚大学（哥白尼留学地）", "author": "Public domain", "license": "Public domain"},
+    {"file": "copernicus-canon.jpg", "wiki": "File:Frombork-Cathedral-Altars-Tower-Curia-4b-final.jpg", "q": "Frombork Cathedral interior", "desc": "弗龙堡主教座堂（哥白尼任教士之处）", "author": "Public domain", "license": "Public domain"},
+    {"file": "copernicus-frombork.jpg", "wiki": "File:Frombork - panorama (2).jpg", "q": "Frombork panorama town", "desc": "弗龙堡", "author": "Public domain", "license": "Public domain"},
+    {"file": "copernicus-manuscript.jpg", "wiki": "File:De Revolutionibus manuscript p9b.jpg", "q": "Copernicus manuscript handwriting", "desc": "哥白尼手稿", "author": "Public domain", "license": "Public domain"},
+    {"file": "copernicus-solar.jpg", "wiki": "File:Heliocentric solar system.png", "q": "heliocentric solar system diagram", "desc": "日心体系示意图", "author": "Public domain", "license": "Public domain"},
+    {"file": "copernicus-de-revolutionibus.jpg", "wiki": "File:De revolutionibus-Copernicus Illustrates Heliocentric Order of Planets not Orbits.jpg", "q": "De revolutionibus heliocentric order planets", "desc": "《天体运行论》中的日心秩序图", "author": "Public domain", "license": "Public domain"},
+    {"file": "copernicus-banned.jpg", "wiki": "File:Index Librorum Prohibitorum 1.jpg", "q": "Index Librorum Prohibitorum title page", "desc": "禁书目录相关史料", "author": "Public domain", "license": "Public domain"},
+    {"file": "copernicus-kepler.svg", "wiki": "File:Kepler-orbits.svg", "q": "Kepler ellipse orbit", "desc": "开普勒椭圆轨道", "author": "Public domain", "license": "Public domain"},
+    {"file": "copernicus-newton.jpg", "wiki": "File:GodfreyKneller-IsaacNewton-1689.jpg", "q": "Isaac Newton portrait Kneller", "desc": "牛顿肖像", "author": "Public domain", "license": "Public domain"},
+    {"file": "copernicus-monument.jpg", "wiki": "File:Warsaw 2023 114 Nicolaus Copernicus Monument.jpg", "q": "Copernicus Monument Warsaw", "desc": "华沙哥白尼纪念碑", "author": "Public domain", "license": "Public domain"},
+    {"file": "copernicus-tomb.jpg", "wiki": "File:Frombork Copernicus Grave.jpg", "q": "Copernicus grave Frombork", "desc": "弗龙堡主教座堂内哥白尼墓", "author": "Public domain", "license": "Public domain"},
+    {"file": "copernicus-torun.jpg", "wiki": "File:Toruń - Old Town by night 01.jpg", "q": "Torun old town panorama", "desc": "托伦老城（哥白尼出生地）", "author": "Public domain", "license": "Public domain"}
+  ]
+}
+
+if __name__ == "__main__":
+    out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "spec_copernicus.json")
+    json.dump(SPEC, open(out, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    print("wrote", out)

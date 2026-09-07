@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>动手玩一玩 · 三个麦克斯韦小实验 | 读懂麦克斯韦</title>
+<meta name="description" content="三个可直接在网页上操作的互动演示。拖动滑块，亲眼看见麦克斯韦讲过的道理。">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-base="">
+<nav class="nav"><div class="nav-inner">
+<a class="brand" href="index.html"><span class="apple">🍎</span>读懂麦克斯韦</a>
+<button class="nav-toggle" aria-label="打开菜单"><i></i><i></i><i></i></button>
+<div class="nav-links"><a href="index.html">首页</a><a href="timeline.html">时间轴</a>      <a href="detail/equations.html">麦克斯韦方程组：把电、磁、光写成一体</a>
+      <a href="detail/light.html">光，原来是一种电磁波</a>
+      <a href="detail/gas.html">气体动理论：分子在乱窜</a>
+      <a href="detail/rings.html">土星环：为什么不会散？</a><a href="labs.html">玩一玩</a><a href="glossary.html">词典</a></div>
+</div><div id="progress"></div></nav>
+<div class="page-head"><div class="wrap">
+<div class="crumb"><a href="index.html">首页</a> · 玩一玩</div>
+<h1>动手玩一玩</h1>
+<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块，亲眼看见麦克斯韦讲过的道理。</p>
+</div></div>
+<section><div class="wrap">
+    <h2 id="field" style="font-size:25px;margin:8px 0 6px">🔗 实验1 · 电磁场：看不见的力线</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">拖动“场强”，看两根带电棒之间的力线如何变密变疏。</p>
+    <div class="lab" data-lab="field">
+      <div class="lab-head"><h4>电磁场：看不见的力线</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">场越强，力线越密——这就是“场”的直观图像。</p>
+      <canvas></canvas>
+      <div class="lab-controls">
+        <div class="ctrl">
+          <label>场强 <span class="v">1.0</span></label>
+          <input type="range" data-ctrl="strength" min="0.3" max="1.8" value="1" step="0.1">
+        </div>
+      </div>
+      <div class="lab-readout"></div>
+    </div>
+    <h2 id="wave" style="font-size:25px;margin:46px 0 6px">🌊 实验2 · 电磁波：振荡着向前传</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">拖动“频率”与“振幅”，看电场与磁场如何结伴向前传播。</p>
+    <div class="lab" data-lab="wave">
+      <div class="lab-head"><h4>电磁波：振荡着向前传</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">频率越高、波长越短——这正是整条电磁波谱的来历。</p>
+      <canvas></canvas>
+      <div class="lab-controls">
+        <div class="ctrl">
+          <label>频率 <span class="v">1.0</span></label>
+          <input type="range" data-ctrl="freq" min="0.3" max="2" value="1" step="0.1">
+        </div>
+        <div class="ctrl">
+          <label>振幅 <span class="v">1.0</span></label>
+          <input type="range" data-ctrl="amp" min="0.4" max="1.6" value="1" step="0.1">
+        </div>
+      </div>
+      <div class="lab-readout"></div>
+    </div>
+    <h2 id="speed" style="font-size:25px;margin:46px 0 6px">📊 实验3 · 分子速率分布：钟形的一群</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">拖动“加热”，看分子速率的钟形分布如何整体右移、变宽。</p>
+    <div class="lab" data-lab="speed">
+      <div class="lab-head"><h4>分子速率分布：钟形的一群</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">温度越高，分子平均跑得越快，快慢差距也越大。</p>
+      <canvas></canvas>
+      <div class="lab-controls">
+        <div class="ctrl">
+          <label>温度 <span class="v">1.0</span></label>
+          <input type="range" data-ctrl="param1" min="0.3" max="1.8" value="1" step="0.1">
+        </div>
+        <div class="ctrl">
+          <label>展宽 <span class="v">1.0</span></label>
+          <input type="range" data-ctrl="param2" min="0.6" max="2" value="1" step="0.1">
+        </div>
+      </div>
+      <div class="lab-readout"></div>
+    </div>
+<p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/equations.html">读麦克斯韦方程组：把电、磁、光写成一体 →</a>
+<a class="btn ghost" href="detail/light.html">读光，原来是一种电磁波 →</a>
+<a class="btn ghost" href="detail/gas.html">读气体动理论：分子在乱窜 →</a>
+<a class="btn ghost" href="detail/rings.html">读土星环：为什么不会散？ →</a></p>
+</div></section>
+<footer class="foot"><div class="wrap"><div class="foot-grid">
+<div><div class="brand-f"><span class="apple" style="width:26px;height:26px;font-size:14px;border-radius:7px;background:linear-gradient(140deg,#3B5BDB,#6E8BFF);display:grid;place-items:center">🍎</span>读懂麦克斯韦</div><p style="margin:0;color:#8B96AA;font-size:13.5px">面向中学生的麦克斯韦科普小站。</p></div>
+<div><h5>四处走走</h5><ul><li><a href="index.html">首页</a></li><li><a href="timeline.html">时间轴</a></li>          <li><a href="detail/equations.html">麦克斯韦方程组：把电、磁、光写成一体</a></li>
+          <li><a href="detail/light.html">光，原来是一种电磁波</a></li>
+          <li><a href="detail/gas.html">气体动理论：分子在乱窜</a></li>
+          <li><a href="detail/rings.html">土星环：为什么不会散？</a></li></ul></div>
+<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li></ul></div>
+</div><div class="foot-bottom"><span>课堂与自学用途 · 内容依据公开史料编写</span><span>历史图片来自 Wikimedia Commons</span></div></div></footer>
+<button class="to-top" aria-label="回到顶部">↑</button>
+<script src="assets/js/terms.js"></script>
+<script src="assets/js/site.js"></script>
+</body></html>

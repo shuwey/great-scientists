@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>动手玩一玩 · 三个门捷列夫小实验 | 读懂门捷列夫</title>
+<meta name="description" content="三个可直接在网页上操作的互动演示。拖动滑块，亲眼看见门捷列夫讲过的道理。">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-base="">
+<nav class="nav"><div class="nav-inner">
+<a class="brand" href="index.html"><span class="apple">🍎</span>读懂门捷列夫</a>
+<button class="nav-toggle" aria-label="打开菜单"><i></i><i></i><i></i></button>
+<div class="nav-links"><a href="index.html">首页</a><a href="timeline.html">时间轴</a>      <a href="detail/table.html">元素周期表：给元素排座位</a>
+      <a href="detail/law.html">周期律：性质会“循环”</a>
+      <a href="detail/predict.html">大胆预言：留白的格子</a>
+      <a href="detail/legacy.html">影响：现代化学的骨架</a><a href="labs.html">玩一玩</a><a href="glossary.html">词典</a></div>
+</div><div id="progress"></div></nav>
+<div class="page-head"><div class="wrap">
+<div class="crumb"><a href="index.html">首页</a> · 玩一玩</div>
+<h1>动手玩一玩</h1>
+<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块，亲眼看见门捷列夫讲过的道理。</p>
+</div></div>
+<section><div class="wrap">
+    <h2 id="grid" style="font-size:25px;margin:8px 0 6px">🧪 实验1 · 排一排：把元素放进格子</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">这是一张自动排好的周期表：拖动“族”滑块，看某一族如何被高亮——同族（同一列）颜色相近，性质也相近。</p>
+    <div class="lab" data-lab="grid">
+      <div class="lab-head"><h4>排一排：把元素放进格子</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">相似的坐同一列——这就是“周期”的直观样子。</p>
+      <canvas></canvas>
+      <div class="lab-controls">
+        <div class="ctrl">
+          <label>族 <span class="v">1</span></label>
+          <input type="range" data-ctrl="group" min="1" max="18" value="1" step="1">
+        </div>
+      </div>
+      <div class="lab-readout"></div>
+    </div>
+    <h2 id="trend" style="font-size:25px;margin:46px 0 6px">📈 实验2 · 周期律：性质起起伏伏</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">拖动“幅度”与“周期”，看某元素性质如何随位置呈波浪式起伏——这正是周期律的形状。</p>
+    <div class="lab" data-lab="trend">
+      <div class="lab-head"><h4>周期律：性质起起伏伏</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">升上去、落下来、再升上去：性质在循环。</p>
+      <canvas></canvas>
+      <div class="lab-controls">
+        <div class="ctrl">
+          <label>幅度 <span class="v">1.0</span></label>
+          <input type="range" data-ctrl="param1" min="0.3" max="1.8" value="1" step="0.1">
+        </div>
+        <div class="ctrl">
+          <label>周期 <span class="v">1.0</span></label>
+          <input type="range" data-ctrl="param2" min="0.6" max="2" value="1" step="0.1">
+        </div>
+      </div>
+      <div class="lab-readout"></div>
+    </div>
+    <h2 id="fill" style="font-size:25px;margin:46px 0 6px">🧩 实验3 · 留白的格子：预言的位置</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">拖动滑块，看“缺失处”如何被一个钟形峰标出——正如门捷列夫为未知元素留出的空格。</p>
+    <div class="lab" data-lab="fill">
+      <div class="lab-head"><h4>留白的格子：预言的位置</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">规律本身会指出“这里还缺点什么”。</p>
+      <canvas></canvas>
+      <div class="lab-controls">
+        <div class="ctrl">
+          <label>中心位置 <span class="v">1.0</span></label>
+          <input type="range" data-ctrl="param1" min="0.3" max="1.8" value="1" step="0.1">
+        </div>
+        <div class="ctrl">
+          <label>峰宽 <span class="v">1.0</span></label>
+          <input type="range" data-ctrl="param2" min="0.6" max="2" value="1" step="0.1">
+        </div>
+      </div>
+      <div class="lab-readout"></div>
+    </div>
+<p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/table.html">读元素周期表：给元素排座位 →</a>
+<a class="btn ghost" href="detail/law.html">读周期律：性质会“循环” →</a>
+<a class="btn ghost" href="detail/predict.html">读大胆预言：留白的格子 →</a>
+<a class="btn ghost" href="detail/legacy.html">读影响：现代化学的骨架 →</a></p>
+</div></section>
+<footer class="foot"><div class="wrap"><div class="foot-grid">
+<div><div class="brand-f"><span class="apple" style="width:26px;height:26px;font-size:14px;border-radius:7px;background:linear-gradient(140deg,#3B5BDB,#6E8BFF);display:grid;place-items:center">🍎</span>读懂门捷列夫</div><p style="margin:0;color:#8B96AA;font-size:13.5px">面向中学生的门捷列夫科普小站。</p></div>
+<div><h5>四处走走</h5><ul><li><a href="index.html">首页</a></li><li><a href="timeline.html">时间轴</a></li>          <li><a href="detail/table.html">元素周期表：给元素排座位</a></li>
+          <li><a href="detail/law.html">周期律：性质会“循环”</a></li>
+          <li><a href="detail/predict.html">大胆预言：留白的格子</a></li>
+          <li><a href="detail/legacy.html">影响：现代化学的骨架</a></li></ul></div>
+<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li></ul></div>
+</div><div class="foot-bottom"><span>课堂与自学用途 · 内容依据公开史料编写</span><span>历史图片来自 Wikimedia Commons</span></div></div></footer>
+<button class="to-top" aria-label="回到顶部">↑</button>
+<script src="assets/js/terms.js"></script>
+<script src="assets/js/site.js"></script>
+</body></html>

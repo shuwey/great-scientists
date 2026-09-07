@@ -1,0 +1,79 @@
+[
+  {
+    "file": "assets/img/history/maxwell-portrait.jpg",
+    "desc": "麦克斯韦肖像",
+    "author": "Public domain",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3AJames%20Clerk%20Maxwell.png"
+  },
+  {
+    "file": "assets/img/history/edinburgh.jpg",
+    "desc": "爱丁堡",
+    "author": "Public domain",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3AGothic%20Tower%20-%20City%20Observatory%20of%20Edinburgh%20-%2005.jpg"
+  },
+  {
+    "file": "assets/img/history/cambridge.jpg",
+    "desc": "剑桥",
+    "author": "Public domain",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3AKing%27s%20College%20Chapel%2C%20Cambridge%20-%20The%20Great%20East%20Window.jpg"
+  },
+  {
+    "file": "assets/img/history/faraday.jpg",
+    "desc": "法拉第",
+    "author": "Public domain",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3AMichael%20Faraday.jpg"
+  },
+  {
+    "file": "assets/img/history/maxwell-equations.jpg",
+    "desc": "麦克斯韦方程组",
+    "author": "Public domain",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3AMaxwell%27s%20equations.svg"
+  },
+  {
+    "file": "assets/img/history/em-wave.jpg",
+    "desc": "电磁波",
+    "author": "Public domain",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3AOnde%20electromagnetique.svg"
+  },
+  {
+    "file": "assets/img/history/kinetic-theory.jpg",
+    "desc": "分子运动",
+    "author": "Public domain",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3ATranslational%20motion.gif"
+  },
+  {
+    "file": "assets/img/history/maxwell-boltzmann.jpg",
+    "desc": "速率分布",
+    "author": "Public domain",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3AMaxwell-Boltzmann%20distribution.svg"
+  },
+  {
+    "file": "assets/img/history/saturn-rings.jpg",
+    "desc": "土星环",
+    "author": "Public domain",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3ATop%20view%20of%20the%20rings%20of%20Saturn%20by%20Cassini%20-%20October%2010%2C%202013.jpg"
+  },
+  {
+    "file": "assets/img/history/color-photography.jpg",
+    "desc": "最早的彩色照片",
+    "author": "Public domain",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3ATartan%20Ribbon.jpg"
+  },
+  {
+    "file": "assets/img/history/cavendish.jpg",
+    "desc": "卡文迪许实验室",
+    "author": "Public domain",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3ACavendish%20Laboratory.jpg"
+  }
+]

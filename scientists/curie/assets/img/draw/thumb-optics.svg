@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160" width="240" height="160" role="img">
+<rect width="240" height="160" fill="#FFFFFF"/>
+<path d="M120 46 L86 116 L154 116 Z" fill="#E8EEFF" stroke="#94A9D6" stroke-width="3" stroke-linejoin="round"/>
+<line x1="22" y1="78" x2="104" y2="78" stroke="#1B2530" stroke-width="4" stroke-linecap="round"/><circle cx="104" cy="78" r="3.6" fill="#1B2530"/>
+<g stroke-width="4" stroke-linecap="round" fill="none">
+<line x1="120" y1="82" x2="226" y2="56" stroke="#E03131"/>
+<line x1="120" y1="82" x2="226" y2="70" stroke="#FAB005"/>
+<line x1="120" y1="82" x2="226" y2="84" stroke="#51CF66"/>
+<line x1="120" y1="82" x2="226" y2="98" stroke="#3B5BDB"/>
+<line x1="120" y1="82" x2="226" y2="112" stroke="#9C36B5"/>
+</g>
+<text x="120" y="146" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="17" font-weight="700" fill="#8B96AA" text-anchor="middle">光与颜色</text>
+</svg>

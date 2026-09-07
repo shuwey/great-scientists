@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>动手玩一玩 · 三个达尔文小实验 | 读懂达尔文</title>
+<meta name="description" content="三个可直接在网页上操作的互动演示。拖动滑块，亲眼看见达尔文讲过的道理。">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-base="">
+<nav class="nav"><div class="nav-inner">
+<a class="brand" href="index.html"><span class="apple">🍎</span>读懂达尔文</a>
+<button class="nav-toggle" aria-label="打开菜单"><i></i><i></i><i></i></button>
+<div class="nav-links"><a href="index.html">首页</a><a href="timeline.html">时间轴</a>      <a href="detail/evolution.html">进化论：物种也会变</a>
+      <a href="detail/selection.html">自然选择：进化的发动机</a>
+      <a href="detail/finches.html">加拉帕戈斯雀：一枚钥匙</a>
+      <a href="detail/tree.html">生命之树：我们共享祖先</a><a href="labs.html">玩一玩</a><a href="glossary.html">词典</a></div>
+</div><div id="progress"></div></nav>
+<div class="page-head"><div class="wrap">
+<div class="crumb"><a href="index.html">首页</a> · 玩一玩</div>
+<h1>动手玩一玩</h1>
+<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块，亲眼看见达尔文讲过的道理。</p>
+</div></div>
+<section><div class="wrap">
+    <h2 id="population" style="font-size:25px;margin:8px 0 6px">🌱 实验1 · 种群增长：指数与受限</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">拖动“速率”，看蓝线（无限制指数增长）与绿线（受环境容量限制的 S 形）如何分道扬镳。</p>
+    <div class="lab" data-lab="population">
+      <div class="lab-head"><h4>种群增长：指数与受限</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">资源有限时，增长会“踩刹车”——这正是竞争的来源。</p>
+      <canvas></canvas>
+      <div class="lab-controls">
+        <div class="ctrl">
+          <label>增长速率 r <span class="v">0.6</span></label>
+          <input type="range" data-ctrl="rate" min="0.3" max="1.5" value="0.6" step="0.1">
+        </div>
+      </div>
+      <div class="lab-readout"></div>
+    </div>
+    <h2 id="selection" style="font-size:25px;margin:46px 0 6px">📊 实验2 · 选择压力：分布整体偏移</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">拖动“选择压力”，看种群的性状分布（钟形曲线）整体向某个方向平移。</p>
+    <div class="lab" data-lab="selection">
+      <div class="lab-head"><h4>选择压力：分布整体偏移</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">环境偏好某一端，几代之后平均特征就跟着偏。</p>
+      <canvas></canvas>
+      <div class="lab-controls">
+        <div class="ctrl">
+          <label>选择压力 <span class="v">1.0</span></label>
+          <input type="range" data-ctrl="param1" min="0.2" max="1.8" value="1" step="0.1">
+        </div>
+        <div class="ctrl">
+          <label>差异宽度 <span class="v">1.0</span></label>
+          <input type="range" data-ctrl="param2" min="0.6" max="2" value="1" step="0.1">
+        </div>
+      </div>
+      <div class="lab-readout"></div>
+    </div>
+    <h2 id="tree" style="font-size:25px;margin:46px 0 6px">🌳 实验3 · 生命之树：从一根到千万枝</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">拖动“演化级数”，看一根主干如何逐级一分为二，长出越来越多的末梢。</p>
+    <div class="lab" data-lab="tree">
+      <div class="lab-head"><h4>生命之树：从一根到千万枝</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">共同祖先不断分叉，便有了今天多样的物种。</p>
+      <canvas></canvas>
+      <div class="lab-controls">
+        <div class="ctrl">
+          <label>演化级数 <span class="v">5 级</span></label>
+          <input type="range" data-ctrl="depth" min="1" max="8" value="5" step="1">
+        </div>
+      </div>
+      <div class="lab-readout"></div>
+    </div>
+<p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/evolution.html">读进化论：物种也会变 →</a>
+<a class="btn ghost" href="detail/selection.html">读自然选择：进化的发动机 →</a>
+<a class="btn ghost" href="detail/finches.html">读加拉帕戈斯雀：一枚钥匙 →</a>
+<a class="btn ghost" href="detail/tree.html">读生命之树：我们共享祖先 →</a></p>
+</div></section>
+<footer class="foot"><div class="wrap"><div class="foot-grid">
+<div><div class="brand-f"><span class="apple" style="width:26px;height:26px;font-size:14px;border-radius:7px;background:linear-gradient(140deg,#3B5BDB,#6E8BFF);display:grid;place-items:center">🍎</span>读懂达尔文</div><p style="margin:0;color:#8B96AA;font-size:13.5px">面向中学生的达尔文科普小站。</p></div>
+<div><h5>四处走走</h5><ul><li><a href="index.html">首页</a></li><li><a href="timeline.html">时间轴</a></li>          <li><a href="detail/evolution.html">进化论：物种也会变</a></li>
+          <li><a href="detail/selection.html">自然选择：进化的发动机</a></li>
+          <li><a href="detail/finches.html">加拉帕戈斯雀：一枚钥匙</a></li>
+          <li><a href="detail/tree.html">生命之树：我们共享祖先</a></li></ul></div>
+<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li></ul></div>
+</div><div class="foot-bottom"><span>课堂与自学用途 · 内容依据公开史料编写</span><span>历史图片来自 Wikimedia Commons</span></div></div></footer>
+<button class="to-top" aria-label="回到顶部">↑</button>
+<script src="assets/js/terms.js"></script>
+<script src="assets/js/site.js"></script>
+</body></html>

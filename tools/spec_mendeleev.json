@@ -1,0 +1,734 @@
+{
+  "id": "mendeleev",
+  "name": "门捷列夫",
+  "en": "Dmitri Mendeleev",
+  "years": "1834–1907",
+  "kicker": "元素周期表之父 · 1834—1907",
+  "lede": "他把几十种杂乱的元素排成一张表，发现性质会“周期性”地重复，还空出格子预言了尚未发现的元素——后来一一应验。",
+  "meta": "读懂门捷列夫：用中学生能听懂的话，讲清一张表如何把化学变成可预测的科学。",
+  "biotitle": "他给所有元素排了一次座位",
+  "bio": [
+    "德米特里·门捷列夫（1834—1907），俄国人。他研究化学，却做了一件像图书馆管理员的事：把元素按规律归档。",
+    "1869 年，他把当时已知的元素按原子量排成行列，发现性质随位置周期变化，于是画出了第一张元素周期表。",
+    "他更大胆地留下空格，预言“这里应该还有一种元素”，并说清了它大概长什么样。几年后，镓、锗真的被找到，和他写的几乎一模一样。"
+  ],
+  "portrait": "mendeleev-portrait.jpg",
+  "about_claim": "本页说明门捷列夫子站内容的依据与延伸去处。",
+  "about_body": "<h2>资料来源</h2><p>本子站内容依据公开史料与科学史通识编写，核心事实（生卒、1869 年周期表、对镓/锗的预言）与主流科学史一致。历史图片均来自 Wikimedia Commons 公有领域资源。</p><h2>延伸阅读</h2><p>想深入：门捷列夫《化学原理》；以及《元素的秩序》（塞曼斯基）了解周期表思想史。</p>",
+  "tl_desc": "从西伯利亚的少年到周期表的作者：门捷列夫一生的关键节点。",
+  "tl_claim": "1834 年出生，1907 年逝于圣彼得堡。他用一张表，把杂乱的元素变成了有秩序的家族。",
+  "cats": [
+    "化学",
+    "方法",
+    "历史",
+    "物理"
+  ],
+  "hero_scene": "periodic",
+  "hero_params": {
+    "label": "把元素按规律排成一张表"
+  },
+  "pages": {
+    "table": {
+      "title": "元素周期表：给元素排座位",
+      "file": "detail/table.html",
+      "claim": "门捷列夫按原子量把元素排成行列，让性质相近的元素落在同一列——一张表，把化学收进了秩序。",
+      "tags": [
+        "周期表",
+        "元素",
+        "分类"
+      ],
+      "year": "1869",
+      "card": "元素不再是一盘散沙，而是一张有行有列的座位表。",
+      "scene": "periodic",
+      "scene_params": {
+        "label": "元素按规律排成行与列"
+      },
+      "remember": "一句话记住：周期表不是罗列，而是“按规律排队”——相似的元素自动站到同一列。",
+      "sideterms": [
+        "periodic-table",
+        "element",
+        "atomic-weight",
+        "group",
+        "period"
+      ],
+      "sections": [
+        {
+          "id": "mess",
+          "h": "一、元素曾是一盘散沙",
+          "body": "到 19 世纪中叶，已知元素已有六十多种，各自的性质像互不相关的谜。化学家们渴望一种能把它们串起来的秩序。",
+          "fig": "table",
+          "figalt": "早期元素的杂乱",
+          "figcap": "元素越来越多，却没有一张能把它们讲清楚的“地图”。"
+        },
+        {
+          "id": "arrange",
+          "h": "二、按原子量排队",
+          "body": "门捷列夫把元素按原子量由小到大排成一列，再让性质相近的折到同一纵列。横看、竖看，规律都浮现出来。",
+          "figalt": "按原子量排列",
+          "figcap": "排着排着，相似的就自然站到了一起。"
+        },
+        {
+          "id": "cols",
+          "h": "三、同一列，是一家",
+          "body": "他把“同一列元素性质相似”当成表的核心：碱金属在一列、卤素在另一列。这张表从此成了化学的“通讯录”。",
+          "figalt": "同列相似",
+          "figcap": "竖着的一列，就是元素的一个“家族”。"
+        },
+        {
+          "id": "why",
+          "h": "四、为什么了不起",
+          "body": "在此之前，元素是孤立记忆的；有了表，新元素该有什么性质，居然可以“查表推断”。化学第一次有了可预测的结构。",
+          "figalt": "可预测的化学",
+          "figcap": "从“背清单”升级到“看结构”，化学脱胎换骨。"
+        }
+      ]
+    },
+    "law": {
+      "title": "周期律：性质会“循环”",
+      "file": "detail/law.html",
+      "claim": "门捷列夫发现：元素的性质不是乱的，而是随原子量（后来的原子序数）呈周期性变化——隔一段就“重演”一次。",
+      "tags": [
+        "周期律",
+        "性质",
+        "规律"
+      ],
+      "year": "1869",
+      "card": "性质像波浪：升上去，又落回来，再升上去。",
+      "scene": "graph",
+      "scene_params": {
+        "label": "某性质随原子序数周期性起伏"
+      },
+      "remember": "一句话记住：周期律就是“元素性质随位置循环变化”——这正是“周期表”名字的由来。",
+      "sideterms": [
+        "periodicity",
+        "property",
+        "atomic-number",
+        "atomic-weight"
+      ],
+      "sections": [
+        {
+          "id": "repeat",
+          "h": "一、性质会重复",
+          "body": "随着原子量增大，元素的某些性质（如化合价、密度趋势）会呈现“升—降—升”的节律，像波浪一样循环。",
+          "fig": "law",
+          "figalt": "性质的起伏",
+          "figcap": "不是一条直线，而是一条上下波动的曲线。"
+        },
+        {
+          "id": "why-loop",
+          "h": "二、为什么会“循环”",
+          "body": "门捷列夫当时还说不清根源，只从数据看出周期。后来人们才明白：周期来自原子电子层结构的重复。",
+          "figalt": "循环的根源",
+          "figcap": "他先看见了“波浪”，后来的量子论才解释了“为什么起浪”。"
+        },
+        {
+          "id": "atomic-number",
+          "h": "三、原子序数更准",
+          "body": "莫塞莱发现，决定周期顺序的其实是原子序数（核内质子数），而非原子量。用它重排，少数“反例”也归了位。",
+          "figalt": "改用原子序数",
+          "figcap": "换一把更准的尺，表就更严丝合缝。"
+        },
+        {
+          "id": "power",
+          "h": "四、规律的威力",
+          "body": "一旦承认周期律，元素的“性格”就不再是孤立事实，而是位置的函数。这为理解化学键、反应性提供了总框架。",
+          "figalt": "位置决定性质",
+          "figcap": "坐在哪，就决定了你是什么脾气。"
+        }
+      ]
+    },
+    "predict": {
+      "title": "大胆预言：留白的格子",
+      "file": "detail/predict.html",
+      "claim": "门捷列夫在表里故意留出空格，预言“这里还缺一种元素”，并写清它该有的性质。后来镓、锗被找到，几乎分毫不差。",
+      "tags": [
+        "预言",
+        "镓",
+        "锗"
+      ],
+      "year": "1871",
+      "card": "他没见过的元素，却被他“写”了出来。",
+      "scene": "periodic",
+      "scene_params": {
+        "label": "留出的空格，等待着未知元素"
+      },
+      "remember": "一句话记住：真正的科学不仅能解释已知，还能指着空格说“这里该有东西”。",
+      "sideterms": [
+        "prediction",
+        "eka",
+        "gallium",
+        "germanium",
+        "periodic-table"
+      ],
+      "sections": [
+        {
+          "id": "gap",
+          "h": "一、宁可留空，也不硬塞",
+          "body": "排表时，门捷列夫宁可按性质把某些元素“跳过去”留白，也不破坏周期规律。他相信：空白不是错误，而是还没被发现。",
+          "fig": "predict",
+          "figalt": "表中的空格",
+          "figcap": "空格是给未来元素预留的座位。"
+        },
+        {
+          "id": "eka",
+          "h": "二、给未知数起名",
+          "body": "他给预言的元素临时起名“类铝”“类硅”（eka- 意为“下一号”）。他还预言了它们的密度、原子量、化合价。",
+          "figalt": "类铝、类硅",
+          "figcap": "没见到人，却先把“简历”写好了。"
+        },
+        {
+          "id": "gallium",
+          "h": "三、镓登场",
+          "body": "1875 年，法国化学家布瓦博德朗发现了镓，性质与“类铝”惊人吻合。门捷列夫甚至纠正了他测错的密度。",
+          "figalt": "镓的发现",
+          "figcap": "预言照进现实：连密度都对得上。"
+        },
+        {
+          "id": "germanium",
+          "h": "四、锗坐实",
+          "body": "1886 年，锗被发现，几乎完全符合“类硅”的预言。两次应验，让周期表从“巧妙排列”升格为“可信理论”。",
+          "figalt": "锗的发现",
+          "figcap": "又一次命中：空白被填上了真元素。"
+        }
+      ]
+    },
+    "legacy": {
+      "title": "影响：现代化学的骨架",
+      "file": "detail/legacy.html",
+      "claim": "周期表成了化学的基石，也启发了后来对原子结构的理解；今天它挂在每一间实验室的墙上。",
+      "tags": [
+        "遗产",
+        "原子结构",
+        "化学"
+      ],
+      "year": "至今",
+      "card": "一张表，从 60 多种元素长到 118 种，仍稳稳站得住。",
+      "scene": "atom",
+      "scene_params": {
+        "label": "元素由原子构成，原子有电子层"
+      },
+      "remember": "一句话记住：门捷列夫排的是“元素”，后人弄清的是“原子为何如此排”——表与原子结构彼此印证。",
+      "sideterms": [
+        "electron-shell",
+        "noble-gas",
+        "mosley",
+        "classification"
+      ],
+      "sections": [
+        {
+          "id": "wall",
+          "h": "一、挂上每间实验室的墙",
+          "body": "周期表是化学最通用的“地图”。无论是配平方程式还是猜反应，化学家都先瞄一眼它。",
+          "fig": "legacy",
+          "figalt": "墙上的周期表",
+          "figcap": "它从论文里的草图，变成了人人都用的工具。"
+        },
+        {
+          "id": "shell",
+          "h": "二、原子结构说清了“为什么”",
+          "body": "20 世纪，人们发现元素按电子层排布，而电子层的重复正是周期的来源。门捷列夫的表，终于有了微观解释。",
+          "figalt": "电子层与周期",
+          "figcap": "宏观的“波浪”，来自微观“壳层”的重复。"
+        },
+        {
+          "id": "noble",
+          "h": "三、稀有气体补了一列",
+          "body": "后来发现的稀有气体（氦、氖、氩…）单独成最右一列，完美契合周期律，进一步证明表的完备。",
+          "figalt": "稀有气体一列",
+          "figcap": "新家族报到，照样坐得进表里。"
+        },
+        {
+          "id": "growth",
+          "h": "四、仍在生长",
+          "body": "从 60 多种到今天 118 种人工合成元素，周期表不断加长，框架却始终稳。它已成为科学秩序的符号。",
+          "figalt": "元素不断增长",
+          "figcap": "表在长大，骨架没有散。"
+        }
+      ]
+    }
+  },
+  "terms": {
+    "periodic-table": {
+      "name": "元素周期表",
+      "cat": "化学",
+      "short": "给元素排座位的表",
+      "plain": "元素周期表把元素按原子序数排成行列，性质相近的在同一列。它是化学组织知识的中心工具。",
+      "analogy": "像给所有元素排了一张大课桌，相似的坐同一排。",
+      "page": "table",
+      "anchor": "#arrange",
+      "related": [
+        "element",
+        "group",
+        "period",
+        "periodicity"
+      ]
+    },
+    "element": {
+      "name": "元素",
+      "cat": "化学",
+      "short": "由同种原子构成的物质",
+      "plain": "元素是由一类原子（质子数相同）构成的物质，如氢、氧、铁。化合物则由多种元素组成。",
+      "analogy": "元素像是化学的“字母”，化合物是用字母拼出的词。",
+      "page": "table",
+      "anchor": "#mess",
+      "related": [
+        "atomic-number",
+        "periodic-table"
+      ]
+    },
+    "atomic-weight": {
+      "name": "原子量",
+      "cat": "化学",
+      "short": "门捷列夫排序用的尺",
+      "plain": "原子量是元素原子的平均质量（相对氢或碳）。门捷列夫最初按原子量排表；后来被更准的原子序数取代。",
+      "analogy": "当年排座位的“身高尺”，后来换成更准的学号。",
+      "page": "table",
+      "anchor": "#arrange",
+      "related": [
+        "atomic-number",
+        "periodic-table"
+      ]
+    },
+    "atomic-number": {
+      "name": "原子序数",
+      "cat": "化学",
+      "short": "核里质子的个数",
+      "plain": "原子序数 = 原子核内质子数，决定元素身份和周期表中的位置。莫塞莱证明它才是排列的真正依据。",
+      "analogy": "每个元素独一无二的“学号”，从小到大排就是周期表。",
+      "page": "law",
+      "anchor": "#atomic-number",
+      "related": [
+        "element",
+        "atomic-weight",
+        "mosley"
+      ]
+    },
+    "group": {
+      "name": "族（纵列）",
+      "cat": "化学",
+      "short": "同一列的元素一家",
+      "plain": "周期表的纵列叫族，同族元素最外层电子数相近，化学性质相似（如碱金属、卤素）。",
+      "analogy": "同一列就是元素的一个“家族”，脾气相近。",
+      "page": "table",
+      "anchor": "#cols",
+      "related": [
+        "period",
+        "periodic-table",
+        "noble-gas"
+      ]
+    },
+    "period": {
+      "name": "周期（横行）",
+      "cat": "化学",
+      "short": "横着的一行",
+      "plain": "周期表的横行叫周期，每换一行代表电子多了一层。行数反映了电子壳层数。",
+      "analogy": "横着的一排，等于给原子多加了一层“外套”。",
+      "page": "table",
+      "anchor": "#cols",
+      "related": [
+        "group",
+        "electron-shell"
+      ]
+    },
+    "periodicity": {
+      "name": "周期律",
+      "cat": "化学",
+      "short": "性质随位置循环",
+      "plain": "周期律指元素性质随原子序数呈周期性变化。它是周期表背后的根本规律。",
+      "analogy": "性质像波浪：上来、下去、又上来，循环往复。",
+      "page": "law",
+      "anchor": "#repeat",
+      "related": [
+        "property",
+        "periodic-table",
+        "atomic-number"
+      ]
+    },
+    "property": {
+      "name": "元素性质",
+      "cat": "化学",
+      "short": "元素的“脾气”",
+      "plain": "元素性质包括原子半径、化合价、密度趋势、反应性等。周期律描述这些性质如何随位置变化。",
+      "analogy": "每个元素有自己的“性格”，位置能大致推测性格。",
+      "page": "law",
+      "anchor": "#repeat",
+      "related": [
+        "periodicity",
+        "atomic-number"
+      ]
+    },
+    "prediction": {
+      "name": "预言未知元素",
+      "cat": "方法",
+      "short": "指着空格说“这里有东西”",
+      "plain": "门捷列夫依据周期律，预言尚未发现元素的存在与性质，后被镓、锗等证实。这是理论预测力的典范。",
+      "analogy": "在拼图留白处，先画出“这里该有只猫”。",
+      "page": "predict",
+      "anchor": "#gap",
+      "related": [
+        "eka",
+        "gallium",
+        "germanium"
+      ]
+    },
+    "eka": {
+      "name": "类某元素（eka-）",
+      "cat": "方法",
+      "short": "给未知数的临时名",
+      "plain": "门捷列夫用梵语“eka-”（意为“第一/下一号”）给预言元素临时命名，如“类铝”“类硅”，对应后来的镓、锗。",
+      "analogy": "给还没出生的小孩先起个代号。",
+      "page": "predict",
+      "anchor": "#eka",
+      "related": [
+        "prediction",
+        "gallium",
+        "germanium"
+      ]
+    },
+    "gallium": {
+      "name": "镓",
+      "cat": "化学",
+      "short": "第一个应验的预言",
+      "plain": "镓（Ga）1875 年被发现，性质与门捷列夫预言的“类铝”高度吻合，是周期律最早的实证之一。",
+      "analogy": "预言里的“类铝”，落地成了真镓。",
+      "page": "predict",
+      "anchor": "#gallium",
+      "related": [
+        "prediction",
+        "eka",
+        "germanium"
+      ]
+    },
+    "germanium": {
+      "name": "锗",
+      "cat": "化学",
+      "short": "第二个应验的预言",
+      "plain": "锗（Ge）1886 年被发现，几乎完全符合“类硅”的预言，进一步坐实了周期表的可信度。",
+      "analogy": "又一张“预言彩票”兑了奖。",
+      "page": "predict",
+      "anchor": "#germanium",
+      "related": [
+        "prediction",
+        "eka",
+        "gallium"
+      ]
+    },
+    "mendeleev": {
+      "name": "门捷列夫",
+      "cat": "历史",
+      "short": "周期表的作者",
+      "plain": "俄国化学家门捷列夫于 1869 年发表元素周期表，并预言未知元素，奠定了无机化学的秩序框架。",
+      "analogy": "他给所有元素发了“座位表”。",
+      "page": "table",
+      "anchor": "#why",
+      "related": [
+        "periodic-table",
+        "prediction",
+        "mosley"
+      ]
+    },
+    "mosley": {
+      "name": "莫塞莱",
+      "cat": "历史",
+      "short": "用原子序数重排表",
+      "plain": "英国物理学家莫塞莱通过 X 射线实验确定原子序数，证明它才是元素排列的真正依据，修正了少数按原子量排错的位次。",
+      "analogy": "他换了一把更准的尺，把表排得更服帖。",
+      "page": "law",
+      "anchor": "#atomic-number",
+      "related": [
+        "atomic-number",
+        "periodic-table"
+      ]
+    },
+    "noble-gas": {
+      "name": "稀有气体",
+      "cat": "化学",
+      "short": "最右一列的“懒人”",
+      "plain": "稀有气体（氦、氖、氩、氪、氙、氡）化学性质极不活泼，单独占据周期表最右一列，完美契合周期律。",
+      "analogy": "一族“不爱交际”的元素，自成一列。",
+      "page": "legacy",
+      "anchor": "#noble",
+      "related": [
+        "group",
+        "electron-shell"
+      ]
+    },
+    "electron-shell": {
+      "name": "电子层",
+      "cat": "物理",
+      "short": "原子外的“洋葱层”",
+      "plain": "电子分层排布在原子核外。电子层的重复出现，正是元素性质呈周期变化的微观根源。",
+      "analogy": "原子像洋葱，一层层裹着；层数重复，性质就重复。",
+      "page": "legacy",
+      "anchor": "#shell",
+      "related": [
+        "period",
+        "noble-gas",
+        "atomic-number"
+      ]
+    },
+    "classification": {
+      "name": "分类",
+      "cat": "方法",
+      "short": "先归类，再发现规律",
+      "plain": "分类是把相似事物归在一起的方法。门捷列夫靠给元素分类，才让周期律浮现出来——分类是科学发现的基本功。",
+      "analogy": "先分好抽屉，东西的规律才看得清。",
+      "page": "legacy",
+      "anchor": "#wall",
+      "related": [
+        "periodic-table",
+        "periodicity"
+      ]
+    },
+    "newlands": {
+      "name": "纽兰兹",
+      "cat": "历史",
+      "short": "早一步的“八音律”",
+      "plain": "英国化学家纽兰兹曾提出元素按八个数一循环（八音律），思路接近周期律，但因证据不足未被广泛接受，门捷列夫后来完成了体系化。",
+      "analogy": "有人先弹了前奏，门捷列夫写完了整首曲子。",
+      "page": "table",
+      "anchor": "#mess",
+      "related": [
+        "periodicity",
+        "mendeleev"
+      ]
+    }
+  },
+  "timeline": [
+    {
+      "year": 1834,
+      "id": "born",
+      "title": "生于西伯利亚",
+      "img": "mendeleev-portrait.jpg",
+      "alt": "门捷列夫肖像",
+      "fig": "门捷列夫 1834 年生于俄国西伯利亚托博尔斯克。",
+      "body": "2 月 8 日，德米特里·门捷列夫出生。少年丧父，靠母亲坚毅支撑读完学业。"
+    },
+    {
+      "year": 1850,
+      "id": "spb",
+      "title": "赴圣彼得堡求学",
+      "img": "stpetersburg.jpg",
+      "alt": "圣彼得堡",
+      "fig": "进入中央师范学院学化学。",
+      "body": "他到圣彼得堡攻读化学，展现出过人的整理与概括能力。"
+    },
+    {
+      "year": 1860,
+      "id": "research",
+      "title": "钻研化学体系",
+      "img": "mendeleev-lab.jpg",
+      "alt": "化学实验室",
+      "fig": "思考如何把元素组织成体系。",
+      "body": "他在教学与研究中，越来越不满意元素之间的零散关系，开始寻找统一秩序。"
+    },
+    {
+      "year": 1869,
+      "id": "table",
+      "title": "第一张周期表",
+      "img": "periodic-table.jpg",
+      "alt": "门捷列夫周期表",
+      "fig": "按原子量排出周期表。",
+      "body": "他发表元素周期表，按原子量排列并让同族元素同列，第一次让性质呈现周期规律。"
+    },
+    {
+      "year": 1871,
+      "id": "predict",
+      "title": "留白与预言",
+      "img": "periodic-table.jpg",
+      "alt": "留有空格的表",
+      "fig": "预言类铝、类硅等未知元素。",
+      "body": "他完善周期表并大胆留出空格，预言多种未发现元素及其性质。"
+    },
+    {
+      "year": 1875,
+      "id": "gallium",
+      "title": "镓被发现",
+      "img": "gallium.jpg",
+      "alt": "镓",
+      "fig": "类铝成了真镓。",
+      "body": "布瓦博德朗发现镓，性质与“类铝”高度吻合，预言首次应验。"
+    },
+    {
+      "year": 1886,
+      "id": "germanium",
+      "title": "锗被发现",
+      "img": "germanium.jpg",
+      "alt": "锗",
+      "fig": "类硅成了真锗。",
+      "body": "锗被发现，几乎完全符合“类硅”的预言，周期表可信度大增。"
+    },
+    {
+      "year": 1894,
+      "id": "noble",
+      "title": "稀有气体登场",
+      "img": "periodic-modern.jpg",
+      "alt": "现代周期表",
+      "fig": "新家族补进表里。",
+      "body": "氩等稀有气体被发现，单独成最右一列，进一步印证周期律的完备。"
+    },
+    {
+      "year": 1900,
+      "id": "mosley-era",
+      "title": "原子序数登场前夜",
+      "img": "periodic-modern.jpg",
+      "alt": "周期表的完善",
+      "fig": "表不断被细化。",
+      "body": "周期表进入精细打磨期，等待莫塞莱用原子序数给出更深的依据。"
+    },
+    {
+      "year": 1907,
+      "id": "died",
+      "title": "逝于圣彼得堡",
+      "img": "mendeleev-portrait.jpg",
+      "alt": "门捷列夫",
+      "fig": "周期表之父落幕。",
+      "body": "2 月 2 日，门捷列夫逝世。他留下的表，至今仍是化学的基石。"
+    }
+  ],
+  "images": [
+    {
+      "file": "mendeleev-portrait.jpg",
+      "wiki": "File:Dmitri Mendeleev.jpg",
+      "q": "Dmitri Mendeleev portrait",
+      "desc": "门捷列夫肖像",
+      "author": "Public domain",
+      "license": "Public domain"
+    },
+    {
+      "file": "periodic-table.jpg",
+      "wiki": "File:Mendeleev's periodic table (1871).jpg",
+      "q": "Mendeleev periodic table 1871",
+      "desc": "门捷列夫周期表",
+      "author": "Public domain",
+      "license": "Public domain"
+    },
+    {
+      "file": "periodic-modern.jpg",
+      "wiki": "File:Periodic table (color).png",
+      "q": "modern periodic table color",
+      "desc": "现代周期表",
+      "author": "Public domain",
+      "license": "Public domain"
+    },
+    {
+      "file": "gallium.jpg",
+      "wiki": "File:Gallium crystals.jpg",
+      "q": "gallium element crystals",
+      "desc": "镓",
+      "author": "Public domain",
+      "license": "Public domain"
+    },
+    {
+      "file": "germanium.jpg",
+      "wiki": "File:Germanium.jpg",
+      "q": "germanium element",
+      "desc": "锗",
+      "author": "Public domain",
+      "license": "Public domain"
+    },
+    {
+      "file": "stpetersburg.jpg",
+      "wiki": "File:Saint Petersburg State University.jpg",
+      "q": "Saint Petersburg university",
+      "desc": "圣彼得堡",
+      "author": "Public domain",
+      "license": "Public domain"
+    },
+    {
+      "file": "mendeleev-lab.jpg",
+      "wiki": "File:Chemistry laboratory.jpg",
+      "q": "19th century chemistry laboratory",
+      "desc": "化学实验室",
+      "author": "Public domain",
+      "license": "Public domain"
+    }
+  ],
+  "labs": [
+    {
+      "key": "grid",
+      "kind": "periodic",
+      "icon": "🧪",
+      "title": "排一排：把元素放进格子",
+      "intro": "这是一张自动排好的周期表：拖动“族”滑块，看某一族如何被高亮——同族（同一列）颜色相近，性质也相近。",
+      "desc": "相似的坐同一列——这就是“周期”的直观样子。",
+      "ctrl": [
+        {
+          "name": "group",
+          "label": "族",
+          "min": 1,
+          "max": 18,
+          "value": 1,
+          "step": 1,
+          "init": "1"
+        }
+      ],
+      "params": {
+        "label": "把元素按规律排成行与列"
+      }
+    },
+    {
+      "key": "trend",
+      "kind": "graph",
+      "icon": "📈",
+      "title": "周期律：性质起起伏伏",
+      "intro": "拖动“幅度”与“周期”，看某元素性质如何随位置呈波浪式起伏——这正是周期律的形状。",
+      "desc": "升上去、落下来、再升上去：性质在循环。",
+      "ctrl": [
+        {
+          "name": "param1",
+          "label": "幅度",
+          "min": 0.3,
+          "max": 1.8,
+          "value": 1,
+          "step": 0.1,
+          "init": "1.0"
+        },
+        {
+          "name": "param2",
+          "label": "周期",
+          "min": 0.6,
+          "max": 2,
+          "value": 1,
+          "step": 0.1,
+          "init": "1.0"
+        }
+      ],
+      "params": {
+        "label": "元素性质随位置周期性起伏（示意）"
+      }
+    },
+    {
+      "key": "fill",
+      "kind": "graph",
+      "icon": "🧩",
+      "title": "留白的格子：预言的位置",
+      "intro": "拖动滑块，看“缺失处”如何被一个钟形峰标出——正如门捷列夫为未知元素留出的空格。",
+      "desc": "规律本身会指出“这里还缺点什么”。",
+      "ctrl": [
+        {
+          "name": "param1",
+          "label": "中心位置",
+          "min": 0.3,
+          "max": 1.8,
+          "value": 1,
+          "step": 0.1,
+          "init": "1.0"
+        },
+        {
+          "name": "param2",
+          "label": "峰宽",
+          "min": 0.6,
+          "max": 2,
+          "value": 1,
+          "step": 0.1,
+          "init": "1.0"
+        }
+      ],
+      "params": {
+        "expr": "gauss",
+        "label": "用钟形峰标出“应被填补”的位置（示意）"
+      }
+    }
+  ]
+}

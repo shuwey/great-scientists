@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="800" height="480" role="img">
+<rect width="800" height="480" fill="#FFFFFF"/>
+<ellipse cx="400" cy="240" rx="290" ry="140" fill="none" stroke="#D4DBE5" stroke-width="3" stroke-dasharray="8 7"/>
+<ellipse cx="330" cy="240" rx="290" ry="140" fill="none" stroke="#3B5BDB" stroke-width="4"/>
+
+<circle cx="330" cy="240" r="34" fill="#FFF3BF" stroke="#F59F00" stroke-width="4"/>
+<circle cx="330" cy="240" r="12" fill="#F59F00"/>
+<text x="330" y="200" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#F59F00" text-anchor="middle">太阳（焦点）</text>
+
+<circle cx="600" cy="330" r="26" fill="#E8EEFF" stroke="#3B5BDB" stroke-width="4"/>
+<text x="600" y="380" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#3B5BDB" text-anchor="middle">行星（近）快</text>
+<circle cx="70" cy="150" r="26" fill="#E8EEFF" stroke="#3B5BDB" stroke-width="4"/>
+<text x="96" y="96" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#3B5BDB" text-anchor="middle">行星（远）慢</text>
+
+<line x1="330" y1="240" x2="600" y2="330" stroke="#E8590C" stroke-width="3" stroke-dasharray="6 5"/>
+<line x1="330" y1="240" x2="70" y2="150" stroke="#E8590C" stroke-width="3" stroke-dasharray="6 5"/>
+
+<text x="400" y="448" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="21" font-weight="600" fill="#8B96AA" text-anchor="middle">哈雷问：“引力按距离平方衰减，轨道会是什么形状？” 巴斯德答：“椭圆。”</text>
+</svg>

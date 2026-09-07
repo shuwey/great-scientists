@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>动手玩一玩 · 三个爱因斯坦物理小实验 | 读懂爱因斯坦</title>
+<meta name="description" content="三个可直接在网页上操作的互动演示：时间膨胀（光钟）、光电效应（光子敲电子）、引力弯曲光线。拖动滑块，亲眼看见爱因斯坦讲过的道理。">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-base="">
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="apple">🍎</span>读懂爱因斯坦</a>
+    <button class="nav-toggle" aria-label="打开菜单"><i></i><i></i><i></i></button>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="timeline.html">时间轴</a>
+      <a href="detail/relativity.html">相对论</a>
+      <a href="detail/photoelectric.html">光电效应</a>
+      <a href="detail/gravity.html">广义相对论</a>
+      <a href="detail/mass-energy.html">质能方程</a>
+      <a href="labs.html">玩一玩</a>
+      <a href="glossary.html">词典</a>
+    </div>
+  </div>
+  <div id="progress"></div>
+</nav>
+
+<div class="page-head">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">首页</a> · 玩一玩</div>
+    <h1>动手玩一玩</h1>
+    <p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块，亲眼看见爱因斯坦讲过的道理。</p>
+    <div class="meta-row">
+      <span class="tag g">时间膨胀</span>
+      <span class="tag p">光电效应</span>
+      <span class="tag o">引力弯曲</span>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+
+    <!-- ===== 实验一：时间膨胀 ===== -->
+    <h2 id="time" style="font-size:25px;margin:8px 0 6px">⏱ 实验一 · 时间膨胀（光钟）</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">拖动"飞船速度"，看光钟在飞船上每跳一秒，地球上已经过了多久。速度越接近光速，时间慢得越夸张。</p>
+    <div class="lab" data-lab="time">
+      <div class="lab-head"><h4>光钟与飞船</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">光在飞船两面镜子间上下弹跳，每跳一个来回算 1 秒；飞船同时向前飞。</p>
+      <canvas></canvas>
+      <div class="lab-controls">
+        <div class="ctrl">
+          <label>飞船速度（占光速比例） <span class="v">0.50 c</span></label>
+          <input type="range" data-ctrl="speed" min="0" max="0.99" value="0.5" step="0.01">
+        </div>
+      </div>
+      <div class="lab-readout"></div>
+    </div>
+
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>动得越快时间越慢，这不是钟坏了，而是时空本身的性质。GPS 卫星上的原子钟必须按这个效应修正，否则导航会天天"漂移"。详见 <a href="detail/relativity.html">狭义相对论</a>。</p>
+    </div>
+
+    <!-- ===== 实验二：光电效应 ===== -->
+    <h2 id="photon" style="font-size:25px;margin:46px 0 6px">⚡ 实验二 · 光电效应（光子敲电子）</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">拖动"光的频率"，看金属会不会溅出电子。注意：低于某个频率，光再亮也打不出电子——只和"颜色"有关。</p>
+    <div class="lab" data-lab="photon">
+      <div class="lab-head"><h4>光量子与金属板</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">光子带着能量 h·f 砸向金属；频率够高才能把电子敲出来。</p>
+      <canvas></canvas>
+      <div class="lab-controls">
+        <div class="ctrl">
+          <label>光的频率 <span class="v">7.0 THz</span></label>
+          <input type="range" data-ctrl="freq" min="4" max="10" value="7" step="0.1">
+        </div>
+      </div>
+      <div class="lab-readout"></div>
+    </div>
+
+    <div class="callout amber" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>"能不能打出电子"看频率不看亮度，这正是旧理论解释不了的——爱因斯坦用"光是一份份光子"化解了它，并因此获诺贝尔奖。详见 <a href="detail/photoelectric.html">光电效应</a>。</p>
+    </div>
+
+    <!-- ===== 实验三：引力弯曲 ===== -->
+    <h2 id="bend" style="font-size:25px;margin:46px 0 6px">🌌 实验三 · 引力弯曲光线</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">拖动"恒星质量"，看一束掠过恒星旁边的光怎么被掰弯。质量越大，时空弯得越狠，光偏折越明显。</p>
+    <div class="lab" data-lab="bend">
+      <div class="lab-head"><h4>时空弯曲与光线</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">光本应走直线，却被恒星弯曲的时空"拉"向它。</p>
+      <canvas></canvas>
+      <div class="lab-controls">
+        <div class="ctrl">
+          <label>恒星质量 <span class="v">10 M☉</span></label>
+          <input type="range" data-ctrl="mass" min="1" max="50" value="10" step="1">
+        </div>
+      </div>
+      <div class="lab-readout"></div>
+    </div>
+
+    <div class="callout green" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>1919 年日全食，天文学家正是测到星光被太阳"掰弯"了约 1.75 角秒，才证实了广义相对论。详见 <a href="detail/gravity.html">广义相对论</a>。</p>
+    </div>
+
+    <p style="text-align:center;margin-top:40px">
+      <a class="btn ghost" href="detail/relativity.html">读狭义相对论 →</a>
+      <a class="btn ghost" href="detail/photoelectric.html">读光电效应 →</a>
+      <a class="btn ghost" href="detail/gravity.html">读广义相对论 →</a>
+      <a class="btn ghost" href="detail/mass-energy.html">读质能方程 →</a>
+    </p>
+
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand-f"><span class="apple" style="width:26px;height:26px;font-size:14px;border-radius:7px;background:linear-gradient(140deg,#3B5BDB,#6E8BFF);display:grid;place-items:center">🍎</span>读懂爱因斯坦</div>
+        <p style="margin:0;color:#8B96AA;font-size:13.5px">一个面向中学生的爱因斯坦科普小站。按时间顺序讲故事，把难词讲成人话。</p>
+      </div>
+      <div>
+        <h5>四处走走</h5>
+        <ul>
+          <li><a href="index.html">首页</a></li>
+          <li><a href="timeline.html">生平时间轴</a></li>
+          <li><a href="detail/relativity.html">狭义相对论</a></li>
+          <li><a href="detail/photoelectric.html">光电效应</a></li>
+          <li><a href="detail/gravity.html">广义相对论</a></li>
+          <li><a href="detail/mass-energy.html">质能方程</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>更多</h5>
+        <ul>
+          <li><a href="labs.html">动手玩一玩</a></li>
+          <li><a href="glossary.html">术语词典</a></li>
+          <li><a href="about.html">资料来源与延伸阅读</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>课堂与自学用途 · 内容依据公开史料编写</span>
+      <span>历史图片来自 Wikimedia Commons</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" aria-label="回到顶部">↑</button>
+<script src="assets/js/terms.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

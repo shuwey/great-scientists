@@ -1,0 +1,193 @@
+# -*- coding: utf-8 -*-
+"""巴斯德子站内容规格。运行后生成 spec_pasteur.json。"""
+import json, os
+
+SPEC = {
+  "id": "pasteur",
+  "name": "巴斯德",
+  "en": "Louis Pasteur",
+  "years": "1822–1895",
+  "kicker": "微生物学之父 · 1822—1895",
+  "lede": "他用一只鹅颈瓶证明：生命不会凭空冒出来。从此，微生物成了朋友也是敌人——既能让酒变酸，也能被巴氏杀菌和疫苗制服。",
+  "meta": "读懂巴斯德：用中学生能听懂的话，讲清微生物如何改写医学、食品与公共卫生。",
+  "biotitle": "他让“看不见的小东西”第一次被管住",
+  "bio": [
+    "路易·巴斯德（1822—1895），法国人。他最早是化学家，研究酒石酸的晶体为何能让光偏转，由此迷上“看不见的世界”。",
+    "他一步步把化学的严谨带进生物：先弄清发酵是微生物干的，再否定“生命自然发生”，最后用疫苗把狂犬病从绝症变成可防。",
+    "他的一生，是把“微生物”从模糊的传说变成可测量、可控制的科学对象的过程。"
+  ],
+  "portrait": "pasteur-portrait.jpg",
+  "about_claim": "本页说明巴斯德子站内容的依据与延伸去处。",
+  "about_body": "<h2>资料来源</h2><p>本子站内容依据公开史料与科学史通识编写，核心事实（生卒、鹅颈瓶实验、巴氏杀菌、狂犬病疫苗）与主流科学史一致。历史图片均来自 Wikimedia Commons 公有领域资源。</p><h2>延伸阅读</h2><p>想深入：巴斯德《关于发酵的研究》《论乳酸发酵》；以及《巴斯德传》（杜博斯）。</p>",
+  "tl_desc": "从酒石酸晶体到狂犬病疫苗：巴斯德一生的关键节点。",
+  "tl_claim": "1822 年出生，1895 年逝于巴黎近郊。他让人类第一次系统地“看见并管住”了微生物。",
+  "cats": ["生物", "医学", "方法", "历史"],
+  "hero_scene": "microscope",
+  "hero_params": {"label": "显微镜下的微生物世界"},
+
+  "pages": {
+    "germ": {
+      "title": "病菌学说：病从微小处来",
+      "file": "detail/germ.html",
+      "claim": "巴斯德把发酵、腐败与疾病都指向同一类“看不见的活物”——微生物，奠定了现代医学的微生物学基础。",
+      "tags": ["微生物", "病菌学说", "医学"],
+      "year": "约1860s",
+      "card": "许多坏事——酸酒、腐肉、传染病——都是微小生命在作怪。",
+      "scene": "microscope",
+      "scene_params": {"label": "显微镜下的微生物"},
+      "remember": "一句话记住：不是“坏血”“瘴气”，而是看不见的小生命，在许多疾病背后搞破坏。",
+      "sideterms": ["microbe", "germ-theory", "fermentation", "microscope", "contagion", "koch"],
+      "sections": [
+        {"id": "before", "h": "一、从化学跨界", "body": "巴斯德原本研究晶体为何让偏振光偏转，证明某些分子有“左右手”般的不对称。这种对“看不见结构”的执着，后来用在更小的生命上。",
+         "fig": "germ", "figalt": "分子不对称", "figcap": "连分子都有“左右手”，微小的差别决定大不同。"},
+        {"id": "theory", "h": "二、核心主张", "body": "他提出：发酵与腐败由微生物引起；许多疾病也是特定微生物（病菌）所致。这把千差万别的现象，统一到“微生物”这一条线索上。",
+         "figalt": "微生物致病", "figcap": "酸酒、腐肉、传染病，背后可能是同一类小生命。"},
+        {"id": "evidence", "h": "三、证据与同盟", "body": "他用实验表明加热能杀灭导致变质的微生物；外科医生李斯特据此发明消毒法，科赫则系统证明特定病菌对应特定疾病。微生物学就此成型。",
+         "figalt": "消毒与验证", "figcap": "能杀灭、能对应，微生物学说才真正站稳。"},
+        {"id": "impact", "h": "四、改变了什么", "body": "一旦承认“病从微小处来”，洗手、消毒、隔离、疫苗才有了理论依据。现代公共卫生与无菌手术，都从这一个想法长出。",
+         "figalt": "公共卫生的起点", "figcap": "看不见的小东西，重塑了看得见的生活习惯。"}
+      ]
+    },
+    "pasteurization": {
+      "title": "巴氏杀菌：用温度管住微生物",
+      "file": "detail/pasteurization.html",
+      "claim": "他发现温和加热能杀死让酒、奶变质的微生物，又不破坏风味——这就是沿用至今的巴氏杀菌。",
+      "tags": ["巴氏杀菌", "食品", "灭菌"],
+      "year": "1864",
+      "card": "不煮沸、只温热：刚好够杀灭坏菌，又留住好味道。",
+      "scene": "graph",
+      "scene_params": {"label": "加热后微生物存活率陡降"},
+      "remember": "一句话记住：巴氏杀菌不是“煮开”，而是“刚好烫死坏菌”的精准温度。",
+      "sideterms": ["pasteurization", "fermentation", "sterilization", "microbe"],
+      "sections": [
+        {"id": "what", "h": "一、它是什么", "body": "巴氏杀菌是把液体（酒、奶、果汁）加热到一定温度并保持片刻，再迅速冷却，杀死大部分致病与腐败微生物，却尽量保留营养与风味。",
+         "fig": "pasteurization", "figalt": "加热灭菌", "figcap": "温热片刻，坏菌退场，好味留下。"},
+        {"id": "how", "h": "二、为什么有效", "body": "微生物怕热：温度越高、时间越长，存活越少。巴氏杀菌选在一个“甜点”——足以杀灭多数坏菌，又不让蛋白质过度变性、风味变差。",
+         "figalt": "温度与存活", "figcap": "加热像一把尺，量着杀死坏菌、放过好味。"},
+        {"id": "wine", "h": "三、先从酒开始", "body": "法国酿酒业曾因酒变酸损失惨重。巴斯德证明是杂菌作怪，用温和加热解决了“酸酒”难题，巴氏杀菌由此诞生。",
+         "figalt": "拯救葡萄酒", "figcap": "先救了酒，再救了奶——一个原理通吃。"},
+        {"id": "milk", "h": "四、走进日常", "body": "后来巴氏杀菌广泛用于牛奶，大幅降低了结核病、伤寒等经奶传播的疾病。今天货架上“鲜奶”的安全，背后就是这套思路。",
+         "figalt": "牛奶的安全", "figcap": "一杯安全的奶，是微生物学写给餐桌的保证。"}
+      ]
+    },
+    "vaccine": {
+      "title": "疫苗：用弱敌练兵",
+      "file": "detail/vaccine.html",
+      "claim": "巴斯德把“减毒”的病原注入体内，让身体提前练出抵抗力——狂犬病疫苗由此诞生。",
+      "tags": ["疫苗", "狂犬病", "免疫"],
+      "year": "1885",
+      "card": "先放一点“弱敌人”进来，身体学会打败“真敌人”。",
+      "scene": "microscope",
+      "scene_params": {"label": "减毒病原与免疫反应"},
+      "remember": "一句话记住：疫苗不是让人生病，而是让身体先彩排一遍胜利。",
+      "sideterms": ["vaccination", "rabies", "anthrax", "immunity", "attenuated", "inoculation"],
+      "sections": [
+        {"id": "method", "h": "一、减毒的思路", "body": "巴斯德发现：把病原在不利条件下培养多代，它会变“弱”。把这种弱化版本注入体内，身体会生成保护力，遇上真病原时便有备无患。",
+         "fig": "vaccine", "figalt": "减毒与免疫", "figcap": "弱化的敌人，是最好的教官。"},
+        {"id": "anthrax", "h": "二、先在牲畜上验证", "body": "他先用炭疽做公开实验：接种减毒菌的羊存活，未接种的羊死亡。现场对比震动世人，也奠定了疫苗的可验证性。",
+         "figalt": "炭疽疫苗实验", "figcap": "一只活、一只死——实验胜过万语。"},
+        {"id": "rabies", "h": "三、狂犬病突破", "body": "1885 年，他为被疯狗咬伤的少年梅斯特接种自制的减毒疫苗，孩子活了下来。这是人类第一次用疫苗对抗狂犬病。",
+         "figalt": "狂犬病疫苗", "figcap": "从必死到可救，只差一支“彩排针”。"},
+        {"id": "legacy", "h": "四、疫苗的遗产", "body": "巴斯德开创的减毒思路，催生了后续多种疫苗。他创立的研究所至今仍在对抗传染病；天花被消灭，更证明其路线的深远。",
+         "figalt": "疫苗的长远影响", "figcap": "一支针里的“弱敌”，护住了亿万人的“真敌”。"}
+      ]
+    },
+    "spontaneous": {
+      "title": "否定自然发生说",
+      "file": "detail/spontaneous.html",
+      "claim": "他用鹅颈瓶证明：只要隔绝空气中的微生物，肉汤就不会自己冒出小生命——生命不会凭空产生。",
+      "tags": ["自然发生说", "鹅颈瓶", "实验"],
+      "year": "1862",
+      "card": "“腐肉生蛆”是错觉；新生命来自已有的生命。",
+      "scene": "microscope",
+      "scene_params": {"label": "鹅颈瓶留住空气、挡住尘埃微生物"},
+      "remember": "一句话记住：鹅颈瓶让“生命自己冒出来”的老说法，第一次被实验关进了棺材。",
+      "sideterms": ["spontaneous-generation", "swan-neck-flask", "biogenesis", "sterilization", "silkworm"],
+      "sections": [
+        {"id": "belief", "h": "一、古老的错觉", "body": "长久以来人们相信“自然发生”：肉放久了生蛆、淤泥里冒老鼠。巴斯德之前，这被视为常识。",
+         "fig": "spontaneous", "figalt": "旧观念", "figcap": "“东西放久了自己长出生命”——看似眼见为实。"},
+        {"id": "flask", "h": "二、鹅颈瓶的巧思", "body": "他把肉汤煮沸灭菌，再把烧瓶拉成鹅颈般的弯管：空气能进，但携带微生物的尘埃在弯处沉下，进不到肉汤。结果肉汤长久不坏。",
+         "figalt": "鹅颈瓶结构", "figcap": "留住空气、拦住尘埃——差别就在这一道弯。"},
+        {"id": "result", "h": "三、结论", "body": "一旦把瓶颈打断、让尘埃落入，肉汤很快变质。说明“自生”其实是空气中已有的微生物在繁殖，而非无中生有。生命来自生命（生源说）。",
+         "figalt": "对照实验", "figcap": "断颈即变质，证明坏东西来自外面，不是凭空。"},
+        {"id": "meaning", "h": "四、意义", "body": "否定自然发生，等于承认微生物无处不在、且是变化的“种子”。这为发酵、防腐、疫苗乃至整个微生物学，铺平了观念地基。",
+         "figalt": "观念的转向", "figcap": "看不见的“种子”满天飞，却被一只弯管拦下。"}
+      ]
+    }
+  },
+
+  "terms": {
+    "microbe": {"name": "微生物", "cat": "生物", "short": "肉眼难见的小生命", "plain": "微生物是细菌、酵母、霉菌等微小生物的总称。巴斯德证明它们参与发酵、腐败，也引起疾病。", "analogy": "看不见的小房客，既能帮你酿酒，也能偷走你的健康。", "page": "germ", "anchor": "#theory", "related": ["germ-theory", "fermentation"]},
+    "germ-theory": {"name": "病菌学说", "cat": "医学", "short": "特定微生物导致特定疾病", "plain": "病菌学说认为许多疾病由特定微生物引起，而非“瘴气”或体内失衡。它是现代医学与公共卫生的基石。", "analogy": "把“生病”从玄学拉回“有具体凶手”的案子。", "page": "germ", "anchor": "#theory", "related": ["microbe", "contagion", "koch"]},
+    "fermentation": {"name": "发酵", "cat": "生物", "short": "微生物干的“化学活”", "plain": "发酵是微生物分解糖类产生酒精、乳酸等的过程。巴斯德证明发酵由活微生物引起，而非纯化学变化。", "analogy": "微小的“酿酒工”在汤里加班，把糖变成了酒。", "page": "germ", "anchor": "#theory", "related": ["microbe", "pasteurization"]},
+    "microscope": {"name": "显微镜", "cat": "方法", "short": "把看不见的放大", "plain": "显微镜让人第一次直接看到微生物世界，是微生物学诞生的眼睛。", "analogy": "给眼睛装了一架梯子，够到了原本够不着的微小世界。", "page": "germ", "anchor": "#before", "related": ["microbe", "germ-theory"]},
+    "contagion": {"name": "传染", "cat": "医学", "short": "病原从一人到另一人", "plain": "传染指致病微生物在个体间传播。承认传染，才谈得上隔离、消毒等防控手段。", "analogy": "坏消息会传，坏病菌也会——而且更快。", "page": "germ", "anchor": "#evidence", "related": ["germ-theory", "hygiene"]},
+    "koch": {"name": "科赫", "cat": "历史", "short": "把病菌一一对上号", "plain": "德国医生科赫提出“科赫法则”，系统证明某病菌对应某疾病（如炭疽、结核），完善了病菌学说。", "analogy": "给每个“凶手”配一张确切的“通缉照”。", "page": "germ", "anchor": "#evidence", "related": ["germ-theory", "microbe"]},
+    "pasteurization": {"name": "巴氏杀菌", "cat": "医学", "short": "温热灭坏菌、留好味", "plain": "巴氏杀菌用适度加热杀灭液体中的致病与腐败微生物，尽量保留营养风味，广泛用于奶、酒、果汁。", "analogy": "像给汤“量体温”后刚好烫退坏菌，又不烫糊好味。", "page": "pasteurization", "anchor": "#what", "related": ["sterilization", "microbe"]},
+    "sterilization": {"name": "灭菌", "cat": "方法", "short": "彻底清掉微生物", "plain": "灭菌指用加热、过滤等方法除去或杀灭所有微生物。巴斯德的实验依赖先把器具与液体灭菌，才能看清“有没有外来污染”。", "analogy": "先把操场清空，才看得出有没有人偷偷溜进来。", "page": "pasteurization", "anchor": "#how", "related": ["pasteurization", "swan-neck-flask"]},
+    "vaccination": {"name": "疫苗", "cat": "医学", "short": "用弱敌练兵，以防真敌", "plain": "疫苗把减毒或灭活的病原送入体内，让免疫系统提前生成保护力，遇真病原时能快速反应。", "analogy": "先放弱敌人进来彩排，真敌人来时早已练熟。", "page": "vaccine", "anchor": "#method", "related": ["rabies", "immunity", "attenuated"]},
+    "rabies": {"name": "狂犬病", "cat": "医学", "short": "巴斯德攻克的第一例", "plain": "狂犬病由病毒引起、几乎必死。1885 年巴斯德用减毒疫苗救下被疯狗咬伤的少年，开创疫苗对抗该病的先河。", "analogy": "过去是“咬了就等死”，他硬生生插进了一道生门。", "page": "vaccine", "anchor": "#rabies", "related": ["vaccination", "immunity"]},
+    "anthrax": {"name": "炭疽", "cat": "医学", "short": "先在牲畜上验证疫苗", "plain": "炭疽是由细菌引起的家畜烈性传染病。巴斯德用减毒菌做公开对比实验，证明疫苗可护住牲畜，震动学界。", "analogy": "先拿羊当“对照试卷”，把疫苗考成了满分。", "page": "vaccine", "anchor": "#anthrax", "related": ["vaccination", "attenuated"]},
+    "immunity": {"name": "免疫", "cat": "医学", "short": "身体记住了敌人", "plain": "免疫是身体识别并清除病原、且“记住”它的能力。疫苗正是利用这种记忆，让保护提前就位。", "analogy": "身体里藏着一本“通缉相册”，见过的敌人一眼认出。", "page": "vaccine", "anchor": "#legacy", "related": ["vaccination", "inoculation"]},
+    "attenuated": {"name": "减毒", "cat": "医学", "short": "把病原练“弱”", "plain": "减毒指通过特殊培养让病原致病力下降却仍保留“被识别”的特征，用作疫苗。这是巴斯德疫苗的核心技术。", "analogy": "把猛兽关进小笼子，让它吓唬身体却伤不了人。", "page": "vaccine", "anchor": "#method", "related": ["vaccination", "rabies"]},
+    "inoculation": {"name": "接种", "cat": "医学", "short": "把疫苗送进身体", "plain": "接种是把疫苗引入体内的操作。从种痘到注射，本质都是“提前送入信号”，唤起免疫。", "analogy": "往身体里递一张“敌人照片”，让它先认个脸。", "page": "vaccine", "anchor": "#method", "related": ["vaccination", "immunity"]},
+    "spontaneous-generation": {"name": "自然发生说", "cat": "历史", "short": "生命自己冒出来", "plain": "自然发生说认为生命可从无生命物质直接产生（如腐肉生蛆）。巴斯德用实验否定了它。", "analogy": "以为“垃圾放久了自己长出老鼠”——看着像，其实是误会。", "page": "spontaneous", "anchor": "#belief", "related": ["swan-neck-flask", "biogenesis"]},
+    "swan-neck-flask": {"name": "鹅颈瓶", "cat": "方法", "short": "留住空气、拦住尘埃", "plain": "鹅颈瓶的弯管让空气可进、尘埃（带微生物）沉底，肉汤因此久不腐败。它是有史以来最优雅的对照实验之一。", "analogy": "一道弯管像守门员，放空气进、把坏东西挡在门外。", "page": "spontaneous", "anchor": "#flask", "related": ["spontaneous-generation", "sterilization"]},
+    "biogenesis": {"name": "生源说", "cat": "方法", "short": "生命来自生命", "plain": "生源说主张新生命只能来自已有的生命，而非无中生有。巴斯德的实验是它最有力的证据。", "analogy": "孩子总有父母——生命不会凭空“冒”出来。", "page": "spontaneous", "anchor": "#result", "related": ["spontaneous-generation", "microbe"]},
+    "silkworm": {"name": "蚕病研究", "cat": "历史", "short": "救活一门产业", "plain": "巴斯德受法国政府之托研究蚕的“微粒病”，找出病原并给出检疫法，挽救了丝绸产业，也展现了他把科学用于实业的本领。", "analogy": "先救活一群蚕，再救活一整座城的饭碗。", "page": "spontaneous", "anchor": "#meaning", "related": ["microbe", "pasteurization"]},
+    "hygiene": {"name": "卫生", "cat": "医学", "short": "切断微生物的路", "plain": "洗手、消毒、清洁饮水等卫生习惯，本质都是减少致病微生物的传播。病菌学说让它们从“讲究”变成“科学”。", "analogy": "把微生物的“高速公路”挖断，病就难上门。", "page": "germ", "anchor": "#impact", "related": ["contagion", "pasteurization"]},
+    "chemistry": {"name": "化学", "cat": "方法", "short": "他起家的本行", "plain": "巴斯德是训练有素的化学家，研究晶体与分子不对称。这种“看微观结构”的功底，后来帮他看穿微观生命。", "analogy": "先学会看分子的“指纹”，才看懂细胞的“脸”。", "page": "germ", "anchor": "#before", "related": ["microbe", "fermentation"]},
+    "pasteur-institute": {"name": "巴斯德研究所", "cat": "历史", "short": "他留下的阵地", "plain": "巴斯德创立的研究所（1888）至今仍是顶尖的传染病研究机构，延续着他“以科学对抗疾病”的志向。", "analogy": "他留下的一座堡垒，后人仍在里面作战。", "page": "vaccine", "anchor": "#legacy", "related": ["vaccination", "rabies"]}
+  },
+
+  "timeline": [
+    {"year": 1822, "id": "born", "title": "生于多勒", "img": "pasteur-portrait.jpg", "alt": "巴斯德肖像", "fig": "巴斯德 1822 年生于法国多勒。", "body": "12 月 27 日，路易·巴斯德出生。早年资质平平，却以刻苦与好奇后来居上。"},
+    {"year": 1847, "id": "chem", "title": "钻研化学", "img": "pasteur-lab.jpg", "alt": "巴斯德的实验室", "fig": "他从化学起步，研究晶体。", "body": "在巴黎高师接受训练，研究酒石酸晶体的不对称性，练就“看微观”的功夫。"},
+    {"year": 1854, "id": "asymmetry", "title": "分子不对称", "img": "pasteur-lab.jpg", "alt": "晶体研究", "fig": "发现分子也有“左右手”。", "body": "他证明某些分子能让偏振光偏转方向不同，开启对分子空间结构的认识。"},
+    {"year": 1857, "id": "ferment", "title": "发酵之谜", "img": "fermentation.jpg", "alt": "发酵", "fig": "发酵是活物干的。", "body": "他证明乳酸发酵由微生物引起，把“化学现象”重新理解为“生命现象”。"},
+    {"year": 1862, "id": "spontaneous", "title": "鹅颈瓶实验", "img": "swan-neck-flask.jpg", "alt": "鹅颈瓶", "fig": "否定生命自然发生。", "body": "用鹅颈瓶证明肉汤变质来自空气中的微生物，而非无中生有，力压自然发生说。"},
+    {"year": 1865, "id": "silkworm", "title": "拯救丝绸业", "img": "silkworm.jpg", "alt": "蚕病", "fig": "找出蚕的微粒病病原。", "body": "受政府之托研究蚕病，找出病原与检疫法，挽救法国丝绸产业。"},
+    {"year": 1868, "id": "stroke", "title": "中风半瘫", "img": "pasteur-portrait.jpg", "alt": "巴斯德", "fig": "病后仍坚持工作。", "body": "中年中风导致左半身偏瘫，他仍以惊人毅力继续研究。"},
+    {"year": 1877, "id": "anthrax", "title": "炭疽与鸡霍乱", "img": "anthrax.jpg", "alt": "炭疽实验", "fig": "减毒思路成型。", "body": "研究炭疽与鸡霍乱，摸索出“减毒”病原可诱发保护力，奠定疫苗原理。"},
+    {"year": 1881, "id": "anthrax-vac", "title": "炭疽疫苗公开实验", "img": "anthrax.jpg", "alt": "疫苗实验", "fig": "一只活、一只死。", "body": "公开演示：接种减毒菌的羊存活，未接种的死亡，震动学界与公众。"},
+    {"year": 1885, "id": "rabies", "title": "狂犬病疫苗", "img": "rabies.jpg", "alt": "狂犬病疫苗", "fig": "救下被咬少年。", "body": "为被疯狗咬伤的少年梅斯特接种减毒疫苗，人类首次用疫苗对抗狂犬病。"},
+    {"year": 1888, "id": "institute", "title": "巴斯德研究所", "img": "pasteur-institute.jpg", "alt": "巴斯德研究所", "fig": "留下永久阵地。", "body": "以他的名字创立研究所，至今仍是传染病研究重镇。"},
+    {"year": 1895, "id": "died", "title": "逝于近郊", "img": "monument.jpg", "alt": "巴斯德纪念碑", "fig": "微生物学之父落幕。", "body": "9 月 28 日逝世，享年 72 岁。他让人类第一次系统地管住了“看不见的小东西”。"}
+  ],
+
+  "images": [
+    {"file": "pasteur-portrait.jpg", "wiki": "File:Louis Pasteur.jpg", "q": "Louis Pasteur portrait", "desc": "巴斯德肖像", "author": "Public domain", "license": "Public domain"},
+    {"file": "pasteur-lab.jpg", "wiki": "File:Pasteur's laboratory.jpg", "q": "Pasteur laboratory 19th century", "desc": "巴斯德的实验室", "author": "Public domain", "license": "Public domain"},
+    {"file": "fermentation.jpg", "wiki": "File:Fermentation vat.jpg", "q": "wine fermentation vat", "desc": "发酵", "author": "Public domain", "license": "Public domain"},
+    {"file": "swan-neck-flask.jpg", "wiki": "File:Pasteur experiment.jpg", "q": "Pasteur swan neck flask experiment", "desc": "鹅颈瓶实验", "author": "Public domain", "license": "Public domain"},
+    {"file": "silkworm.jpg", "wiki": "File:Silkworm moth.jpg", "q": "silkworm moth", "desc": "蚕", "author": "Public domain", "license": "Public domain"},
+    {"file": "anthrax.jpg", "wiki": "File:Anthrax sheep.jpg", "q": "sheep anthrax", "desc": "炭疽实验", "author": "Public domain", "license": "Public domain"},
+    {"file": "rabies.jpg", "wiki": "File:Pasteur rabies vaccination.jpg", "q": "rabies vaccination Pasteur", "desc": "狂犬病疫苗", "author": "Public domain", "license": "Public domain"},
+    {"file": "pasteur-institute.jpg", "wiki": "File:Institut Pasteur.jpg", "q": "Institut Pasteur building", "desc": "巴斯德研究所", "author": "Public domain", "license": "Public domain"},
+    {"file": "monument.jpg", "wiki": "File:Statue of Louis Pasteur.jpg", "q": "Louis Pasteur statue monument", "desc": "巴斯德纪念碑", "author": "Public domain", "license": "Public domain"}
+  ],
+
+  "labs": [
+    {"key": "colony", "kind": "growth", "icon": "🦠", "title": "细菌增长：适宜条件下暴涨",
+     "intro": "拖动“增长速率”，看蓝线（无限制指数增长）与绿线（受环境容量限制的 S 形）如何分道扬镳。",
+     "desc": "培养基有限时，菌群不会一直指数暴涨，会“踩刹车”。",
+     "ctrl": [{"name": "rate", "label": "增长速率 r", "min": 0.3, "max": 1.5, "value": 0.6, "step": 0.1, "init": "0.6"}],
+     "params": {"label": "菌群在适宜条件下会迅速膨胀"}},
+    {"key": "heat", "kind": "graph", "icon": "🔥", "title": "巴氏杀菌：加热后存活陡降",
+     "intro": "拖动“加热强度”，看微生物存活率（指数下降曲线）如何随温度升高而急坠。",
+     "desc": "温度越高、时间越久，活下来的越少——这就是加热灭菌的原理。",
+     "ctrl": [{"name": "param1", "label": "加热强度", "min": 0.3, "max": 1.8, "value": 1, "step": 0.1, "init": "1.0"}, {"name": "param2", "label": "时间因子", "min": 0.6, "max": 2, "value": 1, "step": 0.1, "init": "1.0"}],
+     "params": {"expr": "exp", "label": "加热越强，微生物存活率越低"}},
+    {"key": "spread", "kind": "branching", "icon": "🌳", "title": "传染扩散：从一例到一片",
+     "intro": "拖动“传播级数”，看一个病例如何像树枝一样逐级分叉，扩散成一片。",
+     "desc": "每个感染者又传染他人，数量便指数般膨胀。",
+     "ctrl": [{"name": "depth", "label": "传播级数", "min": 1, "max": 8, "value": 5, "step": 1, "init": "5 级"}],
+     "params": {"label": "一次传播像一根枝丫，逐级分叉便成林", "leafColors": ["#E8590C", "#C2255C", "#6741D9", "#3B5BDB", "#0C8599", "#2F9E44"]}}
+  ]
+}
+
+
+if __name__ == "__main__":
+    out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "spec_pasteur.json")
+    json.dump(SPEC, open(out, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    print("wrote", out)

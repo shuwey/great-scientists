@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>自由落体与运动学 · 伽利略如何把“运动”变成数学 | 读懂伽利略</title>
+<meta name="description" content="伽利略用斜面实验证明：所有物体不论轻重都以相同加速度下落，且下落距离与时间的平方成正比。他第一次把运动和数学绑在了一起。">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-base="">
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../index.html"><span class="apple">🍎</span>读懂伽利略</a>
+    <button class="nav-toggle" aria-label="打开菜单"><i></i><i></i><i></i></button>
+    <div class="nav-links">
+      <a href="../index.html">首页</a>
+      <a href="../timeline.html">时间轴</a>
+      <a href="telescope.html">望远镜</a>
+      <a href="motion.html">运动学</a>
+      <a href="inertia.html">惯性</a>
+      <a href="method.html">方法与审判</a>
+      <a href="../labs.html">玩一玩</a>
+      <a href="../glossary.html">词典</a>
+    </div>
+  </div>
+  <div id="progress"></div>
+</nav>
+
+<div class="page-head">
+  <div class="wrap">
+    <div class="crumb"><a href="../index.html">首页</a> · <a href="../timeline.html">时间轴</a> · 自由落体与运动学</div>
+    <h1>自由落体与运动学</h1>
+    <p class="big-claim">在伽利略之前，人们觉得“运动”太乱、没法算。他用斜面、数学和一只只铜球，把运动变成了可以精确描述的规律——近代物理学，从这里起步。</p>
+    <div class="meta-row">
+      <span class="tag b">斜面实验</span>
+      <span class="tag g">轻重同落</span>
+      <span class="tag a">s ∝ t²</span>
+      <span class="tag">难度 · 进阶</span>
+    </div>
+  </div>
+</div>
+
+<div class="detail-wrap">
+  <article class="article" data-terms>
+
+    <h2 id="freefall">一、重的先落地？不一定</h2>
+    <p>两千年来，大家相信亚里士多德的说法：<b>越重的东西下落越快</b>。伽利略却怀疑这一点。他论证：如果“重得快”成立，那么把重物和轻物绑在一起，既会因“更重”而更快，又会因“轻的拖后腿”而更慢——自相矛盾。</p>
+    <p>他的结论是：在忽略空气阻力时，<b>所有物体不论轻重，都以相同的加速度下落</b>。这就是<span class="term" data-term="free-fall" tabindex="0" role="button">自由落体</span>的核心。传说他在<span class="term" data-term="pisa-tower" tabindex="0" role="button">比萨斜塔</span>上同时丢下轻重不同的球来证明——这个故事真假难辨，但结论本身，他用更可靠的实验坐实了。</p>
+
+    <h2 id="incline">二、把“快”放慢：斜面实验</h2>
+    <p>自由下落太快，当时的计时工具根本测不准。伽利略的妙招是：让铜球沿<span class="term" data-term="inclined-plane" tabindex="0" role="button">斜面</span>滚下。斜面越缓，球越慢，时间就被“拉长”，便于测量。</p>
+    <figure class="fig">
+      <img src="../assets/img/draw/motion-incline.svg" alt="铜球沿不同倾角斜面滚下">
+      <figcaption><b>斜面思想：</b>把陡峭的下落“稀释”成平缓的滚动，本质规律不变，却看得清、量得准。这是“用实验逼近真相”的典范。</figcaption>
+    </figure>
+    <p>他改变斜面的倾角，记录球走完全程的用时，再改变“走一半、走四分之一”的用时。结果发现：<b>球走过的距离，和所用时间的平方成正比</b>。由此反推，真正的自由下落也遵循同样的规律。</p>
+
+    <h2 id="square">三、最关键的公式：s = ½·a·t²</h2>
+    <p>伽利略最了不起的一步，是给出了<span class="term" data-term="distance-time-square" tabindex="0" role="button">位移与时间平方成正比</span>的定量关系：下落距离 s = ½·a·t²（a 是加速度）。</p>
+    <p>这意味着什么？如果第 1 秒落下 1 份距离，那么前 2 秒落下 4 份、前 3 秒落下 9 份……<b>越往后，每一秒里掉得越猛</b>。物体并不是“匀速变快一点点”，而是速度随时间线性增加——这定义了<span class="term" data-term="acceleration" tabindex="0" role="button">加速度</span>：a = 速度变化量 ÷ 时间。</p>
+    <div class="callout green">
+      <span class="ct">✅ 匀加速</span>
+      <p>“匀加速”指加速度恒定：每秒钟速度的增量都一样。伽利略发现自由落体正是匀加速运动——这是人类第一次把“变化的速度”本身当作研究对象。</p>
+    </div>
+    <p>把<span class="term" data-term="uniform-motion" tabindex="0" role="button">匀速运动</span>（速度不变）和匀加速（速度随时间线性增长）分开，再研究它们如何合成，伽利略还解释了<span class="term" data-term="projectile" tabindex="0" role="button">抛体运动</span>：平抛的物体一边匀速前进、一边匀加速下落，合起来走出一条抛物线。</p>
+
+    <h2 id="pisa">四、比萨斜塔的传说与真相</h2>
+    <p>“伽利略在比萨斜塔扔铁球”的故事广为流传，但史料并不能确证他真这么做过。不过，他当时确实在比萨大学，也确实用推理加斜面实验得出了“轻重同落”的结论。</p>
+    <p>重点不在塔，而在方法：<b>用可重复的观测和数学，取代“权威说过什么”</b>。这正是他留给后世最贵的东西。</p>
+
+    <h2 id="summary">五、为什么这很重要</h2>
+    <p>在伽利略之前，运动被当作混乱、不可言说的现象。他之后，运动成了可以用公式写下来的东西：<span class="term" data-term="velocity" tabindex="0" role="button">速度</span>、加速度、位移、时间，彼此有确定的数学关系。</p>
+    <p class="fact" style="background:#EEF2FB;padding:12px 16px;border-radius:12px;color:#1B2530">一句话记住：<b>物体下落的快慢，和它有多重无关；它掉下的距离，和时间的平方成正比。伽利略让“运动”第一次有了数学语言。</b></p>
+
+    <div class="page-nav">
+      <a class="pn prev" href="telescope.html"><div class="lab">← 上一篇</div><div class="tt">望远镜与天文</div></a>
+      <a class="pn next" href="inertia.html"><div class="lab">下一篇 →</div><div class="tt">惯性与相对性原理</div></a>
+    </div>
+
+  </article>
+
+  <aside class="side">
+    <div class="side-box">
+      <h4>本节目录</h4>
+      <ul class="toc">
+        <li><a href="#freefall">轻重同落</a></li>
+        <li><a href="#incline">斜面实验</a></li>
+        <li><a href="#square">s = ½·a·t²</a></li>
+        <li><a href="#pisa">斜塔传说</a></li>
+        <li><a href="#summary">为什么重要</a></li>
+      </ul>
+    </div>
+    <div class="side-box">
+      <h4>关键概念（点开看）</h4>
+      <div class="side-terms">
+        <span class="term" data-term="free-fall" tabindex="0" role="button">自由落体</span>
+        <span class="term" data-term="inclined-plane" tabindex="0" role="button">斜面实验</span>
+        <span class="term" data-term="acceleration" tabindex="0" role="button">加速度</span>
+        <span class="term" data-term="distance-time-square" tabindex="0" role="button">s ∝ t²</span>
+        <span class="term" data-term="projectile" tabindex="0" role="button">抛体运动</span>
+        <span class="term" data-term="aristotle" tabindex="0" role="button">亚里士多德</span>
+      </div>
+    </div>
+    <div class="side-box">
+      <h4>一句话记住</h4>
+      <p class="fact">轻重一起掉、距离正比于时间平方——用斜面把“快”放慢，伽利略把运动写成了公式。</p>
+    </div>
+  </aside>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand-f"><span class="apple" style="width:26px;height:26px;font-size:14px;border-radius:7px;background:linear-gradient(140deg,#3B5BDB,#6E8BFF);display:grid;place-items:center">🍎</span>读懂伽利略</div>
+        <p style="margin:0;color:#8B96AA;font-size:13.5px">一个面向中学生的伽利略科普小站。按时间顺序讲故事，把难词讲成人话。</p>
+      </div>
+      <div>
+        <h5>四处走走</h5>
+        <ul>
+          <li><a href="../index.html">首页</a></li>
+          <li><a href="../timeline.html">生平时间轴</a></li>
+          <li><a href="telescope.html">望远镜与天文</a></li>
+          <li><a href="motion.html">自由落体与运动</a></li>
+          <li><a href="inertia.html">惯性与相对性</a></li>
+          <li><a href="method.html">方法与审判</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>更多</h5>
+        <ul>
+          <li><a href="../labs.html">动手玩一玩</a></li>
+          <li><a href="../glossary.html">术语词典</a></li>
+          <li><a href="../about.html">资料来源与延伸阅读</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>课堂与自学用途 · 内容依据公开史料编写</span>
+      <span>历史图片来自 Wikimedia Commons</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" aria-label="回到顶部">↑</button>
+<script src="../assets/js/terms.js"></script>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" font-family="-apple-system,Segoe UI,sans-serif">
+  <rect width="120" height="120" rx="16" fill="#EEF2FB"/>
+  <path d="M10,46 Q60,46 60,70 Q60,94 110,94" fill="none" stroke="#C9D3E0" stroke-width="2"/>
+  <path d="M10,66 Q60,66 60,82 Q60,100 110,100" fill="none" stroke="#C9D3E0" stroke-width="2"/>
+  <circle cx="60" cy="84" r="20" fill="#3B5BDB"/>
+  <circle cx="52" cy="78" r="7" fill="#6E8BFF"/>
+  <path d="M20,60 Q40,60 60,76 Q82,94 108,96" fill="none" stroke="#F59F00" stroke-width="3" stroke-dasharray="5 4"/>
+  <circle cx="108" cy="96" r="6" fill="#F59F00"/>
+  <text x="60" y="116" text-anchor="middle" font-size="11" font-weight="700" fill="#1B2530">广义相对论</text>
+</svg>

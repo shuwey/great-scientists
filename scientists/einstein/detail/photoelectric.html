@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>光电效应 · 光是一份份的“光子” | 读懂爱因斯坦</title>
+<meta name="description" content="爱因斯坦用“光量子”解释光电效应：能不能打出电子，取决于光的频率而非亮度。这一想法开创了量子物理，也让他获得诺贝尔物理学奖。">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-base="">
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../index.html"><span class="apple">🍎</span>读懂爱因斯坦</a>
+    <button class="nav-toggle" aria-label="打开菜单"><i></i><i></i><i></i></button>
+    <div class="nav-links">
+      <a href="../index.html">首页</a>
+      <a href="../timeline.html">时间轴</a>
+      <a href="relativity.html">相对论</a>
+      <a href="photoelectric.html">光电效应</a>
+      <a href="gravity.html">广义相对论</a>
+      <a href="mass-energy.html">质能方程</a>
+      <a href="../labs.html">玩一玩</a>
+      <a href="../glossary.html">词典</a>
+    </div>
+  </div>
+  <div id="progress"></div>
+</nav>
+
+<div class="page-head">
+  <div class="wrap">
+    <div class="crumb"><a href="../index.html">首页</a> · <a href="../timeline.html">时间轴</a> · 光电效应</div>
+    <h1>光电效应与光量子</h1>
+    <p class="big-claim">光，到底是连绵的波，还是一粒粒的“子弹”？爱因斯坦用一个看似简单的问题，撬开了量子物理的大门。</p>
+    <div class="meta-row">
+      <span class="tag b">1905 奇迹年</span>
+      <span class="tag g">光量子</span>
+      <span class="tag a">诺贝尔奖</span>
+      <span class="tag">难度 · 进阶</span>
+    </div>
+  </div>
+</div>
+
+<div class="detail-wrap">
+  <article class="article" data-terms>
+
+    <h2 id="discovery">一、一个让旧理论“卡壳”的实验</h2>
+    <p>19 世纪末，物理学家发现：用光照射某些金属，表面会“溅出”电子，这叫<b>光电效应</b>。起初大家以为，光是波，能量连续分布——那只要把光调得<b>更亮</b>（能量更大），就一定能打出更多、更快的电子，对吧？</p>
+    <p>实验结果啪啪打脸：① 能不能打出电子，<b>只看光的颜色（频率）</b>，和亮不亮没关系；② 低于某个特定频率，光再亮也一个电子都打不出来；③ 一旦能打出，电子立刻飞出，没有延迟。这些用“光是连续波”的旧观念完全解释不了。</p>
+
+    <h2 id="puzzle">二、经典理论的尴尬</h2>
+    <div class="callout amber">
+      <span class="ct">💡 旧理论的预测</span>
+      <p>如果光只是波，能量就摊在一大片区域上。电子要“攒够”能量才能挣脱金属，亮光应该迟早能把它推出来——可实验里<b>根本不出电子</b>，而且一照就出、毫无延迟。这说明能量不是“慢慢攒”的，而是“一下到位”的。</p>
+    </div>
+    <p>问题卡在这儿：能量到底是怎么“一下到位”的？普朗克此前已提出，振子的能量是一份份的（量子）。爱因斯坦大胆地把这个想法用到光本身上。</p>
+
+    <h2 id="photon">三、爱因斯坦的妙招：光，是一份份的</h2>
+    <p>1905 年，爱因斯坦提出：<b>光本身就是一份一份的</b>，每一份叫一个<b>光子</b>，能量只由频率决定：E = h·f（h 是普朗克常数，f 是频率）。频率越高（颜色越偏蓝紫），单个光子“越重”、能量越大。</p>
+    <figure class="fig">
+      <img src="../assets/img/draw/photoelectric.svg" alt="光子把电子从金属中敲出，截止电压拦住电子">
+      <figcaption><b>光电效应示意图：</b>光子像一枚枚硬币砸向金属；只有“面值”（频率）够大，才能把电子敲出来。加反向电压到“截止电压”，电子就被拦回。</figcaption>
+    </figure>
+    <p>这样一切都顺了：一个光子把它的全部能量交给一个电子。电子要先“付”掉逸出功 W（金属对它的束缚），剩下的才变成自己的动能。于是有了爱因斯坦方程：</p>
+    <div class="formula" style="background:#F8F9FC;border:1px solid #E4E9F2;border-radius:14px;padding:16px 18px;margin:14px 0">
+      <div class="sym-row" style="font-size:19px;font-weight:800;color:#1B2530;text-align:center">½ m v²<sub style="font-size:12px">最大</sub> = h·f − W</div>
+      <div class="sym-notes">
+        <span class="sym-note" data-sym="hf">h·f：每个光子的能量（频率越高越大）</span>
+        <span class="sym-note" data-sym="w">W：逸出功，金属把电子“绑住”的强度</span>
+        <span class="sym-note" data-sym="ke">½mv²：电子飞出后的最大动能</span>
+      </div>
+    </div>
+
+    <h2 id="threshold">四、两个关键门槛</h2>
+    <p>从方程能直接看出两个事实：</p>
+    <ul>
+      <li><b>截止频率 f₀：</b>只有当 h·f &gt; W，即频率高于某个值，才能打出电子。低于它，光再亮也白搭——这正好解释了“亮光打不出电子”的怪事。</li>
+      <li><b>截止电压：</b>给飞出的电子加一个反向电场，能把它“压”回去。把电流刚好压到零所需的电压叫截止电压，它直接对应电子的最大动能。实验测出来的数值，和方程算得分毫不差。</li>
+    </ul>
+
+    <h2 id="nobel">五、诺贝尔奖，却不是因为相对论</h2>
+    <p>有趣的是，爱因斯坦 1921 年的诺贝尔物理学奖，获奖理由写的是“对光电效应定律的发现”，而不是更出名的相对论——因为当时相对论仍有争议，而光电效应已被实验牢牢证实。</p>
+    <p>但光电效应的意义远不止一个实验现象：它让“量子”从普朗克的假设，变成了理解光的真实方式，直接催生了量子力学。今天，太阳能电池、光电管、夜视仪，背后都是这个 1905 年的想法。</p>
+    <p class="fact" style="background:#EEF2FB;padding:12px 16px;border-radius:12px;color:#1B2530">一句话记住：<b>光既是波也是粒子；能不能打出电子看“颜色”（频率），不是看“亮度”。</b></p>
+
+    <div class="page-nav">
+      <a class="pn prev" href="relativity.html"><div class="lab">← 上一篇</div><div class="tt">狭义相对论</div></a>
+      <a class="pn next" href="gravity.html"><div class="lab">下一篇 →</div><div class="tt">广义相对论：时空弯曲</div></a>
+    </div>
+
+  </article>
+
+  <aside class="side">
+    <div class="side-box">
+      <h4>本节目录</h4>
+      <ul class="toc">
+        <li><a href="#discovery">实验怪象</a></li>
+        <li><a href="#puzzle">旧理论卡壳</a></li>
+        <li><a href="#photon">光量子</a></li>
+        <li><a href="#threshold">两个门槛</a></li>
+        <li><a href="#nobel">诺贝尔奖</a></li>
+      </ul>
+    </div>
+    <div class="side-box">
+      <h4>关键概念（点开看）</h4>
+      <div class="side-terms">
+        <span class="term" data-term="photoelectric" tabindex="0" role="button">光电效应</span>
+        <span class="term" data-term="photon" tabindex="0" role="button">光子</span>
+        <span class="term" data-term="quanta" tabindex="0" role="button">量子</span>
+        <span class="term" data-term="threshold-frequency" tabindex="0" role="button">截止频率</span>
+        <span class="term" data-term="work-function" tabindex="0" role="button">逸出功</span>
+        <span class="term" data-term="stopping-voltage" tabindex="0" role="button">截止电压</span>
+      </div>
+    </div>
+    <div class="side-box">
+      <h4>一句话记住</h4>
+      <p class="fact">光是一份份光子；频率够高才敲得出电子，动能 = 光子能量 − 逸出功。</p>
+    </div>
+  </aside>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand-f"><span class="apple" style="width:26px;height:26px;font-size:14px;border-radius:7px;background:linear-gradient(140deg,#3B5BDB,#6E8BFF);display:grid;place-items:center">🍎</span>读懂爱因斯坦</div>
+        <p style="margin:0;color:#8B96AA;font-size:13.5px">一个面向中学生的爱因斯坦科普小站。按时间顺序讲故事，把难词讲成人话。</p>
+      </div>
+      <div>
+        <h5>四处走走</h5>
+        <ul>
+          <li><a href="../index.html">首页</a></li>
+          <li><a href="../timeline.html">生平时间轴</a></li>
+          <li><a href="relativity.html">狭义相对论</a></li>
+          <li><a href="photoelectric.html">光电效应</a></li>
+          <li><a href="gravity.html">广义相对论</a></li>
+          <li><a href="mass-energy.html">质能方程</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>更多</h5>
+        <ul>
+          <li><a href="../labs.html">动手玩一玩</a></li>
+          <li><a href="../glossary.html">术语词典</a></li>
+          <li><a href="../about.html">资料来源与延伸阅读</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>课堂与自学用途 · 内容依据公开史料编写</span>
+      <span>历史图片来自 Wikimedia Commons</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" aria-label="回到顶部">↑</button>
+<script src="../assets/js/terms.js"></script>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

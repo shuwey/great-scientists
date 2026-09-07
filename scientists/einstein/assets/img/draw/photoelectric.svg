@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 280" font-family="-apple-system,Segoe UI,sans-serif">
+  <rect width="680" height="280" fill="#FBFCFE"/>
+  <text x="20" y="26" font-size="15" font-weight="700" fill="#1B2530">光电效应：光（一份份光子）把金属里的电子“敲”出来</text>
+
+  <!-- 入射光子 -->
+  <g>
+    <path d="M40,80 L210,80" stroke="#3B5BDB" stroke-width="3"/>
+    <polygon points="210,80 196,73 196,87" fill="#3B5BDB"/>
+    <text x="120" y="68" text-anchor="middle" font-size="12" fill="#3B5BDB">光子 h·f（频率越高越“重”）</text>
+  </g>
+
+  <!-- 金属板 -->
+  <rect x="210" y="40" width="40" height="180" rx="6" fill="#EDEFF4" stroke="#8B96AA" stroke-width="2"/>
+  <text x="230" y="240" text-anchor="middle" font-size="12" fill="#1B2530">金属</text>
+
+  <!-- 逸出功提示 -->
+  <text x="270" y="60" font-size="12" fill="#8B96AA">需克服逸出功 W 才能出来</text>
+
+  <!-- 电子出来 -->
+  <g fill="#0CA678">
+    <circle cx="300" cy="120" r="7"/>
+    <path d="M300,120 L360,95" stroke="#0CA678" stroke-width="2.5"/>
+    <circle cx="360" cy="95" r="7"/>
+    <path d="M360,95 L430,70" stroke="#0CA678" stroke-width="2.5"/>
+    <circle cx="430" cy="70" r="7"/>
+  </g>
+  <text x="560" y="60" text-anchor="middle" font-size="12" font-weight="700" fill="#087F5B">飞出的电子</text>
+  <text x="560" y="78" text-anchor="middle" font-size="11" fill="#8B96AA">动能 = h·f − W</text>
+
+  <!-- 截止电压拦住 -->
+  <line x1="500" y1="40" x2="500" y2="220" stroke="#E8590C" stroke-width="3" stroke-dasharray="5 4"/>
+  <text x="500" y="245" text-anchor="middle" font-size="12" fill="#E8590C">截止电压</text>
+  <text x="500" y="262" text-anchor="middle" font-size="11" fill="#8B96AA">反向电场一够大，电子被拦回</text>
+</svg>

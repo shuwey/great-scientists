@@ -1,0 +1,191 @@
+# -*- coding: utf-8 -*-
+"""居里夫子站内容规格。运行后生成 spec_curie.json。"""
+import json, os
+
+SPEC = {
+  "id": "curie",
+  "name": "居里夫人",
+  "en": "Marie Curie",
+  "years": "1867–1934",
+  "kicker": "放射性之母 · 1867—1934",
+  "lede": "她从一吨矿渣里提炼出零点几克镭，发现放射性是一种原子自身的本领，并成为史上第一位两获诺贝尔奖、也是唯一横跨物理与化学的人。",
+  "meta": "读懂居里夫人：用中学生能听懂的话，讲清放射性如何被发现，又如何改变了科学与医学。",
+  "biotitle": "她把“看不见的射线”变成了科学",
+  "bio": [
+    "玛丽·居里（1867—1934），原籍波兰，在巴黎求学。她与丈夫皮埃尔·居里一起，打开了放射性研究的大门。",
+    "她先后发现两种新元素——钋（以祖国波兰命名）和镭；镭的发现源于她相信“放射性是原子本身的属性”，而非外界激发。",
+    "她两获诺贝尔奖（物理、化学），并把放射性用于医学。长期接触射线损害了她的健康，她却把一生交给了这门新科学。"
+  ],
+  "portrait": "curie-portrait.jpg",
+  "about_claim": "本页说明居里夫子站内容的依据与延伸去处。",
+  "about_body": "<h2>资料来源</h2><p>本子站内容依据公开史料与科学史通识编写，核心事实（生卒、钋与镭的发现、两次诺贝尔奖、战时移动 X 光车）与主流科学史一致。历史图片均来自 Wikimedia Commons 公有领域资源。</p><h2>延伸阅读</h2><p>想深入：居里夫人《放射性专论》；以及《居里夫人传》（艾芙·居里）。</p>",
+  "tl_desc": "从华沙的少女到巴黎先贤祠的安葬者：居里夫人一生的关键节点。",
+  "tl_claim": "1867 年出生，1934 年逝于贫血（与长期辐射暴露相关）。她让“放射性”从谜团变成可测量、可应用的科学。",
+  "cats": ["物理", "化学", "医学", "历史"],
+  "hero_scene": "atom",
+  "hero_params": {"label": "原子在自发地放出射线"},
+
+  "pages": {
+    "radioactivity": {
+      "title": "放射性：原子自己在放东西",
+      "file": "detail/radioactivity.html",
+      "claim": "居里夫妇与贝克勒尔一起证明：某些原子会自发放出射线（α、β、γ），这种“放射性”来自原子核本身，与外界无关。",
+      "tags": ["放射性", "射线", "原子"],
+      "year": "1898",
+      "card": "不是摩擦起电，而是原子“自己往外冒东西”。",
+      "scene": "atom",
+      "scene_params": {"label": "放射性原子自发放出射线"},
+      "remember": "一句话记住：放射性不是“被激活”，而是某些原子天生的、停不下来的“发射”。",
+      "sideterms": ["radioactivity", "alpha", "beta", "gamma", "atomic-nucleus", "becquerel"],
+      "sections": [
+        {"id": "uranium", "h": "一、从铀的“神秘射线”说起", "body": "贝克勒尔发现铀盐能像 X 光一样使底片感光，却说不清来源。居里夫人接手，系统测量了许多物质的放射性。",
+         "fig": "radioactivity", "figalt": "铀的射线", "figcap": "一种看不见、却能让底片感光的东西。"},
+        {"id": "own", "h": "二、原子自己的本领", "body": "她的关键判断：放射性不是化学反应，而是原子自身的属性——某些原子核不稳定，会自发“吐出”粒子或能量。",
+         "figalt": "原子核在发射", "figcap": "射线来自原子核内部，不是外来的刺激。"},
+        {"id": "types", "h": "三、三种射线", "body": "放射性放出 α（氦核）、β（电子）、γ（高能光子）三类射线，穿透力各不相同。认清它们，才谈得上测量与应用。",
+         "figalt": "αβγ 三种射线", "figcap": "三种“弹种”，脾气各不同。"},
+        {"id": "why", "h": "四、为什么是革命", "body": "放射性第一次让人直接触碰“原子核会变化”，动摇了“原子不可分”的旧观念，也开启了核物理与放射医学。",
+         "figalt": "原子可分", "figcap": "原子不再是铁板一块，它内部也会“变”。"}
+      ]
+    },
+    "radium": {
+      "title": "镭：从矿渣里淘出的光",
+      "file": "detail/radium.html",
+      "claim": "居里夫妇从数吨沥青铀矿渣中，提炼出零点几克氯化镭——一种会自发发光、放射性极强的元素。",
+      "tags": ["镭", "提炼", "新元素"],
+      "year": "1902",
+      "card": "一吨矿渣，换回一小管会发光的镭。",
+      "scene": "atom",
+      "scene_params": {"label": "镭原子持续放出射线并发热发光"},
+      "remember": "一句话记住：镭的发现靠的不是运气，而是“放射性可测量”这一信念下的硬功夫。",
+      "sideterms": ["radium", "polonium", "pitchblende", "element", "isotope"],
+      "sections": [
+        {"id": "polonium", "h": "一、先有钋", "body": "1898 年，她先从沥青铀矿中分离出一种新元素，以祖国波兰命名为“钋”。这是她第一次发现新元素。",
+         "fig": "radium", "figalt": "发现新元素", "figcap": "用祖国之名，给新元素上了户口。"},
+        {"id": "radium", "h": "二、再有镭", "body": "同年，她又发现放射性更强的另一种新元素——镭。为证实它，必须拿到足够纯的样品。",
+         "figalt": "镭的踪迹", "figcap": "循着放射性的“气味”，一路追到镭。"},
+        {"id": "tons", "h": "三、数吨矿渣的苦工", "body": "镭在矿石中极微量。她和皮埃尔在简陋棚屋里，煮沸、结晶、再煮沸数吨矿渣，才得到约 0.1 克氯化镭。",
+         "figalt": "提炼的苦工", "figcap": "用吨级的耐心，换克级的成果。"},
+        {"id": "glow", "h": "四、会发光的镭", "body": "镭在暗处幽幽发光，因为射线激发周围物质。它的放射性比铀强百万倍，既迷人又危险。",
+         "figalt": "发光的镭", "figcap": "美丽的光，背后是高强度的射线。"}
+      ]
+    },
+    "decay": {
+      "title": "衰变与半衰期：放射会变弱",
+      "file": "detail/decay.html",
+      "claim": "放射性不是永远一样强：每过一段固定的“半衰期”，活度就减半。据此可给文物、地层测年。",
+      "tags": ["衰变", "半衰期", "测年"],
+      "year": "约1900s",
+      "card": "一半一半地少下去——这就是衰变的节律。",
+      "scene": "graph",
+      "scene_params": {"label": "放射性活度随时间指数下降"},
+      "remember": "一句话记住：半衰期不问“还剩多少”，只问“再过一半时间，就只剩一半”。",
+      "sideterms": ["decay", "half-life", "radioactivity", "isotope"],
+      "sections": [
+        {"id": "random", "h": "一、单个原子何时衰变？随机", "body": "单个放射性原子何时衰变完全随机，谁也说不准。但亿万个凑在一起，整体却遵循严整的统计规律。",
+         "fig": "decay", "figalt": "随机与统计", "figcap": "一个讲不准，一群却很准。"},
+        {"id": "half", "h": "二、半衰期", "body": "半衰期是“活度减到一半所需时间”。它只取决于核种，与外界温度、压强无关——这是测年的基础。",
+         "figalt": "半衰期示意", "figcap": "过一段固定时间，就只剩一半在跳。"},
+        {"id": "curve", "h": "三、指数下降", "body": "活度随时间按指数衰减：起初掉得快，越往后越慢，但永不完全归零。曲线形状由半衰期决定。",
+         "figalt": "衰变曲线", "figcap": "不是直线下滑，而是越滑越缓。"},
+        {"id": "dating", "h": "四、用来测年", "body": "比较样品中剩余母核与子核的比例，就能反推年龄。碳-14 测年、铀系测年都建立在这条曲线上。",
+         "figalt": "放射性测年", "figcap": "把“还剩多少”翻译成“过了多久”。"}
+      ]
+    },
+    "xray": {
+      "title": "把射线用于人：医学与战时",
+      "file": "detail/xray.html",
+      "claim": "居里夫人把放射性与 X 光知识用于医学：一战期间她组织移动 X 光车，在前线为伤员定位弹片。",
+      "tags": ["X光", "放射医学", "战时"],
+      "year": "1914–1918",
+      "card": "从实验室的射线，到战地医生的眼睛。",
+      "scene": "wave",
+      "scene_params": {"label": "X 射线（高频电磁波）穿过人体成像"},
+      "remember": "一句话记住：她让“看不见的射线”第一次成了救人的工具，也第一次暴露了它的危险。",
+      "sideterms": ["xray", "cancer-treatment", "mobile-xray", "radiation-safety", "nobel"],
+      "sections": [
+        {"id": "xray", "h": "一、X 光也是电磁波", "body": "X 光是频率极高的电磁波，能穿透软组织、被骨骼挡住，从而在底片上成像。居里夫妇深谙其原理。",
+         "fig": "xray", "figalt": "X 光成像", "figcap": "一束高频波，照出骨头的位置。"},
+        {"id": "war", "h": "二、战地“小居里”", "body": "一战爆发后，她培训人员、组装可机动的 X 光车（“小居里”），开赴前线，帮助外科医生快速定位弹片与骨折。",
+         "figalt": "移动 X 光车", "figcap": "把实验室搬上卡车，开到伤员身边。"},
+        {"id": "therapy", "h": "三、放射治疗", "body": "放射性不仅能成像，高剂量还能杀死快速分裂的细胞。由此诞生的放射疗法，至今仍是癌症治疗的重要手段。",
+         "figalt": "放射治疗", "figcap": "同一束射线，看的见、也能治。"},
+        {"id": "safety", "h": "四、代价与防护", "body": "长期无防护接触射线会伤身，居里夫人晚年的病痛与此相关。这提醒我们：用射线，必须懂防护。",
+         "figalt": "辐射防护", "figcap": "强大的东西，要用得小心。"}
+      ]
+    }
+  },
+
+  "terms": {
+    "radioactivity": {"name": "放射性", "cat": "物理", "short": "原子自发放射线", "plain": "放射性是某些不稳定原子核自发放出 α、β、γ 射线并转变为别种核的现象。它来自核内部，与外界条件无关。", "analogy": "像一颗定时“吐珠子”的豆子，谁也拦不住。", "page": "radioactivity", "anchor": "#own", "related": ["alpha", "beta", "gamma", "atomic-nucleus"]},
+    "alpha": {"name": "α 射线", "cat": "物理", "short": "氦核流，穿透弱", "plain": "α 射线是高速氦原子核（2 质子 2 中子），带正电、穿透力最弱，一张纸就能挡住，但体内照射危害大。", "analogy": "像慢速的重炮弹，飞不远却很沉。", "page": "radioactivity", "anchor": "#types", "related": ["beta", "gamma", "radioactivity"]},
+    "beta": {"name": "β 射线", "cat": "物理", "short": "电子流，穿透中等", "plain": "β 射线是高速电子（或正电子）流，穿透力比 α 强，能被薄金属或几毫米铝挡住。", "analogy": "比 α 轻快些，能钻得深一点。", "page": "radioactivity", "anchor": "#types", "related": ["alpha", "gamma", "radioactivity"]},
+    "gamma": {"name": "γ 射线", "cat": "物理", "short": "高能光子，穿透强", "plain": "γ 射线是高频电磁波（光子），不带电、穿透力最强，需要厚铅或混凝土防护。", "analogy": "像看不见的硬 X 光，最能钻。", "page": "radioactivity", "anchor": "#types", "related": ["alpha", "beta", "xray"]},
+    "atomic-nucleus": {"name": "原子核", "cat": "物理", "short": "原子的中心，放射性的源头", "plain": "原子核位于原子中心，由质子和中子组成。放射性正源于不稳定的原子核“变身份”。", "analogy": "原子像一颗带核的果仁，放射来自果仁内部。", "page": "radioactivity", "anchor": "#why", "related": ["radioactivity", "isotope"]},
+    "becquerel": {"name": "贝克勒尔", "cat": "历史", "short": "先发现铀的射线", "plain": "法国物理学家贝克勒尔最早发现铀盐能自发使底片感光（1896），为放射性研究开了头；后与居里夫妇同获诺贝尔物理奖。", "analogy": "他先点亮了灯，居里夫妇把房间照亮。", "page": "radioactivity", "anchor": "#uranium", "related": ["radioactivity", "curie", "nobel"]},
+    "radium": {"name": "镭", "cat": "化学", "short": "居里夫妇发现的元素", "plain": "镭（Ra）是居里夫妇 1898 年发现的元素，放射性极强、在暗处发光。它的提炼证明了放射性可测量、可分离。", "analogy": "矿渣里淘出的“夜光石”，贵在它的射线。", "page": "radium", "anchor": "#radium", "related": ["polonium", "pitchblende", "element"]},
+    "polonium": {"name": "钋", "cat": "化学", "short": "以波兰命名的新元素", "plain": "钋（Po）是居里夫人发现的第一种新元素，以祖国波兰命名，放射性来自其不稳定原子核。", "analogy": "她给新元素起了祖国的名字，像寄回一封家书。", "page": "radium", "anchor": "#polonium", "related": ["radium", "curie", "element"]},
+    "pitchblende": {"name": "沥青铀矿", "cat": "化学", "short": "镭与钋的“母矿”", "plain": "沥青铀矿富含铀，也藏着微量的镭、钋。居里夫妇正是从这里，用吨级矿石换回克级产物。", "analogy": "大海里捞针，他们捞的是发光的那根。", "page": "radium", "anchor": "#tons", "related": ["radium", "polonium", "element"]},
+    "element": {"name": "元素", "cat": "化学", "short": "由同种原子构成", "plain": "元素由一类原子（质子数相同）构成。发现新元素，意味着在周期表上填了一个新格子。", "analogy": "元素像是化学的“字母”，新元素就是新字母。", "page": "radium", "anchor": "#polonium", "related": ["radium", "polonium", "isotope"]},
+    "isotope": {"name": "同位素", "cat": "化学", "short": "同元素、不同中子数", "plain": "同位素是质子数相同、中子数不同的原子。放射性往往与某些同位素的不稳定有关。", "analogy": "同一户人家，兄弟高矮不同——都是这家，却各有脾气。", "page": "radium", "anchor": "#glow", "related": ["element", "atomic-nucleus", "half-life"]},
+    "decay": {"name": "衰变", "cat": "物理", "short": "核变成另一种核", "plain": "衰变是不稳定核放出射线、转变为另一种核的过程。它是放射性的“动作”本身。", "analogy": "核“吐”出点东西，自己就变成了别种核。", "page": "decay", "anchor": "#random", "related": ["half-life", "radioactivity"]},
+    "half-life": {"name": "半衰期", "cat": "物理", "short": "活度减半的时间", "plain": "半衰期是放射性活度减到一半所需的时间，只取决于核种，与外界无关。它是测年的尺子。", "analogy": "每过一段固定时间，就只剩一半在“跳”。", "page": "decay", "anchor": "#half", "related": ["decay", "isotope", "radioactivity"]},
+    "xray": {"name": "X 射线", "cat": "物理", "short": "能透视的高频电磁波", "plain": "X 射线是频率极高的电磁波，能穿透软组织、被骨骼遮挡而成像，广泛用于医学检查。", "analogy": "一束高频波，像给身体拍“影子照”。", "page": "xray", "anchor": "#xray", "related": ["gamma", "cancer-treatment"]},
+    "cancer-treatment": {"name": "放射治疗", "cat": "医学", "short": "用射线杀癌细胞", "plain": "放疗利用射线（如 γ、X）破坏快速分裂的癌细胞，是癌症治疗的重要支柱之一。", "analogy": "同一束能成像的光，调高剂量就能“定点清除”。", "page": "xray", "anchor": "#therapy", "related": ["xray", "radiation-safety"]},
+    "mobile-xray": {"name": "移动 X 光车", "cat": "历史", "short": "居里夫人的战地发明", "plain": "一战期间，居里夫人组织可机动的 X 光车（“小居里”）上前线，帮医生定位弹片与骨折，挽救无数伤员。", "analogy": "把实验室搬上卡车，开到伤员身边。", "page": "xray", "anchor": "#war", "related": ["xray", "curie"]},
+    "radiation-safety": {"name": "辐射防护", "cat": "医学", "short": "用射线必须懂防护", "plain": "射线在治病的同时也会伤身。铅屏蔽、距离、时间控制等防护原则，是放射医学的底线。", "analogy": "火能煮饭也能烧手，离远点、挡一挡才安全。", "page": "xray", "anchor": "#safety", "related": ["xray", "gamma", "cancer-treatment"]},
+    "nobel": {"name": "诺贝尔奖", "cat": "历史", "short": "她拿了两回", "plain": "居里夫人获 1903 年物理奖（与贝克勒尔、皮埃尔分享）与 1911 年化学奖，是首位两获诺奖、且横跨两科的人。", "analogy": "两座奖杯，一座物理、一座化学，都被她抱回。", "page": "xray", "anchor": "#safety", "related": ["curie", "becquerel"]},
+    "curie": {"name": "居里夫人", "cat": "历史", "short": "放射性研究的先驱", "plain": "玛丽·居里是放射性研究的开创者之一，发现钋与镭，两获诺贝尔奖，并把放射知识用于医学与人道救助。", "analogy": "她把“看不见的射线”第一次变成了科学与人道的力量。", "page": "radioactivity", "anchor": "#why", "related": ["pierre", "becquerel", "radium", "nobel"]},
+    "pierre": {"name": "皮埃尔·居里", "cat": "历史", "short": "并肩作战的丈夫与伙伴", "plain": "法国物理学家皮埃尔·居里与玛丽共同研究放射性，发明了测量放射性的仪器，1906 年因车祸早逝。", "analogy": "他与她共用一台“探测仪”，把谜团一点点量出来。", "page": "radium", "anchor": "#tons", "related": ["curie", "radioactivity"]}
+  },
+
+  "timeline": [
+    {"year": 1867, "id": "born", "title": "生于华沙", "img": "curie-portrait.jpg", "alt": "居里夫人", "fig": "居里夫人 1867 年生于波兰华沙。", "body": "11 月 7 日，玛丽·斯克沃多夫斯卡出生。当时波兰受外族统治，她后来赴巴黎求学。"},
+    {"year": 1891, "id": "paris", "title": "赴巴黎求学", "img": "curie-lab.jpg", "alt": "巴黎实验室", "fig": "在巴黎接触前沿物理。", "body": "她进入巴黎大学学习物理与数学，开始接触当时最前沿的辐射研究。"},
+    {"year": 1895, "id": "pierre", "title": "与皮埃尔结婚", "img": "pierre-curie.jpg", "alt": "居里夫妇", "fig": "科研上的最佳搭档。", "body": "她与物理学家皮埃尔·居里结婚，二人成为放射性研究的黄金搭档。"},
+    {"year": 1896, "id": "becquerel", "title": "铀的神秘射线", "img": "becquerel.jpg", "alt": "贝克勒尔", "fig": "铀能自发使底片感光。", "body": "贝克勒尔发现铀盐的射线；玛丽决定系统研究这种“放射性”现象。"},
+    {"year": 1898, "id": "polonium", "title": "发现钋", "img": "polonium.jpg", "alt": "钋", "fig": "以波兰命名的新元素。", "body": "她从沥青铀矿中分离出第一种新元素钋，献给祖国波兰。"},
+    {"year": 1898, "id": "radium", "title": "发现镭", "img": "radium.jpg", "alt": "镭", "fig": "更强的放射性新元素。", "body": "同年又发现放射性更强的镭，为证实它必须拿到纯样品。"},
+    {"year": 1902, "id": "pure", "title": "提炼出纯镭", "img": "radium.jpg", "alt": "氯化镭", "fig": "数吨矿渣换回零点几克。", "body": "历经数年苦工，他们从数吨矿渣中制得约 0.1 克氯化镭，坐实物证。"},
+    {"year": 1903, "id": "nobel-phys", "title": "诺贝尔物理奖", "img": "nobel.jpg", "alt": "诺贝尔奖", "fig": "与贝克勒尔、皮埃尔分享。", "body": "因放射性研究获诺贝尔物理奖，玛丽成为首位诺奖女性得主。"},
+    {"year": 1906, "id": "widow", "title": "皮埃尔离世", "img": "pierre-curie.jpg", "alt": "皮埃尔", "fig": "科研搭档早逝。", "body": "皮埃尔遇车祸去世，玛丽接任其教席，继续推进研究。"},
+    {"year": 1911, "id": "nobel-chem", "title": "诺贝尔化学奖", "img": "nobel.jpg", "alt": "诺贝尔奖", "fig": "发现镭与钋元素。", "body": "因发现镭、钋两元素获诺贝尔化学奖，成为首位两获诺奖者。"},
+    {"year": 1914, "id": "war", "title": "战地 X 光车", "img": "xray-car.jpg", "alt": "移动 X 光车", "fig": "把射线用于救人。", "body": "一战期间她组织移动 X 光车上前线，为伤员定位弹片，挽救无数生命。"}
+  ],
+
+  "images": [
+    {"file": "curie-portrait.jpg", "wiki": "File:Marie Curie c1920.jpg", "q": "Marie Curie portrait", "desc": "居里夫人肖像", "author": "Public domain", "license": "Public domain"},
+    {"file": "pierre-curie.jpg", "wiki": "File:Pierre and Marie Curie.jpg", "q": "Pierre and Marie Curie", "desc": "居里夫妇", "author": "Public domain", "license": "Public domain"},
+    {"file": "radium.jpg", "wiki": "File:Radium chloride glow.jpg", "q": "radium glow luminescence", "desc": "镭", "author": "Public domain", "license": "Public domain"},
+    {"file": "polonium.jpg", "wiki": "File:Polonium.jpg", "q": "polonium element sample", "desc": "钋", "author": "Public domain", "license": "Public domain"},
+    {"file": "pitchblende.jpg", "wiki": "File:Pitchblende.jpg", "q": "pitchblende uranium ore", "desc": "沥青铀矿", "author": "Public domain", "license": "Public domain"},
+    {"file": "becquerel.jpg", "wiki": "File:Henri Becquerel.jpg", "q": "Henri Becquerel portrait", "desc": "贝克勒尔", "author": "Public domain", "license": "Public domain"},
+    {"file": "nobel.jpg", "wiki": "File:Nobel Prize.png", "q": "Nobel Prize medal", "desc": "诺贝尔奖", "author": "Public domain", "license": "Public domain"},
+    {"file": "curie-lab.jpg", "wiki": "File:Curie laboratory.jpg", "q": "Marie Curie laboratory", "desc": "居里夫人的实验室", "author": "Public domain", "license": "Public domain"},
+    {"file": "xray-car.jpg", "wiki": "File:Petit-Curie radiological car.jpg", "q": "Petit Curie radiological car WWI", "desc": "移动 X 光车", "author": "Public domain", "license": "Public domain"}
+  ],
+
+  "labs": [
+    {"key": "atom", "kind": "atom", "icon": "⚛️", "title": "放射性原子：自发放线",
+     "intro": "拖动“动画速度”，看原子核外电子绕转；放射性原子会不断“吐出”粒子（示意）。",
+     "desc": "电子在不同壳层绕核运动；而射线来自原子核内部。",
+     "ctrl": [{"name": "speed", "label": "动画速度", "min": 0.2, "max": 3, "value": 1, "step": 0.1, "init": "1.0×"}],
+     "params": {"shells": 3, "label": "电子绕核运动；放射性来自原子核内部"}},
+    {"key": "xray", "kind": "wave", "icon": "📡", "title": "X 射线：高频的电磁波",
+     "intro": "拖动“频率”，看电磁波变得更密——X 光正是频率极高的电磁波，能穿透软组织。",
+     "desc": "频率越高、穿透与能量越强，这正是 X 光的本事。",
+     "ctrl": [{"name": "freq", "label": "频率", "min": 0.3, "max": 2, "value": 1, "step": 0.1, "init": "1.0"}, {"name": "amp", "label": "振幅", "min": 0.4, "max": 1.6, "value": 1, "step": 0.1, "init": "1.0"}],
+     "params": {"label": "X 射线是频率极高的电磁波"}},
+    {"key": "elements", "kind": "periodic", "icon": "🧪", "title": "新元素坐在哪？",
+     "intro": "这是一张自动排好的周期表。拖动“族”滑块看看某一族如何被高亮——居里夫妇发现的钋、镭，都在这张表里占了一个新格子。",
+     "desc": "发现一种新元素，就是给周期表填一个新座位。",
+     "ctrl": [{"name": "group", "label": "族", "min": 1, "max": 18, "value": 1, "step": 1, "init": "1"}],
+     "params": {"label": "钋与镭，是周期表上的两个新格子"}}
+  ]
+}
+
+
+if __name__ == "__main__":
+    out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "spec_curie.json")
+    json.dump(SPEC, open(out, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    print("wrote", out)

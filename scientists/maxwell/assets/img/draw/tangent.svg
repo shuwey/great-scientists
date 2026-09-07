@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="800" height="480" role="img">
+<rect width="800" height="480" fill="#FFFFFF"/>
+<line x1="70" y1="400" x2="740" y2="400" stroke="#D4DBE5" stroke-width="3"/>
+<line x1="90" y1="60" x2="90" y2="400" stroke="#D4DBE5" stroke-width="3"/>
+<text x="56" y="404" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#8B96AA" text-anchor="start">O</text>
+<text x="748" y="404" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#8B96AA" text-anchor="start">时间</text>
+<text x="96" y="52" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#8B96AA" text-anchor="start">位置</text>
+
+<path d="M110 372 C 220 356 300 320 380 250 C 450 190 520 130 700 104"
+      fill="none" stroke="#3B5BDB" stroke-width="5" stroke-linecap="round"/>
+
+<line x1="250" y1="352" x2="560" y2="120" stroke="#F59F00" stroke-width="4" stroke-linecap="round"/>
+<circle cx="380" cy="250" r="9" fill="#F59F00" stroke="#fff" stroke-width="3"/>
+<text x="524" y="112" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="19" font-weight="700" fill="#F59F00" text-anchor="start">切线（这一瞬间的方向）</text>
+
+<g stroke="#0CA678" stroke-width="2.5" fill="none" stroke-dasharray="6 5">
+<line x1="380" y1="250" x2="520" y2="250"/>
+<line x1="520" y1="250" x2="520" y2="196"/>
+</g>
+<text x="392" y="272" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#0CA678" text-anchor="start">Δx</text>
+<text x="532" y="224" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="18" font-weight="700" fill="#0CA678" text-anchor="start">Δy</text>
+<text x="196" y="424" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif" font-size="20" font-weight="600" fill="#8B96AA" text-anchor="start">在某一点上，曲线有多陡 —— 这就是导数（变化率）</text>
+</svg>

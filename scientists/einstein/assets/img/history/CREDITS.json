@@ -1,0 +1,44 @@
+[
+  {
+    "file": "assets/img/history/einstein-portrait-1921.jpg",
+    "desc": "爱因斯坦肖像（诺贝尔奖时期）",
+    "author": "Wikimedia Commons (Nobel Foundation archive)",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Albert_Einstein_(Nobel).png"
+  },
+  {
+    "file": "assets/img/history/einstein-tongue-1951.jpg",
+    "desc": "爱因斯坦吐舌头的著名照片（1951）",
+    "author": "Wikimedia Commons",
+    "license": "Public domain (US)",
+    "source": "https://commons.wikimedia.org/wiki/File:Albert_Einstein_Head.jpg"
+  },
+  {
+    "file": "assets/img/history/einstein-patent-office.jpg",
+    "desc": "专利局时期的年轻爱因斯坦",
+    "author": "Wikimedia Commons",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Einstein_patentoffice.jpg"
+  },
+  {
+    "file": "assets/img/history/einstein-1905.jpg",
+    "desc": "1905 年前后的爱因斯坦（ETH-Bib 档案肖像）",
+    "author": "Wikimedia Commons (ETH-Bibliothek Zürich)",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Albert_Einstein_ETH-Bib_Portr_05937.jpg"
+  },
+  {
+    "file": "assets/img/history/einstein-1915.jpg",
+    "desc": "1915 年提出广义相对论时期的爱因斯坦",
+    "author": "Wikimedia Commons",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:On_November_25,_1915,_Albert_Einstein_submitted_his_final_paper_on_the_general_theory_of_relativity.jpg"
+  },
+  {
+    "file": "assets/img/history/einstein-1933.jpg",
+    "desc": "1933 年移居美国时的爱因斯坦",
+    "author": "Wikimedia Commons",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Einstein_1933_alt.jpg"
+  }
+]

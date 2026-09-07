@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" font-family="-apple-system,Segoe UI,sans-serif">
+  <rect width="680" height="300" fill="#FBFCFE"/>
+  <text x="20" y="26" font-size="15" font-weight="700" fill="#1B2530">光钟：光在两面镜子间上下跳，每跳一个来回算“一秒”</text>
+
+  <!-- 静止的光钟 -->
+  <g transform="translate(90,70)">
+    <rect x="-46" y="-8" width="92" height="120" rx="10" fill="#EEF2FB" stroke="#3B5BDB" stroke-width="2"/>
+    <line x1="0" y1="0" x2="0" y2="100" stroke="#3B5BDB" stroke-width="3"/>
+    <circle cx="0" cy="0" r="6" fill="#F59F00"/>
+    <path d="M0,12 q-14,40 0,76 q14,-40 0,-76" fill="none" stroke="#F59F00" stroke-width="2.5" opacity="0.9"/>
+    <circle cx="0" cy="100" r="6" fill="#F59F00"/>
+    <text x="0" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="#1B2530">地面上的钟（静止）</text>
+    <text x="0" y="158" text-anchor="middle" font-size="11" fill="#8B96AA">光走竖直短线，1 秒 = 1 跳</text>
+  </g>
+
+  <text x="340" y="150" font-size="40" fill="#C9D3E0" text-anchor="middle">→</text>
+
+  <!-- 运动的飞船光钟：光走斜线，更长 -->
+  <g transform="translate(490,70)">
+    <rect x="-46" y="-8" width="92" height="120" rx="10" fill="#EEF2FB" stroke="#0CA678" stroke-width="2"/>
+    <line x1="0" y1="0" x2="0" y2="100" stroke="#0CA678" stroke-width="3" stroke-dasharray="4 4" opacity="0.5"/>
+    <circle cx="0" cy="0" r="6" fill="#F59F00"/>
+    <path d="M0,0 L-34,52 L0,100 L34,52 Z" fill="none" stroke="#F59F00" stroke-width="2.5"/>
+    <circle cx="0" cy="100" r="6" fill="#F59F00"/>
+    <text x="0" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="#1B2530">飞船上的钟（高速）</text>
+    <text x="0" y="158" text-anchor="middle" font-size="11" fill="#8B96AA">光走斜线更长 → 同样 1 跳更“慢”</text>
+  </g>
+
+  <text x="340" y="250" text-anchor="middle" font-size="13" font-weight="700" fill="#E8590C">飞船上的一秒，在地面看来比一秒更久 —— 时间膨胀</text>
+</svg>

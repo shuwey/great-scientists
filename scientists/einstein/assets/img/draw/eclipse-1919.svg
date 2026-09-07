@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" font-family="-apple-system,Segoe UI,sans-serif">
+  <rect width="680" height="300" fill="#0B1020"/>
+  <text x="20" y="26" font-size="15" font-weight="700" fill="#E6ECF5">1919 年日全食：恒星的光掠过太阳边缘时被“掰弯”</text>
+
+  <!-- 星空 -->
+  <g fill="#fff">
+    <circle cx="80" cy="70" r="1.6"/><circle cx="150" cy="120" r="1.3"/><circle cx="220" cy="60" r="1.6"/>
+    <circle cx="300" cy="100" r="1.2"/><circle cx="560" cy="70" r="1.6"/><circle cx="620" cy="130" r="1.3"/>
+    <circle cx="500" cy="110" r="1.2"/><circle cx="120" cy="200" r="1.3"/><circle cx="600" cy="210" r="1.5"/>
+  </g>
+
+  <!-- 太阳（被月球遮住，仅边缘） -->
+  <circle cx="340" cy="170" r="56" fill="#1A2238"/>
+  <circle cx="340" cy="170" r="56" fill="none" stroke="#F76707" stroke-width="3"/>
+  <text x="340" y="174" text-anchor="middle" font-size="12" font-weight="700" fill="#FFD8A8">太阳</text>
+
+  <!-- 远处恒星位置（虚线，无偏折时应在的位置） -->
+  <circle cx="120" cy="120" r="4" fill="#FFE066"/>
+  <text x="120" y="108" text-anchor="middle" font-size="11" fill="#FFE066">恒星真实位置</text>
+
+  <!-- 偏折后的光路：从恒星来，掠过太阳边缘，被掰向地球观测者 -->
+  <path d="M120,120 Q250,150 296,168" fill="none" stroke="#74C0FC" stroke-width="2.5" stroke-dasharray="6 5"/>
+  <path d="M296,168 Q420,150 560,120" fill="none" stroke="#74C0FC" stroke-width="3"/>
+  <circle cx="560" cy="120" r="4" fill="#74C0FC"/>
+  <text x="560" y="108" text-anchor="middle" font-size="11" fill="#74C0FC">地球上看到的位置（偏了）</text>
+
+  <text x="340" y="270" text-anchor="middle" font-size="12.5" fill="#A9B6CC">爱丁顿测到偏折约 1.75 角秒，与广义相对论预言一致</text>
+</svg>

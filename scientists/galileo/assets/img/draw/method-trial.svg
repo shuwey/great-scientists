@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 220" font-family="-apple-system,Segoe UI,sans-serif">
+  <rect width="480" height="220" rx="14" fill="#FBFCFE"/>
+  <rect x="40" y="60" width="400" height="14" rx="7" fill="#3B5BDB"/>
+  <g fill="#5C6B82">
+    <circle cx="90" cy="44" r="10"/><circle cx="160" cy="44" r="10"/><circle cx="230" cy="44" r="10"/>
+    <circle cx="300" cy="44" r="10"/><circle cx="370" cy="44" r="10"/>
+  </g>
+  <circle cx="240" cy="140" r="22" fill="#F59F00"/>
+  <rect x="218" y="162" width="44" height="40" rx="8" fill="#F59F00"/>
+  <line x1="240" y1="120" x2="240" y2="100" stroke="#5C6B82" stroke-width="3"/>
+  <text x="240" y="214" font-size="13" fill="#8B96AA" text-anchor="middle">1633 年，伽利略在宗教法庭被迫放弃日心说</text>
+</svg>

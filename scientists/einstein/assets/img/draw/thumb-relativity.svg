@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" font-family="-apple-system,Segoe UI,sans-serif">
+  <rect width="120" height="120" rx="16" fill="#EEF2FB"/>
+  <circle cx="60" cy="60" r="30" fill="none" stroke="#3B5BDB" stroke-width="3"/>
+  <line x1="60" y1="20" x2="60" y2="100" stroke="#3B5BDB" stroke-width="3"/>
+  <line x1="20" y1="60" x2="100" y2="60" stroke="#3B5BDB" stroke-width="3"/>
+  <line x1="33" y1="33" x2="87" y2="87" stroke="#F59F00" stroke-width="3"/>
+  <line x1="87" y1="33" x2="33" y2="87" stroke="#F59F00" stroke-width="3"/>
+  <text x="60" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="#1B2530">狭义相对论</text>
+</svg>

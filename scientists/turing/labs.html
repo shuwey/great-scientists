@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>动手玩一玩 · 三个图灵小实验 | 读懂图灵</title>
+<meta name="description" content="三个可直接在网页上操作的互动演示。拖动滑块，亲眼看见图灵讲过的道理。">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-base="">
+<nav class="nav"><div class="nav-inner">
+<a class="brand" href="index.html"><span class="apple">🍎</span>读懂图灵</a>
+<button class="nav-toggle" aria-label="打开菜单"><i></i><i></i><i></i></button>
+<div class="nav-links"><a href="index.html">首页</a><a href="timeline.html">时间轴</a>      <a href="detail/turing-machine.html">图灵机：计算的“最小模型”</a>
+      <a href="detail/computability.html">可计算性：有些问题算不出</a>
+      <a href="detail/enigma.html">破译恩尼格玛：密码的战争</a>
+      <a href="detail/ai-test.html">机器能思考吗？图灵测试</a><a href="labs.html">玩一玩</a><a href="glossary.html">词典</a></div>
+</div><div id="progress"></div></nav>
+<div class="page-head"><div class="wrap">
+<div class="crumb"><a href="index.html">首页</a> · 玩一玩</div>
+<h1>动手玩一玩</h1>
+<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块，亲眼看见图灵讲过的道理。</p>
+</div></div>
+<section><div class="wrap">
+    <h2 id="turing" style="font-size:25px;margin:8px 0 6px">📜 实验1 · 亲手跑一台图灵机</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">拖动“速度”，看读写头在纸带上一步步读、写、移动——再简单的规则，也能完成计算。</p>
+    <div class="lab" data-lab="turing">
+      <div class="lab-head"><h4>亲手跑一台图灵机</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">看状态与步数如何随规则滚动。</p>
+      <canvas></canvas>
+      <div class="lab-controls">
+        <div class="ctrl">
+          <label>速度 <span class="v">1.0×</span></label>
+          <input type="range" data-ctrl="speed" min="0.2" max="3" value="1" step="0.1">
+        </div>
+      </div>
+      <div class="lab-readout"></div>
+    </div>
+    <h2 id="tree" style="font-size:25px;margin:46px 0 6px">🌿 实验2 · 一条规则，万千可能</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">拖动“深度”，看从一个起点如何一分为二、再分——复杂图案，往往来自极简规则的反复。</p>
+    <div class="lab" data-lab="tree">
+      <div class="lab-head"><h4>一条规则，万千可能</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">分叉越多，末梢越多。</p>
+      <canvas></canvas>
+      <div class="lab-controls">
+        <div class="ctrl">
+          <label>深度 <span class="v">4</span></label>
+          <input type="range" data-ctrl="depth" min="1" max="7" value="4" step="1">
+        </div>
+      </div>
+      <div class="lab-readout"></div>
+    </div>
+    <h2 id="signal" style="font-size:25px;margin:46px 0 6px">📈 实验3 · 可计算的“波形”</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">拖动滑块，看一条由规则生成的波形如何随参数改变——算法输出的结果，常是这样的曲线。</p>
+    <div class="lab" data-lab="signal">
+      <div class="lab-head"><h4>可计算的“波形”</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">参数一动，曲线就变。</p>
+      <canvas></canvas>
+      <div class="lab-controls">
+        <div class="ctrl">
+          <label>幅度 <span class="v">1.0</span></label>
+          <input type="range" data-ctrl="param1" min="0.3" max="1.8" value="1" step="0.1">
+        </div>
+        <div class="ctrl">
+          <label>频率 <span class="v">1.0</span></label>
+          <input type="range" data-ctrl="param2" min="0.6" max="2" value="1" step="0.1">
+        </div>
+      </div>
+      <div class="lab-readout"></div>
+    </div>
+<p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/turing-machine.html">读图灵机：计算的“最小模型” →</a>
+<a class="btn ghost" href="detail/computability.html">读可计算性：有些问题算不出 →</a>
+<a class="btn ghost" href="detail/enigma.html">读破译恩尼格玛：密码的战争 →</a>
+<a class="btn ghost" href="detail/ai-test.html">读机器能思考吗？图灵测试 →</a></p>
+</div></section>
+<footer class="foot"><div class="wrap"><div class="foot-grid">
+<div><div class="brand-f"><span class="apple" style="width:26px;height:26px;font-size:14px;border-radius:7px;background:linear-gradient(140deg,#3B5BDB,#6E8BFF);display:grid;place-items:center">🍎</span>读懂图灵</div><p style="margin:0;color:#8B96AA;font-size:13.5px">面向中学生的图灵科普小站。</p></div>
+<div><h5>四处走走</h5><ul><li><a href="index.html">首页</a></li><li><a href="timeline.html">时间轴</a></li>          <li><a href="detail/turing-machine.html">图灵机：计算的“最小模型”</a></li>
+          <li><a href="detail/computability.html">可计算性：有些问题算不出</a></li>
+          <li><a href="detail/enigma.html">破译恩尼格玛：密码的战争</a></li>
+          <li><a href="detail/ai-test.html">机器能思考吗？图灵测试</a></li></ul></div>
+<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li></ul></div>
+</div><div class="foot-bottom"><span>课堂与自学用途 · 内容依据公开史料编写</span><span>历史图片来自 Wikimedia Commons</span></div></div></footer>
+<button class="to-top" aria-label="回到顶部">↑</button>
+<script src="assets/js/terms.js"></script>
+<script src="assets/js/site.js"></script>
+</body></html>

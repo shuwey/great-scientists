@@ -8,7 +8,7 @@
    related : 相关术语 id
    extra   : 可选补充（公式、单位、小知识）
    ========================================================= */
-window.NEWTON_TERMS = {
+window.SITE_TERMS = {
   /* ---------------- 力学 ---------------- */
   inertia: {
     name: "惯性",
@@ -536,7 +536,7 @@ window.NEWTON_TERMS = {
 };
 
 /* 详解页元信息（供弹窗底部"了解更多"与卡片渲染使用） */
-window.NEWTON_PAGES = {
+window.SITE_PAGES = {
   optics:   { title: "光学与颜色", url: "detail/optics.html",   icon: "🔬", color: "#0CA678" },
   calculus: { title: "微积分",     url: "detail/calculus.html", icon: "📐", color: "#3B5BDB" },
   gravity:  { title: "万有引力",   url: "detail/gravity.html",  icon: "🌙", color: "#7048E8" },
@@ -544,4 +544,4 @@ window.NEWTON_PAGES = {
 };
 
 /* 术语分类顺序（供词典页分组） */
-window.NEWTON_CATS = ["力学", "引力", "光学", "数学", "历史"];
+window.SITE_CATS = ["力学", "引力", "光学", "数学", "历史"];

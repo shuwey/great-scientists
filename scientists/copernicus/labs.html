@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>动手玩一玩 · 三个哥白尼小实验 | 读懂哥白尼</title>
+<meta name="description" content="三个可直接在网页上操作的互动演示。拖动滑块，亲眼看见哥白尼讲过的道理。">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-base="">
+<nav class="nav"><div class="nav-inner">
+<a class="brand" href="index.html"><span class="apple">🍎</span>读懂哥白尼</a>
+<button class="nav-toggle" aria-label="打开菜单"><i></i><i></i><i></i></button>
+<div class="nav-links"><a href="index.html">首页</a><a href="timeline.html">时间轴</a>      <a href="detail/heliocentric.html">日心说：太阳坐到中心</a>
+      <a href="detail/revolutionibus.html">《天体运行论》</a>
+      <a href="detail/earthmotion.html">地球真的在动</a>
+      <a href="detail/copernican.html">哥白尼革命</a><a href="labs.html">玩一玩</a><a href="glossary.html">词典</a></div>
+</div><div id="progress"></div></nav>
+<div class="page-head"><div class="wrap">
+<div class="crumb"><a href="index.html">首页</a> · 玩一玩</div>
+<h1>动手玩一玩</h1>
+<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块，亲眼看见哥白尼讲过的道理。</p>
+</div></div>
+<section><div class="wrap">
+    <h2 id="solar" style="font-size:25px;margin:8px 0 6px">🌞 实验1 · 太阳系：行星绕太阳转</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">拖动“动画速度”，看行星如何按由近及远的次序绕太阳运行。哥白尼让太阳坐到了中心。</p>
+    <div class="lab" data-lab="solar">
+      <div class="lab-head"><h4>太阳系：行星绕太阳转</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">水星最快、土星最慢；离太阳越远，转一圈越久。</p>
+      <canvas></canvas>
+      <div class="lab-controls">
+        <div class="ctrl">
+          <label>动画速度 <span class="v">1.0×</span></label>
+          <input type="range" data-ctrl="speed" min="0.2" max="3" value="1" step="0.1">
+        </div>
+      </div>
+      <div class="lab-readout"></div>
+    </div>
+    <h2 id="retro" style="font-size:25px;margin:46px 0 6px">📉 实验2 · 行星的“逆行”错觉</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">拖动滑块，看一条会“折返”的曲线——这正是地心说要用复杂本轮去硬凑、日心说却自然解释的现象。</p>
+    <div class="lab" data-lab="retro">
+      <div class="lab-head"><h4>行星的“逆行”错觉</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">横轴是时间，纵轴是行星在天上的位置；中间的“折返”就是逆行。</p>
+      <canvas></canvas>
+      <div class="lab-controls">
+        <div class="ctrl">
+          <label>振幅 A <span class="v">1.0</span></label>
+          <input type="range" data-ctrl="param1" min="0.5" max="2" value="1" step="0.1">
+        </div>
+        <div class="ctrl">
+          <label>频率 k <span class="v">1.0</span></label>
+          <input type="range" data-ctrl="param2" min="0.5" max="2" value="1" step="0.1">
+        </div>
+      </div>
+      <div class="lab-readout"></div>
+    </div>
+    <h2 id="speed" style="font-size:25px;margin:46px 0 6px">🐢 实验3 · 越远越慢：距离与周期</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">拖动滑块改变增长速率，看曲线如何随距离变陡——离太阳越远的行星，公转一圈越久。</p>
+    <div class="lab" data-lab="speed">
+      <div class="lab-head"><h4>越远越慢：距离与周期</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">用一条上升曲线示意：距离越大，完成一圈所需的时间越长。</p>
+      <canvas></canvas>
+      <div class="lab-controls">
+        <div class="ctrl">
+          <label>速率 r <span class="v">0.6</span></label>
+          <input type="range" data-ctrl="param1" min="0.3" max="1.5" value="0.6" step="0.1">
+        </div>
+        <div class="ctrl">
+          <label>形状 <span class="v">1.0</span></label>
+          <input type="range" data-ctrl="param2" min="0.5" max="2" value="1" step="0.1">
+        </div>
+      </div>
+      <div class="lab-readout"></div>
+    </div>
+<p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/heliocentric.html">读日心说：太阳坐到中心 →</a>
+<a class="btn ghost" href="detail/revolutionibus.html">读《天体运行论》 →</a>
+<a class="btn ghost" href="detail/earthmotion.html">读地球真的在动 →</a>
+<a class="btn ghost" href="detail/copernican.html">读哥白尼革命 →</a></p>
+</div></section>
+<footer class="foot"><div class="wrap"><div class="foot-grid">
+<div><div class="brand-f"><span class="apple" style="width:26px;height:26px;font-size:14px;border-radius:7px;background:linear-gradient(140deg,#3B5BDB,#6E8BFF);display:grid;place-items:center">🍎</span>读懂哥白尼</div><p style="margin:0;color:#8B96AA;font-size:13.5px">面向中学生的哥白尼科普小站。</p></div>
+<div><h5>四处走走</h5><ul><li><a href="index.html">首页</a></li><li><a href="timeline.html">时间轴</a></li>          <li><a href="detail/heliocentric.html">日心说：太阳坐到中心</a></li>
+          <li><a href="detail/revolutionibus.html">《天体运行论》</a></li>
+          <li><a href="detail/earthmotion.html">地球真的在动</a></li>
+          <li><a href="detail/copernican.html">哥白尼革命</a></li></ul></div>
+<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li></ul></div>
+</div><div class="foot-bottom"><span>课堂与自学用途 · 内容依据公开史料编写</span><span>历史图片来自 Wikimedia Commons</span></div></div></footer>
+<button class="to-top" aria-label="回到顶部">↑</button>
+<script src="assets/js/terms.js"></script>
+<script src="assets/js/site.js"></script>
+</body></html>

@@ -1,0 +1,65 @@
+[
+  {
+    "file": "assets/img/history/pasteur-portrait.jpg",
+    "desc": "巴斯德肖像",
+    "author": "Public domain",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3ALouis%20Pasteur.jpg"
+  },
+  {
+    "file": "assets/img/history/pasteur-lab.jpg",
+    "desc": "巴斯德的实验室",
+    "author": "Public domain",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3AAlbert%20Edelfelt%20-%20Portrait%20of%20Louis%20Pasteur%2C%20Study.jpg"
+  },
+  {
+    "file": "assets/img/history/fermentation.jpg",
+    "desc": "发酵",
+    "author": "Public domain",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3AFermentation%20vats%20%288466443886%29.jpg"
+  },
+  {
+    "file": "assets/img/history/swan-neck-flask.jpg",
+    "desc": "鹅颈瓶实验",
+    "author": "Public domain",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3ASwan-necked%20flask%20used%20by%20Pasteur.%20Wellcome%20M0012521.jpg"
+  },
+  {
+    "file": "assets/img/history/silkworm.jpg",
+    "desc": "蚕",
+    "author": "Public domain",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3ASilkworm%20moth.jpg"
+  },
+  {
+    "file": "assets/img/history/anthrax.jpg",
+    "desc": "炭疽实验",
+    "author": "Public domain",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3AMicrobe%20Hunters%20vaccinating%20sheep%20for%20anthrax.jpg"
+  },
+  {
+    "file": "assets/img/history/rabies.jpg",
+    "desc": "狂犬病疫苗",
+    "author": "Public domain",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3ARabies%20vaccination%20in%20Pasteur%27s%20clinic%20in%20Paris.%20Lithograph%20Wellcome%20L0003730.jpg"
+  },
+  {
+    "file": "assets/img/history/pasteur-institute.jpg",
+    "desc": "巴斯德研究所",
+    "author": "Public domain",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3AInstitut%20pasteur%20tun.JPG"
+  },
+  {
+    "file": "assets/img/history/monument.jpg",
+    "desc": "巴斯德纪念碑",
+    "author": "Public domain",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3ALille%20monument%20a%20louis%20pasteur.jpg"
+  }
+]

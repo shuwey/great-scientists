@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 200" font-family="-apple-system,Segoe UI,sans-serif">
+  <rect width="480" height="200" rx="14" fill="#FBFCFE"/>
+  <path d="M60 120 L420 120 L400 160 L80 160 Z" fill="#5C6B82"/>
+  <rect x="60" y="92" width="360" height="28" fill="#3B5BDB"/>
+  <line x1="240" y1="40" x2="240" y2="92" stroke="#E8590C" stroke-width="3"/>
+  <circle cx="240" cy="34" r="7" fill="#F59F00"/>
+  <path d="M120 55 q20 18 0 36" fill="none" stroke="#0CA678" stroke-width="3"/>
+  <text x="120" y="30" font-size="13" fill="#8B96AA">蝴蝶照飞</text>
+  <text x="210" y="30" font-size="13" fill="#8B96AA">水滴照直落</text>
+  <text x="300" y="40" font-size="13" fill="#3B5BDB" font-weight="700">匀速前进时，舱内现象与静止时一样</text>
+</svg>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>图灵机：计算的“最小模型” · 图灵 | 读懂图灵</title>
+<meta name="description" content="图灵机：计算的“最小模型”">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-base="">
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../index.html"><span class="apple">🍎</span>读懂图灵</a>
+    <button class="nav-toggle" aria-label="打开菜单"><i></i><i></i><i></i></button>
+    <div class="nav-links">
+      <a href="../index.html">首页</a>
+      <a href="../timeline.html">时间轴</a>
+      <a href="turing-machine.html">图灵机：计算的“最小模型”</a>
+      <a href="computability.html">可计算性：有些问题算不出</a>
+      <a href="enigma.html">破译恩尼格玛：密码的战争</a>
+      <a href="ai-test.html">机器能思考吗？图灵测试</a>
+      <a href="../labs.html">玩一玩</a>
+      <a href="../glossary.html">词典</a>
+    </div>
+  </div>
+  <div id="progress"></div>
+</nav>
+
+<div class="page-head">
+  <div class="wrap">
+    <div class="crumb"><a href="../index.html">首页</a> · <a href="../timeline.html">时间轴</a> · 图灵机：计算的“最小模型”</div>
+    <h1>图灵机：计算的“最小模型”</h1>
+    <p class="big-claim">图灵机是一台极简的假想机器：一条纸带、一个读写头、一套规则。图灵证明，任何“能算的东西”都能被这样的机器算出来——它定义了“可计算”的边界。</p>
+    <div class="meta-row"><span class="tag">图灵机</span><span class="tag">可计算</span><span class="tag">模型</span></div>
+  </div>
+</div>
+
+<div class="detail-wrap">
+  <article class="article" data-terms>
+
+    <h2 id="model">一、一台极简机器</h2>
+    <p>图灵机由一条无限长的纸带、一个能读写的头、一套“看到什么就做什么”的规则组成。它笨得可笑，却足够强大。</p>
+      <figure class="fig">
+        <img src="../assets/img/draw/turing-machine.svg" alt="图灵机示意">
+        <figcaption><b>关键一步：</b>读写头在纸带上一步步移动。</figcaption>
+      </figure>
+    <h2 id="tape">二、纸带就是内存</h2>
+    <p>纸带上的格子存着 0 和 1，相当于今天的内存；头的移动与改写，就是“计算”的过程。</p>
+    <h2 id="universal">三、万能机</h2>
+    <p>图灵进一步证明：存在“通用图灵机”，它能读取别的机器的规则、模拟别的机器——这正是今天“通用计算机”的理论原型。</p>
+    <h2 id="meaning">四、为什么重要</h2>
+    <p>在电子计算机诞生前，图灵就用纸笔说清了“计算”的本质，为整个计算机学科打下了地基。</p>
+
+    <div class="page-nav">
+      <a class="pn prev" href="../index.html"><div class="lab">← 回到首页</div><div class="tt">四大成就总览</div></a>
+      <a class="pn next" href="computability.html"><div class="lab">下一篇 →</div><div class="tt">可计算性：有些问题算不出</div></a>
+    </div>
+
+  </article>
+
+  <aside class="side">
+    <div class="side-box">
+      <h4>本节目录</h4>
+      <ul class="toc">          <li><a href="#model">一台极简机器</a></li>
+          <li><a href="#tape">纸带就是内存</a></li>
+          <li><a href="#universal">万能机</a></li>
+          <li><a href="#meaning">为什么重要</a></li></ul>
+    </div>
+    <div class="side-box">
+      <h4>关键概念（点开看）</h4>
+      <div class="side-terms">        <span class="term" data-term="turing-machine" tabindex="0" role="button">图灵机</span>
+        <span class="term" data-term="tape" tabindex="0" role="button">纸带</span>
+        <span class="term" data-term="computable" tabindex="0" role="button">可计算</span>
+        <span class="term" data-term="universal" tabindex="0" role="button">通用图灵机</span>
+        <span class="term" data-term="algorithm" tabindex="0" role="button">算法</span></div>
+    </div>
+    <div class="side-box">
+      <h4>一句话记住</h4>
+      <p class="fact">一句话记住：图灵机不是真机器，而是“计算”的身份证——能交给它做的，就叫可计算。</p>
+    </div>
+  </aside>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand-f"><span class="apple" style="width:26px;height:26px;font-size:14px;border-radius:7px;background:linear-gradient(140deg,#3B5BDB,#6E8BFF);display:grid;place-items:center">🍎</span>读懂图灵</div>
+        <p style="margin:0;color:#8B96AA;font-size:13.5px">一个面向中学生的图灵科普小站。按时间顺序讲故事，把难词讲成人话。</p>
+      </div>
+      <div>
+        <h5>四处走走</h5>
+        <ul>
+          <li><a href="../index.html">首页</a></li>
+          <li><a href="../timeline.html">生平时间轴</a></li>
+          <li><a href="turing-machine.html">图灵机：计算的“最小模型”</a></li>
+          <li><a href="computability.html">可计算性：有些问题算不出</a></li>
+          <li><a href="enigma.html">破译恩尼格玛：密码的战争</a></li>
+          <li><a href="ai-test.html">机器能思考吗？图灵测试</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>更多</h5>
+        <ul>
+          <li><a href="../labs.html">动手玩一玩</a></li>
+          <li><a href="../glossary.html">术语词典</a></li>
+          <li><a href="../about.html">资料来源与延伸阅读</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>课堂与自学用途 · 内容依据公开史料编写</span>
+      <span>历史图片来自 Wikimedia Commons</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" aria-label="回到顶部">↑</button>
+<script src="../assets/js/terms.js"></script>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>
