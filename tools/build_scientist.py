@@ -839,12 +839,31 @@ CSS_PATCH = """
 .tl-body figcaption { font-size: 13px; color: var(--ink-3); margin-top: 7px; line-height: 1.6; }
 """
 
+# 首页 hero 补丁：生成页用 .wrap.hero-grid + .hero-art > img（裸 SVG 无 width/height），
+# 而模板 CSS 只有 .hero-inner/.hero-portrait —— 不补则 hero 无网格布局、
+# 插画被拉伸到整行全宽（2026-09-07 用户反馈图片过大）。
+HERO_CSS_PATCH = """
+/* ===== 通用补丁：首页 hero 网格与插画上限（与 .hero-inner 等价） ===== */
+.hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 46px; align-items: center; padding: 66px 24px 60px; }
+.hero-art img { width: 100%; max-width: 480px; height: auto; display: block; border-radius: 16px; }
+@media (max-width: 1000px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 30px; padding: 46px 24px 44px; }
+  .hero-grid .hero-art { order: -1; justify-content: flex-start; }
+  .hero-grid .hero-art img { max-width: 420px; }
+}
+"""
+
 
 def patch_css(dst):
     path = os.path.join(dst, "assets", "css", "style.css")
     css = open(path, encoding="utf-8").read()
+    app = ""
     if "时间轴 .tl-body" not in css:
-        open(path, "a", encoding="utf-8").write(CSS_PATCH)
+        app += CSS_PATCH
+    if ".hero-grid" not in css:
+        app += HERO_CSS_PATCH
+    if app:
+        open(path, "a", encoding="utf-8").write(app)
 
 
 # ======================================================================

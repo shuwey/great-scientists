@@ -648,3 +648,21 @@ figure.fig figcaption b { color: var(--ink-2); }
   .tl-panel { display: block !important; }
   a { color: #000; }
 }
+
+/* ===== 通用补丁：时间轴 .tl-body / 首页 bio / labs 画布上限（引擎统一） ===== */
+.bio { display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: start; margin-top: 8px; }
+.bio-photo { width: 240px; max-width: 100%; border-radius: 14px; border: 1px solid var(--line); }
+@media (max-width: 720px) { .bio { grid-template-columns: 1fr; } .bio-photo { width: 100%; } }
+.lab canvas { width: 100%; height: auto; display: block; border-radius: 12px; background: #FBFCFE; border: 1px solid var(--line); touch-action: none; max-height: 360px; }
+.tl-body figure { margin: 0 0 14px; }
+.tl-body figure img { border-radius: 12px; border: 1px solid var(--line); display: block; width: 100%; height: auto; max-height: 280px; object-fit: contain; background: #F4F6FA; }
+.tl-body figcaption { font-size: 13px; color: var(--ink-3); margin-top: 7px; line-height: 1.6; }
+
+/* ===== 通用补丁：首页 hero 网格与插画上限（与 .hero-inner 等价） ===== */
+.hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 46px; align-items: center; padding: 66px 24px 60px; }
+.hero-art img { width: 100%; max-width: 480px; height: auto; display: block; border-radius: 16px; }
+@media (max-width: 1000px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 30px; padding: 46px 24px 44px; }
+  .hero-grid .hero-art { order: -1; justify-content: flex-start; }
+  .hero-grid .hero-art img { max-width: 420px; }
+}
