@@ -186,7 +186,7 @@ node tools/e2e_portal.js                # 门户：15 张卡片 + 检索过滤 +
   部署的是**项目根目录**，因此一个链接即可访问全部 15 个子站（`/scientists/<id>/...`）。
 - 该链接复用了此前「牛顿子站」的发布沙箱——**原先那个只讲牛顿的链接现在指向整个系列门户**，牛顿站仍可在 `/scientists/newton/` 访问。
 - 爱因斯坦子站另有一个独立的历史链接（`7f19849c…`），内容同样可从新门户进入，可按需下线。
-- 仓库历史：原为单站 `newton-science-site`，现重组为多科学家 monorepo，根目录为系列总览。
+- 仓库历史：原为单站 `newton-science-site`，现重组为多科学家 monorepo，根目录为系列总览；2026-09-07 仓库已更名为 **`great-scientists`**（GitHub 旧地址自动重定向）：<https://github.com/shuwey/great-scientists>
 - 关键经验沉淀见 `.workbuddy/memory/`；物理演示曾踩过的坑（全反射、循环步长零守卫、坐标奇点）记录在 `tools/` 调试脚本与记忆里。
 
 ---
