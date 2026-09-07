@@ -854,6 +854,38 @@ HERO_CSS_PATCH = """
 """
 
 
+# 时间轴静态结构适配：生成页用 .tl-rail / .tl-head(年+标题) / .tl-body(图+文)，
+# 而模板 CSS 是可折叠卡片结构（.tl-year | .tl-rail+.tl-dot | .tl-card 三列）——
+# 不适配则 head 被塞进 30px 轨道列、年代溢出后压在配图上。
+# 方案照抄伽利略适配版：.tl-item 改两列（26px 轨道 | 1fr 内容），rail 跨行。
+TL_CSS_PATCH = """
+/* ===== 通用补丁：时间轴静态结构适配（.tl-rail / .tl-head / .tl-body） ===== */
+.tl-item { grid-template-columns: 26px 1fr; gap: 0; padding-bottom: 26px; }
+.tl-item > .tl-rail { grid-column: 1; grid-row: 1 / -1; position: relative; display: flex; justify-content: center; }
+.tl-item > .tl-rail::before { top: 7px; bottom: -26px; }
+.tl-item:last-child > .tl-rail::before { display: none; }
+.tl-rail .dot {
+  flex: none; position: relative; z-index: 2; box-sizing: border-box;
+  width: 14px; height: 14px; border-radius: 50%; margin-top: 5px;
+  background: #fff; border: 3px solid var(--brand-line);
+}
+.tl-item > .tl-head {
+  grid-column: 2; grid-row: 1; display: flex; align-items: baseline;
+  gap: 12px; flex-wrap: wrap; padding: 2px 0 0; cursor: default; background: none;
+}
+.tl-item > .tl-head .tl-year {
+  font-family: var(--mono); font-size: 16px; font-weight: 800;
+  color: var(--brand); flex: none; padding: 0; text-align: left;
+}
+.tl-item > .tl-head .tl-title { font-size: 17.5px; font-weight: 700; color: var(--ink); }
+.tl-item > .tl-body { grid-column: 2; grid-row: 2; margin-top: 10px; }
+@media (max-width: 640px) {
+  .tl-item > .tl-head { gap: 8px; }
+  .tl-item > .tl-head .tl-title { font-size: 16px; }
+}
+"""
+
+
 def patch_css(dst):
     path = os.path.join(dst, "assets", "css", "style.css")
     css = open(path, encoding="utf-8").read()
@@ -862,6 +894,8 @@ def patch_css(dst):
         app += CSS_PATCH
     if ".hero-grid" not in css:
         app += HERO_CSS_PATCH
+    if "tl-rail / .tl-head / .tl-body" not in css:
+        app += TL_CSS_PATCH
     if app:
         open(path, "a", encoding="utf-8").write(app)
 

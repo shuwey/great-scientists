@@ -673,3 +673,28 @@ figure.fig figcaption b { color: var(--ink-2); }
   .hero-grid .hero-art { order: -1; justify-content: flex-start; }
   .hero-grid .hero-art img { max-width: 420px; }
 }
+
+/* ===== 通用补丁：时间轴静态结构适配（.tl-rail / .tl-head / .tl-body） ===== */
+.tl-item { grid-template-columns: 26px 1fr; gap: 0; padding-bottom: 26px; }
+.tl-item > .tl-rail { grid-column: 1; grid-row: 1 / -1; position: relative; display: flex; justify-content: center; }
+.tl-item > .tl-rail::before { top: 7px; bottom: -26px; }
+.tl-item:last-child > .tl-rail::before { display: none; }
+.tl-rail .dot {
+  flex: none; position: relative; z-index: 2; box-sizing: border-box;
+  width: 14px; height: 14px; border-radius: 50%; margin-top: 5px;
+  background: #fff; border: 3px solid var(--brand-line);
+}
+.tl-item > .tl-head {
+  grid-column: 2; grid-row: 1; display: flex; align-items: baseline;
+  gap: 12px; flex-wrap: wrap; padding: 2px 0 0; cursor: default; background: none;
+}
+.tl-item > .tl-head .tl-year {
+  font-family: var(--mono); font-size: 16px; font-weight: 800;
+  color: var(--brand); flex: none; padding: 0; text-align: left;
+}
+.tl-item > .tl-head .tl-title { font-size: 17.5px; font-weight: 700; color: var(--ink); }
+.tl-item > .tl-body { grid-column: 2; grid-row: 2; margin-top: 10px; }
+@media (max-width: 640px) {
+  .tl-item > .tl-head { gap: 8px; }
+  .tl-item > .tl-head .tl-title { font-size: 16px; }
+}
