@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>动手玩一玩 · 三个居里夫人小实验 | 读懂居里夫人</title>
-<meta name="description" content="三个可直接在网页上操作的互动演示。拖动滑块，亲眼看见居里夫人讲过的道理。">
+<meta name="description" content="三个可直接在网页上操作的互动演示：α/β/γ 三种射线谁能挡住谁、几吨矿石才换来一点点镭、放射性强度怎样按半衰期减弱。拖动滑块，亲眼看见居里夫人天天面对的东西。">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-base="">
@@ -22,56 +22,70 @@
 <div class="page-head"><div class="wrap">
 <div class="crumb"><a href="index.html">首页</a> · 玩一玩</div>
 <h1>动手玩一玩</h1>
-<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块，亲眼看见居里夫人讲过的道理。</p>
+<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块——看三种射线各能穿透多远、看提纯的代价有多惊人、看放射性强度的减弱有多规律。</p>
 </div></div>
 <section><div class="wrap">
-    <h2 id="atom" style="font-size:25px;margin:8px 0 6px">⚛️ 实验1 · 放射性原子：自发放线</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动“动画速度”，看原子核外电子绕转；放射性原子会不断“吐出”粒子（示意）。</p>
-    <div class="lab" data-lab="atom">
-      <div class="lab-head"><h4>放射性原子：自发放线</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">电子在不同壳层绕核运动；而射线来自原子核内部。</p>
+    <h2 id="rays" style="font-size:25px;margin:8px 0 6px">☢️ 实验一 · 三种射线，谁能挡住谁</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">放射源会同时放出三种东西。拖动“屏蔽层厚度”，把纸、铝、铅一层层加厚，看哪一种最先被拦下、哪一种最难缠。</p>
+    <div class="lab" data-lab="rays">
+      <div class="lab-head"><h4>α / β / γ 的穿透力</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">α 一张纸就挡住，β 要几毫米铝，γ 得靠几厘米厚铅。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
-          <label>动画速度 <span class="v">1.0×</span></label>
-          <input type="range" data-ctrl="speed" min="0.2" max="3" value="1" step="0.1">
+          <label>屏蔽层厚度 <span class="v">0</span></label>
+          <input type="range" data-ctrl="thick" min="0" max="100" value="0" step="1">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-    <h2 id="xray" style="font-size:25px;margin:46px 0 6px">📡 实验2 · X 射线：高频的电磁波</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动“频率”，看电磁波变得更密——X 光正是频率极高的电磁波，能穿透软组织。</p>
-    <div class="lab" data-lab="xray">
-      <div class="lab-head"><h4>X 射线：高频的电磁波</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">频率越高、穿透与能量越强，这正是 X 光的本事。</p>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>三种射线的穿透力差了三个量级——这既是危险所在，也是当年它们能被区分开的原因。α 是氦核、β 是电子、γ 是高能光。详见 <a href="detail/radioactivity.html">放射性：原子自己在放东西</a>。</p>
+    </div>
+
+
+    <h2 id="purify" style="font-size:25px;margin:46px 0 6px">⚗️ 实验二 · 提纯的代价：几吨矿石，换一点点镭</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">沥青铀矿里镭的含量低得可怜。拖动“矿石吨数”，看要处理掉多少吨矿渣，才能攒出一点点镭——居里夫妇就是这么一锅一锅熬出来的。</p>
+    <div class="lab" data-lab="purify">
+      <div class="lab-head"><h4>从矿渣里淘出的光</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">约每吨沥青铀矿残渣只能提出 25 毫克镭，而这点量要用掉几吨矿石。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
-          <label>频率 <span class="v">1.0</span></label>
-          <input type="range" data-ctrl="freq" min="0.3" max="2" value="1" step="0.1">
-        </div>
-        <div class="ctrl">
-          <label>振幅 <span class="v">1.0</span></label>
-          <input type="range" data-ctrl="amp" min="0.4" max="1.6" value="1" step="0.1">
+          <label>处理矿石（吨） <span class="v">1.0</span></label>
+          <input type="range" data-ctrl="tons" min="0.5" max="10" value="1" step="0.5">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-    <h2 id="elements" style="font-size:25px;margin:46px 0 6px">🧪 实验3 · 新元素坐在哪？</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">这是一张自动排好的周期表。拖动“族”滑块看看某一族如何被高亮——居里夫妇发现的钋、镭，都在这张表里占了一个新格子。</p>
-    <div class="lab" data-lab="elements">
-      <div class="lab-head"><h4>新元素坐在哪？</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">发现一种新元素，就是给周期表填一个新座位。</p>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>居里夫妇在棚屋里处理了数吨沥青铀矿残渣，整整熬了四年，才得到 0.1 克氯化镭。它的放射性强到夜里会自己发光。详见 <a href="detail/radium.html">镭：从矿渣里淘出的光</a>。</p>
+    </div>
+
+
+    <h2 id="decay" style="font-size:25px;margin:46px 0 6px">📉 实验三 · 半衰期：镭的强度怎么减弱</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">镭-226 的半衰期约 1600 年。拖动“已经过去”，看它的放射性强度怎样有规律地往下掉——每过一个半衰期就只剩一半，不多不少。</p>
+    <div class="lab" data-lab="decay">
+      <div class="lab-head"><h4>半衰期：每 1600 年减一半</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">不管剩下多少，再过 1600 年就又是一半。这条曲线谁也改不了。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
-          <label>族 <span class="v">1</span></label>
-          <input type="range" data-ctrl="group" min="1" max="18" value="1" step="1">
+          <label>已经过去（年） <span class="v">0</span></label>
+          <input type="range" data-ctrl="years" min="0" max="8000" value="0" step="100">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-<p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/radioactivity.html">读放射性：原子自己在放东西 →</a>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>半衰期是原子的“性格”，温度、压强、化学反应都改不了它——这一点让放射性成了可靠的天然时钟。详见 <a href="detail/decay.html">衰变与半衰期：放射会变弱</a>。</p>
+    </div>
+
+
+    <p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/radioactivity.html">读放射性：原子自己在放东西 →</a>
 <a class="btn ghost" href="detail/radium.html">读镭：从矿渣里淘出的光 →</a>
 <a class="btn ghost" href="detail/decay.html">读衰变与半衰期：放射会变弱 →</a>
 <a class="btn ghost" href="detail/xray.html">读把射线用于人：医学与战时 →</a></p>
@@ -82,7 +96,7 @@
           <li><a href="detail/radium.html">镭：从矿渣里淘出的光</a></li>
           <li><a href="detail/decay.html">衰变与半衰期：放射会变弱</a></li>
           <li><a href="detail/xray.html">把射线用于人：医学与战时</a></li></ul></div>
-<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li>          <li><a href="../../index.html">浏览全部 13 位科学家 →</a></li>
+<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li>          <li><a href="../../index.html">浏览全部 15 位科学家 →</a></li>
         </ul></div>
 </div><div class="foot-bottom"><span>课堂与自学用途 · 内容依据公开史料编写</span><span>历史图片来自 Wikimedia Commons</span></div></div></footer>
 <button class="to-top" aria-label="回到顶部">↑</button>

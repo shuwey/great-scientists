@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>动手玩一玩 · 三个图灵小实验 | 读懂图灵</title>
-<meta name="description" content="三个可直接在网页上操作的互动演示。拖动滑块，亲眼看见图灵讲过的道理。">
+<meta name="description" content="三个可直接在网页上操作的互动演示：亲手跑一台图灵机看它一格一格地计算、拖动规则号看一条简单规则长出万千图案、拖动采样与量化把连续信号压成一串 0 和 1。拖动滑块，亲手体会图灵讲过的道理。">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-base="">
@@ -22,10 +22,10 @@
 <div class="page-head"><div class="wrap">
 <div class="crumb"><a href="index.html">首页</a> · 玩一玩</div>
 <h1>动手玩一玩</h1>
-<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块，亲眼看见图灵讲过的道理。</p>
+<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块——看读写头在纸带上一格一格地计算、看一条极简规则怎样长出复杂图案、看连续的真实信号怎样被压成一串 0 和 1。</p>
 </div></div>
 <section><div class="wrap">
-    <h2 id="turing" style="font-size:25px;margin:8px 0 6px">📜 实验1 · 亲手跑一台图灵机</h2>
+    <h2 id="turing" style="font-size:25px;margin:8px 0 6px">📜 实验一 · 亲手跑一台图灵机</h2>
     <p style="color:var(--ink-2);margin-bottom:18px">拖动“速度”，看读写头在纸带上一步步读、写、移动——再简单的规则，也能完成计算。</p>
     <div class="lab" data-lab="turing">
       <div class="lab-head"><h4>亲手跑一台图灵机</h4><span class="badge">可拖动</span></div>
@@ -39,39 +39,57 @@
       </div>
       <div class="lab-readout"></div>
     </div>
-    <h2 id="tree" style="font-size:25px;margin:46px 0 6px">🌿 实验2 · 一条规则，万千可能</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动“深度”，看从一个起点如何一分为二、再分——复杂图案，往往来自极简规则的反复。</p>
-    <div class="lab" data-lab="tree">
-      <div class="lab-head"><h4>一条规则，万千可能</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">分叉越多，末梢越多。</p>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>这台机器只会三件事：读一格、改写这一格、向左或向右移一格。可就是这“三个动作 + 一张状态表”，被证明能完成任何可计算的计算——这就是“通用图灵机”的厉害之处。详见 <a href="detail/turing-machine.html">图灵机：计算的“最小模型”</a>。</p>
+    </div>
+
+
+    <h2 id="automaton" style="font-size:25px;margin:46px 0 6px">🌱 实验二 · 一条规则，万千图案</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">最上面的一个黑格，每一行按同一条规则往下长一行——拖动“规则号”，看同样是 256 条规则里的一条，如何决定了图案是长成三角形、走向混沌，还是干脆消失。</p>
+    <div class="lab" data-lab="automaton">
+      <div class="lab-head"><h4>一维元胞自动机</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">规则只是一张 8 行的对应表，却能长出分形、混沌或空白。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
-          <label>深度 <span class="v">4</span></label>
-          <input type="range" data-ctrl="depth" min="1" max="7" value="4" step="1">
+          <label>规则号（0–255） <span class="v">110</span></label>
+          <input type="range" data-ctrl="rule" min="0" max="255" value="110" step="1">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-    <h2 id="signal" style="font-size:25px;margin:46px 0 6px">📈 实验3 · 可计算的“波形”</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动滑块，看一条由规则生成的波形如何随参数改变——算法输出的结果，常是这样的曲线。</p>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>一条规则的“全部内容”，只是右边那张 8 行的对应表。可 110 号规则已经被证明是“图灵完备”的——它能模拟任何计算机能做的事。所以“能力”不在于规则多复杂，而在于规则能不能被反复迭代。想弄清“算得出”和“算不出”的分界，看这里：<a href="detail/computability.html">可计算性：有些问题算不出</a>。</p>
+    </div>
+
+
+    <h2 id="signal" style="font-size:25px;margin:46px 0 6px">📈 实验三 · 把连续的世界压成 0 和 1</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">真实世界的声音、图像都是连续变化的。拖动“采样密度”和“量化位数”，看一条连续波形怎样被切成一个个离散样本、再被压成有限个档位——最后交给机器的，只剩 0 和 1。</p>
     <div class="lab" data-lab="signal">
-      <div class="lab-head"><h4>可计算的“波形”</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">参数一动，曲线就变。</p>
+      <div class="lab-head"><h4>采样 × 量化 = 数字化</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">采样太稀会“认错”波形，量化太粗会丢掉细微变化。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
-          <label>幅度 <span class="v">1.0</span></label>
-          <input type="range" data-ctrl="param1" min="0.3" max="1.8" value="1" step="0.1">
+          <label>采样密度（点/周期） <span class="v">8</span></label>
+          <input type="range" data-ctrl="density" min="2" max="40" value="8" step="1">
         </div>
         <div class="ctrl">
-          <label>频率 <span class="v">1.0</span></label>
-          <input type="range" data-ctrl="param2" min="0.6" max="2" value="1" step="0.1">
+          <label>量化位数 <span class="v">4</span></label>
+          <input type="range" data-ctrl="bits" min="1" max="8" value="4" step="1">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-<p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/turing-machine.html">读图灵机：计算的“最小模型” →</a>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>机器不会读“连续”的东西，它只认离散的符号——所以进入计算机之前，一切都要先被采样、量化，编成一串 0 和 1。同一套思路，战时也用在截获的电报信号上：先把信号变成符号，剩下的才是破译。详见 <a href="detail/enigma.html">破译恩尼格玛：密码的战争</a>。</p>
+    </div>
+
+
+    <p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/turing-machine.html">读图灵机：计算的“最小模型” →</a>
 <a class="btn ghost" href="detail/computability.html">读可计算性：有些问题算不出 →</a>
 <a class="btn ghost" href="detail/enigma.html">读破译恩尼格玛：密码的战争 →</a>
 <a class="btn ghost" href="detail/ai-test.html">读机器能思考吗？图灵测试 →</a></p>
@@ -82,7 +100,7 @@
           <li><a href="detail/computability.html">可计算性：有些问题算不出</a></li>
           <li><a href="detail/enigma.html">破译恩尼格玛：密码的战争</a></li>
           <li><a href="detail/ai-test.html">机器能思考吗？图灵测试</a></li></ul></div>
-<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li>          <li><a href="../../index.html">浏览全部 13 位科学家 →</a></li>
+<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li>          <li><a href="../../index.html">浏览全部 15 位科学家 →</a></li>
         </ul></div>
 </div><div class="foot-bottom"><span>课堂与自学用途 · 内容依据公开史料编写</span><span>历史图片来自 Wikimedia Commons</span></div></div></footer>
 <button class="to-top" aria-label="回到顶部">↑</button>

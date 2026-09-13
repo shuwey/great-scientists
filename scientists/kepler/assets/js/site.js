@@ -429,7 +429,225 @@
     return { ctx: ctx, w: w, h: h };
   }
 
-  /* ---- 7.1 棱镜色散 ---- */
+
+  function lab_areal(lab) {
+    var cv = $("canvas", lab);
+    var sS = $('[data-ctrl="speed"]', lab);
+    var out = $(".lab-readout", lab);
+    var vS = sS ? sS.closest(".ctrl").querySelector(".v") : null;
+    var W = 820, H = 400;
+    var sunX = 420, sunY = 200, A = 165, ECC = 0.6;
+    var B = A * Math.sqrt(1 - ECC * ECC), CC = A * ECC, cxE = sunX - CC;
+    var NSEC = 12, ES = [];
+    (function solveAll() {
+      var k, E, M, d, it;
+      for (k = 0; k <= NSEC; k++) {
+        M = Math.PI * 2 * k / NSEC;
+        E = M;
+        for (it = 0; it < 60; it++) {
+          d = (E - ECC * Math.sin(E) - M) / (1 - ECC * Math.cos(E));
+          E -= d;
+          if (Math.abs(d) < 1e-10) break;
+        }
+        ES.push(E);
+      }
+    })();
+    function pt(E) { return [cxE + A * Math.cos(E), sunY - B * Math.sin(E)]; }
+    function arcTo(ctx, E1, E2) {
+      var n = 26, i, E, p;
+      for (i = 0; i <= n; i++) {
+        E = E1 + (E2 - E1) * i / n;
+        p = pt(E);
+        if (i === 0) ctx.moveTo(p[0], p[1]); else ctx.lineTo(p[0], p[1]);
+      }
+    }
+    function solveE(M) {
+      var E = M, d, it;
+      for (it = 0; it < 60; it++) {
+        d = (E - ECC * Math.sin(E) - M) / (1 - ECC * Math.cos(E));
+        E -= d;
+        if (Math.abs(d) < 1e-10) break;
+      }
+      return E;
+    }
+    var t0 = 0, Mnow = 0;
+    function draw(ts) {
+      if (typeof ts !== "number") ts = performance.now();
+      if (!t0) t0 = ts;
+      var dt = Math.min(0.05, (ts - t0) / 1000); t0 = ts;
+      var sp = sS ? parseFloat(sS.value) : 1;
+      Mnow += dt * sp * 0.42;
+      if (Mnow > Math.PI * 2) Mnow -= Math.PI * 2;
+      var idxNow = Math.floor(Mnow / (Math.PI * 2) * NSEC);
+
+      var S = setupCanvas(cv, H / W);
+      var ctx = S.ctx, k = S.w / W;
+      ctx.save(); ctx.scale(k, k);
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = "#FBFCFE"; ctx.fillRect(0, 0, W, H);
+
+      var i;
+      for (i = 0; i < NSEC; i++) {
+        ctx.beginPath();
+        ctx.moveTo(sunX, sunY);
+        arcTo(ctx, ES[i], ES[i + 1]);
+        ctx.lineTo(sunX, sunY);
+        ctx.closePath();
+        ctx.fillStyle = (i === idxNow) ? "rgba(245,159,0,.30)"
+          : (i % 2 ? "rgba(59,91,219,.14)" : "rgba(12,166,120,.13)");
+        ctx.fill();
+      }
+      ctx.strokeStyle = "#8B96AA"; ctx.lineWidth = 1.8;
+      ctx.beginPath(); arcTo(ctx, 0, Math.PI * 2); ctx.stroke();
+
+      var Enow = solveE(Mnow), P = pt(Enow);
+      ctx.fillStyle = "#F59F00";
+      ctx.beginPath(); ctx.arc(sunX, sunY, 10, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = "#8B96AA"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("太阳", sunX - 13, sunY + 30);
+
+      ctx.strokeStyle = "rgba(27,37,48,.55)"; ctx.lineWidth = 1.8;
+      ctx.beginPath(); ctx.moveTo(sunX, sunY); ctx.lineTo(P[0], P[1]); ctx.stroke();
+      ctx.fillStyle = "#3B5BDB";
+      ctx.beginPath(); ctx.arc(P[0], P[1], 7, 0, Math.PI * 2); ctx.fill();
+
+      ctx.fillStyle = "#C1553A"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("近日点", pt(0)[0] - 34, pt(0)[1] - 18);
+      ctx.fillStyle = "#3B7DD8";
+      ctx.fillText("远日点", pt(Math.PI)[0] - 8, pt(Math.PI)[1] - 12);
+
+      ctx.fillStyle = "#1B2530"; ctx.font = "700 14px -apple-system, sans-serif";
+      ctx.fillText("相同的时间，相同的面积", 566, 88);
+      ctx.strokeStyle = "#E4E8F0"; ctx.beginPath(); ctx.moveTo(566, 100); ctx.lineTo(796, 100); ctx.stroke();
+      ctx.fillStyle = "rgba(59,91,219,.35)";
+      ctx.fillRect(566, 122, 26, 18); ctx.strokeStyle = "#3B5BDB"; ctx.lineWidth = 1; ctx.strokeRect(566, 122, 26, 18);
+      ctx.fillStyle = "#5C6B82"; ctx.font = "600 13px -apple-system, sans-serif";
+      ctx.fillText("12 个扇形，每块面积相同", 604, 136);
+      ctx.fillStyle = "rgba(245,159,0,.5)";
+      ctx.fillRect(566, 158, 26, 18); ctx.strokeStyle = "#F59F00"; ctx.strokeRect(566, 158, 26, 18);
+      ctx.fillStyle = "#5C6B82";
+      ctx.fillText("当前正在扫过的那一块", 604, 172);
+      ctx.fillStyle = "#1B2530"; ctx.font = "700 13px -apple-system, sans-serif";
+      ctx.fillText("近日点：跑得快", 566, 226);
+      ctx.fillStyle = "#5C6B82"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("又短又胖的一段，几周就走完", 566, 248);
+      ctx.fillStyle = "#1B2530"; ctx.font = "700 13px -apple-system, sans-serif";
+      ctx.fillText("远日点：跑得慢", 566, 286);
+      ctx.fillStyle = "#5C6B82"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("又长又瘦的一段，要磨很久", 566, 308);
+      ctx.fillStyle = "#8B96AA"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("12 块面积加起来，就是整条轨道", 566, 352);
+      ctx.restore();
+
+      if (vS) vS.textContent = sp.toFixed(1) + "×";
+      if (out) {
+        out.innerHTML = "行星正走在第 <b>" + (idxNow + 1) + "</b> / 12 块扇形里　·　每块用的时间一样、面积也一样　·　" +
+          (idxNow === 0 ? "现在贴近近日点，走得最快" : (idxNow === 6 ? "现在到了远日点，走得最慢" : "连线扫过的面积始终相等"));
+      }
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+  }
+
+
+  function lab_third(lab) {
+    var cv = $("canvas", lab);
+    var sN = $('[data-ctrl="power"]', lab);
+    var out = $(".lab-readout", lab);
+    var vN = sN ? sN.closest(".ctrl").querySelector(".v") : null;
+    var W = 820, H = 400;
+    var PL = [
+      ["水星", 0.387, 0.2408], ["金星", 0.723, 0.6152], ["地球", 1.0, 1.0], ["火星", 1.524, 1.8808],
+      ["木星", 5.203, 11.862], ["土星", 9.537, 29.457], ["天王星", 19.19, 84.02], ["海王星", 30.07, 164.79]
+    ];
+    var PX0 = 96, PX1 = 500, PY0 = 340, PY1 = 62;
+    var XL = -0.55, XR = 1.62, YB = -0.86, YT = 2.42;
+    function lx(v) { return PX0 + (v - XL) / (XR - XL) * (PX1 - PX0); }
+    function ly(v) { return PY0 - (v - YB) / (YT - YB) * (PY0 - PY1); }
+    function draw(ts) {
+      if (typeof ts !== "number") ts = performance.now();
+      var n = sN ? parseFloat(sN.value) : 1;
+      var S = setupCanvas(cv, H / W);
+      var ctx = S.ctx, k = S.w / W;
+      ctx.save(); ctx.scale(k, k);
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = "#FBFCFE"; ctx.fillRect(0, 0, W, H);
+
+      var i, j, la, lt, on = 0;
+      ctx.strokeStyle = "#EDF0F6"; ctx.lineWidth = 1;
+      var vgrid = [0.3, 0.5, 1, 2, 3, 5, 10, 20, 30];
+      for (j = 0; j < vgrid.length; j++) {
+        ctx.beginPath(); ctx.moveTo(lx(Math.log(vgrid[j]) / Math.LN10), PY1);
+        ctx.lineTo(lx(Math.log(vgrid[j]) / Math.LN10), PY0); ctx.stroke();
+      }
+      var hgrid = [0.2, 0.5, 1, 2, 5, 10, 20, 50, 100, 200];
+      for (j = 0; j < hgrid.length; j++) {
+        ctx.beginPath(); ctx.moveTo(PX0, ly(Math.log(hgrid[j]) / Math.LN10));
+        ctx.lineTo(PX1, ly(Math.log(hgrid[j]) / Math.LN10)); ctx.stroke();
+      }
+      ctx.strokeStyle = "#9AA7BE"; ctx.lineWidth = 1.6;
+      ctx.beginPath(); ctx.moveTo(PX0, PY0); ctx.lineTo(PX1, PY0); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(PX0, PY0); ctx.lineTo(PX0, PY1); ctx.stroke();
+
+      ctx.strokeStyle = "#E03131"; ctx.lineWidth = 2.6;
+      ctx.beginPath();
+      ctx.moveTo(lx(XL), ly(Math.max(YB, Math.min(YT, n * XL))));
+      ctx.lineTo(lx(XR), ly(Math.max(YB, Math.min(YT, n * XR))));
+      ctx.stroke();
+
+      ctx.font = "600 12px -apple-system, sans-serif";
+      for (i = 0; i < PL.length; i++) {
+        la = Math.log(PL[i][1]) / Math.LN10;
+        lt = Math.log(PL[i][2]) / Math.LN10;
+        var dy = lt - n * la;
+        var good = Math.abs(dy) < 0.03;
+        if (good) on++;
+        ctx.strokeStyle = good ? "rgba(12,166,120,.5)" : "rgba(224,49,49,.45)";
+        ctx.lineWidth = good ? 2 : 1.6;
+        ctx.setLineDash(good ? [] : [3, 3]);
+        ctx.beginPath(); ctx.moveTo(lx(la), ly(lt)); ctx.lineTo(lx(la), ly(n * la)); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = good ? "#0CA678" : "#3B5BDB";
+        ctx.beginPath(); ctx.arc(lx(la), ly(lt), 6, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = "#5C6B82";
+        ctx.fillText(PL[i][0], lx(la) + 9, ly(lt) + 4);
+      }
+
+      ctx.fillStyle = "#8B96AA"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("轨道半长轴 a（天文单位，对数轴）", PX0 + 60, PY0 + 26);
+      ctx.fillText("公转周期 T（年，对数轴）", PX0 - 6, PY1 - 16);
+
+      ctx.fillStyle = "#1B2530"; ctx.font = "700 14px -apple-system, sans-serif";
+      ctx.fillText(Math.abs(n - 1.5) < 0.005 ? "T² = a³" : "T = a^" + n.toFixed(2), 560, 88);
+      ctx.strokeStyle = "#E4E8F0"; ctx.beginPath(); ctx.moveTo(560, 100); ctx.lineTo(796, 100); ctx.stroke();
+      ctx.fillStyle = on === PL.length ? "#087F5B" : "#E03131";
+      ctx.font = "800 15px -apple-system, sans-serif";
+      ctx.fillText(on + " / " + PL.length + " 颗落在直线上", 560, 130);
+      ctx.fillStyle = "#5C6B82"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("红虚线＝离直线还有多远", 560, 156);
+      ctx.fillStyle = "#1B2530"; ctx.font = "700 13px -apple-system, sans-serif";
+      ctx.fillText("拖动滑块找那条直线", 560, 200);
+      ctx.fillStyle = "#5C6B82"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("从水星到海王星，a 差了 78 倍、", 560, 226);
+      ctx.fillText("T 差了 684 倍，可它们偏偏落在", 560, 246);
+      ctx.fillText("同一条直线上——斜率就是 1.5。", 560, 266);
+      ctx.fillStyle = "#8B96AA"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("对数坐标：直线＝幂律关系", 560, 306);
+      ctx.restore();
+
+      if (vN) vN.textContent = n.toFixed(2);
+      if (out) {
+        out.innerHTML = "周期指数 n = <b>" + n.toFixed(2) + "</b>　·　8 颗行星里有 <b>" + on +
+          "</b> 颗落在直线上　·　" + (on === PL.length
+            ? "<span style='color:#087F5B;font-weight:800'>全部对齐：T² ∝ a³</span>"
+            : "继续拧，让所有点都贴到那条线上");
+      }
+    }
+    if (sN) sN.addEventListener("input", draw);
+    window.addEventListener("resize", draw);
+    draw(performance.now());
+  }
+
   function lab_ellipse(lab) {
   var P = {"center": "日", "centerColor": "#E8590C", "label": "行星沿椭圆绕日：太阳在一个焦点上", "bodyName": "行", "bodyColor": "#3B5BDB", "a": 175};
 
@@ -468,95 +686,14 @@
 
 }
 
-
-function lab_solar(lab) {
-  var P = {"center": "日", "centerColor": "#E8590C", "label": "行星绕太阳运行：由近及远，越远越慢", "bodies": [{"name": "水", "r": 45, "period": 88, "color": "#E8590C"}, {"name": "金", "r": 80, "period": 225, "color": "#C98A3C"}, {"name": "地", "r": 120, "period": 365, "color": "#3B5BDB"}, {"name": "火", "r": 165, "period": 687, "color": "#6741D9"}, {"name": "木", "r": 215, "period": 4333, "color": "#2F9E44"}, {"name": "土", "r": 260, "period": 10759, "color": "#5C6B82"}]};
-
-  var cv = $("canvas", lab);
-  var sSpeed = $('[data-ctrl="speed"]', lab);
-  var out = $(".lab-readout", lab);
-  var vSpan = sSpeed ? sSpeed.closest(".ctrl").querySelector(".v") : null;
-  var W = 820, H = 360, day = 0, last = 0;
-  function draw(ts){
-    if(!last) last = ts;
-    var dt = Math.min(0.05,(ts-last)/1000); last = ts;
-    var sp = sSpeed ? parseFloat(sSpeed.value) : 1;
-    var maxP = 0; P.bodies.forEach(function(b){ if(b.period>maxP) maxP=b.period; });
-    day += dt*sp*0.8; if(day>maxP) day -= maxP;
-    var S = setupCanvas(cv, H/W); var ctx = S.ctx, k = S.w/W;
-    ctx.save(); ctx.scale(k,k); ctx.clearRect(0,0,W,H);
-    ctx.fillStyle = "#FBFCFE"; ctx.fillRect(0,0,W,H);
-    var cx=W/2, cy=H/2;
-    P.bodies.forEach(function(b){
-      ctx.strokeStyle="rgba(91,107,130,.18)"; ctx.lineWidth=1;
-      ctx.beginPath(); ctx.arc(cx,cy,b.r,0,Math.PI*2); ctx.stroke();
+  function initLabs() {
+    $$(".lab").forEach(function (lab) {
+      var kind = lab.getAttribute("data-lab");
+      if (kind === "ellipse") lab_ellipse(lab);
+      if (kind === "areal") lab_areal(lab);
+      if (kind === "third") lab_third(lab);
     });
-    // 中心
-    ctx.fillStyle = P.centerColor; ctx.beginPath(); ctx.arc(cx,cy,26,0,Math.PI*2); ctx.fill();
-    ctx.fillStyle="#fff"; ctx.font="800 16px -apple-system,sans-serif"; ctx.textAlign="center";
-    ctx.fillText(P.center, cx, cy+6);
-    // 卫星
-    P.bodies.forEach(function(b){
-      var ang=(day/b.period)*Math.PI*2;
-      var mx=cx+Math.cos(ang)*b.r, my=cy+Math.sin(ang)*b.r*0.55;
-      ctx.fillStyle=b.color; ctx.beginPath(); ctx.arc(mx,my,6,0,Math.PI*2); ctx.fill();
-    });
-    ctx.textAlign="left"; ctx.fillStyle="#5C6B82"; ctx.font="600 13px -apple-system,sans-serif";
-    ctx.fillText(P.label, 24, 30);
-    ctx.restore();
-    if(vSpan) vSpan.textContent = sp.toFixed(1)+"×";
-    if(out){
-      var names = P.bodies.map(function(b){return b.name+"约"+b.period+"天/圈";}).join("，");
-      out.innerHTML = "时间 ≈ <b>"+day.toFixed(1)+"</b> 天　·　"+names;
-    }
-    requestAnimationFrame(draw);
   }
-  requestAnimationFrame(draw);
-
-}
-
-
-function lab_third(lab) {
-  var P = {"expr": "growth", "label": "越远的行星，公转周期越长（距离—周期关系）"};
-
-  var cv=$("canvas",lab); var s1=$('[data-ctrl="param1"]',lab); var s2=$('[data-ctrl="param2"]',lab);
-  var out=$(".lab-readout",lab);
-  var v1=s1?s1.closest(".ctrl").querySelector(".v"):null;
-  var v2=s2?s2.closest(".ctrl").querySelector(".v"):null;
-  var W=820,H=360;
-  function yval(x,a,b){
-    if(P.expr==="exp") return 250-200*(1-Math.exp(-a*x/4));
-    if(P.expr==="gauss"){ var mean=3.5+(a-1)*2.5; return 250-160*Math.exp(-Math.pow(x-mean,2)/(b*1.5)); }
-    if(P.expr==="growth") return 250-190*(Math.exp(a*x/9)-1)/(Math.exp(a)-1);
-    return 250-90*a*Math.sin(b*x); // 默认 a*sin(kx)
-  }
-  function draw(){
-    var a=s1?parseFloat(s1.value):1, b=s2?parseFloat(s2.value):1;
-    var S=setupCanvas(cv,H/W); var ctx=S.ctx,k=S.w/W;
-    ctx.save(); ctx.scale(k,k); ctx.clearRect(0,0,W,H); ctx.fillStyle="#FBFCFE"; ctx.fillRect(0,0,W,H);
-    ctx.strokeStyle="#5C6B82"; ctx.lineWidth=1.5; ctx.beginPath(); ctx.moveTo(40,40); ctx.lineTo(40,280); ctx.lineTo(790,280); ctx.stroke();
-    ctx.strokeStyle="#3B5BDB"; ctx.lineWidth=3; ctx.beginPath();
-    for(var x=40;x<790;x+=4){ var t=(x-40)/60; var y=yval(t,a,b); y=Math.max(40,Math.min(280,y)); if(x===40)ctx.moveTo(x,y); else ctx.lineTo(x,y);} ctx.stroke();
-    ctx.fillStyle="#5C6B82"; ctx.font="600 13px -apple-system,sans-serif"; ctx.fillText(P.label,24,30);
-    ctx.restore();
-    if(v1)v1.textContent=a.toFixed(1);
-    if(v2)v2.textContent=b.toFixed(1);
-    if(out)out.innerHTML="拖动滑块改变参数，看曲线如何随之改变——这是“用数学描述自然”的最小示范。";
-  }
-  if(s1)s1.addEventListener("input",draw); if(s2)s2.addEventListener("input",draw);
-  draw();
-
-}
-
-
-function initLabs() {
-  $$(".lab").forEach(function (lab) {
-    var kind = lab.getAttribute("data-lab");
-    if (kind === "ellipse") lab_ellipse(lab);
-    if (kind === "solar") lab_solar(lab);
-    if (kind === "third") lab_third(lab);
-  });
-}
 function initGlossary() {
     var grid = $("#term-grid");
     if (!grid) return;

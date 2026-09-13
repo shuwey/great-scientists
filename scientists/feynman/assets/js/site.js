@@ -429,7 +429,229 @@
     return { ctx: ctx, w: w, h: h };
   }
 
-  /* ---- 7.1 棱镜色散 ---- */
+
+  function lab_interfere(lab) {
+    var cv = $("canvas", lab);
+    var sW = $('[data-ctrl="wave"]', lab);
+    var sS = $('[data-ctrl="sep"]', lab);
+    var out = $(".lab-readout", lab);
+    var vW = sW ? sW.closest(".ctrl").querySelector(".v") : null;
+    var vS = sS ? sS.closest(".ctrl").querySelector(".v") : null;
+    var W = 820, H = 400;
+    var BX = 286, SX = 606, SY = 214, HALF = 138;
+    function rgbOf(w) {
+      var r = 0, g = 0, b = 0, t = 0;
+      if (w >= 380 && w < 440) { r = -(w - 440) / 60; b = 1; }
+      else if (w < 490) { g = (w - 440) / 50; b = 1; }
+      else if (w < 510) { g = 1; b = -(w - 510) / 20; }
+      else if (w < 580) { r = (w - 510) / 70; g = 1; }
+      else if (w < 645) { r = 1; g = -(w - 645) / 65; }
+      else { r = 1; }
+      if (w > 700) t = 0.35; else if (w < 420) t = 0.35 + 0.65 * (w - 380) / 40;
+      else if (w > 660) t = 0.35 + 0.65 * (700 - w) / 40; else t = 1;
+      r = Math.round(255 * Math.pow(Math.max(0, r) * t, 0.8));
+      g = Math.round(255 * Math.pow(Math.max(0, g) * t, 0.8));
+      b = Math.round(255 * Math.pow(Math.max(0, b) * t, 0.8));
+      return "rgb(" + r + "," + g + "," + b + ")";
+    }
+    function nameOf(w) {
+      if (w < 430) return "紫";
+      if (w < 490) return "蓝";
+      if (w < 545) return "绿";
+      if (w < 590) return "黄";
+      if (w < 625) return "橙";
+      return "红";
+    }
+    function draw(ts) {
+      if (typeof ts !== "number") ts = performance.now();
+      var wl = sW ? parseFloat(sW.value) : 550;
+      var sep = sS ? parseFloat(sS.value) : 1;
+      var gap = 22 + sep * 12;
+      var k = 3 * sep;
+      var col = rgbOf(wl);
+      var S = setupCanvas(cv, H / W);
+      var ctx = S.ctx, kk = S.w / W;
+      ctx.save(); ctx.scale(kk, kk);
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = "#FBFCFE"; ctx.fillRect(0, 0, W, H);
+
+      var i, y, s, inten;
+      ctx.strokeStyle = col; ctx.lineWidth = 1.6;
+      ctx.globalAlpha = 0.5;
+      for (i = 0; i < 7; i++) {
+        var wx = 60 + i * 34;
+        ctx.beginPath(); ctx.moveTo(wx, 74); ctx.lineTo(wx, 354); ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = "#8B96AA"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("入射波", 60, 62);
+      ctx.fillText("两条缝 →", BX - 66, 372);
+
+      ctx.fillStyle = "#4A5468";
+      ctx.fillRect(BX, 66, 12, HALF - gap);
+      ctx.fillRect(BX, SY + gap, 12, HALF - gap);
+
+      ctx.globalAlpha = 0.34; ctx.strokeStyle = col; ctx.lineWidth = 1.3;
+      var S1 = SY - gap, S2 = SY + gap;
+      for (i = 1; i <= 5; i++) {
+        var rr = i * 42;
+        ctx.beginPath(); ctx.arc(BX + 12, S1, rr, -1.25, 1.25); ctx.stroke();
+        ctx.beginPath(); ctx.arc(BX + 12, S2, rr, -1.25, 1.25); ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = "#5C6B82"; ctx.font = "700 12px -apple-system, sans-serif";
+      ctx.fillText("缝 A", BX - 40, S1 - 6);
+      ctx.fillText("缝 B", BX - 40, S2 + 16);
+
+      ctx.fillStyle = "#EDF0F6"; ctx.fillRect(SX, 66, 92, 288);
+      ctx.strokeStyle = "#C9D3E0"; ctx.lineWidth = 1; ctx.strokeRect(SX, 66, 92, 288);
+      for (y = 66; y <= 354; y += 3) {
+        s = (y - SY) / HALF;
+        inten = Math.pow(Math.cos(Math.PI * k * s), 2) * Math.exp(-s * s * 1.05);
+        if (inten < 0.004) continue;
+        ctx.globalAlpha = Math.min(1, inten);
+        ctx.fillStyle = col;
+        ctx.fillRect(SX + 1, y, 90, 3.2);
+      }
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = "#1B2530"; ctx.font = "700 13px -apple-system, sans-serif";
+      ctx.fillText("屏幕", SX + 30, 58);
+
+      var CX0 = SX + 104, CW = 96;
+      ctx.strokeStyle = "#9AA7BE"; ctx.lineWidth = 1.4;
+      ctx.beginPath(); ctx.moveTo(CX0, 66); ctx.lineTo(CX0, 354); ctx.stroke();
+      ctx.strokeStyle = "#E8590C"; ctx.lineWidth = 2;
+      ctx.beginPath();
+      for (y = 66; y <= 354; y += 2) {
+        s = (y - SY) / HALF;
+        inten = Math.pow(Math.cos(Math.PI * k * s), 2) * Math.exp(-s * s * 1.05);
+        var cxp = CX0 + inten * CW;
+        if (y === 66) ctx.moveTo(cxp, y); else ctx.lineTo(cxp, y);
+      }
+      ctx.stroke();
+      ctx.fillStyle = "#E8590C"; ctx.font = "700 12px -apple-system, sans-serif";
+      ctx.fillText("光强", CX0, 58);
+
+      ctx.fillStyle = "#1B2530"; ctx.font = "700 14px -apple-system, sans-serif";
+      ctx.fillText("双缝干涉：波峰遇波峰 = 亮纹，波峰遇波谷 = 暗纹", 60, 34);
+      ctx.restore();
+
+      var dY = 30 / (k * 1.0);
+      if (vW) vW.textContent = wl.toFixed(0);
+      if (vS) vS.textContent = sep.toFixed(1) + "×";
+      if (out) {
+        out.innerHTML = "波长 <b>" + wl.toFixed(0) + " nm</b>（" + nameOf(wl) + "光）　·　缝间距 <b>" + sep.toFixed(1) +
+          "×</b>　·　条纹间距 ≈ <b>" + dY.toFixed(1) + " mm</b>　·　" +
+          "波长越短、缝间距越大 → 条纹越密（" + nameOf(wl) + "光在屏幕上排出的明暗，就是这两条缝“合起来”的结果）。";
+      }
+    }
+    if (sW) sW.addEventListener("input", draw);
+    if (sS) sS.addEventListener("input", draw);
+    window.addEventListener("resize", draw);
+    draw(performance.now());
+  }
+
+
+  function lab_dist(lab) {
+    var cv = $("canvas", lab);
+    var sN = $('[data-ctrl="n"]', lab);
+    var sS = $('[data-ctrl="sep"]', lab);
+    var out = $(".lab-readout", lab);
+    var vN = sN ? sN.closest(".ctrl").querySelector(".v") : null;
+    var vS = sS ? sS.closest(".ctrl").querySelector(".v") : null;
+    var W = 820, H = 400;
+    var BX = 208, SY = 214, HALF = 138, PX = 438, PW = 242;
+    var NB = 150, SLO = -1.12, SHI = 1.12;
+    function frac(x) { return x - Math.floor(x); }
+    function draw(ts) {
+      if (typeof ts !== "number") ts = performance.now();
+      var n = sN ? parseFloat(sN.value) : 300;
+      var sep = sS ? parseFloat(sS.value) : 1;
+      var k = 3 * sep, gap = 22 + sep * 12;
+      var S = setupCanvas(cv, H / W);
+      var ctx = S.ctx, kk = S.w / W;
+      ctx.save(); ctx.scale(kk, kk);
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = "#FBFCFE"; ctx.fillRect(0, 0, W, H);
+
+      var i, s, cdf = [], cum = 0, v;
+      for (i = 0; i < NB; i++) {
+        s = SLO + (SHI - SLO) * (i + 0.5) / NB;
+        cum += Math.pow(Math.cos(Math.PI * k * s), 2) * Math.exp(-s * s * 1.05);
+        cdf.push(cum);
+      }
+      for (i = 0; i < NB; i++) cdf[i] = cdf[i] / cum;
+
+      ctx.fillStyle = "#4A5468";
+      ctx.fillRect(BX, 66, 12, HALF - gap);
+      ctx.fillRect(BX, SY + gap, 12, HALF - gap);
+      ctx.fillStyle = "#5C6B82"; ctx.font = "700 12px -apple-system, sans-serif";
+      ctx.fillText("缝 A", BX - 42, SY - gap - 6);
+      ctx.fillText("缝 B", BX - 42, SY + gap + 16);
+
+      ctx.globalAlpha = 0.3; ctx.strokeStyle = "#7B8AA8"; ctx.lineWidth = 1.2;
+      for (i = 1; i <= 4; i++) {
+        var rr = i * 46;
+        ctx.beginPath(); ctx.arc(BX + 12, SY - gap, rr, -1.15, 1.15); ctx.stroke();
+        ctx.beginPath(); ctx.arc(BX + 12, SY + gap, rr, -1.15, 1.15); ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+
+      ctx.fillStyle = "#EDF0F6"; ctx.fillRect(PX, 66, PW, 288);
+      ctx.strokeStyle = "#C9D3E0"; ctx.lineWidth = 1; ctx.strokeRect(PX, 66, PW, 288);
+      ctx.fillStyle = "#1B2530"; ctx.font = "700 13px -apple-system, sans-serif";
+      ctx.fillText("屏幕：每一颗都是一个电子", PX - 4, 58);
+
+      var shown = Math.min(n, 2000), u, lo, hi, mid, dotY, dotX;
+      for (i = 0; i < shown; i++) {
+        u = frac(Math.sin(i * 12.9898 + 4.1) * 43758.5453);
+        lo = 0; hi = NB - 1;
+        while (lo < hi) {
+          mid = (lo + hi) >> 1;
+          if (cdf[mid] < u) lo = mid + 1; else hi = mid;
+        }
+        s = SLO + (SHI - SLO) * (lo + 0.5) / NB;
+        dotY = SY + s * HALF;
+        dotX = PX + 8 + frac(Math.sin(i * 31.7 + 1.3) * 20000) * (PW - 16);
+        ctx.fillStyle = "rgba(28,110,214," + (0.55 + 0.35 * frac(Math.sin(i * 7.7) * 9000)).toFixed(2) + ")";
+        ctx.beginPath(); ctx.arc(dotX, dotY, 2.1, 0, Math.PI * 2); ctx.fill();
+      }
+
+      ctx.strokeStyle = "rgba(232,89,12,0.85)"; ctx.lineWidth = 2;
+      ctx.beginPath();
+      for (i = 0; i <= 120; i++) {
+        s = SLO + (SHI - SLO) * i / 120;
+        v = Math.pow(Math.cos(Math.PI * k * s), 2) * Math.exp(-s * s * 1.05);
+        var ex = PX + PW + 10 + v * 96;
+        var ey = SY + s * HALF;
+        if (i === 0) ctx.moveTo(ex, ey); else ctx.lineTo(ex, ey);
+      }
+      ctx.stroke();
+      ctx.fillStyle = "#E8590C"; ctx.font = "700 12px -apple-system, sans-serif";
+      ctx.fillText("理论条纹", PX + PW + 12, 58);
+
+      ctx.fillStyle = "#1B2530"; ctx.font = "700 14px -apple-system, sans-serif";
+      ctx.fillText("一个一个发射电子：单次随机，累积成条纹", 60, 34);
+      ctx.fillStyle = "#8B96AA"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("每一个电子落在哪里都说不准；可它们自己排出的疏密，恰好就是干涉条纹。", 60, 374);
+      ctx.restore();
+
+      if (vN) vN.textContent = n.toFixed(0);
+      if (vS) vS.textContent = sep.toFixed(1) + "×";
+      if (out) {
+        var dens = n < 60 ? "现在点还很稀，看不出规律——单看几颗，落点是随机的。" :
+                   n < 600 ? "点的疏密开始成形：亮纹的地方点数明显更多。" :
+                             "条纹已经清晰浮现：中间一条最亮，两侧对称变暗。";
+        out.innerHTML = "已发射电子 <b>" + n.toFixed(0) + "</b> 颗　·　缝间距 <b>" + sep.toFixed(1) + "×</b>　·　" +
+          dens + "　·　单个电子的落点无法预测，但成千上万颗的分布完全被波决定——这就是费曼说的「一个电子也干涉」。";
+      }
+    }
+    if (sN) sN.addEventListener("input", draw);
+    if (sS) sS.addEventListener("input", draw);
+    window.addEventListener("resize", draw);
+    draw(performance.now());
+  }
+
   function lab_path(lab) {
   var P = {"label": "从 A 到 B：粒子把每一条路都走了一遍"};
 
@@ -497,77 +719,14 @@
 
 }
 
-
-function lab_interfere(lab) {
-  var P = {"label": "两列概率幅的相长与相消"};
-
-  var cv=$("canvas",lab); var sF=$('[data-ctrl="freq"]',lab); var sA=$('[data-ctrl="amp"]',lab);
-  var out=$(".lab-readout",lab);
-  var fSpan=sF?sF.closest(".ctrl").querySelector(".v"):null;
-  var aSpan=sA?sA.closest(".ctrl").querySelector(".v"):null;
-  var W=820,H=360,ph=0,last=0;
-  function draw(ts){
-    if(!last)last=ts; var dt=Math.min(0.05,(ts-last)/1000); last=ts;
-    var f=sF?parseFloat(sF.value):1, a=sA?parseFloat(sA.value):1;
-    ph+=dt*f*2;
-    var S=setupCanvas(cv,H/W); var ctx=S.ctx,k=S.w/W;
-    ctx.save(); ctx.scale(k,k); ctx.clearRect(0,0,W,H); ctx.fillStyle="#FBFCFE"; ctx.fillRect(0,0,W,H);
-    ctx.strokeStyle="#3B5BDB"; ctx.lineWidth=3; ctx.beginPath();
-    for(var x=30;x<790;x+=4){ var y=180-60*a*Math.sin((x-30)/70 - ph); if(x===30)ctx.moveTo(x,y); else ctx.lineTo(x,y);} ctx.stroke();
-    ctx.strokeStyle="#C9D3E0"; ctx.setLineDash([4,4]); ctx.beginPath(); ctx.moveTo(30,180); ctx.lineTo(790,180); ctx.stroke(); ctx.setLineDash([]);
-    ctx.fillStyle="#5C6B82"; ctx.font="600 13px -apple-system,sans-serif"; ctx.fillText(P.label,24,30);
-    ctx.restore();
-    if(fSpan)fSpan.textContent=f.toFixed(1)+"×";
-    if(aSpan)aSpan.textContent=a.toFixed(1)+"×";
-    if(out)out.innerHTML="频率 f=<b>"+f.toFixed(1)+"</b>　·　振幅 A=<b>"+a.toFixed(1)+"</b>　·　波是振动的传播：介质不动，能量在走";
-    requestAnimationFrame(draw);
+  function initLabs() {
+    $$(".lab").forEach(function (lab) {
+      var kind = lab.getAttribute("data-lab");
+      if (kind === "path") lab_path(lab);
+      if (kind === "interfere") lab_interfere(lab);
+      if (kind === "dist") lab_dist(lab);
+    });
   }
-  requestAnimationFrame(draw);
-
-}
-
-
-function lab_dist(lab) {
-  var P = {"expr": "gauss", "label": "电子落点的概率分布（概率幅的平方）"};
-
-  var cv=$("canvas",lab); var s1=$('[data-ctrl="param1"]',lab); var s2=$('[data-ctrl="param2"]',lab);
-  var out=$(".lab-readout",lab);
-  var v1=s1?s1.closest(".ctrl").querySelector(".v"):null;
-  var v2=s2?s2.closest(".ctrl").querySelector(".v"):null;
-  var W=820,H=360;
-  function yval(x,a,b){
-    if(P.expr==="exp") return 250-200*(1-Math.exp(-a*x/4));
-    if(P.expr==="gauss"){ var mean=3.5+(a-1)*2.5; return 250-160*Math.exp(-Math.pow(x-mean,2)/(b*1.5)); }
-    if(P.expr==="growth") return 250-190*(Math.exp(a*x/9)-1)/(Math.exp(a)-1);
-    return 250-90*a*Math.sin(b*x); // 默认 a*sin(kx)
-  }
-  function draw(){
-    var a=s1?parseFloat(s1.value):1, b=s2?parseFloat(s2.value):1;
-    var S=setupCanvas(cv,H/W); var ctx=S.ctx,k=S.w/W;
-    ctx.save(); ctx.scale(k,k); ctx.clearRect(0,0,W,H); ctx.fillStyle="#FBFCFE"; ctx.fillRect(0,0,W,H);
-    ctx.strokeStyle="#5C6B82"; ctx.lineWidth=1.5; ctx.beginPath(); ctx.moveTo(40,40); ctx.lineTo(40,280); ctx.lineTo(790,280); ctx.stroke();
-    ctx.strokeStyle="#3B5BDB"; ctx.lineWidth=3; ctx.beginPath();
-    for(var x=40;x<790;x+=4){ var t=(x-40)/60; var y=yval(t,a,b); y=Math.max(40,Math.min(280,y)); if(x===40)ctx.moveTo(x,y); else ctx.lineTo(x,y);} ctx.stroke();
-    ctx.fillStyle="#5C6B82"; ctx.font="600 13px -apple-system,sans-serif"; ctx.fillText(P.label,24,30);
-    ctx.restore();
-    if(v1)v1.textContent=a.toFixed(1);
-    if(v2)v2.textContent=b.toFixed(1);
-    if(out)out.innerHTML="拖动滑块改变参数，看曲线如何随之改变——这是“用数学描述自然”的最小示范。";
-  }
-  if(s1)s1.addEventListener("input",draw); if(s2)s2.addEventListener("input",draw);
-  draw();
-
-}
-
-
-function initLabs() {
-  $$(".lab").forEach(function (lab) {
-    var kind = lab.getAttribute("data-lab");
-    if (kind === "path") lab_path(lab);
-    if (kind === "interfere") lab_interfere(lab);
-    if (kind === "dist") lab_dist(lab);
-  });
-}
 function initGlossary() {
     var grid = $("#term-grid");
     if (!grid) return;

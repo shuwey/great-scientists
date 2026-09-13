@@ -53,11 +53,13 @@ def inject(html, portal):
             html, n = new, n + 1
 
     # 3) 页脚「更多」列（只在页脚段内判断，避免被顶部导航的 href 误判为已注入）
-    if 'class="foot-bottom"' in html and "13 位科学家" not in html.split('class="foot-bottom"')[0]:
+    #    存在性判据不写字面人数——系列增员或文案改动都会让字面串失效，进而重复注入
+    foot_head = html.split('class="foot-bottom"')[0]
+    if 'class="foot-bottom"' in html and not re.search(r'<li>\s*<a href="[^"]*">浏览全部[^<]*</a>', foot_head):
         new, k = re.subn(
             r'(<h5[^>]*>更多</h5>\s*<ul[^>]*>)(.*?)(</ul>)',
             lambda m: m.group(1) + m.group(2) +
-                      '          <li><a href="%s">浏览全部 13 位科学家 →</a></li>\n        ' % portal +
+                      '          <li><a href="%s">浏览全部 15 位科学家 →</a></li>\n        ' % portal +
                       m.group(3),
             html, count=1, flags=re.S)
         if k:

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>动手玩一玩 · 三个巴斯德小实验 | 读懂巴斯德</title>
-<meta name="description" content="三个可直接在网页上操作的互动演示。拖动滑块，亲眼看见巴斯德讲过的道理。">
+<meta name="description" content="三个可直接在网页上操作的互动演示：细菌在肉汤里怎样经历四个生长阶段、巴氏消毒的温度与时间怎样互相替换、鹅颈瓶的弯脖子怎样把空气中的微生物挡在外面。拖动滑块，亲手重做巴斯德当年的实验。">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-base="">
@@ -22,56 +22,74 @@
 <div class="page-head"><div class="wrap">
 <div class="crumb"><a href="index.html">首页</a> · 玩一玩</div>
 <h1>动手玩一玩</h1>
-<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块，亲眼看见巴斯德讲过的道理。</p>
+<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块——看细菌怎样从迟缓一路涨到衰亡、看加热温度和时间怎样互相换算、看一个弯脖子怎样把“自然发生说”彻底推翻。</p>
 </div></div>
 <section><div class="wrap">
-    <h2 id="colony" style="font-size:25px;margin:8px 0 6px">🦠 实验1 · 细菌增长：适宜条件下暴涨</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动“增长速率”，看蓝线（无限制指数增长）与绿线（受环境容量限制的 S 形）如何分道扬镳。</p>
+    <h2 id="colony" style="font-size:25px;margin:8px 0 6px">🦠 实验一 · 细菌生长：四个阶段</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">把细菌接进新鲜肉汤，它不会一上来就疯长。拖动“环境适宜度”，看这条曲线怎样走完迟缓、对数、稳定、衰亡四段。</p>
     <div class="lab" data-lab="colony">
-      <div class="lab-head"><h4>细菌增长：适宜条件下暴涨</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">培养基有限时，菌群不会一直指数暴涨，会“踩刹车”。</p>
+      <div class="lab-head"><h4>细菌生长的四个阶段</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">先慢（迟缓）→ 猛涨（对数）→ 持平（稳定）→ 下滑（衰亡）。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
-          <label>增长速率 r <span class="v">0.6</span></label>
-          <input type="range" data-ctrl="rate" min="0.3" max="1.5" value="0.6" step="0.1">
+          <label>环境适宜度 <span class="v">1.0×</span></label>
+          <input type="range" data-ctrl="env" min="0.4" max="1.6" value="1" step="0.1">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-    <h2 id="heat" style="font-size:25px;margin:46px 0 6px">🔥 实验2 · 巴氏杀菌：加热后存活陡降</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动“加热强度”，看微生物存活率（指数下降曲线）如何随温度升高而急坠。</p>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>为什么稳定期会停？营养被吃光了、代谢废物攒多了。巴斯德要证明的正是：这些“小东西”不是凭空长出来的，而是从别处来的——所以控制它们的办法就是控制营养、温度和污染。详见 <a href="detail/germ.html">病菌学说：病从微小处来</a>。</p>
+    </div>
+
+
+    <h2 id="heat" style="font-size:25px;margin:46px 0 6px">🔥 实验二 · 巴氏消毒：温度与时间可以互换</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">杀死微生物有两个旋钮：温度和保持时间。拖动“温度”与“时间”，看能不能把微生物的存活数压到百万分之一以下——那就是巴氏消毒的两个标准条件。</p>
     <div class="lab" data-lab="heat">
-      <div class="lab-head"><h4>巴氏杀菌：加热后存活陡降</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">温度越高、时间越久，活下来的越少——这就是加热灭菌的原理。</p>
+      <div class="lab-head"><h4>温度 × 时间 = 消毒</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">63℃ 要 30 分钟，72℃ 只要 15 秒：温度高，时间就能大大缩短。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
-          <label>加热强度 <span class="v">1.0</span></label>
-          <input type="range" data-ctrl="param1" min="0.3" max="1.8" value="1" step="0.1">
+          <label>消毒温度（℃） <span class="v">63</span></label>
+          <input type="range" data-ctrl="temp" min="55" max="100" value="63" step="1">
         </div>
         <div class="ctrl">
-          <label>时间因子 <span class="v">1.0</span></label>
-          <input type="range" data-ctrl="param2" min="0.6" max="2" value="1" step="0.1">
+          <label>保持时间（秒） <span class="v">1800</span></label>
+          <input type="range" data-ctrl="hold" min="1" max="1800" value="1800" step="1">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-    <h2 id="spread" style="font-size:25px;margin:46px 0 6px">🌳 实验3 · 传染扩散：从一例到一片</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动“传播级数”，看一个病例如何像树枝一样逐级分叉，扩散成一片。</p>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>巴氏消毒不是“把细菌全煮死”，而是把致病菌压到安全线以下，同时尽量不破坏牛奶的风味和营养——这就是为什么它用 72℃ 只烫 15 秒，而不是煮沸。详见 <a href="detail/pasteurization.html">巴氏杀菌：用温度管住微生物</a>。</p>
+    </div>
+
+
+    <h2 id="spread" style="font-size:25px;margin:46px 0 6px">🌫️ 实验三 · 鹅颈瓶：一个弯道推翻一个学说</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">空气里到处是微生物。拖动“瓶颈弯曲度”，看瓶子从一个直筒变成一个鹅颈——灰尘还能不能落进肉汤里。</p>
     <div class="lab" data-lab="spread">
-      <div class="lab-head"><h4>传染扩散：从一例到一片</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">每个感染者又传染他人，数量便指数般膨胀。</p>
+      <div class="lab-head"><h4>鹅颈瓶实验</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">瓶颈弯得够厉害时，灰尘全落在弯道里，肉汤放几个月都不腐败。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
-          <label>传播级数 <span class="v">5 级</span></label>
-          <input type="range" data-ctrl="depth" min="1" max="8" value="5" step="1">
+          <label>瓶颈弯曲度 <span class="v">0</span></label>
+          <input type="range" data-ctrl="bend" min="0" max="100" value="0" step="5">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-<p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/germ.html">读病菌学说：病从微小处来 →</a>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>这一弯，弯掉的是“自然发生说”：肉汤自己长不出生命，腐败一定来自外来的微生物。巴斯德的做法不是把空气完全隔绝（那样谁都不服气），而是让空气自由进出、只把灰尘拦住——实验设计的高明就在这儿。详见 <a href="detail/germ.html">病菌学说：病从微小处来</a>。</p>
+    </div>
+
+
+    <p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/germ.html">读病菌学说：病从微小处来 →</a>
 <a class="btn ghost" href="detail/pasteurization.html">读巴氏杀菌：用温度管住微生物 →</a>
 <a class="btn ghost" href="detail/vaccine.html">读疫苗：用弱敌练兵 →</a>
 <a class="btn ghost" href="detail/spontaneous.html">读否定自然发生说 →</a></p>
@@ -82,7 +100,7 @@
           <li><a href="detail/pasteurization.html">巴氏杀菌：用温度管住微生物</a></li>
           <li><a href="detail/vaccine.html">疫苗：用弱敌练兵</a></li>
           <li><a href="detail/spontaneous.html">否定自然发生说</a></li></ul></div>
-<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li>          <li><a href="../../index.html">浏览全部 13 位科学家 →</a></li>
+<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li>          <li><a href="../../index.html">浏览全部 15 位科学家 →</a></li>
         </ul></div>
 </div><div class="foot-bottom"><span>课堂与自学用途 · 内容依据公开史料编写</span><span>历史图片来自 Wikimedia Commons</span></div></div></footer>
 <button class="to-top" aria-label="回到顶部">↑</button>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>动手玩一玩 · 三个费曼小实验 | 读懂费曼</title>
-<meta name="description" content="三个可直接在网页上操作的互动演示。拖动滑块，亲眼看见费曼讲过的道理。">
+<meta name="description" content="三个可直接在网页上操作的互动演示：粒子为什么把每一条路都走一遍、双缝干涉怎样叠出明暗条纹、一个一个发射电子怎样自己攒出条纹。拖动滑块，亲手看见量子力学最怪的地方。">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-base="">
@@ -22,60 +22,78 @@
 <div class="page-head"><div class="wrap">
 <div class="crumb"><a href="index.html">首页</a> · 玩一玩</div>
 <h1>动手玩一玩</h1>
-<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块，亲眼看见费曼讲过的道理。</p>
+<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块——看每条路径的相位箭头怎样首尾相接、看波长怎样决定条纹的疏密、看电子一个一个落下来怎样自己排成条纹。</p>
 </div></div>
 <section><div class="wrap">
-    <h2 id="path" style="font-size:25px;margin:8px 0 6px">🌀 实验1 · 把每一条路都走一遍</h2>
+    <h2 id="path" style="font-size:25px;margin:8px 0 6px">🌀 实验一 · 把每一条路都走一遍</h2>
     <p style="color:var(--ink-2);margin-bottom:18px">拖动“ℏ 大小”，看每条路径的相位箭头怎样首尾相接：ℏ 越小，箭头互相抵消得越厉害，最后只剩靠近直线的那几条。</p>
     <div class="lab" data-lab="path">
       <div class="lab-head"><h4>把每一条路都走一遍</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">经典世界，就是抵消之后剩下的部分。</p>
+      <p class="lab-desc">每条路都有一个箭头；箭头首尾相接，总长度就是最终的概率幅。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
           <label>ℏ 大小 <span class="v">1.0×</span></label>
-          <input type="range" data-ctrl="hbar" min="0.3" max="3" value="1" step="0.1">
+          <input type="range" data-ctrl="hbar" min="0.25" max="2" value="1" step="0.05">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-    <h2 id="interfere" style="font-size:25px;margin:46px 0 6px">🌊 实验2 · 概率幅的干涉</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动“频率”与“幅度”，看两列概率幅怎样互相加强或抵消——这就是双缝实验里电子落点成条纹的原因。</p>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>费曼的答案不是“粒子偷偷选了一条路”，而是“所有路都算数”——越接近直线的路，箭头方向越一致，加起来越长。详见 <a href="detail/path.html">路径积分：粒子把每一条路都走一遍</a>。</p>
+    </div>
+
+
+    <h2 id="interfere" style="font-size:25px;margin:46px 0 6px">🌊 实验二 · 双缝干涉：波给出的答案</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">两条缝各发出一列波。拖动“波长”与“缝间距”，看波峰与波峰叠成亮纹、波峰与波谷抵消成暗纹——这就是干涉条纹。</p>
     <div class="lab" data-lab="interfere">
-      <div class="lab-head"><h4>概率幅的干涉</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">加的是箭头，不是概率。</p>
+      <div class="lab-head"><h4>两条缝叠出的明暗</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">波长越短、缝间距越大，条纹越密。红光条纹宽，紫光条纹窄。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
-          <label>频率 <span class="v">1.0×</span></label>
-          <input type="range" data-ctrl="freq" min="0.3" max="3" value="1" step="0.1">
+          <label>波长（nm） <span class="v">550</span></label>
+          <input type="range" data-ctrl="wave" min="380" max="700" value="550" step="10">
         </div>
         <div class="ctrl">
-          <label>幅度 <span class="v">1.0×</span></label>
-          <input type="range" data-ctrl="amp" min="0.3" max="2" value="1" step="0.1">
+          <label>缝间距 <span class="v">1.0×</span></label>
+          <input type="range" data-ctrl="sep" min="0.5" max="2.5" value="1" step="0.1">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-    <h2 id="dist" style="font-size:25px;margin:46px 0 6px">📉 实验3 · 落点的概率分布</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动滑块，看概率分布曲线的中心与宽度怎么变——曲线的高度不是概率，概率幅的平方才是。</p>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>条纹不是两条缝各自画的，而是“哪条路都走”的叠加结果：路程差正好是整数个波长 → 亮纹；差半个波长 → 暗纹。详见 <a href="detail/qed.html">量子电动力学：光与电子怎么打交道</a>。</p>
+    </div>
+
+
+    <h2 id="dist" style="font-size:25px;margin:46px 0 6px">📉 实验三 · 一个一个电子，也能自己排成条纹</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">把电子一个一个发射出去——每一个落在哪里都是随机的。拖动“已发射电子数”，看横七竖八的落点怎样自己攒出条纹。</p>
     <div class="lab" data-lab="dist">
-      <div class="lab-head"><h4>落点的概率分布</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">先加箭头，再平方。</p>
+      <div class="lab-head"><h4>随机的点，攒出确定的纹</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">单次落点不可预测，大量落点的分布却和波的干涉条纹完全一致。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
-          <label>中心位置 <span class="v">1.0</span></label>
-          <input type="range" data-ctrl="param1" min="0.3" max="1.8" value="1" step="0.1">
+          <label>已发射电子数 <span class="v">300</span></label>
+          <input type="range" data-ctrl="n" min="0" max="2000" value="300" step="50">
         </div>
         <div class="ctrl">
-          <label>宽度 <span class="v">1.0</span></label>
-          <input type="range" data-ctrl="param2" min="0.6" max="2" value="1" step="0.1">
+          <label>缝间距 <span class="v">1.0×</span></label>
+          <input type="range" data-ctrl="sep" min="0.5" max="2.5" value="1" step="0.1">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-<p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/qed.html">读量子电动力学：光与电子怎么打交道 →</a>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>这是量子力学最著名的一张增长图：少量电子时看不出规律，电子多了，条纹自己浮现。谁在安排它们？“哪一个缝”这个问题，一测量条纹就消失了。物理学家算这些概率，靠的是另一种“画图”的办法：<a href="detail/diagram.html">费曼图：把一整页算式画成一张画</a>。</p>
+    </div>
+
+
+    <p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/qed.html">读量子电动力学：光与电子怎么打交道 →</a>
 <a class="btn ghost" href="detail/path.html">读路径积分：粒子把每一条路都走一遍 →</a>
 <a class="btn ghost" href="detail/diagram.html">读费曼图：把一整页算式画成一张画 →</a>
 <a class="btn ghost" href="detail/teacher.html">读讲台上的费曼：讲义、冰水与好奇心 →</a></p>
@@ -86,7 +104,7 @@
           <li><a href="detail/path.html">路径积分：粒子把每一条路都走一遍</a></li>
           <li><a href="detail/diagram.html">费曼图：把一整页算式画成一张画</a></li>
           <li><a href="detail/teacher.html">讲台上的费曼：讲义、冰水与好奇心</a></li></ul></div>
-<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li>          <li><a href="../../index.html">浏览全部 13 位科学家 →</a></li>
+<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li>          <li><a href="../../index.html">浏览全部 15 位科学家 →</a></li>
         </ul></div>
 </div><div class="foot-bottom"><span>课堂与自学用途 · 内容依据公开史料编写</span><span>历史图片来自 Wikimedia Commons</span></div></div></footer>
 <button class="to-top" aria-label="回到顶部">↑</button>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>动手玩一玩 · 三个法拉第小实验 | 读懂法拉第</title>
-<meta name="description" content="三个可直接在网页上操作的互动演示。拖动滑块，亲眼看见法拉第讲过的道理。">
+<meta name="description" content="三个可直接在网页上操作的互动演示：磁铁进出线圈时电流怎么来、条形磁铁周围看不见的磁力线怎么让铁屑排队、线圈在磁场里转动怎样输出交流电。拖动滑块，亲手转动电磁感应。">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-base="">
@@ -22,19 +22,19 @@
 <div class="page-head"><div class="wrap">
 <div class="crumb"><a href="index.html">首页</a> · 玩一玩</div>
 <h1>动手玩一玩</h1>
-<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块，亲眼看见法拉第讲过的道理。</p>
+<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块——看磁铁一停电流为什么立刻归零、看铁屑怎样把看不见的磁力线“画”出来、看转动线圈怎样把机械变成电。</p>
 </div></div>
 <section><div class="wrap">
-    <h2 id="induction" style="font-size:25px;margin:8px 0 6px">🧲 实验1 · 磁铁穿过线圈</h2>
+    <h2 id="induction" style="font-size:25px;margin:8px 0 6px">🧲 实验一 · 磁铁穿过线圈</h2>
     <p style="color:var(--ink-2);margin-bottom:18px">拖动“速度”和“匝数”，看磁铁进出线圈时电流计指针怎么摆——磁铁停下来，指针立刻归零。</p>
     <div class="lab" data-lab="induction">
       <div class="lab-head"><h4>磁铁穿过线圈</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">不动就没有电，这是关键。</p>
+      <p class="lab-desc">磁铁运动时才有电流：磁通变化得快、匝数多，电流就大。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
           <label>速度 <span class="v">1.0×</span></label>
-          <input type="range" data-ctrl="speed" min="0.2" max="3" value="1" step="0.1">
+          <input type="range" data-ctrl="speed" min="0.2" max="2.2" value="1" step="0.1">
         </div>
         <div class="ctrl">
           <label>匝数 <span class="v">4 匝</span></label>
@@ -43,39 +43,57 @@
       </div>
       <div class="lab-readout"></div>
     </div>
-    <h2 id="lines" style="font-size:25px;margin:46px 0 6px">🧭 实验2 · 铁屑排出的磁力线</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动“强度”，看磁体周围的力线怎么变密——铁屑会沿着这些线排开。</p>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>关键不是磁铁有多强，而是磁通“变不变”：插进去有电流，停在里面反而没有。这一条，就是后来所有发电机、变压器、无线充电的根。详见 <a href="detail/induction.html">电磁感应：磁铁一动，电就来了</a>。</p>
+    </div>
+
+
+    <h2 id="lines" style="font-size:25px;margin:46px 0 6px">🧭 实验二 · 铁屑排出的磁力线</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">把铁屑撒在磁铁周围，它们会自动排队——排出来的形状就是磁力线。拖动“磁性强弱”，看力线怎么变密、铁屑排队怎么变整齐。</p>
     <div class="lab" data-lab="lines">
-      <div class="lab-head"><h4>铁屑排出的磁力线</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">线越密，磁场越强。</p>
+      <div class="lab-head"><h4>条形磁铁的磁力线</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">磁力线从 N 极出、绕到 S 极进，形成一圈圈闭合的曲线。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
-          <label>强度 <span class="v">1.0×</span></label>
-          <input type="range" data-ctrl="strength" min="0.3" max="3" value="1" step="0.1">
+          <label>磁性强弱 <span class="v">1.0×</span></label>
+          <input type="range" data-ctrl="strength" min="0.2" max="2" value="1" step="0.1">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-    <h2 id="ac" style="font-size:25px;margin:46px 0 6px">🌊 实验3 · 线圈里流出的交流电</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动“频率”与“幅度”，看线圈在磁场里转动时，电流怎样一来一回地变化。</p>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>磁力线是法拉第的发明——他说：“我看不见磁，但我可以画出一条线来说清它。”磁力线越密的地方，磁场越强、受力越大。详见 <a href="detail/field.html">力线：他看见了看不见的“场”</a>。</p>
+    </div>
+
+
+    <h2 id="ac" style="font-size:25px;margin:46px 0 6px">🌊 实验三 · 线圈一转，交流电就来了</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">把线圈放在磁场里转动就是一台发电机。拖动“转速”和“磁场强度”，看左边的线圈转一圈，右边的电流怎样一来一回地变化。</p>
     <div class="lab" data-lab="ac">
-      <div class="lab-head"><h4>线圈里流出的交流电</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">一来一回，就是交流。</p>
+      <div class="lab-head"><h4>转动中的线圈</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">线圈平面与磁场平行时电流最大，垂直时电流为零——于是电流不停地换方向。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
-          <label>频率 <span class="v">1.0×</span></label>
-          <input type="range" data-ctrl="freq" min="0.3" max="3" value="1" step="0.1">
+          <label>转速 <span class="v">1.0×</span></label>
+          <input type="range" data-ctrl="freq" min="0.3" max="2" value="1" step="0.1">
         </div>
         <div class="ctrl">
-          <label>幅度 <span class="v">1.0×</span></label>
-          <input type="range" data-ctrl="amp" min="0.3" max="2" value="1" step="0.1">
+          <label>磁场强度 <span class="v">1.0×</span></label>
+          <input type="range" data-ctrl="amp" min="0.5" max="2" value="1" step="0.1">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-<p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/induction.html">读电磁感应：磁铁一动，电就来了 →</a>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>今天插座里的电，就是被这样“转”出来的——水轮机、汽轮机、风车负责转，法拉第的线圈负责把转动变成电。详见 <a href="detail/generator.html">发电机：把运动变成电</a>。</p>
+    </div>
+
+
+    <p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/induction.html">读电磁感应：磁铁一动，电就来了 →</a>
 <a class="btn ghost" href="detail/field.html">读力线：他看见了看不见的“场” →</a>
 <a class="btn ghost" href="detail/generator.html">读发电机：把运动变成电 →</a>
 <a class="btn ghost" href="detail/chem.html">读不止电磁：电解、苯与法拉第笼 →</a></p>
@@ -86,7 +104,7 @@
           <li><a href="detail/field.html">力线：他看见了看不见的“场”</a></li>
           <li><a href="detail/generator.html">发电机：把运动变成电</a></li>
           <li><a href="detail/chem.html">不止电磁：电解、苯与法拉第笼</a></li></ul></div>
-<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li>          <li><a href="../../index.html">浏览全部 13 位科学家 →</a></li>
+<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li>          <li><a href="../../index.html">浏览全部 15 位科学家 →</a></li>
         </ul></div>
 </div><div class="foot-bottom"><span>课堂与自学用途 · 内容依据公开史料编写</span><span>历史图片来自 Wikimedia Commons</span></div></div></footer>
 <button class="to-top" aria-label="回到顶部">↑</button>

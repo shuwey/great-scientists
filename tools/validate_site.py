@@ -12,10 +12,22 @@
 
 ROOT 自动取脚本所在目录的父目录（即项目根），不再写死路径。
 """
-import os, re, sys, json, subprocess, xml.dom.minidom as minidom
+import os, re, sys, json, subprocess, glob, shutil, xml.dom.minidom as minidom
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
-NODE = "/Users/shuwei/.workbuddy/binaries/node/versions/22.22.2-2/bin/node"
+
+
+def _find_node():
+    """动态定位 node：先扫托管版本目录（取的版本号会随升级变化），再退回 PATH。"""
+    base = "/Users/shuwei/.workbuddy/binaries/node/versions"
+    cands = sorted(glob.glob(os.path.join(base, "*", "bin", "node")))
+    for c in reversed(cands):          # 优先较新版本
+        if os.path.isfile(c) and os.access(c, os.X_OK):
+            return c
+    return shutil.which("node") or "node"
+
+
+NODE = _find_node()
 
 SKIP_DIRS = (".git", ".workbuddy", "__pycache__", "node_modules", "prototype", "tools")
 IGNORE_RES = ("http://", "https://", "//", "mailto:", "javascript:", "data:", "tel:")

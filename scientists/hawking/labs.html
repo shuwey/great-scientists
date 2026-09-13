@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>动手玩一玩 · 三个霍金小实验 | 读懂霍金</title>
-<meta name="description" content="三个可直接在网页上操作的互动演示。拖动滑块，亲眼看见霍金讲过的道理。">
+<meta name="description" content="三个可直接在网页上操作的互动演示：走近黑洞看时空怎样被压弯、一束光要瞄得多准才会被黑洞吞掉或偏折、霍金辐射的光谱怎样随黑洞质量移动。拖动滑块，亲手试一试霍金研究的那些事。">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-base="">
@@ -22,56 +22,70 @@
 <div class="page-head"><div class="wrap">
 <div class="crumb"><a href="index.html">首页</a> · 玩一玩</div>
 <h1>动手玩一玩</h1>
-<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块，亲眼看见霍金讲过的道理。</p>
+<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块——看黑洞怎样把时空越压越深、看光线怎样绕着黑洞拐弯、看霍金辐射的峰值怎样随质量左右移动。</p>
 </div></div>
 <section><div class="wrap">
-    <h2 id="bh" style="font-size:25px;margin:8px 0 6px">🕳️ 实验1 · 走近黑洞</h2>
+    <h2 id="bh" style="font-size:25px;margin:8px 0 6px">🕳️ 实验一 · 走近黑洞</h2>
     <p style="color:var(--ink-2);margin-bottom:18px">拖动“质量”，看黑洞把时空压得越深、光子环越小——连光都逃不出视界。</p>
     <div class="lab" data-lab="bh">
       <div class="lab-head"><h4>走近黑洞</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">质量越大，坑越深。</p>
+      <p class="lab-desc">质量越大，视界越大、时空被压得越深。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
           <label>质量 <span class="v">1.0×</span></label>
-          <input type="range" data-ctrl="mass" min="0.5" max="3" value="1" step="0.1">
+          <input type="range" data-ctrl="mass" min="0.4" max="2.4" value="1" step="0.1">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-    <h2 id="orbit" style="font-size:25px;margin:46px 0 6px">🪐 实验2 · 绕着黑洞转</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动“速度”，看一颗“光子”沿黑洞周围的轨道运行——轨道是弯曲时空里的路径。</p>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>黑洞不是“宇宙里的一个洞”，而是一块被压得极度弯曲的时空：在视界以内，连最快的逃逸速度也超过光速。详见 <a href="detail/blackhole.html">黑洞：连光都逃不掉</a>。</p>
+    </div>
+
+
+    <h2 id="orbit" style="font-size:25px;margin:46px 0 6px">🪐 实验二 · 引力弯光：瞄得多准才被吞掉</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">一束光从左边射向黑洞。拖动“瞄准距离”，看它是被掰弯后逃走，还是一头栽进视界——临界的那一条，恰好绕黑洞打转。</p>
     <div class="lab" data-lab="orbit">
-      <div class="lab-head"><h4>绕着黑洞转</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">光也沿着弯曲的时空走。</p>
+      <div class="lab-head"><h4>光线经过黑洞</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">瞄准距离小于约 2.6 倍视界半径时，光线再也回不来。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
-          <label>速度 <span class="v">1.0×</span></label>
-          <input type="range" data-ctrl="speed" min="0.2" max="3" value="1" step="0.1">
+          <label>瞄准距离 <span class="v">3.5</span></label>
+          <input type="range" data-ctrl="aim" min="0.6" max="7" value="3.5" step="0.1">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-    <h2 id="temp" style="font-size:25px;margin:46px 0 6px">🌡️ 实验3 · 霍金辐射的温度</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动滑块，看“辐射强度”随黑洞参数如何变化——质量越小的黑洞反而越“热”、蒸发越快。</p>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>牛顿的引力也能把光掰弯，但只有爱因斯坦的方程才给出正确的两倍偏折——而黑洞把这件事做到了极端：中间那个黑色的“阴影”，半径正好是 2.6 倍视界。详见 <a href="detail/blackhole.html">黑洞：连光都逃不掉</a>。</p>
+    </div>
+
+
+    <h2 id="temp" style="font-size:25px;margin:46px 0 6px">🌡️ 实验三 · 霍金辐射的温度</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">黑洞并不全黑，它会慢慢辐射。拖动“黑洞质量”，看辐射谱的峰值怎样移动——质量越小，反而越“热”、峰值越靠短波。</p>
     <div class="lab" data-lab="temp">
-      <div class="lab-head"><h4>霍金辐射的温度</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">小黑洞，更热更快蒸发。</p>
+      <div class="lab-head"><h4>越小越热</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">温度与质量成反比：质量减半，温度翻倍，峰值波长减半。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
-          <label>中心位置 <span class="v">1.0</span></label>
-          <input type="range" data-ctrl="param1" min="0.3" max="1.8" value="1" step="0.1">
-        </div>
-        <div class="ctrl">
-          <label>峰宽 <span class="v">1.0</span></label>
-          <input type="range" data-ctrl="param2" min="0.6" max="2" value="1" step="0.1">
+          <label>黑洞质量 <span class="v">1.0×</span></label>
+          <input type="range" data-ctrl="mass" min="0.2" max="3" value="1" step="0.1">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-<p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/singularity.html">读奇点：时间与空间的尽头 →</a>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>恒星量级的黑洞只有约 10⁻⁸ K，比宇宙微波背景还冷，其实在“吸热”；只有蒸发到极小的黑洞才会变得极热、最后炸掉。这就是霍金留下的悖论：信息去哪了？详见 <a href="detail/radiation.html">霍金辐射：黑洞也会蒸发</a>。</p>
+    </div>
+
+
+    <p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/singularity.html">读奇点：时间与空间的尽头 →</a>
 <a class="btn ghost" href="detail/blackhole.html">读黑洞：连光都逃不掉 →</a>
 <a class="btn ghost" href="detail/radiation.html">读霍金辐射：黑洞也会蒸发 →</a>
 <a class="btn ghost" href="detail/cosmology.html">读把宇宙讲给所有人 →</a></p>
@@ -82,7 +96,7 @@
           <li><a href="detail/blackhole.html">黑洞：连光都逃不掉</a></li>
           <li><a href="detail/radiation.html">霍金辐射：黑洞也会蒸发</a></li>
           <li><a href="detail/cosmology.html">把宇宙讲给所有人</a></li></ul></div>
-<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li>          <li><a href="../../index.html">浏览全部 13 位科学家 →</a></li>
+<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li>          <li><a href="../../index.html">浏览全部 15 位科学家 →</a></li>
         </ul></div>
 </div><div class="foot-bottom"><span>课堂与自学用途 · 内容依据公开史料编写</span><span>历史图片来自 Wikimedia Commons</span></div></div></footer>
 <button class="to-top" aria-label="回到顶部">↑</button>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>动手玩一玩 · 三个达尔文小实验 | 读懂达尔文</title>
-<meta name="description" content="三个可直接在网页上操作的互动演示。拖动滑块，亲眼看见达尔文讲过的道理。">
+<meta name="description" content="三个可直接在网页上操作的互动演示：过度繁殖之下谁能活下来、自然选择怎样让整群地雀的喙一代代变深、人类和其他猿类在几百万年前才分家。拖动滑块，亲眼看见达尔文讲过的道理。">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-base="">
@@ -22,56 +22,74 @@
 <div class="page-head"><div class="wrap">
 <div class="crumb"><a href="index.html">首页</a> · 玩一玩</div>
 <h1>动手玩一玩</h1>
-<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块，亲眼看见达尔文讲过的道理。</p>
+<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块——看每代生出的后代为什么远多于能活下来的、看选择压力怎样把整群地雀的喙推得更深、看我们在演化树上和谁最亲。</p>
 </div></div>
 <section><div class="wrap">
-    <h2 id="population" style="font-size:25px;margin:8px 0 6px">🌱 实验1 · 种群增长：指数与受限</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动“速率”，看蓝线（无限制指数增长）与绿线（受环境容量限制的 S 形）如何分道扬镳。</p>
+    <h2 id="population" style="font-size:25px;margin:8px 0 6px">🌱 实验一 · 过度繁殖与生存竞争</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">每个物种生出的后代，都远远多于环境能养活的。拖动“繁殖速率”，看这一代生出多少、又有多少还没长大就被淘汰——达尔文正是从这句话想通了“生存竞争”。</p>
     <div class="lab" data-lab="population">
-      <div class="lab-head"><h4>种群增长：指数与受限</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">资源有限时，增长会“踩刹车”——这正是竞争的来源。</p>
+      <div class="lab-head"><h4>生得多，活得少</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">环境只有 60 个位置，后代却有上百个。多出来的，就是竞争中被淘汰的。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
-          <label>增长速率 r <span class="v">0.6</span></label>
+          <label>繁殖速率 <span class="v">0.6</span></label>
           <input type="range" data-ctrl="rate" min="0.3" max="1.5" value="0.6" step="0.1">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-    <h2 id="selection" style="font-size:25px;margin:46px 0 6px">📊 实验2 · 选择压力：分布整体偏移</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动“选择压力”，看种群的性状分布（钟形曲线）整体向某个方向平移。</p>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>资源充裕时谁都能活；一旦后代超过环境容量，就必然有一批被饿死、被捕食、被淘汰。活下来的未必最强，但一定是最适应当下环境的——这就是自然选择的起点。详见 <a href="detail/selection.html">自然选择：进化的发动机</a>。</p>
+    </div>
+
+
+    <h2 id="selection" style="font-size:25px;margin:46px 0 6px">📊 实验二 · 自然选择：喙深一代代变深</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">加拉帕戈斯地雀的喙深本来参差不齐。连续干旱时，硬壳种子占多数，喙深的个体更容易活下来。拖动“选择压力”和“世代数”，看整群的喙深分布怎样一步步向右移。</p>
     <div class="lab" data-lab="selection">
-      <div class="lab-head"><h4>选择压力：分布整体偏移</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">环境偏好某一端，几代之后平均特征就跟着偏。</p>
+      <div class="lab-head"><h4>整群分布整体偏移</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">灰柱是原来的种群，橙柱是若干代之后的种群。分布整体右移，平均喙深就变深了。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
           <label>选择压力 <span class="v">1.0</span></label>
-          <input type="range" data-ctrl="param1" min="0.2" max="1.8" value="1" step="0.1">
+          <input type="range" data-ctrl="press" min="0" max="2" value="1" step="0.1">
         </div>
         <div class="ctrl">
-          <label>差异宽度 <span class="v">1.0</span></label>
-          <input type="range" data-ctrl="param2" min="0.6" max="2" value="1" step="0.1">
+          <label>经过世代 <span class="v">3</span></label>
+          <input type="range" data-ctrl="gens" min="0" max="8" value="3" step="1">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-    <h2 id="tree" style="font-size:25px;margin:46px 0 6px">🌳 实验3 · 生命之树：从一根到千万枝</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动“演化级数”，看一根主干如何逐级一分为二，长出越来越多的末梢。</p>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>注意：这一代没有哪只鸟“努力”把喙变深，变的是整群的比例。选择不制造变异，它只是筛选已有的变异——这正是达尔文与拉马克的分水岭。详见 <a href="detail/finches.html">加拉帕戈斯雀：一枚钥匙</a>。</p>
+    </div>
+
+
+    <h2 id="tree" style="font-size:25px;margin:46px 0 6px">🌳 实验三 · 生命之树：我们和谁最亲</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">把时间倒着拨回去。拖动“距今”，看人类的祖先什么时候才和黑猩猩、大猩猩、红毛猩猩分家——越靠左，是越久远的共同祖先。</p>
     <div class="lab" data-lab="tree">
-      <div class="lab-head"><h4>生命之树：从一根到千万枝</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">共同祖先不断分叉，便有了今天多样的物种。</p>
+      <div class="lab-head"><h4>人科：一部分家史</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">人类与黑猩猩约 700 万年前分家，与大猩猩约 1000 万年，与红毛猩猩约 1400 万年。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
-          <label>演化级数 <span class="v">5 级</span></label>
-          <input type="range" data-ctrl="depth" min="1" max="8" value="5" step="1">
+          <label>距今（百万年前） <span class="v">0</span></label>
+          <input type="range" data-ctrl="mya" min="0" max="16" value="0" step="1">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-<p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/evolution.html">读进化论：物种也会变 →</a>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>血缘不是“谁像谁”，而是“谁跟谁分家更晚”。人类不是从黑猩猩变来的——我们和黑猩猩是从同一个祖先分头走出来的两条支线。详见 <a href="detail/tree.html">生命之树：我们共享祖先</a>。</p>
+    </div>
+
+
+    <p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/evolution.html">读进化论：物种也会变 →</a>
 <a class="btn ghost" href="detail/selection.html">读自然选择：进化的发动机 →</a>
 <a class="btn ghost" href="detail/finches.html">读加拉帕戈斯雀：一枚钥匙 →</a>
 <a class="btn ghost" href="detail/tree.html">读生命之树：我们共享祖先 →</a></p>
@@ -82,7 +100,7 @@
           <li><a href="detail/selection.html">自然选择：进化的发动机</a></li>
           <li><a href="detail/finches.html">加拉帕戈斯雀：一枚钥匙</a></li>
           <li><a href="detail/tree.html">生命之树：我们共享祖先</a></li></ul></div>
-<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li>          <li><a href="../../index.html">浏览全部 13 位科学家 →</a></li>
+<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li>          <li><a href="../../index.html">浏览全部 15 位科学家 →</a></li>
         </ul></div>
 </div><div class="foot-bottom"><span>课堂与自学用途 · 内容依据公开史料编写</span><span>历史图片来自 Wikimedia Commons</span></div></div></footer>
 <button class="to-top" aria-label="回到顶部">↑</button>

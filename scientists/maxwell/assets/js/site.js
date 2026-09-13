@@ -429,104 +429,314 @@
     return { ctx: ctx, w: w, h: h };
   }
 
-  /* ---- 7.1 棱镜色散 ---- */
+
   function lab_field(lab) {
-  var P = {"label": "两根带电棒之间的力线：看不见，却处处有力"};
+    var cv = $("canvas", lab);
+    var sS = $('[data-ctrl="strength"]', lab);
+    var out = $(".lab-readout", lab);
+    var vS = sS ? sS.closest(".ctrl").querySelector(".v") : null;
+    var W = 820, H = 400, CX = 340, CY = 198;
+    var RR = [30, 54, 82, 114, 150, 190];
+    function draw(ts) {
+      if (typeof ts !== "number") ts = performance.now();
+      var I = sS ? parseFloat(sS.value) : 1;
+      var S = setupCanvas(cv, H / W);
+      var ctx = S.ctx, k = S.w / W;
+      ctx.save(); ctx.scale(k, k);
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = "#FBFCFE"; ctx.fillRect(0, 0, W, H);
 
-  var cv=$("canvas",lab); var sStr=$('[data-ctrl="strength"]',lab);
-  var out=$(".lab-readout",lab); var vSpan=sStr?sStr.closest(".ctrl").querySelector(".v"):null;
-  var W=820,H=360;
-  function draw(){
-    var str=sStr?parseFloat(sStr.value):1;
-    var S=setupCanvas(cv,H/W); var ctx=S.ctx,k=S.w/W;
-    ctx.save(); ctx.scale(k,k); ctx.clearRect(0,0,W,H); ctx.fillStyle="#FBFCFE"; ctx.fillRect(0,0,W,H);
-    var x1=160,y1=90,x2=660,y2=90;
-    ctx.fillStyle="#3B5BDB"; ctx.fillRect(x1-10,y1,20,180);
-    ctx.fillStyle="#E8590C"; ctx.fillRect(x2-10,y2,20,180);
-    ctx.strokeStyle="#5C6B82"; ctx.lineWidth=1.4; ctx.globalAlpha=Math.min(1,0.4+str*0.3);
-    for(var row=-2;row<=2;row++){ var yy=180+row*26; ctx.beginPath(); ctx.moveTo(x1+10,yy); ctx.quadraticCurveTo(410,yy+row*8,x2-10,yy); ctx.stroke(); }
-    ctx.globalAlpha=1;
-    ctx.fillStyle="#5C6B82"; ctx.font="600 13px -apple-system,sans-serif"; ctx.fillText(P.label,24,30);
-    ctx.restore();
-    if(vSpan)vSpan.textContent=str.toFixed(1)+"×";
-    if(out)out.innerHTML="场强 = <b>"+str.toFixed(1)+"</b>：两根带电棒之间，力线从正指向负、越密越强——看不见，却处处施加力，这就是“场”的直观图像。";
+      var i, r, ry, al, cy2;
+      var RN = 4;
+      for (i = 0; i < RN; i++) {
+        cy2 = 88 + i * 74;
+        r = 172 - i * 30;
+        ry = r * 0.30;
+        al = Math.min(0.92, (0.34 + I * 0.30) / (1 + i * 0.12));
+        ctx.strokeStyle = "rgba(59,91,219," + al.toFixed(3) + ")";
+        ctx.lineWidth = Math.max(1.2, (3.0 - i * 0.35) * (0.6 + I * 0.35));
+        ctx.beginPath(); ctx.ellipse(CX, cy2, r, ry, 0, 0, Math.PI * 2); ctx.stroke();
+        ctx.fillStyle = "rgba(59,91,219," + Math.min(1, al + 0.15).toFixed(3) + ")";
+        ctx.beginPath();
+        ctx.moveTo(CX + r, cy2 + 9);
+        ctx.lineTo(CX + r - 6.5, cy2 - 4);
+        ctx.lineTo(CX + r + 6.5, cy2 - 4);
+        ctx.closePath(); ctx.fill();
+      }
+
+      ctx.strokeStyle = "#E8590C"; ctx.lineWidth = 5 + I * 4;
+      ctx.beginPath(); ctx.moveTo(CX, 44); ctx.lineTo(CX, 340); ctx.stroke();
+      ctx.fillStyle = "#E8590C";
+      ctx.beginPath();
+      ctx.moveTo(CX, 30); ctx.lineTo(CX - 9, 50); ctx.lineTo(CX + 9, 50);
+      ctx.closePath(); ctx.fill();
+      ctx.fillStyle = "#C1440E"; ctx.font = "700 13px -apple-system, sans-serif";
+      ctx.fillText("电流 I ↑", CX + 14, 52);
+
+      ctx.fillStyle = "#1B2530"; ctx.font = "700 14px -apple-system, sans-serif";
+      ctx.fillText("通电直导线：磁场像一串圆环，套在导线外面", 40, 30);
+      ctx.fillStyle = "#8B96AA"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("右手握住导线，拇指指向电流方向，四指环绕的方向就是磁场方向。", 40, 366);
+      ctx.fillText("离导线越远，磁场越弱——磁场大小 ∝ 电流 ÷ 距离：距离翻倍，磁场减半。", 40, 386);
+
+      ctx.fillStyle = "#5C6B82"; ctx.font = "600 12.5px -apple-system, sans-serif";
+      ctx.fillText("小磁针会沿着这些圆环偏转", 596, 108);
+      ctx.strokeStyle = "#5C6B82"; ctx.lineWidth = 1.6;
+      ctx.beginPath(); ctx.moveTo(610, 118); ctx.lineTo(646, 152); ctx.stroke();
+      ctx.fillStyle = "#fff"; ctx.strokeStyle = "#5C6B82"; ctx.lineWidth = 1.4;
+      ctx.beginPath(); ctx.arc(650, 156, 12, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+      ctx.strokeStyle = "#E03131"; ctx.lineWidth = 2.4;
+      ctx.beginPath(); ctx.moveTo(643, 163); ctx.lineTo(657, 149); ctx.stroke();
+      ctx.restore();
+
+      if (vS) vS.textContent = I.toFixed(1) + "×";
+      if (out) {
+        out.innerHTML = "电流强度 = <b>" + I.toFixed(1) + "×</b>　·　电流越大，每圈磁力线越强、小磁针偏得越厉害　·　" +
+          "磁场大小 ∝ 电流 / 距离：离导线 2 倍远，磁场只剩一半　·　" +
+          (I < 0.6 ? "现在电流很小，磁力线几乎看不见。" : "这些圆环永远闭合，没有起点也没有终点——磁场线总是闭合的。");
+      }
+    }
+    if (sS) sS.addEventListener("input", draw);
+    window.addEventListener("resize", draw);
+    draw(performance.now());
   }
-  if(sStr)sStr.addEventListener("input",draw);
-  draw();
-
-}
 
 
-function lab_wave(lab) {
-  var P = {"label": "电场与磁场互相推着，向前传成电磁波"};
+  function lab_wave(lab) {
+    var cv = $("canvas", lab);
+    var sF = $('[data-ctrl="freq"]', lab);
+    var sA = $('[data-ctrl="amp"]', lab);
+    var out = $(".lab-readout", lab);
+    var vF = sF ? sF.closest(".ctrl").querySelector(".v") : null;
+    var vA = sA ? sA.closest(".ctrl").querySelector(".v") : null;
+    var W = 820, H = 400, AX = 210, X0 = 74, X1 = 764;
+    var ph = 0, last = 0;
+    function draw(ts) {
+      if (typeof ts !== "number") ts = performance.now();
+      if (!last) last = ts;
+      var dt = Math.min(0.05, (ts - last) / 1000); last = ts;
+      var f = sF ? parseFloat(sF.value) : 1;
+      var a = sA ? parseFloat(sA.value) : 1;
+      ph += dt * f * 3.2;
+      var lam = 300 / f;
+      var S = setupCanvas(cv, H / W);
+      var ctx = S.ctx, k = S.w / W;
+      ctx.save(); ctx.scale(k, k);
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = "#FBFCFE"; ctx.fillRect(0, 0, W, H);
 
-  var cv=$("canvas",lab); var sF=$('[data-ctrl="freq"]',lab); var sA=$('[data-ctrl="amp"]',lab);
-  var out=$(".lab-readout",lab);
-  var fSpan=sF?sF.closest(".ctrl").querySelector(".v"):null;
-  var aSpan=sA?sA.closest(".ctrl").querySelector(".v"):null;
-  var W=820,H=360,ph=0,last=0;
-  function draw(ts){
-    if(!last)last=ts; var dt=Math.min(0.05,(ts-last)/1000); last=ts;
-    var f=sF?parseFloat(sF.value):1, a=sA?parseFloat(sA.value):1;
-    ph+=dt*f*2;
-    var S=setupCanvas(cv,H/W); var ctx=S.ctx,k=S.w/W;
-    ctx.save(); ctx.scale(k,k); ctx.clearRect(0,0,W,H); ctx.fillStyle="#FBFCFE"; ctx.fillRect(0,0,W,H);
-    ctx.strokeStyle="#3B5BDB"; ctx.lineWidth=3; ctx.beginPath();
-    for(var x=30;x<790;x+=4){ var y=180-60*a*Math.sin((x-30)/70 - ph); if(x===30)ctx.moveTo(x,y); else ctx.lineTo(x,y);} ctx.stroke();
-    ctx.strokeStyle="#C9D3E0"; ctx.setLineDash([4,4]); ctx.beginPath(); ctx.moveTo(30,180); ctx.lineTo(790,180); ctx.stroke(); ctx.setLineDash([]);
-    ctx.fillStyle="#5C6B82"; ctx.font="600 13px -apple-system,sans-serif"; ctx.fillText(P.label,24,30);
-    ctx.restore();
-    if(fSpan)fSpan.textContent=f.toFixed(1)+"×";
-    if(aSpan)aSpan.textContent=a.toFixed(1)+"×";
-    if(out)out.innerHTML="频率 f=<b>"+f.toFixed(1)+"</b>　·　振幅 A=<b>"+a.toFixed(1)+"</b>　·　波是振动的传播：介质不动，能量在走";
+      var i, x, ang, ev, bv, bx, by, amp = 104 * a;
+      ctx.strokeStyle = "#C9D3E0"; ctx.lineWidth = 1.6; ctx.setLineDash([6, 5]);
+      ctx.beginPath(); ctx.moveTo(X0 - 10, AX); ctx.lineTo(X1 + 22, AX); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = "#8B96AA";
+      ctx.beginPath(); ctx.moveTo(X1 + 30, AX); ctx.lineTo(X1 + 16, AX - 6);
+      ctx.lineTo(X1 + 16, AX + 6); ctx.closePath(); ctx.fill();
+      ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("传播方向 →", X0 - 10, AX + 24);
+
+      ctx.strokeStyle = "rgba(232,89,12,0.30)"; ctx.lineWidth = 1.2;
+      for (i = 0; i <= 26; i++) {
+        x = X0 + (X1 - X0) * i / 26;
+        ang = (x - X0) / lam * Math.PI * 2 - ph;
+        bv = Math.sin(ang) * amp * 0.46;
+        ctx.beginPath(); ctx.moveTo(x, AX); ctx.lineTo(x + bv * 0.72, AX + bv * 0.72); ctx.stroke();
+      }
+      ctx.strokeStyle = "#E8590C"; ctx.lineWidth = 2.6;
+      ctx.beginPath();
+      for (i = 0; i <= 300; i++) {
+        x = X0 + (X1 - X0) * i / 300;
+        ang = (x - X0) / lam * Math.PI * 2 - ph;
+        bv = Math.sin(ang) * amp * 0.46;
+        bx = x + bv * 0.72; by = AX + bv * 0.72;
+        if (i === 0) ctx.moveTo(bx, by); else ctx.lineTo(bx, by);
+      }
+      ctx.stroke();
+
+      ctx.strokeStyle = "#1C7ED6"; ctx.lineWidth = 3;
+      ctx.beginPath();
+      for (i = 0; i <= 300; i++) {
+        x = X0 + (X1 - X0) * i / 300;
+        ang = (x - X0) / lam * Math.PI * 2 - ph;
+        ev = AX - Math.sin(ang) * amp;
+        if (i === 0) ctx.moveTo(x, ev); else ctx.lineTo(x, ev);
+      }
+      ctx.stroke();
+
+      var xa = X0 + 62, ea = AX - Math.sin((xa - X0) / lam * Math.PI * 2 - ph) * amp;
+      ctx.strokeStyle = "#1C7ED6"; ctx.lineWidth = 2.4;
+      ctx.beginPath(); ctx.moveTo(xa, AX); ctx.lineTo(xa, ea); ctx.stroke();
+      ctx.fillStyle = "#1C7ED6";
+      ctx.beginPath(); ctx.moveTo(xa, ea - 10); ctx.lineTo(xa - 5, ea + 2);
+      ctx.lineTo(xa + 5, ea + 2); ctx.closePath(); ctx.fill();
+      ctx.font = "800 15px -apple-system, sans-serif";
+      ctx.fillText("E", xa + 9, ea - 6);
+
+      var xb = X0 + 122, bb = Math.sin((xb - X0) / lam * Math.PI * 2 - ph) * amp * 0.46;
+      ctx.fillStyle = "#E8590C";
+      ctx.font = "800 15px -apple-system, sans-serif";
+      ctx.fillText("B", xb + bb * 0.72 + 8, AX + bb * 0.72 + 18);
+
+      ctx.strokeStyle = "#5C6B82"; ctx.lineWidth = 1.6;
+      ctx.beginPath(); ctx.arc(X0 + 20, AX + 130, 44, -Math.PI / 2, 0); ctx.stroke();
+      ctx.fillStyle = "#5C6B82"; ctx.font = "600 11.5px -apple-system, sans-serif";
+      ctx.fillText("90°", X0 + 70, AX + 130 - 34);
+      ctx.fillText("E ⊥ B，且都垂直于传播方向", X0 + 56, AX + 140);
+
+      ctx.fillStyle = "#1B2530"; ctx.font = "700 14px -apple-system, sans-serif";
+      ctx.fillText("电磁波：电场（蓝，上下振）＋ 磁场（橙，垂直于纸面）", X0 - 10, 40);
+      ctx.fillStyle = "#8B96AA"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("橙色的波画成斜向，是为了表示它垂直于纸面——和蓝波一样，一上一下地振。", X0 - 10, 372);
+      ctx.restore();
+
+      if (vF) vF.textContent = f.toFixed(1) + "×";
+      if (vA) vA.textContent = a.toFixed(1) + "×";
+      if (out) {
+        out.innerHTML = "频率 <b>" + f.toFixed(1) + "×</b>　·　振幅 <b>" + a.toFixed(1) + "×</b>　·　波长 ≈ <b>" +
+          lam.toFixed(0) + "</b>（相对）　·　E 与 B 步调完全一致（同相），谁也离不开谁：变化的电场生磁场，变化的磁场生电场，于是波自己跑下去　·　" +
+          "频率越高波长越短，但两者乘积（波速）始终是光速。";
+      }
+      requestAnimationFrame(draw);
+    }
     requestAnimationFrame(draw);
   }
-  requestAnimationFrame(draw);
-
-}
 
 
-function lab_speed(lab) {
-  var P = {"expr": "gauss", "label": "分子速率分布随温度整体右移（示意）"};
+  function lab_speed(lab) {
+    var cv = $("canvas", lab);
+    var sT = $('[data-ctrl="temp"]', lab);
+    var out = $(".lab-readout", lab);
+    var vT = sT ? sT.closest(".ctrl").querySelector(".v") : null;
+    var W = 820, H = 400;
+    var PX0 = 88, PX1 = 756, PY0 = 322, PY1 = 78, VMAX = 4.0, V0 = 1.8;
+    function pdf(v, T) {
+      var a2 = T, a3 = Math.pow(T, 1.5);
+      return Math.sqrt(2 / Math.PI) * v * v * Math.exp(-v * v / (2 * a2)) / a3;
+    }
+    function tail(T) {
+      var n = 600, hh = (VMAX * 1.6 - V0) / n, s = 0, i, v, w;
+      for (i = 0; i <= n; i++) {
+        v = V0 + i * hh;
+        w = (i === 0 || i === n) ? 1 : (i % 2 ? 4 : 2);
+        s += w * pdf(v, T);
+      }
+      return s * hh / 3;
+    }
+    function xOf(v) { return PX0 + v / VMAX * (PX1 - PX0); }
+    function draw(ts) {
+      if (typeof ts !== "number") ts = performance.now();
+      var T = sT ? parseFloat(sT.value) : 1;
+      var S = setupCanvas(cv, H / W);
+      var ctx = S.ctx, k = S.w / W;
+      ctx.save(); ctx.scale(k, k);
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = "#FBFCFE"; ctx.fillRect(0, 0, W, H);
 
-  var cv=$("canvas",lab); var s1=$('[data-ctrl="param1"]',lab); var s2=$('[data-ctrl="param2"]',lab);
-  var out=$(".lab-readout",lab);
-  var v1=s1?s1.closest(".ctrl").querySelector(".v"):null;
-  var v2=s2?s2.closest(".ctrl").querySelector(".v"):null;
-  var W=820,H=360;
-  function yval(x,a,b){
-    if(P.expr==="exp") return 250-200*(1-Math.exp(-a*x/4));
-    if(P.expr==="gauss"){ var mean=3.5+(a-1)*2.5; return 250-160*Math.exp(-Math.pow(x-mean,2)/(b*1.5)); }
-    if(P.expr==="growth") return 250-190*(Math.exp(a*x/9)-1)/(Math.exp(a)-1);
-    return 250-90*a*Math.sin(b*x); // 默认 a*sin(kx)
+      var SC = 1.22, i, v, p, x, y;
+      ctx.strokeStyle = "#EDF0F6"; ctx.lineWidth = 1;
+      for (i = 0; i <= 4; i++) {
+        y = PY1 + (PY0 - PY1) * i / 4;
+        ctx.beginPath(); ctx.moveTo(PX0, y); ctx.lineTo(PX1, y); ctx.stroke();
+      }
+      ctx.strokeStyle = "#9AA7BE"; ctx.lineWidth = 1.6;
+      ctx.beginPath(); ctx.moveTo(PX0, PY0); ctx.lineTo(PX1, PY0); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(PX0, PY0); ctx.lineTo(PX0, PY1); ctx.stroke();
+
+      ctx.fillStyle = "rgba(232,89,12,0.14)";
+      ctx.beginPath();
+      ctx.moveTo(xOf(V0), PY0);
+      for (i = 0; i <= 200; i++) {
+        v = V0 + (VMAX - V0) * i / 200;
+        ctx.lineTo(xOf(v), PY0 - pdf(v, T) * SC * (PY0 - PY1));
+      }
+      ctx.lineTo(xOf(VMAX), PY0);
+      ctx.closePath(); ctx.fill();
+
+      ctx.strokeStyle = "#B0BAC9"; ctx.lineWidth = 2; ctx.setLineDash([6, 5]);
+      ctx.beginPath();
+      for (i = 0; i <= 300; i++) {
+        v = VMAX * i / 300;
+        x = xOf(v); y = PY0 - pdf(v, 1) * SC * (PY0 - PY1);
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      ctx.fillStyle = "rgba(232,89,12,0.55)";
+      ctx.beginPath();
+      ctx.moveTo(xOf(0), PY0);
+      for (i = 0; i <= 300; i++) {
+        v = VMAX * i / 300;
+        ctx.lineTo(xOf(v), PY0 - pdf(v, T) * SC * (PY0 - PY1));
+      }
+      ctx.lineTo(xOf(VMAX), PY0);
+      ctx.closePath(); ctx.fill();
+
+      ctx.strokeStyle = "#E8590C"; ctx.lineWidth = 3;
+      ctx.beginPath();
+      for (i = 0; i <= 300; i++) {
+        v = VMAX * i / 300;
+        x = xOf(v); y = PY0 - pdf(v, T) * SC * (PY0 - PY1);
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      var vp = Math.sqrt(2 * T);
+      ctx.strokeStyle = "#E03131"; ctx.lineWidth = 1.6; ctx.setLineDash([4, 3]);
+      ctx.beginPath(); ctx.moveTo(xOf(vp), PY0); ctx.lineTo(xOf(vp), PY1 + 14); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = "#E03131"; ctx.font = "700 12px -apple-system, sans-serif";
+      ctx.textAlign = xOf(vp) > PX1 - 120 ? "right" : "left";
+      ctx.fillText("最概然速率", xOf(vp) + (xOf(vp) > PX1 - 120 ? -8 : 8), PY1 + 12);
+
+      ctx.strokeStyle = "#495057"; ctx.lineWidth = 1.8;
+      ctx.beginPath(); ctx.moveTo(xOf(V0), PY0 + 6); ctx.lineTo(xOf(V0), PY0 - 4); ctx.stroke();
+      ctx.textAlign = "center";
+      ctx.fillStyle = "#495057"; ctx.font = "700 12px -apple-system, sans-serif";
+      ctx.fillText("门槛速率", xOf(V0), PY0 + 24);
+      ctx.textAlign = "left";
+
+      ctx.fillStyle = "#8B96AA"; ctx.font = "600 12px -apple-system, sans-serif";
+      for (i = 1; i <= 4; i++) {
+        ctx.textAlign = "center";
+        ctx.fillText(i + "", xOf(i), PY0 + 22);
+      }
+      ctx.textAlign = "left";
+      ctx.fillText("分子速率 →", PX1 - 96, PY0 + 46);
+
+      var vbar = 2 * Math.sqrt(2 * T / Math.PI);
+      ctx.fillStyle = "#1B2530"; ctx.font = "700 14px -apple-system, sans-serif";
+      ctx.fillText("麦克斯韦-玻尔兹曼速率分布", PX0, 44);
+      ctx.fillStyle = "#8B96AA"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("灰虚线：原来的温度（1.0×）　橙：现在的温度　阴影：速率超过门槛的分子", PX0, 64);
+
+      ctx.fillStyle = "#1B2530"; ctx.font = "700 13px -apple-system, sans-serif";
+      ctx.fillText("最概然 " + vp.toFixed(2) + "　平均 " + vbar.toFixed(2) + "　越过门槛 " + (tail(T) * 100).toFixed(1) + "%", 566, PY1 + 12);
+      ctx.restore();
+
+      if (vT) vT.textContent = T.toFixed(1) + "×";
+      if (out) {
+        var pc = tail(T) * 100, pc0 = tail(1) * 100;
+        out.innerHTML = "温度 <b>" + T.toFixed(1) + "×</b>　·　最概然速率 <b>" + vp.toFixed(2) +
+          "</b>（∝√T）　·　越过门槛速率的分子比例 <b>" + pc.toFixed(1) + "%</b>（1.0× 时只有 " + pc0.toFixed(1) + "%）　·　" +
+          (T > 1.05 ? "温度升高，峰右移、变矮变宽，更关键的是右尾猛涨——能越过反应门槛的分子成倍增加。" :
+           T < 0.95 ? "温度降低，峰左移变高，跑得快的分子迅速变少——反应也就慢下来了。" :
+                      "这是基准温度：峰的位置由 √T 决定，整条曲线的面积始终是 1。");
+      }
+    }
+    if (sT) sT.addEventListener("input", draw);
+    window.addEventListener("resize", draw);
+    draw(performance.now());
   }
-  function draw(){
-    var a=s1?parseFloat(s1.value):1, b=s2?parseFloat(s2.value):1;
-    var S=setupCanvas(cv,H/W); var ctx=S.ctx,k=S.w/W;
-    ctx.save(); ctx.scale(k,k); ctx.clearRect(0,0,W,H); ctx.fillStyle="#FBFCFE"; ctx.fillRect(0,0,W,H);
-    ctx.strokeStyle="#5C6B82"; ctx.lineWidth=1.5; ctx.beginPath(); ctx.moveTo(40,40); ctx.lineTo(40,280); ctx.lineTo(790,280); ctx.stroke();
-    ctx.strokeStyle="#3B5BDB"; ctx.lineWidth=3; ctx.beginPath();
-    for(var x=40;x<790;x+=4){ var t=(x-40)/60; var y=yval(t,a,b); y=Math.max(40,Math.min(280,y)); if(x===40)ctx.moveTo(x,y); else ctx.lineTo(x,y);} ctx.stroke();
-    ctx.fillStyle="#5C6B82"; ctx.font="600 13px -apple-system,sans-serif"; ctx.fillText(P.label,24,30);
-    ctx.restore();
-    if(v1)v1.textContent=a.toFixed(1);
-    if(v2)v2.textContent=b.toFixed(1);
-    if(out)out.innerHTML="拖动滑块改变参数，看曲线如何随之改变——这是“用数学描述自然”的最小示范。";
+
+  function initLabs() {
+    $$(".lab").forEach(function (lab) {
+      var kind = lab.getAttribute("data-lab");
+      if (kind === "field") lab_field(lab);
+      if (kind === "wave") lab_wave(lab);
+      if (kind === "speed") lab_speed(lab);
+    });
   }
-  if(s1)s1.addEventListener("input",draw); if(s2)s2.addEventListener("input",draw);
-  draw();
-
-}
-
-
-function initLabs() {
-  $$(".lab").forEach(function (lab) {
-    var kind = lab.getAttribute("data-lab");
-    if (kind === "field") lab_field(lab);
-    if (kind === "wave") lab_wave(lab);
-    if (kind === "speed") lab_speed(lab);
-  });
-}
 function initGlossary() {
     var grid = $("#term-grid");
     if (!grid) return;

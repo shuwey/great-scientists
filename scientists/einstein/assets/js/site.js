@@ -548,10 +548,10 @@
       ctx.fillText(above ? "✅ 光子能量够大 → 打出电子" : "❌ 光子能量不足 → 一个电子都打不出", 24, 258);
       ctx.restore();
 
-      if (vSpan) vSpan.textContent = f14.toFixed(1) + " THz";
+      if (vSpan) vSpan.textContent = f14.toFixed(1) + "×10¹⁴ Hz";
       if (out) {
-        out.innerHTML = "频率 f = " + f14.toFixed(1) + " THz　·　光子能量 = " + E.toFixed(2) + " eV" +
-          "　·　截止 " + (Wf / h_eVs / 1e14).toFixed(2) + " THz　·　电子动能 = <b>" + KE.toFixed(2) + " eV</b>" +
+        out.innerHTML = "频率 f = " + f14.toFixed(1) + "×10¹⁴ Hz　·　光子能量 = " + E.toFixed(2) + " eV" +
+          "　·　截止 " + (Wf / h_eVs / 1e14).toFixed(2) + "×10¹⁴ Hz　·　电子动能 = <b>" + KE.toFixed(2) + " eV</b>" +
           "　·　" + (above ? "打出电子" : "打不出");
       }
       requestAnimationFrame(draw);

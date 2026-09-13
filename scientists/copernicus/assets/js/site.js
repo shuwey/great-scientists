@@ -429,128 +429,324 @@
     return { ctx: ctx, w: w, h: h };
   }
 
-  /* ---- 7.1 棱镜色散 ---- */
-  function lab_solar(lab) {
-  var P = {"center": "日", "centerColor": "#E8590C", "label": "行星绕太阳运行：由近及远，越远越慢", "bodies": [{"name": "水", "r": 45, "period": 88, "color": "#E8590C"}, {"name": "金", "r": 80, "period": 225, "color": "#C98A3C"}, {"name": "地", "r": 120, "period": 365, "color": "#3B5BDB"}, {"name": "火", "r": 165, "period": 687, "color": "#6741D9"}, {"name": "木", "r": 215, "period": 4333, "color": "#2F9E44"}, {"name": "土", "r": 260, "period": 10759, "color": "#5C6B82"}]};
 
-  var cv = $("canvas", lab);
-  var sSpeed = $('[data-ctrl="speed"]', lab);
-  var out = $(".lab-readout", lab);
-  var vSpan = sSpeed ? sSpeed.closest(".ctrl").querySelector(".v") : null;
-  var W = 820, H = 360, day = 0, last = 0;
-  function draw(ts){
-    if(!last) last = ts;
-    var dt = Math.min(0.05,(ts-last)/1000); last = ts;
-    var sp = sSpeed ? parseFloat(sSpeed.value) : 1;
-    var maxP = 0; P.bodies.forEach(function(b){ if(b.period>maxP) maxP=b.period; });
-    day += dt*sp*0.8; if(day>maxP) day -= maxP;
-    var S = setupCanvas(cv, H/W); var ctx = S.ctx, k = S.w/W;
-    ctx.save(); ctx.scale(k,k); ctx.clearRect(0,0,W,H);
-    ctx.fillStyle = "#FBFCFE"; ctx.fillRect(0,0,W,H);
-    var cx=W/2, cy=H/2;
-    P.bodies.forEach(function(b){
-      ctx.strokeStyle="rgba(91,107,130,.18)"; ctx.lineWidth=1;
-      ctx.beginPath(); ctx.arc(cx,cy,b.r,0,Math.PI*2); ctx.stroke();
-    });
-    // 中心
-    ctx.fillStyle = P.centerColor; ctx.beginPath(); ctx.arc(cx,cy,26,0,Math.PI*2); ctx.fill();
-    ctx.fillStyle="#fff"; ctx.font="800 16px -apple-system,sans-serif"; ctx.textAlign="center";
-    ctx.fillText(P.center, cx, cy+6);
-    // 卫星
-    P.bodies.forEach(function(b){
-      var ang=(day/b.period)*Math.PI*2;
-      var mx=cx+Math.cos(ang)*b.r, my=cy+Math.sin(ang)*b.r*0.55;
-      ctx.fillStyle=b.color; ctx.beginPath(); ctx.arc(mx,my,6,0,Math.PI*2); ctx.fill();
-    });
-    ctx.textAlign="left"; ctx.fillStyle="#5C6B82"; ctx.font="600 13px -apple-system,sans-serif";
-    ctx.fillText(P.label, 24, 30);
-    ctx.restore();
-    if(vSpan) vSpan.textContent = sp.toFixed(1)+"×";
-    if(out){
-      var names = P.bodies.map(function(b){return b.name+"约"+b.period+"天/圈";}).join("，");
-      out.innerHTML = "时间 ≈ <b>"+day.toFixed(1)+"</b> 天　·　"+names;
+  function lab_solar(lab) {
+    var cv = $("canvas", lab);
+    var sS = $('[data-ctrl="speed"]', lab);
+    var out = $(".lab-readout", lab);
+    var vS = sS ? sS.closest(".ctrl").querySelector(".v") : null;
+    var W = 820, H = 400, cx = 280, cy = 208;
+    var PL = [
+      ["水星", 54, 0.241, "#A08A7A", 0.4, "88 天"],
+      ["金星", 82, 0.615, "#E0B04A", 1.7, "225 天"],
+      ["地球", 110, 1.0, "#3B7DD8", 3.0, "365 天"],
+      ["火星", 140, 1.881, "#C1553A", 4.2, "687 天"],
+      ["木星", 184, 11.86, "#C89A6B", 5.4, "11.9 年"],
+      ["土星", 226, 29.45, "#D9C08A", 0.8, "29.5 年"]
+    ];
+    var years = 0, t0 = 0;
+    function draw(ts) {
+      if (typeof ts !== "number") ts = performance.now();
+      if (!t0) t0 = ts;
+      var dt = Math.min(0.05, (ts - t0) / 1000); t0 = ts;
+      var sp = sS ? parseFloat(sS.value) : 1;
+      years += dt * sp * 0.3;
+      var S = setupCanvas(cv, H / W);
+      var ctx = S.ctx, k = S.w / W;
+      ctx.save(); ctx.scale(k, k);
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = "#FBFCFE"; ctx.fillRect(0, 0, W, H);
+
+      var i, p, a, x, y;
+      ctx.strokeStyle = "#DCE2EC"; ctx.lineWidth = 1.5; ctx.setLineDash([4, 5]);
+      for (i = 0; i < PL.length; i++) {
+        ctx.beginPath(); ctx.arc(cx, cy, PL[i][1], 0, Math.PI * 2); ctx.stroke();
+      }
+      ctx.setLineDash([]);
+
+      ctx.fillStyle = "#F59F00";
+      ctx.beginPath(); ctx.arc(cx, cy, 14, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = "#8B96AA"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("太阳", cx - 13, cy + 31);
+
+      for (i = 0; i < PL.length; i++) {
+        p = PL[i];
+        a = p[4] + years / p[2] * Math.PI * 2;
+        x = cx + p[1] * Math.cos(a); y = cy + p[1] * Math.sin(a);
+        ctx.fillStyle = p[3];
+        ctx.beginPath(); ctx.arc(x, y, i > 3 ? 7 : 5.5, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = "#5C6B82"; ctx.font = "600 12px -apple-system, sans-serif";
+        ctx.fillText(p[0], x + 9, y + 4);
+      }
+
+      ctx.fillStyle = "#1B2530"; ctx.font = "700 14px -apple-system, sans-serif";
+      ctx.fillText("离太阳越远，绕一圈越久", 556, 74);
+      ctx.strokeStyle = "#E4E8F0"; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(556, 86); ctx.lineTo(796, 86); ctx.stroke();
+      for (i = 0; i < PL.length; i++) {
+        p = PL[i]; y = 118 + i * 42;
+        ctx.fillStyle = p[3];
+        ctx.beginPath(); ctx.arc(570, y, 6, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = "#5C6B82"; ctx.font = "600 13px -apple-system, sans-serif";
+        ctx.fillText(p[0], 588, y + 5);
+        ctx.fillStyle = "#1B2530"; ctx.font = "700 13px -apple-system, sans-serif";
+        ctx.textAlign = "right"; ctx.fillText(p[5], 796, y + 5); ctx.textAlign = "left";
+      }
+      ctx.fillStyle = "#8B96AA"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("地球排第三，和别的行星一样在跑", 556, 380);
+      ctx.restore();
+
+      if (vS) vS.textContent = sp.toFixed(1) + "×";
+      if (out) {
+        out.innerHTML = "已经过去 <b>" + years.toFixed(2) + "</b> 年　·　地球转了 <b>" + Math.floor(years) +
+          "</b> 圈，木星才转 <b>" + Math.floor(years / 11.86) + "</b> 圈　·　太阳在正中心，六颗行星各走各的圆";
+      }
+      requestAnimationFrame(draw);
     }
     requestAnimationFrame(draw);
   }
-  requestAnimationFrame(draw);
-
-}
 
 
-function lab_retro(lab) {
-  var P = {"expr": "sine", "label": "行星视位置中的“逆行折返”（日心说视角下的自然结果）"};
+  function lab_retro(lab) {
+    var cv = $("canvas", lab);
+    var sS = $('[data-ctrl="speed"]', lab);
+    var out = $(".lab-readout", lab);
+    var vS = sS ? sS.closest(".ctrl").querySelector(".v") : null;
+    var W = 820, H = 400;
+    var ox = 200, oy = 200, RE = 60, RM = 91.44;
+    var TSPAN = 2.6, N = 240;
+    var SE = [], SM = [], ANG = [], BACK = [];
+    (function buildSeries() {
+      var i, t, ex, ey, mx, my, p, prev = null, unw = 0, d;
+      for (i = 0; i <= N; i++) {
+        t = i * TSPAN / N;
+        ex = ox + RE * Math.cos(t * 2 * Math.PI);
+        ey = oy + RE * Math.sin(t * 2 * Math.PI);
+        mx = ox + RM * Math.cos(0.9 + t / 1.881 * 2 * Math.PI);
+        my = oy + RM * Math.sin(0.9 + t / 1.881 * 2 * Math.PI);
+        SE.push([ex, ey]); SM.push([mx, my]);
+        p = Math.atan2(my - ey, mx - ex);
+        if (prev === null) { BACK.push(false); } else {
+          d = p - prev;
+          while (d > Math.PI) d -= 2 * Math.PI;
+          while (d < -Math.PI) d += 2 * Math.PI;
+          unw += d;
+          BACK.push(d < 0);
+        }
+        prev = p;
+        ANG.push(unw);
+      }
+    })();
+    var aMin = Math.min.apply(null, ANG), aMax = Math.max.apply(null, ANG);
+    var CX0 = 452, CX1 = 792, CY0 = 344, CY1 = 66;
+    function px(t) { return CX0 + t / TSPAN * (CX1 - CX0); }
+    function py(a) { return CY0 - (a - aMin) / (aMax - aMin) * (CY0 - CY1); }
+    var ph = 0, t0 = 0;
+    function draw(ts) {
+      if (typeof ts !== "number") ts = performance.now();
+      if (!t0) t0 = ts;
+      var dt = Math.min(0.05, (ts - t0) / 1000); t0 = ts;
+      var sp = sS ? parseFloat(sS.value) : 1;
+      ph += dt * sp * 0.16;
+      if (ph > 1) ph = 0;
+      var idx = Math.max(1, Math.floor(ph * N));
+      var years = ph * TSPAN;
+      var S = setupCanvas(cv, H / W);
+      var ctx = S.ctx, k = S.w / W;
+      ctx.save(); ctx.scale(k, k);
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = "#FBFCFE"; ctx.fillRect(0, 0, W, H);
 
-  var cv=$("canvas",lab); var s1=$('[data-ctrl="param1"]',lab); var s2=$('[data-ctrl="param2"]',lab);
-  var out=$(".lab-readout",lab);
-  var v1=s1?s1.closest(".ctrl").querySelector(".v"):null;
-  var v2=s2?s2.closest(".ctrl").querySelector(".v"):null;
-  var W=820,H=360;
-  function yval(x,a,b){
-    if(P.expr==="exp") return 250-200*(1-Math.exp(-a*x/4));
-    if(P.expr==="gauss"){ var mean=3.5+(a-1)*2.5; return 250-160*Math.exp(-Math.pow(x-mean,2)/(b*1.5)); }
-    if(P.expr==="growth") return 250-190*(Math.exp(a*x/9)-1)/(Math.exp(a)-1);
-    return 250-90*a*Math.sin(b*x); // 默认 a*sin(kx)
+      var i, E, M;
+      ctx.strokeStyle = "#DCE2EC"; ctx.lineWidth = 1.5; ctx.setLineDash([4, 5]);
+      ctx.beginPath(); ctx.arc(ox, oy, RE, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath(); ctx.arc(ox, oy, RM, 0, Math.PI * 2); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = "#F59F00";
+      ctx.beginPath(); ctx.arc(ox, oy, 9, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = "#8B96AA"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("太阳", ox - 13, oy - 16);
+      ctx.fillStyle = "#8B96AA";
+      ctx.fillText("内圈快、外圈慢", 46, 68);
+      ctx.fillStyle = "#1B2530"; ctx.font = "700 13px -apple-system, sans-serif";
+      ctx.fillText("俯视：谁跑得快", 46, 46);
+
+      E = SE[idx]; M = SM[idx];
+      ctx.strokeStyle = "rgba(59,91,219,.45)"; ctx.lineWidth = 2; ctx.setLineDash([6, 4]);
+      ctx.beginPath(); ctx.moveTo(E[0], E[1]); ctx.lineTo(M[0], M[1]); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = "#3B7DD8";
+      ctx.beginPath(); ctx.arc(E[0], E[1], 6, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = "#C1553A";
+      ctx.beginPath(); ctx.arc(M[0], M[1], 7, 0, Math.PI * 2); ctx.fill();
+      ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillStyle = "#3B7DD8"; ctx.fillText("地球", E[0] + 10, E[1] + 16);
+      ctx.fillStyle = "#C1553A"; ctx.fillText("火星", M[0] + 11, M[1] + 4);
+
+      ctx.strokeStyle = "#E4E8F0"; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(CX0, CY0); ctx.lineTo(CX1, CY0); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(CX0, CY0); ctx.lineTo(CX0, CY1); ctx.stroke();
+      ctx.fillStyle = "#1B2530"; ctx.font = "700 13px -apple-system, sans-serif";
+      ctx.fillText("火星在天上的位置", CX0, 46);
+      ctx.fillStyle = "#8B96AA"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("时间 →", CX1 - 46, CY0 + 20);
+      ctx.fillText("线越陡＝火星跑得越快；线往下走＝倒退", CX0, CY0 + 38);
+
+      for (i = 1; i <= idx; i++) {
+        if (!BACK[i] || BACK[i - 1]) continue;
+        var runEnd = i;
+        while (runEnd < idx && BACK[runEnd + 1]) runEnd++;
+        if (runEnd - i < 2) continue;
+        ctx.fillStyle = "rgba(224,49,49,.09)";
+        ctx.fillRect(px((i - 1) * TSPAN / N), CY1, px(runEnd * TSPAN / N) - px((i - 1) * TSPAN / N), CY0 - CY1);
+        ctx.fillStyle = "#E03131"; ctx.font = "700 12px -apple-system, sans-serif";
+        ctx.fillText("逆行", px((i - 1) * TSPAN / N) - 8, CY1 - 8);
+      }
+
+      for (i = 1; i <= idx; i++) {
+        ctx.strokeStyle = BACK[i] ? "#E03131" : "#3B5BDB";
+        ctx.lineWidth = BACK[i] ? 3.4 : 2.6;
+        ctx.beginPath();
+        ctx.moveTo(px(i * TSPAN / N - TSPAN / N), py(ANG[i - 1]));
+        ctx.lineTo(px(i * TSPAN / N), py(ANG[i]));
+        ctx.stroke();
+      }
+      ctx.strokeStyle = "#1B2530"; ctx.lineWidth = 1.5; ctx.setLineDash([3, 3]);
+      ctx.beginPath(); ctx.moveTo(px(years), CY1); ctx.lineTo(px(years), CY0); ctx.stroke();
+      ctx.setLineDash([]);
+      var cur = SM[idx], ce = SE[idx];
+      var dirx = cur[0] - ce[0], diry = cur[1] - ce[1];
+      var ln = Math.sqrt(dirx * dirx + diry * diry) || 1;
+      ctx.strokeStyle = "rgba(224,49,49,.55)"; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.moveTo(px(years), py(ANG[idx]));
+      ctx.lineTo(px(years) + dirx / ln * 34, py(ANG[idx]) - diry / ln * 34); ctx.stroke();
+      ctx.fillStyle = "#FFF"; ctx.strokeStyle = "#1B2530"; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(px(years), py(ANG[idx]), 5, 0, Math.PI * 2);
+      ctx.fill(); ctx.stroke();
+      ctx.restore();
+
+      if (vS) vS.textContent = sp.toFixed(1) + "×";
+      if (out) {
+        out.innerHTML = "已经过去 <b>" + years.toFixed(2) + "</b> 年（火星约 2.1 年一个来回）　·　地球转了 <b>" +
+          Math.floor(years) + "</b> 圈，火星转了 <b>" + (years / 1.881).toFixed(2) +
+          "</b> 圈　·　图上<span style='color:#E03131;font-weight:800'>红色</span>那一段就是逆行";
+      }
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
   }
-  function draw(){
-    var a=s1?parseFloat(s1.value):1, b=s2?parseFloat(s2.value):1;
-    var S=setupCanvas(cv,H/W); var ctx=S.ctx,k=S.w/W;
-    ctx.save(); ctx.scale(k,k); ctx.clearRect(0,0,W,H); ctx.fillStyle="#FBFCFE"; ctx.fillRect(0,0,W,H);
-    ctx.strokeStyle="#5C6B82"; ctx.lineWidth=1.5; ctx.beginPath(); ctx.moveTo(40,40); ctx.lineTo(40,280); ctx.lineTo(790,280); ctx.stroke();
-    ctx.strokeStyle="#3B5BDB"; ctx.lineWidth=3; ctx.beginPath();
-    for(var x=40;x<790;x+=4){ var t=(x-40)/60; var y=yval(t,a,b); y=Math.max(40,Math.min(280,y)); if(x===40)ctx.moveTo(x,y); else ctx.lineTo(x,y);} ctx.stroke();
-    ctx.fillStyle="#5C6B82"; ctx.font="600 13px -apple-system,sans-serif"; ctx.fillText(P.label,24,30);
-    ctx.restore();
-    if(v1)v1.textContent=a.toFixed(1);
-    if(v2)v2.textContent=b.toFixed(1);
-    if(out)out.innerHTML="拖动滑块改变参数，看曲线如何随之改变——这是“用数学描述自然”的最小示范。";
+
+
+  function lab_parallax(lab) {
+    var cv = $("canvas", lab);
+    var sD = $('[data-ctrl="dist"]', lab);
+    var out = $(".lab-readout", lab);
+    var vD = sD ? sD.closest(".ctrl").querySelector(".v") : null;
+    var W = 820, H = 380;
+    var sunX = 200, sunY = 205, RE = 70;
+    var e1x = sunX - RE, e2x = sunX + RE;
+    var starY = 150, curtX = 760, curtTop = 46, curtBot = 348;
+    var STARS = [[0.18, 0.14], [0.52, 0.2], [0.84, 0.1], [0.3, 0.55], [0.7, 0.62],
+                 [0.12, 0.83], [0.46, 0.9], [0.9, 0.78], [0.6, 0.42], [0.36, 0.34]];
+    function draw(ts) {
+      if (typeof ts !== "number") ts = performance.now();
+      var d = sD ? parseFloat(sD.value) : 20;
+      var starX = 420 + 5.6 * d;
+      var S = setupCanvas(cv, H / W);
+      var ctx = S.ctx, k = S.w / W;
+      ctx.save(); ctx.scale(k, k);
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = "#FBFCFE"; ctx.fillRect(0, 0, W, H);
+
+      var i, sp, y1, y2;
+      ctx.fillStyle = "#EDEFF4";
+      ctx.fillRect(curtX, curtTop, 26, curtBot - curtTop);
+      ctx.fillStyle = "#C7D0DE";
+      for (i = 0; i < STARS.length; i++) {
+        sp = STARS[i];
+        ctx.beginPath();
+        ctx.arc(curtX + 4 + sp[0] * 18, curtTop + sp[1] * (curtBot - curtTop), 2.2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.fillStyle = "#8B96AA"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("背景恒星", curtX - 12, curtTop - 12);
+
+      ctx.strokeStyle = "#DCE2EC"; ctx.lineWidth = 1.5; ctx.setLineDash([4, 5]);
+      ctx.beginPath(); ctx.arc(sunX, sunY, RE, 0, Math.PI * 2); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = "#F59F00";
+      ctx.beginPath(); ctx.arc(sunX, sunY, 11, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = "#8B96AA"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("太阳", sunX - 13, sunY + 26);
+
+      ctx.strokeStyle = "#9AA7BE"; ctx.lineWidth = 1.5; ctx.setLineDash([5, 4]);
+      ctx.beginPath(); ctx.moveTo(e1x, sunY); ctx.lineTo(e2x, sunY); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = "#8B96AA"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("基线：2 天文单位（地球走半年）", 62, sunY + 40);
+
+      y1 = starY + (curtX - starX) * (starY - sunY) / (starX - e1x);
+      y2 = starY + (curtX - starX) * (starY - sunY) / (starX - e2x);
+      ctx.strokeStyle = "rgba(59,91,219,.75)"; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(e1x, sunY); ctx.lineTo(curtX, y1); ctx.stroke();
+      ctx.strokeStyle = "rgba(12,166,120,.85)";
+      ctx.beginPath(); ctx.moveTo(e2x, sunY); ctx.lineTo(curtX, y2); ctx.stroke();
+
+      ctx.fillStyle = "#3B7DD8";
+      ctx.beginPath(); ctx.arc(e1x, sunY, 7, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = "#0CA678";
+      ctx.beginPath(); ctx.arc(e2x, sunY, 7, 0, Math.PI * 2); ctx.fill();
+      ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillStyle = "#3B7DD8"; ctx.fillText("1 月", e1x - 34, sunY + 5);
+      ctx.fillStyle = "#0CA678"; ctx.fillText("7 月", e2x - 14, sunY + 26);
+
+      ctx.fillStyle = "#F59F00";
+      ctx.beginPath(); ctx.arc(starX, starY, 8, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = "rgba(245,159,0,.35)"; ctx.lineWidth = 6;
+      ctx.beginPath(); ctx.arc(starX, starY, 12, 0, Math.PI * 2); ctx.stroke();
+      ctx.fillStyle = "#8B96AA"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("恒星", starX - 13, starY - 20);
+
+      ctx.fillStyle = "#3B7DD8";
+      ctx.beginPath(); ctx.arc(curtX + 13, y1, 4.5, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = "#0CA678";
+      ctx.beginPath(); ctx.arc(curtX + 13, y2, 4.5, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = "#E03131"; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(curtX + 40, y1); ctx.lineTo(curtX + 40, y2); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(curtX + 35, y1 + 4); ctx.lineTo(curtX + 40, y1); ctx.lineTo(curtX + 45, y1 + 4); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(curtX + 35, y2 - 4); ctx.lineTo(curtX + 40, y2); ctx.lineTo(curtX + 45, y2 - 4); ctx.stroke();
+      ctx.fillStyle = "#E03131"; ctx.font = "700 12px -apple-system, sans-serif";
+      ctx.fillText("摆动幅度", curtX - 66, (y1 + y2) / 2 + 4);
+
+      ctx.fillStyle = "#1B2530"; ctx.font = "700 13px -apple-system, sans-serif";
+      ctx.fillText("地球半年走出一条基线", 46, 46);
+
+      ctx.restore();
+
+      var theta = 1 / d;
+      var ly = d * 3.26;
+      if (vD) vD.textContent = d.toFixed(0);
+      if (out) {
+        out.innerHTML = "恒星距离 = <b>" + d.toFixed(0) + "</b> 秒差距（≈ " + ly.toFixed(0) +
+          " 光年）　·　视差角 θ ≈ 1/" + d.toFixed(0) + " = <b>" + theta.toFixed(3) +
+          "</b> 角秒　·　" + (theta < 0.1
+            ? "<span style='color:#E03131;font-weight:800'>比当年仪器能测到的 0.1 角秒还小，根本看不出来</span>"
+            : "距离再翻一倍，摆幅还要减半");
+      }
+    }
+    if (sD) sD.addEventListener("input", draw);
+    window.addEventListener("resize", draw);
+    draw(performance.now());
   }
-  if(s1)s1.addEventListener("input",draw); if(s2)s2.addEventListener("input",draw);
-  draw();
 
-}
-
-
-function lab_speed(lab) {
-  var P = {"expr": "growth", "label": "越远的行星，公转周期越长（距离—周期关系）"};
-
-  var cv=$("canvas",lab); var s1=$('[data-ctrl="param1"]',lab); var s2=$('[data-ctrl="param2"]',lab);
-  var out=$(".lab-readout",lab);
-  var v1=s1?s1.closest(".ctrl").querySelector(".v"):null;
-  var v2=s2?s2.closest(".ctrl").querySelector(".v"):null;
-  var W=820,H=360;
-  function yval(x,a,b){
-    if(P.expr==="exp") return 250-200*(1-Math.exp(-a*x/4));
-    if(P.expr==="gauss"){ var mean=3.5+(a-1)*2.5; return 250-160*Math.exp(-Math.pow(x-mean,2)/(b*1.5)); }
-    if(P.expr==="growth") return 250-190*(Math.exp(a*x/9)-1)/(Math.exp(a)-1);
-    return 250-90*a*Math.sin(b*x); // 默认 a*sin(kx)
+  function initLabs() {
+    $$(".lab").forEach(function (lab) {
+      var kind = lab.getAttribute("data-lab");
+      if (kind === "solar") lab_solar(lab);
+      if (kind === "retro") lab_retro(lab);
+      if (kind === "parallax") lab_parallax(lab);
+    });
   }
-  function draw(){
-    var a=s1?parseFloat(s1.value):1, b=s2?parseFloat(s2.value):1;
-    var S=setupCanvas(cv,H/W); var ctx=S.ctx,k=S.w/W;
-    ctx.save(); ctx.scale(k,k); ctx.clearRect(0,0,W,H); ctx.fillStyle="#FBFCFE"; ctx.fillRect(0,0,W,H);
-    ctx.strokeStyle="#5C6B82"; ctx.lineWidth=1.5; ctx.beginPath(); ctx.moveTo(40,40); ctx.lineTo(40,280); ctx.lineTo(790,280); ctx.stroke();
-    ctx.strokeStyle="#3B5BDB"; ctx.lineWidth=3; ctx.beginPath();
-    for(var x=40;x<790;x+=4){ var t=(x-40)/60; var y=yval(t,a,b); y=Math.max(40,Math.min(280,y)); if(x===40)ctx.moveTo(x,y); else ctx.lineTo(x,y);} ctx.stroke();
-    ctx.fillStyle="#5C6B82"; ctx.font="600 13px -apple-system,sans-serif"; ctx.fillText(P.label,24,30);
-    ctx.restore();
-    if(v1)v1.textContent=a.toFixed(1);
-    if(v2)v2.textContent=b.toFixed(1);
-    if(out)out.innerHTML="拖动滑块改变参数，看曲线如何随之改变——这是“用数学描述自然”的最小示范。";
-  }
-  if(s1)s1.addEventListener("input",draw); if(s2)s2.addEventListener("input",draw);
-  draw();
-
-}
-
-
-function initLabs() {
-  $$(".lab").forEach(function (lab) {
-    var kind = lab.getAttribute("data-lab");
-    if (kind === "solar") lab_solar(lab);
-    if (kind === "retro") lab_retro(lab);
-    if (kind === "speed") lab_speed(lab);
-  });
-}
 function initGlossary() {
     var grid = $("#term-grid");
     if (!grid) return;

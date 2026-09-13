@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>动手玩一玩 · 三个门捷列夫小实验 | 读懂门捷列夫</title>
-<meta name="description" content="三个可直接在网页上操作的互动演示。拖动滑块，亲眼看见门捷列夫讲过的道理。">
+<meta name="description" content="三个可直接在网页上操作的互动演示：把元素按规律排进格子、看元素性质怎样随位置周期性起伏、看门捷列夫留下的三个空格怎样被后来的发现逐个填满。拖动滑块，亲手走一遍周期律被发现的过程。">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-base="">
@@ -22,60 +22,70 @@
 <div class="page-head"><div class="wrap">
 <div class="crumb"><a href="index.html">首页</a> · 玩一玩</div>
 <h1>动手玩一玩</h1>
-<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块，亲眼看见门捷列夫讲过的道理。</p>
+<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块——看同族元素怎样排成一列、看原子半径自左向右递减、电离能总体递增却带局部下凹（两者趋势相反）、看那三个“空格”是怎样被一个个找回来的。</p>
 </div></div>
 <section><div class="wrap">
-    <h2 id="grid" style="font-size:25px;margin:8px 0 6px">🧪 实验1 · 排一排：把元素放进格子</h2>
+    <h2 id="grid" style="font-size:25px;margin:8px 0 6px">🧪 实验一 · 排一排：把元素放进格子</h2>
     <p style="color:var(--ink-2);margin-bottom:18px">这是一张自动排好的周期表：拖动“族”滑块，看某一族如何被高亮——同族（同一列）颜色相近，性质也相近。</p>
     <div class="lab" data-lab="grid">
       <div class="lab-head"><h4>排一排：把元素放进格子</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">相似的坐同一列——这就是“周期”的直观样子。</p>
+      <p class="lab-desc">纵列是族，横行是周期；同族最外层电子数相同。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
-          <label>族 <span class="v">1</span></label>
-          <input type="range" data-ctrl="group" min="1" max="18" value="1" step="1">
+          <label>族 <span class="v">-</span></label>
+          <input type="range" data-ctrl="group" min="0" max="18" value="0" step="1">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-    <h2 id="trend" style="font-size:25px;margin:46px 0 6px">📈 实验2 · 周期律：性质起起伏伏</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动“幅度”与“周期”，看某元素性质如何随位置呈波浪式起伏——这正是周期律的形状。</p>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>门捷列夫最厉害的一步，不是把已知元素排整齐，而是敢在表里留出空格——他相信“规律比事实更可靠”。详见 <a href="detail/law.html">周期律：性质会“循环”</a>。</p>
+    </div>
+
+
+    <h2 id="trend" style="font-size:25px;margin:46px 0 6px">📈 实验二 · 周期律：性质一起一伏</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">把元素的某种性质按原子序数画成柱子，会出现规律的锯齿：每到稀有气体冲到最高，一到碱金属就跌到最低，然后周而复始。拖动“性质”，换一种性质看看。</p>
     <div class="lab" data-lab="trend">
-      <div class="lab-head"><h4>周期律：性质起起伏伏</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">升上去、落下来、再升上去：性质在循环。</p>
+      <div class="lab-head"><h4>三种性质的周期起伏</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">同一周期内总体递增、还带局部下凹（比如 N→O、P→S），跨过周期边界就突跳——这就是“周期性”。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
-          <label>幅度 <span class="v">1.0</span></label>
-          <input type="range" data-ctrl="param1" min="0.3" max="1.8" value="1" step="0.1">
-        </div>
-        <div class="ctrl">
-          <label>周期 <span class="v">1.0</span></label>
-          <input type="range" data-ctrl="param2" min="0.6" max="2" value="1" step="0.1">
+          <label>性质 <span class="v">第一电离能</span></label>
+          <input type="range" data-ctrl="prop" min="0" max="2" value="0" step="1">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-    <h2 id="fill" style="font-size:25px;margin:46px 0 6px">🧩 实验3 · 留白的格子：预言的位置</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动滑块，看“缺失处”如何被一个钟形峰标出——正如门捷列夫为未知元素留出的空格。</p>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>“周期性”不是画出来的，是元素本身的性质：每填满一层电子，就重新开始。门捷列夫把它写成了周期律，也顺手预言了还没被发现的元素该长什么样。详见 <a href="detail/law.html">周期律：性质会“循环”</a>。</p>
+    </div>
+
+
+    <h2 id="fill" style="font-size:25px;margin:46px 0 6px">🧩 实验三 · 留白的格子：三个空格被逐个填满</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">1869 年门捷列夫在表里留了三个空格，还写下了它们的性质预测。拖动“年份”，看这三个空格怎样被后来的发现一个一个填回来。</p>
     <div class="lab" data-lab="fill">
-      <div class="lab-head"><h4>留白的格子：预言的位置</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">规律本身会指出“这里还缺点什么”。</p>
+      <div class="lab-head"><h4>三个空格的二十年</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">1875 年镓、1879 年钪、1886 年锗——预言全部应验。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
-          <label>中心位置 <span class="v">1.0</span></label>
-          <input type="range" data-ctrl="param1" min="0.3" max="1.8" value="1" step="0.1">
-        </div>
-        <div class="ctrl">
-          <label>峰宽 <span class="v">1.0</span></label>
-          <input type="range" data-ctrl="param2" min="0.6" max="2" value="1" step="0.1">
+          <label>年份 <span class="v">1869</span></label>
+          <input type="range" data-ctrl="year" min="1869" max="1900" value="1869" step="1">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-<p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/table.html">读元素周期表：给元素排座位 →</a>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>一个理论真正的分量，看它敢不敢“说还没发生的事”。镓的密度、锗的原子量，门捷列夫当年都写下来了，后来测出来只差一点点。详见 <a href="detail/predict.html">大胆预言：留白的格子</a>。</p>
+    </div>
+
+
+    <p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/table.html">读元素周期表：给元素排座位 →</a>
 <a class="btn ghost" href="detail/law.html">读周期律：性质会“循环” →</a>
 <a class="btn ghost" href="detail/predict.html">读大胆预言：留白的格子 →</a>
 <a class="btn ghost" href="detail/legacy.html">读影响：现代化学的骨架 →</a></p>
@@ -86,7 +96,7 @@
           <li><a href="detail/law.html">周期律：性质会“循环”</a></li>
           <li><a href="detail/predict.html">大胆预言：留白的格子</a></li>
           <li><a href="detail/legacy.html">影响：现代化学的骨架</a></li></ul></div>
-<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li>          <li><a href="../../index.html">浏览全部 13 位科学家 →</a></li>
+<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li>          <li><a href="../../index.html">浏览全部 15 位科学家 →</a></li>
         </ul></div>
 </div><div class="foot-bottom"><span>课堂与自学用途 · 内容依据公开史料编写</span><span>历史图片来自 Wikimedia Commons</span></div></div></footer>
 <button class="to-top" aria-label="回到顶部">↑</button>

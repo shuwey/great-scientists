@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>「影响世界的15个科学家」科普内容审读报告</title>
+<style>
+:root{
+  --bg:#f6f7f9; --card:#fff; --ink:#1f2430; --ink2:#4b5563; --ink3:#7b8494;
+  --line:#e5e7eb; --a:#c0392b; --a-bg:#fdf1ef; --b:#b26a00; --b-bg:#fdf6e8;
+  --ok:#1a7f5a; --ok-bg:#eefaf4; --accent:#2b5fa8; --code:#f3f4f6;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:15px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:1000px;margin:0 auto;padding:38px 22px 90px}
+header.hd{border-bottom:2px solid var(--ink);padding-bottom:22px;margin-bottom:30px}
+h1{font-size:27px;line-height:1.35;margin:0 0 10px}
+h1 small{display:block;font-size:14px;font-weight:400;color:var(--ink3);margin-top:9px;letter-spacing:.3px}
+h2{font-size:20px;margin:44px 0 6px;padding-left:12px;border-left:5px solid var(--accent)}
+h2 .cnt{font-size:13px;font-weight:400;color:var(--ink3);margin-left:8px}
+h3{font-size:15px;margin:0}
+p{margin:9px 0}
+.lede{color:var(--ink2);font-size:14.5px}
+.meta{font-size:13px;color:var(--ink3);margin-top:14px}
+.meta b{color:var(--ink2)}
+
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0 8px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.stat .n{font-size:26px;font-weight:700;line-height:1.15}
+.stat .k{font-size:12.5px;color:var(--ink3);margin-top:3px}
+.stat.a .n{color:var(--a)} .stat.b .n{color:var(--b)} .stat.g .n{color:var(--ok)}
+
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 4px}
+.filters button{border:1px solid var(--line);background:var(--card);color:var(--ink2);
+  padding:6px 13px;border-radius:999px;font-size:13px;cursor:pointer;transition:.15s}
+.filters button:hover{border-color:#c9ced8}
+.filters button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+.item{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--line);
+  border-radius:11px;padding:16px 18px;margin:13px 0}
+.item.a{border-left-color:var(--a)} .item.b{border-left-color:var(--b)}
+.item .hd{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:4px}
+.item h3{font-size:15.5px}
+.tag{font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:5px;letter-spacing:.5px}
+.tag.a{background:var(--a-bg);color:var(--a)} .tag.b{background:var(--b-bg);color:var(--b)}
+.path{font-size:12px;color:var(--ink3);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  background:var(--code);padding:1.5px 7px;border-radius:5px}
+.quote{background:#fafafb;border-left:3px solid #d7dbe2;border-radius:0 7px 7px 0;
+  padding:9px 13px;margin:9px 0;font-size:14px;color:#2b3240}
+.quote::before{content:"原文";display:block;font-size:11px;color:var(--ink3);letter-spacing:1px;margin-bottom:3px}
+.lab{font-size:12.5px;font-weight:700;color:var(--ink3);letter-spacing:.5px;margin-top:11px}
+.fix{background:var(--ok-bg);border-radius:8px;padding:9px 13px;margin-top:5px;font-size:14px}
+.fix b{color:var(--ok)}
+.note{font-size:13px;color:var(--ink3);margin-top:7px}
+
+table.sum{width:100%;border-collapse:collapse;margin:16px 0;font-size:13.5px;background:var(--card);
+  border:1px solid var(--line);border-radius:11px;overflow:hidden}
+table.sum th,table.sum td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line)}
+table.sum th{background:#f0f2f5;font-weight:600;font-size:12.5px;color:var(--ink2)}
+table.sum tr:last-child td{border-bottom:none}
+table.sum td.c{text-align:center;font-variant-numeric:tabular-nums}
+
+.good{background:var(--ok-bg);border:1px solid #cdeade;border-radius:11px;padding:16px 18px;margin:14px 0}
+.good ul{margin:8px 0 0;padding-left:20px}
+.good li{margin:5px 0}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:4px 18px 14px;margin:14px 0}
+.plan ol{padding-left:22px}
+.plan li{margin:8px 0}
+footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink3)}
+@media(max-width:720px){.cards3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hd">
+  <h1>「影响世界的 15 个科学家」科普内容审读报告
+    <small>从专业科普角度，审"科学准确性 / 严谨性"与"通俗可理解性"两类问题 · 2026-09-14</small>
+  </h1>
+  <p class="lede">审读范围：15 个子站 × 9 个页面（首页 / 时间轴 / 详解页 / 玩一玩 / 术语表），共 <b>135 个页面</b>＋15 份术语库。方法：按学科分 5 组独立通读 → 逐条回原文核对（只保留可复现的证据）→ 再跑 3 项机器批量核查（页脚一致性、链接文字与目标页标题比对、跨站重复句扫描）。</p>
+  <div class="meta"><b>结论：</b>整体是"及格线以上、局部欠打磨"的科普。叙事口吻、类比意识、对科学史传闻的克制（如比萨斜塔、苹果砸头都做了澄清）都做得很好；问题集中在<b>具体数字/年代、个别因果链、以及上一轮重做实验时留下的引用与命名瑕疵</b>。</div>
+</header>
+
+<div class="cards3">
+  <div class="stat a"><div class="n">16</div><div class="k">A 类 · 科学准确性 / 严谨性</div></div>
+  <div class="stat b"><div class="n">10</div><div class="k">B 类 · 通俗性 / 内部一致性</div></div>
+  <div class="stat g"><div class="n">135</div><div class="k">受页脚"13 位"影响的页面</div></div>
+</div>
+
+<div class="filters">
+  <button class="on" data-f="all">全部 26 条</button>
+  <button data-f="a">只看 A 类（16）</button>
+  <button data-f="b">只看 B 类（10）</button>
+</div>
+
+<div class="good" style="margin-top:20px">
+  <p><b>修复进度（2026-09-14 更新）</b>· 本轮按指定范围只处理<b>「玩一玩」实验页</b>相关条目，改完即发布。</p>
+  <p style="margin:9px 0 0"><b>✅ 已修并上线（6 条）</b></p>
+  <ul>
+    <li><b>A1</b> 页脚「浏览全部 13 位科学家」→「15 位」<span class="note">（135 页批量；连带修掉 add_portal_link.py 的重复注入缺陷，见文末）</span></li>
+    <li><b>A5</b> 牛顿「把色散调到 0，就还原了判决性实验」（说反）→「把色散调到最大＝牛顿要解释的现象；真正的判决性实验＝让分出的单色光再过一次棱镜」<span class="note">（首页同款说法一并改，避免发布后站内自相矛盾）</span></li>
+    <li><b>A9</b> 爱因斯坦光电效应单位 <span class="path">THz</span> → <span class="path">×10¹⁴ Hz</span>（滑块标签、实时读数、截止频率三处）</li>
+    <li><b>A14</b> 门捷列夫「一起一伏 / 同一周期内单调变化」→「半径自左向右递减、电离能总体递增却带局部下凹（N→O、P→S），两者趋势相反」</li>
+    <li><b>B5</b> 八处「详见《…》」链接文字，全部改为目标页真实标题（法拉第 3、巴斯德 3、麦克斯韦 1、霍金 1）</li>
+    <li><b>B7</b> 开普勒「八颗行星」补注：开普勒当年只有 6 颗行星的数据，天王星、海王星是后来才发现的，却同样落在这条线上</li>
+  </ul>
+  <p style="margin:11px 0 0"><b>⏳ 仍未处理（20 条，均不在「玩一玩」页内）</b>：A2 A3 A4 A6 A7 A8 A10 A11 A12 A13 A15 A16 · B1 B2 B3 B4 B6 B8 B9 B10</p>
+</div>
+
+<h2>一、科学准确性 / 严谨性<span class="cnt">A 类 · 16 条</span></h2>
+
+<div class="item a" data-k="a">
+  <div class="hd"><span class="tag a">A1</span><h3>页脚人数写"13 位"，与门户"15 位"不符</h3><span class="path">全站 135 页页脚</span></div>
+  <div class="quote">浏览全部 13 位科学家 →　（页脚）　　对比门户首页：15 位科学家各有一个结构统一的子站点</div>
+  <div class="lab">问题</div>
+  <p>系列已扩到 15 位，页脚文案停留在旧的 13 位。这是全站唯一一处<b>批量、可机检</b>的事实性不一致，读者从子站回门户时会先入为主以为只有 13 位。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix"><b>统一改为"15 位"</b>（或干脆改成"全部科学家"以免疫将来增删）。135 个页面可一次性脚本替换。</div>
+</div>
+
+<div class="item a" data-k="a">
+  <div class="hd"><span class="tag a">A2</span><h3>把 118 种元素整体说成"人工合成"</h3><span class="path">mendeleev/detail/legacy.html</span></div>
+  <div class="quote">从 60 多种到今天 118 种人工合成元素，周期表不断加长，框架却始终稳。</div>
+  <div class="lab">问题</div>
+  <p>118 是<b>已确认元素的总数</b>。真正"人工合成"的是 95 号以后的一批超铀元素；1–92 号绝大多数是天然存在的。写成"118 种人工合成元素"，学生很容易理解成"118 种元素全是人造的"。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">改为"<b>从 60 多种到今天 118 种元素，其中不少重元素是人工合成的</b>"。</div>
+</div>
+
+<div class="item a" data-k="a">
+  <div class="hd"><span class="tag a">A3</span><h3>"质量 = 含有多少东西"——会与"重量 / 物质的量"混淆</h3><span class="path">newton/detail/laws.html、newton/assets/js/terms.js</span></div>
+  <div class="quote">m　物体的质量，也就是"含有多少东西"。质量越大，越难被推动或停下。</div>
+  <div class="lab">问题</div>
+  <p>"含有多少东西"更接近<b>物质的量</b>的直觉，而质量在物理上是<b>惯性（和引力）大小的量度</b>。这句话的后半句其实说对了，前半句却把学生往"多少"上带——而本站另一条术语又在讲"月球上重量变 1/6、质量不变"，两处叠加很容易混。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">改为"<b>质量衡量物体有多'难被推动'（惯性大小）</b>，也大致反映含物质的多少"。terms.js 里的 <span class="path">short</span> 金句同样替换。</div>
+</div>
+
+<div class="item a" data-k="a">
+  <div class="hd"><span class="tag a">A4</span><h3>重量公式写成 G = mg，符号用错</h3><span class="path">newton/assets/js/terms.js（"重量"条）</span></div>
+  <div class="quote">重量是一种力，等于质量乘以重力加速度（G = mg）。</div>
+  <div class="lab">问题</div>
+  <p>重量的标准写法是 <b>W = mg</b>。大写 <b>G</b> 在物理里是<b>引力常数</b>（≈6.67×10⁻¹¹），而且本站"万有引力"那一条正在用 G 表示引力常数。同一个字母在两处指两样东西，是明显的符号冲突。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">改为"（<b>W = mg</b>）"；如需保留 G，注明"此处的 G 是引力常数，别和重力加速度 g 混"。</div>
+</div>
+
+<div class="item a" data-k="a">
+  <div class="hd"><span class="tag a">A5</span><h3>"把色散调到 0 就还原了判决性实验"——恰好说反了</h3><span class="path">newton/labs.html、newton/index.html</span></div>
+  <div class="quote">把色散调到 0，就还原了牛顿那个"判决性实验"。</div>
+  <div class="lab">问题</div>
+  <p>本站自己的详解页把判决性实验讲得很准：<b>让分出来的单色光再过一次棱镜，颜色不再变化</b>（证明颜色是光自身的属性）。而"把色散调到 0"是白光进、白光出（根本不分散），<b>与判决性实验正好相反</b>。学生会把两个概念对接错。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">改为"把色散调到最大，看白光被拆成七色——这就是牛顿要解释的现象"；判决性实验另用"单色光再进棱镜"来指代。</div>
+</div>
+
+<div class="item a" data-k="a">
+  <div class="hd"><span class="tag a">A6</span><h3>哈雷登门的故事，两处讲法互相矛盾且丢了关键</h3><span class="path">newton/index.html vs newton/assets/js/terms.js</span></div>
+  <div class="quote">首页：哈雷登门请教，牛顿当场答不上来，回去重算……　　术语库：牛顿当场答："椭圆。"哈雷追问，牛顿答不上来</div>
+  <div class="lab">问题</div>
+  <p>史料的趣味点在于：<b>牛顿脱口而出"椭圆"，被问"你怎么知道"时才拿不出计算稿</b>，于是重算——这才有《原理》。首页只留"当场答不上来"，把最精彩的一环砍掉了；术语库又想补回来，结果同一站内两种讲法对不上。另外主页说哈雷"登门请教"的时间点也没交代（实为 1684 年）。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">统一口径："<b>1684 年哈雷登门，问'行星轨道是什么形状'。牛顿随口答'椭圆'；哈雷追问依据，他一时找不出当年的计算稿，于是重算——越算越多，最后写成了《原理》。</b>"</div>
+</div>
+
+<div class="item a" data-k="a">
+  <div class="hd"><span class="tag a">A7</span><h3>"太阳在焦点上"被说成"近快远慢的原因"——因果接错</h3><span class="path">kepler/detail/laws.html、kepler/assets/js/terms.js</span></div>
+  <div class="quote">太阳不在中心，而在一个焦点上——这正是行星近太阳时更快的原因。</div>
+  <div class="lab">问题</div>
+  <p>轨道是椭圆、太阳在一个焦点上，这是<b>第一定律（形状）</b>；近快远慢来自<b>第二定律（等时扫过相等面积）</b>。把焦点位置说成快慢的"原因"，等于用第一定律解释第二定律的现象，会让学生记成一条因果链。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">拆成两句："<b>太阳在一个焦点上，所以行星时近时远（第一定律）；连线等时间扫过相等面积，所以近时快、远时慢（第二定律）。</b>"术语库同步。</div>
+</div>
+
+<div class="item a" data-k="a">
+  <div class="hd"><span class="tag a">A8</span><h3>c² ≈ 9×10¹⁶ 的中文读法错了一个数量级</h3><span class="path">einstein/detail/mass-energy.html</span></div>
+  <div class="quote">c² 就是约 9×10¹⁶（九千万亿）</div>
+  <div class="lab">问题</div>
+  <p>9×10¹⁶ 应读作<b>"九亿亿"</b>；"九千万亿"＝9×10¹⁵，<b>差了 10 倍</b>。科普文里给"中文数量级"，本意是帮学生建立量感，读错反而成了新的错误源。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">改为"约 9×10¹⁶（<b>九亿亿</b>）"，或直接写"约 9 后面跟 16 个 0"。</div>
+</div>
+
+<div class="item a" data-k="a">
+  <div class="hd"><span class="tag a">A9</span><h3>光电效应实验把 10¹⁴ Hz 标成了 THz（差 100 倍）</h3><span class="path">einstein/labs.html、einstein/assets/js/site.js</span></div>
+  <div class="quote">光的频率 7.0 THz　（滑块 4–10）　　代码：eV(f14) = 普朗克常数 × f14 × 1e14</div>
+  <div class="lab">问题</div>
+  <p>代码里频率是 <b>f14 × 10¹⁴ Hz</b>——也就是 400–1000 THz，对应的正是可见光到紫外（红端 ≈ 430 THz）。但显示写成了"7.0 THz"、截止频率"4.84 THz"，<b>单位整体差 100 倍</b>。物理换算本身是对的（逸出功 2.0 eV → 截止 484 THz，很合理），错只错在单位标签。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">把显示单位改成"<b>×10¹⁴ Hz</b>"（如"频率 7.0×10¹⁴ Hz"），或把数值乘 100 后标"THz"（"700 THz"）。每台设备刻度 0.1 也要同步。</div>
+</div>
+
+<div class="item a" data-k="a">
+  <div class="hd"><span class="tag a">A10</span><h3>彩色摄影标成 1855 年，且与本站术语库（1861）自相矛盾</h3><span class="path">maxwell/timeline.html vs maxwell/assets/js/terms.js</span></div>
+  <div class="quote">时间轴：1855 ｜ 彩色摄影实验 …… 他演示用红、绿、蓝三滤光底片合成彩色影像　　术语库：麦克斯韦 1861 年用红、绿、蓝三张滤光底片叠合</div>
+  <div class="lab">问题</div>
+  <p>著名的三色合成彩色照片演示发生在 <b>1861 年</b>（伦敦皇家研究院）。1855 年是麦克斯韦的《论颜色》论文，两件事被并成了一件。同一站内 1855 与 1861 打架，读者无从判断。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">时间轴节点改为 <b>1861</b>；若想保留 1855，则把它写成"发表颜色理论"。<span class="note">注意该站 1861 已有"方程组初成"节点，同一年多件事并不冲突。</span></div>
+</div>
+
+<div class="item a" data-k="a">
+  <div class="hd"><span class="tag a">A11</span><h3>"分子不对称"标成 1854 年，应为 1848 年</h3><span class="path">pasteur/timeline.html</span></div>
+  <div class="quote">1854 ｜ 分子不对称 …… 他证明某些分子能让偏振光偏转方向不同</div>
+  <div class="lab">问题</div>
+  <p>巴斯德发现分子手性（酒石酸盐晶体使偏振光偏转方向不同）是 <b>1848 年</b>，正是这件工作让他 26 岁成名。1854 年是他去里尔任院长的年份。年份错位会让"成名作"显得迟了六年。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">节点年份改为 <b>1848</b>。</div>
+</div>
+
+<div class="item a" data-k="a">
+  <div class="hd"><span class="tag a">A12</span><h3>霍金–彭罗斯奇点定理被提前到 1965 年</h3><span class="path">hawking/timeline.html</span></div>
+  <div class="quote">1965 ｜ 奇点定理 …… 他与彭罗斯证明……</div>
+  <div class="lab">问题</div>
+  <p>1965 年是<b>彭罗斯单独</b>证明引力坍缩必然产生奇点；霍金把这一套用于宇宙学是 1965–66；而著名的<b>霍金–彭罗斯奇点定理是 1970 年</b>的联合成果。写成"1965 年他与彭罗斯证明"，把三段工作压成了一件。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">改为"<b>1965 年彭罗斯证明坍缩必生奇点，霍金随即把它用到宇宙；1970 年两人联合证明了奇点定理</b>"，或把节点年份标 1970。</div>
+</div>
+
+<div class="item a" data-k="a">
+  <div class="hd"><span class="tag a">A13</span><h3>α/β/γ 三种射线的命名与"来自原子核"被记到居里夫妇名下</h3><span class="path">curie/detail/radioactivity.html</span></div>
+  <div class="quote">居里夫妇与贝克勒尔一起证明：某些原子会自发放出射线（α、β、γ），这种"放射性"来自原子核本身，与外界无关。</div>
+  <div class="lab">问题</div>
+  <p>两处时代错置：① <b>α、β、γ 的区分与命名是卢瑟福（1899–1900）</b>的工作，居里夫妇与贝克勒尔做的是发现放射性与新元素；② <b>"来自原子核"是 1911 年核模型之后</b>的认识，当年的正确表述是"来自原子<b>本身</b>、不依赖外界条件"。对中学生，"归功"错误比数字错误更难自查。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">改为"<b>居里夫妇与贝克勒尔证明：某些原子会自发放出射线，这种'放射性'来自原子本身、与外界无关（后来才知道它来自原子核；α、β、γ 的分类由卢瑟福等人完成）</b>"。</div>
+</div>
+
+<div class="item a" data-k="a">
+  <div class="hd"><span class="tag a">A14</span><h3>"半径与电离能一起一伏""同一周期内单调变化"——与图形矛盾</h3><span class="path">mendeleev/labs.html</span></div>
+  <div class="quote">看原子半径和电离能怎样周期性地一起一伏　　同一周期内单调变化，跨过周期边界就突跳——这就是"周期性"。</div>
+  <div class="lab">问题</div>
+  <p>① 原子半径与<b>第一电离能的趋势恰好相反</b>（半径最大的碱金属，电离能最小），说"一起一伏"容易被理解成同向涨落；② 而"同一周期内单调变化"与实验本身的图对不上——第一电离能在同一周期内<b>并不单调</b>，图里就画着 N→O、P→S 的下凹。说明文字与自己的演示打架。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">改为"看原子半径<b>自左向右递减</b>、电离能<b>总体递增却带局部下凹</b>——两者趋势相反，跨过周期边界同时突跳"。或把"单调变化"降级为"整体趋势"。</div>
+</div>
+
+<div class="item a" data-k="a">
+  <div class="hd"><span class="tag a">A15</span><h3>"8 月 29 日磁铁插线圈"与同站时间轴（铁环实验）冲突</h3><span class="path">faraday/detail/induction.html vs faraday/timeline.html</span></div>
+  <div class="quote">详解页：1831 年 8 月 29 日，法拉第把一根磁铁插进线圈　　时间轴：8 月 29 日，他用铁环实验证明变化的磁能生电……随后又用磁铁插入线圈重复验证</div>
+  <div class="lab">问题</div>
+  <p>时间轴的讲法是对的：<b>8 月 29 日是铁环（双线圈）实验</b>；"磁铁插入线圈"是同年 10 月。详解页把日期挂在了另一件事上，且两页互相矛盾。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">详解页改为"<b>1831 年 8 月 29 日，法拉第用铁环实验第一次看到'变化'的磁生出电流；同年 10 月，他又用磁铁插入线圈反复验证</b>"。</div>
+</div>
+
+<div class="item a" data-k="a">
+  <div class="hd"><span class="tag a">A16</span><h3>把单摆周期公式 T = 2π√(L/g) 当作伽利略的结论</h3><span class="path">galileo/detail/method.html</span></div>
+  <div class="quote">他对摆的研究：单摆的周期只与摆长有关、与质量无关（T = 2π√(L/g)）。</div>
+  <div class="lab">问题</div>
+  <p>伽利略发现的是<b>等时性</b>，以及"周期与质量无关、随摆长变化"这一<b>定性/半定量</b>结论；带 g 的精确公式是<b>惠更斯（1673）</b>给出的。原文把 80 年后的成果写进了伽利略的贡献里。<span class="note">（玩一玩里的同款演示只是展示规律，不涉及归属，可不动。）</span></p>
+  <div class="lab">建议改法</div>
+  <div class="fix">改为"<b>他发现单摆周期只与摆长有关、与质量无关；后来惠更斯给出了精确公式 T = 2π√(L/g)</b>"。</div>
+</div>
+
+<h2>二、通俗可理解性 / 内部一致性<span class="cnt">B 类 · 10 条</span></h2>
+
+<div class="item b" data-k="b">
+  <div class="hd"><span class="tag b">B1</span><h3>"与惠勒、以及老师惠勒"——同一人重名成病句</h3><span class="path">feynman/assets/js/terms.js（正电子条）</span></div>
+  <div class="quote">费曼（与惠勒、以及老师惠勒的启发）提出过一个著名图像</div>
+  <div class="lab">问题</div>
+  <p>惠勒既是合作者又是老师，被并列写了两次，读起来像两个人。这是全站最扎眼的一句语病。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">改为"<b>费曼受老师惠勒启发，提出……</b>"。</div>
+</div>
+
+<div class="item b" data-k="b">
+  <div class="hd"><span class="tag b">B2</span><h3>正文里混进一个未翻译的英文单词</h3><span class="path">darwin/detail/selection.html</span></div>
+  <div class="quote">长期下来，种群逐渐适应 environment，新类型由此产生。</div>
+  <div class="lab">问题</div>
+  <p>明显的漏译/误留，中学生读到会卡住——而且它出现在全站最核心的一句（自然选择的总结句）里。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">改为"<b>适应环境</b>"。</div>
+</div>
+
+<div class="item b" data-k="b">
+  <div class="hd"><span class="tag b">B3</span><h3>达尔文站的船名两套译法并存</h3><span class="path">darwin/about.html、darwin/assets/js/terms.js ↔ 其余页面</span></div>
+  <div class="quote">about：核心事实（生卒、贝格尔号航行、《物种起源》、自然选择）　　术语库：以贝格尔号航行观察为基础</div>
+  <div class="lab">问题</div>
+  <p>首页、时间轴、术语条"小猎犬号"、详解页一律用"<b>小猎犬号</b>"，只有 about 页与术语库的"进化论"条用"<b>贝格尔号</b>"。同一艘船两个名字，读者容易以为是两条船。两个译名都对，问题在<b>不统一</b>。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">全站统一为"小猎犬号"，首次出现处括注"（HMS Beagle，又译贝格尔号）"。</div>
+</div>
+
+<div class="item b" data-k="b">
+  <div class="hd"><span class="tag b">B4</span><h3>居里时间轴停在 1914，与"到先贤祠的安葬者"的承诺不符</h3><span class="path">curie/timeline.html</span></div>
+  <div class="quote">页面描述：从华沙的少女到巴黎先贤祠的安葬者　　时间轴最后节点：1914 ｜ 战地 X 光车</div>
+  <div class="lab">问题</div>
+  <p>① 11 个节点止于 1914，缺 <b>1934 年逝世</b>与 <b>1995 年移灵先贤祠</b>——开头承诺的"终点"没兑现，一生讲到了半途。② 首屏写"1934 年逝于<b>贫血</b>（与长期辐射暴露相关）"过于笼统，应为"<b>再生障碍性贫血</b>"（否则读者会当成普通贫血）。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">补两个节点：<b>1934 逝世</b>、<b>1995 移灵先贤祠</b>；死因写明"再生障碍性贫血"。<span class="note">同站其他 14 站的终点都落在人物逝世年，居里是唯一例外（伽利略 1642 / 牛顿 1727 / 霍金 2018 都收尾了）。</span></div>
+</div>
+
+<div class="item b" data-k="b">
+  <div class="hd"><span class="tag b">B5</span><h3>7 处"详见《…》"引用了一个并不存在的页面名</h3><span class="path">faraday / pasteur / maxwell / hawking 的 labs.html</span></div>
+  <div class="quote">详见 电磁感应：动起来才有电　／　微生物：看不见的因果　／　光即电磁波：一串数字里的巧合　／　黑洞：时空的深渊</div>
+  <div class="lab">问题</div>
+  <p>链接本身能点开，但链接文字编了一个"看起来像页面标题"的名字，<b>目标页的真名并不是它</b>。逐条对照：</p>
+  <table class="sum">
+    <tr><th>链接文字（现）</th><th>目标页真实标题</th><th>所在</th></tr>
+    <tr><td>电磁感应：动起来才有电</td><td>电磁感应：磁铁一动，电就来了</td><td>faraday/labs</td></tr>
+    <tr><td>力线与场：给看不见的东西画张图</td><td>力线：他看见了看不见的"场"</td><td>faraday/labs</td></tr>
+    <tr><td>发电机：把转动变成电</td><td>发电机：把运动变成电</td><td>faraday/labs</td></tr>
+    <tr><td>微生物：看不见的因果（×2）</td><td>病菌学说：病从微小处来</td><td>pasteur/labs</td></tr>
+    <tr><td>巴氏消毒：热到什么程度才够</td><td>巴氏杀菌：用温度管住微生物</td><td>pasteur/labs</td></tr>
+    <tr><td>光即电磁波：一串数字里的巧合</td><td>光，原来是一种电磁波</td><td>maxwell/labs</td></tr>
+    <tr><td>黑洞：时空的深渊</td><td>黑洞：连光都逃不掉</td><td>hawking/labs</td></tr>
+  </table>
+  <p class="note">这 7 处集中出现在上一轮"重做玩一玩实验"改写过的 4 个 labs 页面里——新写的旁白顺手编了页名，而当时的自查脚本只验证了"链接能不能打开"，没验证"名字对不对"，所以漏了过去。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">把 7 处链接文字改成上表右列的真实标题。<br>同时已把"链接文字 vs 目标页 h1"加进 <span class="path">tools/check_spec_links.py</span>（原来只查"链接能不能打开"）——升级后的脚本现在会精确报出这 7 条、退出码 1，下次改完规格即可秒级拦住同一类错误。</div>
+</div>
+
+<div class="item b" data-k="b">
+  <div class="hd"><span class="tag b">B6</span><h3>1900 年节点叫"原子序数登场前夜"，实际还要等 13 年</h3><span class="path">mendeleev/timeline.html</span></div>
+  <div class="quote">1900 ｜ 原子序数登场前夜　　周期表进入精细打磨期，等待莫塞莱用原子序数给出更深的依据。</div>
+  <div class="lab">问题</div>
+  <p>莫塞莱用 X 射线确立原子序数是 <b>1913 年</b>。正文"等待……"本身没错，但标题"登场前夜"给人的时间是"马上就来"，与 13 年的跨度不符。门捷列夫 1907 年就去世了，他生前没等到这件事——这恰恰是个值得讲的点，现在被"前夜"两字糊掉了。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">标题改为"<b>周期表进入精细打磨期</b>"，正文点明"<b>可惜他 1907 年去世，没能等到 1913 年莫塞莱用原子序数给出更深的依据</b>"。</div>
+</div>
+
+<div class="item b" data-k="b">
+  <div class="hd"><span class="tag b">B7</span><h3>开普勒演示用"八颗行星"，含他身后才被发现的行星</h3><span class="path">kepler/labs.html</span></div>
+  <div class="quote">拖动"指数 n"，把这条线拧到八颗行星全都落上去　　实验三 · 第三定律：让八颗行星排成一条线</div>
+  <div class="lab">问题</div>
+  <p>开普勒（1571–1630）手上只有水星到土星的<b>6 颗</b>；天王星 1781、海王星 1846 才被发现。用 8 颗行星做演示本身是好事（说明规律管得更远），但没有任何提示，学生容易以为开普勒当年就有 8 颗数据。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">加一句说明："<b>开普勒当年只有 6 颗行星的数据；后来发现的天王星、海王星同样落在这条线上——这才是这条定律最厉害的地方。</b>"</div>
+</div>
+
+<div class="item b" data-k="b">
+  <div class="hd"><span class="tag b">B8</span><h3>"炸弹机"是"发明"还是"设计"，站内两说</h3><span class="path">turing/index.html ↔ turing/detail/enigma.html、terms.js</span></div>
+  <div class="quote">首页：发明的"炸弹机"大幅缩短了战争　　详解页：图灵在布莱切利园设计"炸弹机"　　术语库：图灵团队设计的机电装置</div>
+  <div class="lab">问题</div>
+  <p>三处口径不一。而且"发明"略夸大——波兰此前已有 Bomba 作为前驱，图灵是在此基础上做出了能在实战中大规模运行的改进型。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">首页改为"<b>设计出改进型的'炸弹机'</b>"，与另两处统一。</div>
+</div>
+
+<div class="item b" data-k="b">
+  <div class="hd"><span class="tag b">B9</span><h3>苯被归进"电磁"分类</h3><span class="path">faraday/assets/js/terms.js</span></div>
+  <div class="quote">"benzene": { name: "苯", cat: "电磁", short: "法拉第发现的分子" …… }</div>
+  <div class="lab">问题</div>
+  <p>苯是有机化学分子，条目自己的正文也写着"有机分子"、链到 chem 页面，分类却是"电磁"。读者按分类筛选时，会在电磁词条里突然撞见一个化学名词。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">把 <span class="path">cat</span> 改为"<b>化学</b>"（与该站 chem 页面一致）。</div>
+</div>
+
+<div class="item b" data-k="b">
+  <div class="hd"><span class="tag b">B10</span><h3>"是'懒'，不是'停'"——第一定律的一句话总结没说清</h3><span class="path">newton/detail/laws.html</span></div>
+  <div class="quote">不受外力（或合力为零）时，静止的保持静止，运动的保持匀速直线运动。是"懒"，不是"停"。</div>
+  <div class="lab">问题</div>
+  <p>前面半句已经把定律说清了，最后 6 个字却是个省略太多的口号：到底"懒"的是物体、"停"的是什么？读者要停下来猜。这一页其余类比（推空车/满载车）都很好，唯独这句收尾拖了后腿。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">改为"<b>物体的'懒'，是懒得改变运动状态；不是'不推就停'。</b>"</div>
+</div>
+
+<h2>三、做得好、不必改的地方</h2>
+<div class="good">
+  <p>为避免只报坏消息，以下这些科普写作上的关键动作，本站做得比多数同类站点规范：</p>
+  <ul>
+    <li><b>主动澄清科学史传闻</b>：牛顿"苹果砸头"（首页）、伽利略"比萨斜塔"（详解页＋术语＋about 三处都标为传说）、达尔文"强者生存"（明确否认），没有为讲故事牺牲准确性。</li>
+    <li><b>把"观测—定律—预言"的时间差讲对</b>：哥白尼日心说预言恒星视差、1838 年才被贝塞尔测到（"这反倒成了反对日心说的理由"）——这类反直觉的时代感，处理得很专业。</li>
+    <li><b>量子诠释的边界守得住</b>：玻尔站把"哥本哈根诠释"标为诠释而非事实；费曼站讲双缝只说"测量使干涉消失"，没有滑向"意识决定"；测不准原理也没被说成"仪器不够好"。</li>
+    <li><b>跨站无内容复制</b>：机器扫过 135 页正文，除页脚样板外<b>没有任何跨站重复段落</b>——说明每位科学家的正文确实各写各的（上一轮清理"通用曲线模板"的成果在这里得到验证）。</li>
+    <li><b>句子本身不难读</b>：正文中最长的句子多为"分号列举式"，属于正常的并列结构，不是绕在一起的长句。真正需要改的是上面那几条局部表述，而不是整体文风。</li>
+  </ul>
+</div>
+
+<h2>四、建议的修复顺序</h2>
+<div class="plan">
+  <ol>
+    <li><b>先修"一改见效"的事实错</b>（A1、A2、A4、A8、A9、A10、A11、A12、A15）：都是单个数字/单位/年份，改动量极小，但都是学生可以直接"背走"的硬错误。</li>
+    <li><b>再修"因果与归属"</b>（A3、A5、A6、A7、A13、A14、A16、B6、B7）：需要重写一两句话，是这次审读里"含金量"最高的部分——学生记住的往往是这种因果链，错了纠正成本很高。</li>
+    <li><b>补结构与一致性</b>（B3、B4、B5、B8、B9）：译名、分类、时间轴终点、链接文字。建议写进脚本自查，避免下次回归。</li>
+    <li><b>顺手打磨语句</b>（B1、B2、B10）：三句话，五分钟的事。</li>
+  </ol>
+  <p class="note">另外两处<b>非内容</b>的陈旧记录（不影响读者）：README 仍写"静态校验 92 项通过"，现为 106 项；门户页脚目录与外链文案可顺势一起梳理。</p>
+</div>
+
+<h2>五、本轮改动与复验</h2>
+<div class="plan">
+  <p style="margin-top:14px"><b>改了哪些文件</b></p>
+  <ul>
+    <li><span class="path">tools/newlabs/{faraday,pasteur,maxwell,hawking,kepler,mendeleev}.py</span> —— 改规格里的实验旁白／链接文字，再用 <span class="path">tools/patch_labs.py</span> 重新生成这 6 站的 <span class="path">labs.html</span>。</li>
+    <li><span class="path">scientists/newton/labs.html</span>、<span class="path">scientists/newton/index.html</span> —— 色散／判决性实验那两处（牛顿站非规格生成，直接改）。</li>
+    <li><span class="path">scientists/einstein/labs.html</span>、<span class="path">scientists/einstein/assets/js/site.js</span> —— 光电效应频率单位。</li>
+    <li>135 个页面的页脚 —— 人数 13 → 15。</li>
+  </ul>
+  <p><b>复验结果</b></p>
+  <ul>
+    <li><span class="path">tools/check_spec_links.py</span>：160 条指向详解页的链接，坏链 0、链接文字与目标标题不符 0（此前为 7 条不符）。</li>
+    <li><span class="path">tools/validate_site.py</span>：<b>通过 106 · 警告 0 · 错误 0</b>。</li>
+    <li>6 站 18 个实验（浏览器实测）：<b>运行时报错 0</b>，每个实验的读数均随滑块变化。</li>
+    <li>爱因斯坦 / 牛顿 集成 e2e：三块画布全部绘制，滑块联动与按钮交互正常，桌面＋移动 0 报错。</li>
+  </ul>
+  <p><b>顺带修掉的工具缺陷（本轮自己踩出来的）</b></p>
+  <p><span class="path">tools/add_portal_link.py</span> 原本用字面串「13 位科学家」判断页脚入口是否已存在。本轮把页脚改成「15 位」后判据失效，脚本判定"未注入"，于是给 <b>135 页各多插了一条</b>同样的链接（同一页脚里同时出现 15 位和 13 位）。已把判据改为"按『浏览全部…』这条链接本身判断"（不再依赖字面人数，系列增员也不会复发），并清理掉 135 条重复。<span class="note">教训与 B5 同源：拿会变的文案当结构判据，迟早在改文案时反噬。</span></p>
+</div>
+
+<footer>
+  审读方式：5 组按学科独立通读（天文/经典力学、电磁/化学、生命科学/医学、现代物理、计算/宇宙学）→ 全量回原文逐条核对 → 机器批量核查（页脚一致性、链接文字与目标页标题比对、跨站重复句扫描、超长句统计）。<br>
+  所有"原文"均取自仓库当前版本（<span class="path">/Users/shuwei/WorkBuddy/读懂牛顿</span>），可直接定位修改。本报告只做审读，未改动任何站点内容。
+</footer>
+
+</div>
+<script>
+var btns = document.querySelectorAll('.filters button');
+btns.forEach(function(b){
+  b.addEventListener('click', function(){
+    btns.forEach(function(x){ x.classList.remove('on'); });
+    b.classList.add('on');
+    var f = b.getAttribute('data-f');
+    document.querySelectorAll('.item').forEach(function(it){
+      it.style.display = (f === 'all' || it.getAttribute('data-k') === f) ? '' : 'none';
+    });
+    document.querySelectorAll('h2').forEach(function(h, i){
+      if (i >= 2) return;
+      h.style.display = (f === 'all') ? '' : ((f === 'a' && h.textContent.indexOf('科学准确性') >= 0) || (f === 'b' && h.textContent.indexOf('通俗') >= 0) ? '' : 'none');
+    });
+  });
+});
+</script>
+</body>
+</html>

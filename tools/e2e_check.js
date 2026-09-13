@@ -154,21 +154,31 @@ const shot = (name) => `${SHOTS}/${ID}_${name}.png`;
       report.interactions.projectileFire = true;
       console.log('抛体发射: 已点击发射按钮 ✅');
     } else {
-      // 通用滑块测试：拖动第一个 range，校验 lab-readout 是否变化
+      // 通用滑块测试：把第一个 range 分别拨到量程 25% / 75%，校验 lab-readout 是否变化
+      // （早先只拨到"中点"：当量程对称、默认值恰好是中点时会误报"未变化"，故改为两端对比）
       const slider = await pg.$('.lab input[type="range"]');
       if (slider) {
         const before = await pg.$eval('.lab .lab-readout', el => el.textContent.trim()).catch(() => '');
-        const max = await slider.getAttribute('max');
-        const min = await slider.getAttribute('min');
-        const mid = String(Math.round((Number(max) + Number(min)) / 2));
-        await slider.fill(mid);
-        await slider.dispatchEvent('input');
-        await pg.waitForTimeout(500);
-        const after = await pg.$eval('.lab .lab-readout', el => el.textContent.trim()).catch(() => '');
-        const changed = before !== after;
+        const min = Number(await slider.getAttribute('min'));
+        const max = Number(await slider.getAttribute('max'));
+        const step = Number(await slider.getAttribute('step')) || 1;
+        const at = (f) => {
+          let v = min + (max - min) * f;
+          v = Math.round((v - min) / step) * step + min;      // 吸附到合法档位
+          return String(Math.min(max, Math.max(min, Math.round(v * 1000) / 1000)));
+        };
+        const setAndRead = async (v) => {
+          await slider.fill(v);
+          await slider.dispatchEvent('input');
+          await pg.waitForTimeout(500);
+          return await pg.$eval('.lab .lab-readout', el => el.textContent.trim()).catch(() => '');
+        };
+        const rLow = await setAndRead(at(0.25));
+        const rHigh = await setAndRead(at(0.75));
+        const changed = rLow !== rHigh || rHigh !== before;
         await canvases[0].screenshot({ path: shot('lab_slider_mid.png') }).catch(() => {});
         report.interactions.sliderChangesReadout = changed;
-        console.log(`滑块交互: readout ${changed ? '随滑块变化 ✅' : '未变化 ⚠️'}（${before || '空'} → ${after || '空'}）`);
+        console.log(`滑块交互: readout ${changed ? '随滑块变化 ✅' : '未变化 ⚠️'}（${before || '空'} → ${rHigh || '空'}）`);
       } else {
         console.log('未找到发射按钮或滑块 ⚠️');
       }

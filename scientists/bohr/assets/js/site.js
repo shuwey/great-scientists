@@ -429,127 +429,344 @@
     return { ctx: ctx, w: w, h: h };
   }
 
-  /* ---- 7.1 棱镜色散 ---- */
+
   function lab_shells(lab) {
-  var P = {"shells": 4, "label": "电子在固定壳层上运动；能级跃迁放出光"};
-
-  var cv=$("canvas",lab); var sS=$('[data-ctrl="speed"]',lab);
-  var out=$(".lab-readout",lab); var vSpan=sS?sS.closest(".ctrl").querySelector(".v"):null;
-  var W=820,H=360,ph=0,last=0;
-  function draw(ts){
-    if(!last)last=ts; var dt=Math.min(0.05,(ts-last)/1000); last=ts;
-    var sp=sS?parseFloat(sS.value):1; ph+=dt*sp;
-    var cx=W/2,cy=H/2;
-    var S=setupCanvas(cv,H/W); var ctx=S.ctx,k=S.w/W;
-    ctx.save(); ctx.scale(k,k); ctx.clearRect(0,0,W,H); ctx.fillStyle="#FBFCFE"; ctx.fillRect(0,0,W,H);
-    for(var i=1;i<=P.shells;i++){
-      var r=30*i;
-      ctx.strokeStyle="#C9D3E0"; ctx.lineWidth=1.4;
-      ctx.save(); ctx.translate(cx,cy); ctx.rotate(i*30*Math.PI/180); ctx.beginPath(); ctx.arc(0,0,r,0,Math.PI*2); ctx.stroke(); ctx.restore();
-      var ang=ph*(1/i)+i; var ex=cx+r*Math.cos(ang), ey=cy+r*Math.sin(ang);
-      ctx.fillStyle="#E8590C"; ctx.beginPath(); ctx.arc(ex,ey,6,0,Math.PI*2); ctx.fill();
+    var cv = $("canvas", lab);
+    var sS = $('[data-ctrl="speed"]', lab);
+    var out = $(".lab-readout", lab);
+    var vS = sS ? sS.closest(".ctrl").querySelector(".v") : null;
+    var W = 820, H = 400;
+    var nx = 240, ny = 205;
+    var RAD = [0, 50, 86, 122, 158];
+    var EN = [0, -13.6, -3.40, -1.51, -0.85];
+    function wl2rgb(w) {
+      var r = 0, g = 0, b = 0;
+      if (w >= 380 && w < 440) { r = -(w - 440) / 60; b = 1; }
+      else if (w < 490) { g = (w - 440) / 50; b = 1; }
+      else if (w < 510) { g = 1; b = -(w - 510) / 20; }
+      else if (w < 580) { r = (w - 510) / 70; g = 1; }
+      else if (w < 645) { r = 1; g = -(w - 645) / 65; }
+      else if (w <= 780) { r = 1; }
+      return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
     }
-    ctx.fillStyle="#3B5BDB"; ctx.beginPath(); ctx.arc(cx,cy,14,0,Math.PI*2); ctx.fill();
-    ctx.fillStyle="#fff"; ctx.font="800 14px -apple-system,sans-serif"; ctx.textAlign="center"; ctx.fillText("+",cx,cy+5);
-    ctx.textAlign="left"; ctx.fillStyle="#5C6B82"; ctx.font="600 13px -apple-system,sans-serif"; ctx.fillText(P.label,24,30);
-    ctx.restore();
-    if(vSpan)vSpan.textContent=sp.toFixed(1)+"×";
-    if(out)out.innerHTML="动画速度 <b>"+sp.toFixed(1)+"×</b>：电子在不同“壳层”上绕核运动；能级跃迁时吸收或放出特定频率的光——这是原子光谱的来源。";
+    var cur = 1, ang = 0, holdT = 0, photons = [], jumpInfo = "还停在原地";
+    var lastTrans = null, t0 = 0;
+    var NAMES = ["", "第一层", "第二层", "第三层", "第四层"];
+    function fire(from, to) {
+      var de = Math.abs(EN[from] - EN[to]);
+      var wl = 1240 / de;
+      var col, tag;
+      if (wl < 380) { col = [130, 110, 190]; tag = "紫外（看不见）"; }
+      else if (wl > 780) { col = [150, 120, 100]; tag = "红外（看不见）"; }
+      else { col = wl2rgb(wl); tag = wl.toFixed(0) + " nm 的可见光"; }
+      photons.push({ a: ang, r: RAD[to], de: de, wl: wl, col: col, tag: tag, life: 1 });
+      if (photons.length > 5) photons.shift();
+      jumpInfo = "从" + NAMES[from] + "跳到" + NAMES[to] + "，放出 " + de.toFixed(2) + " eV（" + tag + "）";
+    }
+    function draw(ts) {
+      if (typeof ts !== "number") ts = performance.now();
+      if (!t0) t0 = ts;
+      var dt = Math.min(0.05, (ts - t0) / 1000); t0 = ts;
+      var sp = sS ? parseFloat(sS.value) : 1;
+      ang += dt * sp * 2.6 / cur;
+      holdT += dt * sp;
+      if (holdT > 1.5) {
+        holdT = 0;
+        var nxt = 1 + Math.floor(Math.random() * 4);
+        if (nxt !== cur) {
+          if (nxt < cur) fire(cur, nxt);
+          else jumpInfo = "从" + NAMES[cur] + "跳到" + NAMES[nxt] + "，吸收了能量";
+          cur = nxt; lastTrans = nxt;
+        }
+      }
+      var i, p;
+      for (i = photons.length - 1; i >= 0; i--) {
+        photons[i].r += dt * sp * 130;
+        photons[i].life -= dt * sp * 0.55;
+        if (photons[i].life <= 0) photons.splice(i, 1);
+      }
+      var S = setupCanvas(cv, H / W);
+      var ctx = S.ctx, k = S.w / W;
+      ctx.save(); ctx.scale(k, k);
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = "#FBFCFE"; ctx.fillRect(0, 0, W, H);
+
+      ctx.strokeStyle = "#DCE2EC"; ctx.lineWidth = 1.6; ctx.setLineDash([5, 5]);
+      for (i = 1; i <= 4; i++) {
+        ctx.beginPath(); ctx.arc(nx, ny, RAD[i], 0, Math.PI * 2); ctx.stroke();
+      }
+      ctx.setLineDash([]);
+      for (i = 1; i <= 4; i++) {
+        ctx.fillStyle = "#9AA7BE"; ctx.font = "600 11.5px -apple-system, sans-serif";
+        ctx.fillText("n=" + i, nx + RAD[i] - 4, ny - 6);
+      }
+      ctx.strokeStyle = "rgba(59,91,219,.35)"; ctx.lineWidth = 1.2; ctx.setLineDash([3, 4]);
+      ctx.beginPath(); ctx.arc(nx, ny, RAD[cur], 0, Math.PI * 2); ctx.stroke();
+      ctx.setLineDash([]);
+
+      for (i = 0; i < photons.length; i++) {
+        p = photons[i];
+        ctx.strokeStyle = "rgba(" + p.col[0] + "," + p.col[1] + "," + p.col[2] + "," + Math.max(0, p.life).toFixed(2) + ")";
+        ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.arc(nx, ny, p.r, p.a - 0.5, p.a + 0.5); ctx.stroke();
+      }
+
+      ctx.fillStyle = "#F59F00";
+      ctx.beginPath(); ctx.arc(nx, ny, 11, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = "#8B96AA"; ctx.font = "600 11.5px -apple-system, sans-serif";
+      ctx.fillText("原子核", nx - 55, ny + 4);
+
+      var ex = nx + RAD[cur] * Math.cos(ang), ey = ny + RAD[cur] * Math.sin(ang);
+      ctx.fillStyle = "#0CA678";
+      ctx.beginPath(); ctx.arc(ex, ey, 7, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = "rgba(12,166,120,.3)"; ctx.lineWidth = 5;
+      ctx.beginPath(); ctx.arc(ex, ey, 10, 0, Math.PI * 2); ctx.stroke();
+      ctx.fillStyle = "#087F5B"; ctx.font = "700 12px -apple-system, sans-serif";
+      ctx.fillText("电子", ex + 12, ey + 4);
+
+      ctx.fillStyle = "#1B2530"; ctx.font = "700 14px -apple-system, sans-serif";
+      ctx.fillText("能级不是连续的，是一层一层的", 470, 84);
+      ctx.strokeStyle = "#E4E8F0"; ctx.beginPath(); ctx.moveTo(470, 96); ctx.lineTo(796, 96); ctx.stroke();
+      for (i = 1; i <= 4; i++) {
+        var yy = 130 + (i - 1) * 44;
+        ctx.strokeStyle = (i === cur) ? "#0CA678" : "#DCE2EC";
+        ctx.lineWidth = (i === cur) ? 4 : 3;
+        ctx.beginPath(); ctx.moveTo(470, yy); ctx.lineTo(500, yy); ctx.stroke();
+        ctx.fillStyle = "#5C6B82"; ctx.font = "600 13px -apple-system, sans-serif";
+        ctx.fillText("n=" + i, 510, yy + 5);
+        ctx.fillStyle = "#1B2530"; ctx.font = "700 13px -apple-system, sans-serif";
+        ctx.textAlign = "right"; ctx.fillText(EN[i].toFixed(2) + " eV", 796, yy + 5); ctx.textAlign = "left";
+      }
+      ctx.fillStyle = "#8B96AA"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("两层之间：没有可以停留的位置", 470, 328);
+      ctx.fillText("跳一次 = 放出一份能量恰好的光", 470, 352);
+      ctx.restore();
+
+      if (vS) vS.textContent = sp.toFixed(1) + "×";
+      if (out) {
+        out.innerHTML = "速度 <b>" + sp.toFixed(1) + "×</b>　·　电子在<b>第 " + cur + " 层</b>（E = " + EN[cur].toFixed(2) + " eV）　·　" + jumpInfo +
+          "　·　只能在 4 层里挑，挑不到别处";
+      }
+      requestAnimationFrame(draw);
+    }
     requestAnimationFrame(draw);
   }
-  requestAnimationFrame(draw);
-
-}
 
 
-function lab_orbit(lab) {
-  var P = {"center": "核", "centerColor": "#E8590C", "label": "电子只能在某些允许的轨道上（示意）", "bodies": [{"name": "e⁻", "r": 150, "period": 3, "color": "#3B5BDB"}]};
+  function lab_levels(lab) {
+    var cv = $("canvas", lab);
+    var sN = $('[data-ctrl="level"]', lab);
+    var out = $(".lab-readout", lab);
+    var vN = sN ? sN.closest(".ctrl").querySelector(".v") : null;
+    var W = 820, H = 400;
+    var X0 = 108, X1 = 396, TOP = 56, BOT = 352;
+    var EMIN = -14.5, EMAX = 0.4;
+    var prev = 1, glow = 0, absorbed = false;
+    function yOf(e) { return BOT - (e - EMIN) / (EMAX - EMIN) * (BOT - TOP); }
+    function eOf(n) { return -13.6 / (n * n); }
+    var t0 = 0;
+    function draw(ts) {
+      if (typeof ts !== "number") ts = performance.now();
+      if (!t0) t0 = ts;
+      var dt = Math.min(0.05, (ts - t0) / 1000); t0 = ts;
+      var n = sN ? Math.round(parseFloat(sN.value)) : 1;
+      if (n !== prev) { absorbed = n > prev; glow = 1; prev = n; }
+      glow = Math.max(0, glow - dt * 1.4);
+      var S = setupCanvas(cv, H / W);
+      var ctx = S.ctx, k = S.w / W;
+      ctx.save(); ctx.scale(k, k);
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = "#FBFCFE"; ctx.fillRect(0, 0, W, H);
 
-  var cv = $("canvas", lab);
-  var sSpeed = $('[data-ctrl="speed"]', lab);
-  var out = $(".lab-readout", lab);
-  var vSpan = sSpeed ? sSpeed.closest(".ctrl").querySelector(".v") : null;
-  var W = 820, H = 360, day = 0, last = 0;
-  function draw(ts){
-    if(!last) last = ts;
-    var dt = Math.min(0.05,(ts-last)/1000); last = ts;
-    var sp = sSpeed ? parseFloat(sSpeed.value) : 1;
-    var maxP = 0; P.bodies.forEach(function(b){ if(b.period>maxP) maxP=b.period; });
-    day += dt*sp*0.8; if(day>maxP) day -= maxP;
-    var S = setupCanvas(cv, H/W); var ctx = S.ctx, k = S.w/W;
-    ctx.save(); ctx.scale(k,k); ctx.clearRect(0,0,W,H);
-    ctx.fillStyle = "#FBFCFE"; ctx.fillRect(0,0,W,H);
-    var cx=W/2, cy=H/2;
-    P.bodies.forEach(function(b){
-      ctx.strokeStyle="rgba(91,107,130,.18)"; ctx.lineWidth=1;
-      ctx.beginPath(); ctx.arc(cx,cy,b.r,0,Math.PI*2); ctx.stroke();
-    });
-    // 中心
-    ctx.fillStyle = P.centerColor; ctx.beginPath(); ctx.arc(cx,cy,26,0,Math.PI*2); ctx.fill();
-    ctx.fillStyle="#fff"; ctx.font="800 16px -apple-system,sans-serif"; ctx.textAlign="center";
-    ctx.fillText(P.center, cx, cy+6);
-    // 卫星
-    P.bodies.forEach(function(b){
-      var ang=(day/b.period)*Math.PI*2;
-      var mx=cx+Math.cos(ang)*b.r, my=cy+Math.sin(ang)*b.r*0.55;
-      ctx.fillStyle=b.color; ctx.beginPath(); ctx.arc(mx,my,6,0,Math.PI*2); ctx.fill();
-    });
-    ctx.textAlign="left"; ctx.fillStyle="#5C6B82"; ctx.font="600 13px -apple-system,sans-serif";
-    ctx.fillText(P.label, 24, 30);
-    ctx.restore();
-    if(vSpan) vSpan.textContent = sp.toFixed(1)+"×";
-    if(out){
-      var names = P.bodies.map(function(b){return b.name+"约"+b.period+"天/圈";}).join("，");
-      out.innerHTML = "时间 ≈ <b>"+day.toFixed(1)+"</b> 天　·　"+names;
+      var i, y1, y2;
+      for (i = 1; i <= 4; i++) {
+        y1 = yOf(eOf(i)); y2 = yOf(eOf(i + 1));
+        ctx.fillStyle = "rgba(224,49,49,.07)";
+        ctx.fillRect(X0, y2, X1 - X0, y1 - y2);
+      }
+      ctx.fillStyle = "rgba(224,49,49,.7)"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("红色区域：电子不许停在这里", X0 + 10, yOf(-2) + 4);
+
+      ctx.strokeStyle = "#9AA7BE"; ctx.lineWidth = 1.6;
+      ctx.beginPath(); ctx.moveTo(X0 - 26, TOP); ctx.lineTo(X0 - 26, BOT); ctx.stroke();
+      for (i = 0; i <= 4; i++) {
+        ctx.fillStyle = "#8B96AA"; ctx.font = "600 11.5px -apple-system, sans-serif";
+        ctx.textAlign = "right";
+        ctx.fillText((-13.6 + i * 3.4).toFixed(1), X0 - 34, yOf(-13.6 + i * 3.4) + 4);
+        ctx.textAlign = "left";
+      }
+      ctx.fillStyle = "#8B96AA"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("能量（eV）", X0 - 96, TOP - 22);
+
+      for (i = 1; i <= 4; i++) {
+        y1 = yOf(eOf(i));
+        ctx.strokeStyle = (i === n) ? "#3B5BDB" : "#B9C3D4";
+        ctx.lineWidth = (i === n) ? 6 : 4;
+        ctx.beginPath(); ctx.moveTo(X0, y1); ctx.lineTo(X1, y1); ctx.stroke();
+        ctx.fillStyle = (i === n) ? "#3B5BDB" : "#8B96AA";
+        ctx.font = (i === n) ? "700 13px -apple-system, sans-serif" : "600 12px -apple-system, sans-serif";
+        ctx.fillText("n=" + i + (i === n ? "　" + eOf(i).toFixed(2) + " eV" : ""), X1 + 14, y1 + 5);
+      }
+      ctx.fillStyle = "#C7D0DE"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("再往上 n=5、6…", X1 + 14, yOf(eOf(4)) - 26);
+      ctx.fillText("会越挤越密", X1 + 14, yOf(eOf(4)) - 10);
+
+      var ey = yOf(eOf(n));
+      ctx.fillStyle = "rgba(12,166,120,.25)";
+      ctx.beginPath(); ctx.arc(X0 + 160, ey, 26 + glow * 22, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = "#0CA678";
+      ctx.beginPath(); ctx.arc(X0 + 160, ey, 13, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = "#087F5B"; ctx.font = "700 12px -apple-system, sans-serif";
+      ctx.fillText("电子", X0 + 160 - 13, ey - 24);
+
+      ctx.fillStyle = "#1B2530"; ctx.font = "700 14px -apple-system, sans-serif";
+      ctx.fillText("只能站在档位上", 560, 84);
+      ctx.strokeStyle = "#E4E8F0"; ctx.beginPath(); ctx.moveTo(560, 96); ctx.lineTo(796, 96); ctx.stroke();
+      ctx.fillStyle = "#5C6B82"; ctx.font = "600 12.5px -apple-system, sans-serif";
+      ctx.fillText("像楼梯，不像斜坡。上楼只能一级", 560, 130);
+      ctx.fillText("一级地跨，没有“半级”这个东西。", 560, 152);
+      ctx.fillStyle = "#1B2530"; ctx.font = "700 13px -apple-system, sans-serif";
+      ctx.fillText("往下一档：放出一份能量", 560, 200);
+      ctx.fillStyle = "#5C6B82"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("这份能量正好等于两档之差，", 560, 224);
+      ctx.fillText("换成光就是一个固定的频率。", 560, 244);
+      ctx.fillStyle = "#1B2530"; ctx.font = "700 13px -apple-system, sans-serif";
+      ctx.fillText("往上一档：吸收一份能量", 560, 288);
+      ctx.fillStyle = "#5C6B82"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("给得不够，它就一步也上不去。", 560, 312);
+      ctx.fillStyle = "#8B96AA"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("这就是“量子”两个字的意思", 560, 356);
+      ctx.restore();
+
+      if (vN) vN.textContent = String(n);
+      if (out) {
+        out.innerHTML = "电子在第 <b>" + n + "</b> 能级　·　E = -13.6 / " + n + "² = <b>" + eOf(n).toFixed(2) +
+          " eV</b>　·　" + (absorbed ? "刚才吸收了一份能量，跳上了一档" : "刚才放出一份能量，掉下了一档") +
+          "　·　两条档位之间没有可以停留的位置";
+      }
+      requestAnimationFrame(draw);
     }
     requestAnimationFrame(draw);
   }
-  requestAnimationFrame(draw);
-
-}
 
 
-function lab_lines(lab) {
-  var P = {"expr": "gauss", "label": "用钟形峰标出一条谱线的位置（示意）"};
+  function lab_lines(lab) {
+    var cv = $("canvas", lab);
+    var sN = $('[data-ctrl="level"]', lab);
+    var out = $(".lab-readout", lab);
+    var vN = sN ? sN.closest(".ctrl").querySelector(".v") : null;
+    var W = 820, H = 400;
+    var RY = 1.097373e7;
+    function lambda(n) { return 1e9 / (RY * (0.25 - 1 / (n * n))); }
+    function wl2rgb(w) {
+      var r = 0, g = 0, b = 0;
+      if (w >= 380 && w < 440) { r = -(w - 440) / 60; b = 1; }
+      else if (w < 490) { g = (w - 440) / 50; b = 1; }
+      else if (w < 510) { g = 1; b = -(w - 510) / 20; }
+      else if (w < 580) { r = (w - 510) / 70; g = 1; }
+      else if (w < 645) { r = 1; g = -(w - 645) / 65; }
+      else if (w <= 780) { r = 1; }
+      return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+    }
+    var SX0 = 348, SX1 = 790, SY = 208, SH = 52;
+    function xOf(w) { return SX0 + (w - 375) / (785 - 375) * (SX1 - SX0); }
+    var LAD = [1, 2, 3, 4, 5, 6];
+    var LX0 = 78, LX1 = 268, LTOP = 62, LBOT = 292;
+    function lyOf(n) { return LBOT - (LAD.length - n) / (LAD.length - 0.4) * (LBOT - LTOP); }
+    var t0 = 0;
+    function draw(ts) {
+      if (typeof ts !== "number") ts = performance.now();
+      var n = sN ? Math.round(parseFloat(sN.value)) : 3;
+      var wl = lambda(n);
+      var col = (wl >= 380 && wl <= 780) ? wl2rgb(wl) : [150, 150, 160];
+      var S = setupCanvas(cv, H / W);
+      var ctx = S.ctx, k = S.w / W;
+      ctx.save(); ctx.scale(k, k);
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = "#FBFCFE"; ctx.fillRect(0, 0, W, H);
 
-  var cv=$("canvas",lab); var s1=$('[data-ctrl="param1"]',lab); var s2=$('[data-ctrl="param2"]',lab);
-  var out=$(".lab-readout",lab);
-  var v1=s1?s1.closest(".ctrl").querySelector(".v"):null;
-  var v2=s2?s2.closest(".ctrl").querySelector(".v"):null;
-  var W=820,H=360;
-  function yval(x,a,b){
-    if(P.expr==="exp") return 250-200*(1-Math.exp(-a*x/4));
-    if(P.expr==="gauss"){ var mean=3.5+(a-1)*2.5; return 250-160*Math.exp(-Math.pow(x-mean,2)/(b*1.5)); }
-    if(P.expr==="growth") return 250-190*(Math.exp(a*x/9)-1)/(Math.exp(a)-1);
-    return 250-90*a*Math.sin(b*x); // 默认 a*sin(kx)
+      ctx.fillStyle = "#1B2530"; ctx.font = "700 13px -apple-system, sans-serif";
+      ctx.fillText("能级图（示意）", LX0, 40);
+      var i, y;
+      for (i = 0; i < LAD.length; i++) {
+        y = lyOf(LAD[i]);
+        ctx.strokeStyle = "#C7D0DE"; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(LX0, y); ctx.lineTo(LX1, y); ctx.stroke();
+        ctx.fillStyle = "#8B96AA"; ctx.font = "600 11.5px -apple-system, sans-serif";
+        ctx.fillText("n=" + LAD[i], LX1 + 8, y + 4);
+      }
+      var yHi = lyOf(n), yLo = lyOf(2);
+      ctx.strokeStyle = "#E03131"; ctx.lineWidth = 2.6;
+      ctx.beginPath(); ctx.moveTo(LX0 + 118, yHi); ctx.lineTo(LX0 + 118, yLo); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(LX0 + 112, yLo - 8); ctx.lineTo(LX0 + 118, yLo); ctx.lineTo(LX0 + 124, yLo - 8);
+      ctx.stroke();
+      ctx.fillStyle = "#E03131"; ctx.font = "700 12px -apple-system, sans-serif";
+      ctx.fillText("n=" + n + " → 2", LX0 + 132, (yHi + yLo) / 2 + 4);
+
+      ctx.fillStyle = "#1B2530"; ctx.font = "700 13px -apple-system, sans-serif";
+      ctx.fillText("可见光谱", SX0, 40);
+      var w, c;
+      for (w = 375; w <= 785; w += 1) {
+        c = wl2rgb(w);
+        if (w < 380 || w > 780) c = [232, 236, 243];
+        ctx.fillStyle = "rgb(" + c[0] + "," + c[1] + "," + c[2] + ")";
+        ctx.fillRect(xOf(w), SY, (SX1 - SX0) / (785 - 375) + 0.6, SH);
+      }
+      ctx.strokeStyle = "#C7D0DE"; ctx.lineWidth = 1;
+      ctx.strokeRect(SX0, SY, SX1 - SX0, SH);
+
+      var marks = [3, 4, 5, 6], names = ["", "", "", "Hα", "Hβ", "Hγ", "Hδ"];
+      for (i = 0; i < marks.length; i++) {
+        var mw = lambda(marks[i]);
+        ctx.strokeStyle = "rgba(27,37,48,.35)"; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(xOf(mw), SY + SH); ctx.lineTo(xOf(mw), SY + SH + 8); ctx.stroke();
+        ctx.fillStyle = "#8B96AA"; ctx.font = "600 11px -apple-system, sans-serif";
+        ctx.fillText(names[marks[i]], xOf(mw) - 10, SY + SH + 24);
+      }
+
+      var lx = xOf(wl);
+      ctx.strokeStyle = "#E03131"; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(lx, SY - 26); ctx.lineTo(lx, SY + SH + 4); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(lx - 6, SY - 18); ctx.lineTo(lx, SY - 26); ctx.lineTo(lx + 6, SY - 18); ctx.stroke();
+      ctx.fillStyle = "#E03131"; ctx.font = "800 13px -apple-system, sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText(wl.toFixed(1) + " nm", lx, SY - 36);
+      ctx.textAlign = "left";
+
+      ctx.fillStyle = "#8B96AA"; ctx.font = "600 11.5px -apple-system, sans-serif";
+      ctx.fillText("380 nm", SX0 - 4, SY + SH + 42);
+      ctx.fillText("780 nm", SX1 - 42, SY + SH + 42);
+      ctx.fillText("波长越短 → 越偏蓝紫；越长 → 越偏红", SX0, SY - 56);
+
+      ctx.fillStyle = "#1B2530"; ctx.font = "700 14px -apple-system, sans-serif";
+      ctx.fillText("为什么只有这几条线？", SX0, 340);
+      ctx.fillStyle = "#5C6B82"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillText("因为能级是固定的，落差就只有那么几种——", SX0, 364);
+      ctx.fillText("换成光，自然也只有那么几个波长。", SX0, 386);
+      ctx.restore();
+
+      var nm = names[n] || "";
+      if (vN) vN.textContent = String(n);
+      if (out) {
+        out.innerHTML = "上能级 n = <b>" + n + "</b> → 第 2 层　·　波长 λ = <b>" + wl.toFixed(1) +
+          " nm</b>　·　" + (wl < 380 ? "已经落在紫外区，眼睛看不见了"
+            : (nm ? "这就是巴尔末系的 " + nm + " 线" : "巴尔末系的第五条，已经很靠近紫外")) +
+          "　·　n 越大，线越往蓝紫挤，最终挤在 364.6 nm 附近";
+      }
+    }
+    if (sN) sN.addEventListener("input", draw);
+    window.addEventListener("resize", draw);
+    draw(performance.now());
   }
-  function draw(){
-    var a=s1?parseFloat(s1.value):1, b=s2?parseFloat(s2.value):1;
-    var S=setupCanvas(cv,H/W); var ctx=S.ctx,k=S.w/W;
-    ctx.save(); ctx.scale(k,k); ctx.clearRect(0,0,W,H); ctx.fillStyle="#FBFCFE"; ctx.fillRect(0,0,W,H);
-    ctx.strokeStyle="#5C6B82"; ctx.lineWidth=1.5; ctx.beginPath(); ctx.moveTo(40,40); ctx.lineTo(40,280); ctx.lineTo(790,280); ctx.stroke();
-    ctx.strokeStyle="#3B5BDB"; ctx.lineWidth=3; ctx.beginPath();
-    for(var x=40;x<790;x+=4){ var t=(x-40)/60; var y=yval(t,a,b); y=Math.max(40,Math.min(280,y)); if(x===40)ctx.moveTo(x,y); else ctx.lineTo(x,y);} ctx.stroke();
-    ctx.fillStyle="#5C6B82"; ctx.font="600 13px -apple-system,sans-serif"; ctx.fillText(P.label,24,30);
-    ctx.restore();
-    if(v1)v1.textContent=a.toFixed(1);
-    if(v2)v2.textContent=b.toFixed(1);
-    if(out)out.innerHTML="拖动滑块改变参数，看曲线如何随之改变——这是“用数学描述自然”的最小示范。";
+
+  function initLabs() {
+    $$(".lab").forEach(function (lab) {
+      var kind = lab.getAttribute("data-lab");
+      if (kind === "shells") lab_shells(lab);
+      if (kind === "levels") lab_levels(lab);
+      if (kind === "lines") lab_lines(lab);
+    });
   }
-  if(s1)s1.addEventListener("input",draw); if(s2)s2.addEventListener("input",draw);
-  draw();
-
-}
-
-
-function initLabs() {
-  $$(".lab").forEach(function (lab) {
-    var kind = lab.getAttribute("data-lab");
-    if (kind === "shells") lab_shells(lab);
-    if (kind === "orbit") lab_orbit(lab);
-    if (kind === "lines") lab_lines(lab);
-  });
-}
 function initGlossary() {
     var grid = $("#term-grid");
     if (!grid) return;

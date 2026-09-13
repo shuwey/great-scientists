@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>动手玩一玩 · 三个玻尔小实验 | 读懂玻尔</title>
-<meta name="description" content="三个可直接在网页上操作的互动演示。拖动滑块，亲眼看见玻尔讲过的道理。">
+<meta name="description" content="三个可直接在网页上操作的互动演示：离散的电子壳层、只能站档位的能量台阶、以及氢原子的巴尔末系谱线。拖动滑块，亲眼看见玻尔为什么要说“量子化”。">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-base="">
@@ -22,14 +22,14 @@
 <div class="page-head"><div class="wrap">
 <div class="crumb"><a href="index.html">首页</a> · 玩一玩</div>
 <h1>动手玩一玩</h1>
-<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块，亲眼看见玻尔讲过的道理。</p>
+<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块——看电子只能待在固定的几层、看能量为什么只能一档一档地变、看氢原子的谱线落在哪儿。</p>
 </div></div>
 <section><div class="wrap">
-    <h2 id="shells" style="font-size:25px;margin:8px 0 6px">⚛️ 实验1 · 原子的“楼层”</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动“动画速度”，看电子在不同壳层上绕核运动——能级是离散的几层，不是任意的。</p>
+    <h2 id="shells" style="font-size:25px;margin:8px 0 6px">⚛️ 实验一 · 原子的“楼层”</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">拖动“动画速度”，看电子在固定的几层壳上来回跳。它跳下来一次，就放出一份光——放出的光是什么颜色，取决于它掉了多远。</p>
     <div class="lab" data-lab="shells">
-      <div class="lab-head"><h4>原子的“楼层”</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">电子像住在不同的楼层，跳层就会放出或吸收光。</p>
+      <div class="lab-head"><h4>离散的电子壳层</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">电子只能待在 n=1、2、3、4 这几层上，跳一次就放出一份能量恰好的光。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
@@ -39,39 +39,53 @@
       </div>
       <div class="lab-readout"></div>
     </div>
-    <h2 id="orbit" style="font-size:25px;margin:46px 0 6px">🪐 实验2 · 允许的轨道</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动“速度”，看电子绕核转——玻尔说它只能待在某些固定半径的“允许轨道”上。</p>
-    <div class="lab" data-lab="orbit">
-      <div class="lab-head"><h4>允许的轨道</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">不是任意半径，而是被量子化“挑”出来的轨道。</p>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>关键是“离散”：电子不可能停在两层之间。所以它掉下来时放出的光，频率也是几个固定值——不是随便什么颜色都行。这就是玻尔模型最硬的那块骨头，详见 <a href="detail/bohr-model.html">玻尔模型：原子的“楼层”</a>。</p>
+    </div>
+
+
+    <h2 id="levels" style="font-size:25px;margin:46px 0 6px">🪜 实验二 · 能量台阶：只能站在档位上</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">把能量画成一道楼梯。拖动“能级 n”，看电子只能落在标出来的那几级上——两级之间涂红的地方，是它永远停不住的位置。</p>
+    <div class="lab" data-lab="levels">
+      <div class="lab-head"><h4>能量台阶与禁戒区</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">能级是分开的档位，不是一段连续的坡。停在两档之间？量子力学说不行。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
-          <label>速度 <span class="v">1.0×</span></label>
-          <input type="range" data-ctrl="speed" min="0.2" max="3" value="1" step="0.1">
+          <label>能级 n <span class="v">1</span></label>
+          <input type="range" data-ctrl="level" min="1" max="4" value="1" step="1">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-    <h2 id="lines" style="font-size:25px;margin:46px 0 6px">🌈 实验3 · 谱线在哪里？</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动滑块，看“能级差”对应的谱线峰如何移动——这就是巴尔末系在图上的样子。</p>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>连续的世界里，物体可以停在任意位置；可原子里的能量偏偏是“一份一份”的。这正是“量子”二字的来历。想看它怎么被光谱证实，去看 <a href="detail/spectrum.html">氢原子光谱：巴尔末系</a>。</p>
+    </div>
+
+
+    <h2 id="lines" style="font-size:25px;margin:46px 0 6px">🌈 实验三 · 氢原子的谱线落在哪</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">电子从高能级掉到第 2 层，就会放出一条特定波长的光。拖动“上能级 n”，看这条线在可见光谱上往哪挪、变成什么颜色。</p>
     <div class="lab" data-lab="lines">
-      <div class="lab-head"><h4>谱线在哪里？</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">峰的位置，就是一条谱线的位置。</p>
+      <div class="lab-head"><h4>巴尔末系：四条著名的线</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">n=3→2 是红色的 Hα，n=4→2 是青色的 Hβ，n=5、6 继续往蓝紫挪。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
-          <label>中心位置 <span class="v">1.0</span></label>
-          <input type="range" data-ctrl="param1" min="0.3" max="1.8" value="1" step="0.1">
-        </div>
-        <div class="ctrl">
-          <label>峰宽 <span class="v">1.0</span></label>
-          <input type="range" data-ctrl="param2" min="0.6" max="2" value="1" step="0.1">
+          <label>上能级 n <span class="v">3</span></label>
+          <input type="range" data-ctrl="level" min="3" max="10" value="3" step="1">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-<p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/bohr-model.html">读玻尔模型：原子的“楼层” →</a>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>氢原子的谱线不是连续的一条彩虹，而是几根清清楚楚的亮线——巴尔末当年靠经验凑出了公式，玻尔则用能级把它推导了出来。详见 <a href="detail/spectrum.html">氢原子光谱：巴尔末系</a>。</p>
+    </div>
+
+
+    <p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/bohr-model.html">读玻尔模型：原子的“楼层” →</a>
 <a class="btn ghost" href="detail/spectrum.html">读氢原子光谱：巴尔末系 →</a>
 <a class="btn ghost" href="detail/complementarity.html">读互补原理：波还是粒子？ →</a>
 <a class="btn ghost" href="detail/copenhagen.html">读哥本哈根学派与核裂变 →</a></p>
@@ -82,7 +96,7 @@
           <li><a href="detail/spectrum.html">氢原子光谱：巴尔末系</a></li>
           <li><a href="detail/complementarity.html">互补原理：波还是粒子？</a></li>
           <li><a href="detail/copenhagen.html">哥本哈根学派与核裂变</a></li></ul></div>
-<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li>          <li><a href="../../index.html">浏览全部 13 位科学家 →</a></li>
+<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li>          <li><a href="../../index.html">浏览全部 15 位科学家 →</a></li>
         </ul></div>
 </div><div class="foot-bottom"><span>课堂与自学用途 · 内容依据公开史料编写</span><span>历史图片来自 Wikimedia Commons</span></div></div></footer>
 <button class="to-top" aria-label="回到顶部">↑</button>

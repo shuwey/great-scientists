@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>动手玩一玩 · 三个麦克斯韦小实验 | 读懂麦克斯韦</title>
-<meta name="description" content="三个可直接在网页上操作的互动演示。拖动滑块，亲眼看见麦克斯韦讲过的道理。">
+<meta name="description" content="三个可直接在网页上操作的互动演示：通电导线周围怎样绕出一圈圈磁场、电磁波里电场与磁场怎样结伴向前传、分子速率分布怎样随温度右移变宽。拖动滑块，亲手验证麦克斯韦方程组里的那几件事。">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-base="">
@@ -22,60 +22,74 @@
 <div class="page-head"><div class="wrap">
 <div class="crumb"><a href="index.html">首页</a> · 玩一玩</div>
 <h1>动手玩一玩</h1>
-<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块，亲眼看见麦克斯韦讲过的道理。</p>
+<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块——看电流一开磁场怎样绕着导线转、看电场与磁场怎样互相垂直地一起前进、看加热之后分子速率分布怎样整体右移。</p>
 </div></div>
 <section><div class="wrap">
-    <h2 id="field" style="font-size:25px;margin:8px 0 6px">🔗 实验1 · 电磁场：看不见的力线</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动“场强”，看两根带电棒之间的力线如何变密变疏。</p>
+    <h2 id="field" style="font-size:25px;margin:8px 0 6px">🔗 实验一 · 电流一开，磁场绕着导线转</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">奥斯特发现：导线通电时，旁边的小磁针会偏转。拖动“电流强度”，看导线周围那一圈圈环形磁力线怎样变密变强。</p>
     <div class="lab" data-lab="field">
-      <div class="lab-head"><h4>电磁场：看不见的力线</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">场越强，力线越密——这就是“场”的直观图像。</p>
+      <div class="lab-head"><h4>通电导线周围的磁场</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">磁场是一圈圈闭合的圆环，套在导线外面——越靠近导线越强。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
-          <label>场强 <span class="v">1.0</span></label>
-          <input type="range" data-ctrl="strength" min="0.3" max="1.8" value="1" step="0.1">
+          <label>电流强度 <span class="v">1.0×</span></label>
+          <input type="range" data-ctrl="strength" min="0.2" max="2" value="1" step="0.1">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-    <h2 id="wave" style="font-size:25px;margin:46px 0 6px">🌊 实验2 · 电磁波：振荡着向前传</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动“频率”与“振幅”，看电场与磁场如何结伴向前传播。</p>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>把导线竖直拿着，右手握住它、拇指指向电流方向，四指环绕的方向就是磁场方向——这就是安培定则。麦克斯韦要做的，是把这条“绕圈的磁场”和法拉第的“动起来才有的电”写成同一组方程。详见 <a href="detail/equations.html">麦克斯韦方程组：把电、磁、光写成一体</a>。</p>
+    </div>
+
+
+    <h2 id="wave" style="font-size:25px;margin:46px 0 6px">🌊 实验二 · 电磁波：电场和磁场一起向前跑</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">电场上下振动，磁场垂直于纸面振动，两者互相垂直、步调一致地向前传播。拖动“频率”与“振幅”，看这条波怎样随参数变化。</p>
     <div class="lab" data-lab="wave">
-      <div class="lab-head"><h4>电磁波：振荡着向前传</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">频率越高、波长越短——这正是整条电磁波谱的来历。</p>
+      <div class="lab-head"><h4>E ⊥ B，一起传播</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">E 与 B 同相、互相垂直，方向由 E×B 决定，速度是光速。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
-          <label>频率 <span class="v">1.0</span></label>
-          <input type="range" data-ctrl="freq" min="0.3" max="2" value="1" step="0.1">
+          <label>频率 <span class="v">1.0×</span></label>
+          <input type="range" data-ctrl="freq" min="0.5" max="2" value="1" step="0.1">
         </div>
         <div class="ctrl">
-          <label>振幅 <span class="v">1.0</span></label>
-          <input type="range" data-ctrl="amp" min="0.4" max="1.6" value="1" step="0.1">
+          <label>振幅 <span class="v">1.0×</span></label>
+          <input type="range" data-ctrl="amp" min="0.5" max="1.6" value="1" step="0.1">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-    <h2 id="speed" style="font-size:25px;margin:46px 0 6px">📊 实验3 · 分子速率分布：钟形的一群</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动“加热”，看分子速率的钟形分布如何整体右移、变宽。</p>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>麦克斯韦算出这条波的速度正好是 3×10⁸ m/s——和光速一样。于是他断定：光本身就是电磁波。这是物理学史上最漂亮的一次“顺手发现”。详见 <a href="detail/light.html">光，原来是一种电磁波</a>。</p>
+    </div>
+
+
+    <h2 id="speed" style="font-size:25px;margin:46px 0 6px">📊 实验三 · 分子速率分布：加热之后整群右移</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">气体分子的速率参差不齐。拖动“温度”，看分布曲线怎样右移、变矮变宽——以及跑得够快的分子比例怎样猛增。</p>
     <div class="lab" data-lab="speed">
-      <div class="lab-head"><h4>分子速率分布：钟形的一群</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">温度越高，分子平均跑得越快，快慢差距也越大。</p>
+      <div class="lab-head"><h4>麦克斯韦速率分布</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">温度越高，峰越靠右、曲线越矮越宽；高能分子比例急剧上升。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
-          <label>温度 <span class="v">1.0</span></label>
-          <input type="range" data-ctrl="param1" min="0.3" max="1.8" value="1" step="0.1">
-        </div>
-        <div class="ctrl">
-          <label>展宽 <span class="v">1.0</span></label>
-          <input type="range" data-ctrl="param2" min="0.6" max="2" value="1" step="0.1">
+          <label>温度 <span class="v">1.0×</span></label>
+          <input type="range" data-ctrl="temp" min="0.4" max="2.4" value="1" step="0.1">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-<p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/equations.html">读麦克斯韦方程组：把电、磁、光写成一体 →</a>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>注意阴影部分：温度只升高一点，“跑得快”的分子比例却成倍增长——这就是为什么温度每升高 10℃，反应速率往往快一倍。详见 <a href="detail/gas.html">气体动理论：分子在乱窜</a>。</p>
+    </div>
+
+
+    <p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/equations.html">读麦克斯韦方程组：把电、磁、光写成一体 →</a>
 <a class="btn ghost" href="detail/light.html">读光，原来是一种电磁波 →</a>
 <a class="btn ghost" href="detail/gas.html">读气体动理论：分子在乱窜 →</a>
 <a class="btn ghost" href="detail/rings.html">读土星环：为什么不会散？ →</a></p>
@@ -86,7 +100,7 @@
           <li><a href="detail/light.html">光，原来是一种电磁波</a></li>
           <li><a href="detail/gas.html">气体动理论：分子在乱窜</a></li>
           <li><a href="detail/rings.html">土星环：为什么不会散？</a></li></ul></div>
-<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li>          <li><a href="../../index.html">浏览全部 13 位科学家 →</a></li>
+<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li>          <li><a href="../../index.html">浏览全部 15 位科学家 →</a></li>
         </ul></div>
 </div><div class="foot-bottom"><span>课堂与自学用途 · 内容依据公开史料编写</span><span>历史图片来自 Wikimedia Commons</span></div></div></footer>
 <button class="to-top" aria-label="回到顶部">↑</button>

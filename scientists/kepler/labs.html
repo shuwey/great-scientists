@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>动手玩一玩 · 三个开普勒小实验 | 读懂开普勒</title>
-<meta name="description" content="三个可直接在网页上操作的互动演示。拖动滑块，亲眼看见开普勒讲过的道理。">
+<meta name="description" content="三个可直接在网页上操作的互动演示：椭圆轨道、面积定律、以及 T²∝a³ 的对数拟合。拖动滑块，亲眼看见开普勒怎么把天空写成公式。">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-base="">
@@ -22,10 +22,10 @@
 <div class="page-head"><div class="wrap">
 <div class="crumb"><a href="index.html">首页</a> · 玩一玩</div>
 <h1>动手玩一玩</h1>
-<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块，亲眼看见开普勒讲过的道理。</p>
+<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块——看轨道怎么变扁、看行星扫过的面积为什么总是相等、看八颗行星怎样落在同一条直线上。</p>
 </div></div>
 <section><div class="wrap">
-    <h2 id="ellipse" style="font-size:25px;margin:8px 0 6px">🪐 实验1 · 椭圆轨道：太阳在焦点</h2>
+    <h2 id="ellipse" style="font-size:25px;margin:8px 0 6px">🪐 实验一 · 椭圆轨道：太阳在焦点</h2>
     <p style="color:var(--ink-2);margin-bottom:18px">拖动“离心率”，看行星轨道如何从正圆变扁；注意它靠近太阳时明显更快。</p>
     <div class="lab" data-lab="ellipse">
       <div class="lab-head"><h4>椭圆轨道：太阳在焦点</h4><span class="badge">可拖动</span></div>
@@ -39,11 +39,17 @@
       </div>
       <div class="lab-readout"></div>
     </div>
-    <h2 id="solar" style="font-size:25px;margin:46px 0 6px">🌞 实验2 · 太阳系：行星绕太阳转</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动“动画速度”，看行星按由近及远的次序绕太阳运行——开普勒排定的秩序。</p>
-    <div class="lab" data-lab="solar">
-      <div class="lab-head"><h4>太阳系：行星绕太阳转</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">水星最快、土星最慢；离太阳越远，转一圈越久。</p>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>行星走的不是正圆，是椭圆；太阳不在圆心，而在其中一个焦点上——这就是开普勒第一定律。想看它怎么被从火星数据里抠出来，去看 <a href="detail/mars.html">火星：八年的纠缠</a>。</p>
+    </div>
+
+
+    <h2 id="areal" style="font-size:25px;margin:46px 0 6px">📐 实验二 · 面积定律：快慢不一样，面积一样</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">轨道被切成 12 个扇形，每个扇形行星都花同样的时间走完。拖动“动画速度”看它跑——近日点那段又短又胖，远日点那段又长又瘦，可面积是一样的。</p>
+    <div class="lab" data-lab="areal">
+      <div class="lab-head"><h4>面积定律：等时间扫等面积</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">行星与太阳的连线，在相同的时间里扫过相同的面积。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
@@ -53,25 +59,33 @@
       </div>
       <div class="lab-readout"></div>
     </div>
-    <h2 id="third" style="font-size:25px;margin:46px 0 6px">📈 实验3 · 第三定律：距离与周期</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动滑块改变增长速率，看曲线如何随距离变陡——离太阳越远的行星，公转一圈越久。</p>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>走得快的地方离太阳近，走得慢的地方离太阳远——但连线扫过的面积分毫不差。这就是开普勒第二定律。详见 <a href="detail/laws.html">三大定律：把天空写成公式</a>。</p>
+    </div>
+
+
+    <h2 id="third" style="font-size:25px;margin:46px 0 6px">📈 实验三 · 第三定律：让八颗行星排成一条线</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">横轴是轨道半长轴、纵轴是公转周期，都取了对数，所以“T = a 的 n 次方”画出来就是一条直线。拖动“指数 n”，把这条线拧到八颗行星全都落上去。</p>
     <div class="lab" data-lab="third">
-      <div class="lab-head"><h4>第三定律：距离与周期</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">用一条上升曲线示意：距离越大，完成一圈所需的时间越长。</p>
+      <div class="lab-head"><h4>第三定律：T² ∝ a³</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">对数坐标下，八颗行星几乎落在同一条直线上——直线的斜率就是那个 1.5。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
-          <label>速率 r <span class="v">0.6</span></label>
-          <input type="range" data-ctrl="param1" min="0.3" max="1.5" value="0.6" step="0.1">
-        </div>
-        <div class="ctrl">
-          <label>形状 <span class="v">1.0</span></label>
-          <input type="range" data-ctrl="param2" min="0.5" max="2" value="1" step="0.1">
+          <label>周期指数 n <span class="v">1.00</span></label>
+          <input type="range" data-ctrl="power" min="1" max="2" value="1" step="0.01">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-<p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/laws.html">读三大定律：把天空写成公式 →</a>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>当 n 拧到 1.50，八颗行星——从水星到海王星，跨越 78 倍的距离——全部落在同一条直线上。开普勒当年手上只有 6 颗行星的数据（水星到土星）；天王星、海王星是后来才发现的，却也同样落在这条线上——这才是这条定律最厉害的地方。写成公式就是 T² ∝ a³。想读完整故事去看 <a href="detail/laws.html">三大定律：把天空写成公式</a>。</p>
+    </div>
+
+
+    <p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/laws.html">读三大定律：把天空写成公式 →</a>
 <a class="btn ghost" href="detail/mars.html">读火星：八年的纠缠 →</a>
 <a class="btn ghost" href="detail/optics.html">读光学：眼睛、透镜与暗箱 →</a>
 <a class="btn ghost" href="detail/rudolphine.html">读鲁道夫星表：星空的使用说明书 →</a></p>
@@ -82,7 +96,7 @@
           <li><a href="detail/mars.html">火星：八年的纠缠</a></li>
           <li><a href="detail/optics.html">光学：眼睛、透镜与暗箱</a></li>
           <li><a href="detail/rudolphine.html">鲁道夫星表：星空的使用说明书</a></li></ul></div>
-<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li>          <li><a href="../../index.html">浏览全部 13 位科学家 →</a></li>
+<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li>          <li><a href="../../index.html">浏览全部 15 位科学家 →</a></li>
         </ul></div>
 </div><div class="foot-bottom"><span>课堂与自学用途 · 内容依据公开史料编写</span><span>历史图片来自 Wikimedia Commons</span></div></div></footer>
 <button class="to-top" aria-label="回到顶部">↑</button>

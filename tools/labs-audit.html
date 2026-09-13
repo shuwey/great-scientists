@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>「玩一玩」实验板块审计报告 · 影响世界的15个科学家</title>
+<style>
+:root{
+  --ink:#1B2233; --ink2:#55617A; --ink3:#8B96AA; --line:#E4E8F0;
+  --bg:#F6F8FC; --card:#FFFFFF; --blue:#3B5BDB; --blue2:#EEF2FF;
+  --red:#D93B3B; --redbg:#FDF0F0; --amber:#B8791A; --amberbg:#FFF8EC;
+  --green:#1F8A5B; --greenbg:#EFFAF4; --purple:#6B3FA0; --purplebg:#F5F0FC;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:15px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Segoe UI",sans-serif;}
+.wrap{max-width:1080px;margin:0 auto;padding:36px 24px 72px}
+h1{font-size:29px;margin:0 0 8px;letter-spacing:-.4px}
+.sub{color:var(--ink2);font-size:14.5px;margin:0 0 6px}
+.meta{color:var(--ink3);font-size:13px;margin:0 0 30px}
+h2{font-size:20px;margin:44px 0 6px;padding-bottom:9px;border-bottom:2px solid var(--line)}
+h2 .n{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;
+  background:var(--blue);color:#fff;font-size:14px;margin-right:9px;vertical-align:2px}
+h3{font-size:16px;margin:26px 0 8px}
+p{margin:9px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0 6px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.kpi b{display:block;font-size:26px;line-height:1.25;letter-spacing:-.5px}
+.kpi span{font-size:12.5px;color:var(--ink3)}
+.kpi.r b{color:var(--red)} .kpi.a b{color:var(--amber)} .kpi.g b{color:var(--green)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);
+  border-radius:10px;overflow:hidden;font-size:13.5px;margin:12px 0}
+th{background:#F0F3F9;text-align:left;padding:10px 12px;font-weight:600;color:var(--ink2);font-size:12.5px}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+code{background:#F0F3F9;padding:1px 6px;border-radius:5px;font-size:12.5px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#3A4661}
+.tag{display:inline-block;padding:1px 8px;border-radius:999px;font-size:11.5px;font-weight:600;white-space:nowrap}
+.t-red{background:var(--redbg);color:var(--red)} .t-amber{background:var(--amberbg);color:var(--amber)}
+.t-blue{background:var(--blue2);color:var(--blue)} .t-green{background:var(--greenbg);color:var(--green)}
+.t-purple{background:var(--purplebg);color:var(--purple)}
+.fix{background:var(--blue2);border:1px solid #D3DDFB;border-radius:10px;padding:13px 16px;margin:14px 0;font-size:14px}
+.fix b{color:var(--blue)}
+blockquote{margin:12px 0;padding:11px 15px;background:#FFF8EC;border-left:3px solid var(--amber);
+  border-radius:0 8px 8px 0;color:#6B5426;font-size:13.5px}
+.ok{background:var(--greenbg);border:1px solid #CDEEDC;border-radius:10px;padding:14px 17px;margin:14px 0}
+.ok b{color:var(--green)}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:var(--ink2)}
+ul{margin:8px 0;padding-left:22px} li{margin:5px 0}
+.small{font-size:13px;color:var(--ink3)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>「玩一玩」实验板块审计报告</h1>
+<p class="sub">对象：<b>影响世界的 15 个科学家</b>系列站点 · <code>scientists/&lt;id&gt;/labs.html</code> + <code>assets/js/site.js</code> 中的 Canvas 实验</p>
+<p class="meta">审计范围：15 个站点 × 3 个实验 = 45 个互动实验 &nbsp;·&nbsp; 方法：HTML 控件与 JS 函数体静态比对 + 函数体相似度聚类</p>
+
+<div class="kpis">
+  <div class="kpi"><b>45</b><span>实验总数</span></div>
+  <div class="kpi r"><b>31</b><span>来自共享模板（69%）</span></div>
+  <div class="kpi a"><b>9</b><span>重复模板簇</span></div>
+  <div class="kpi g"><b>14</b><span>真正原创的实验</span></div>
+</div>
+
+<h2><span class="n">1</span>先说结论</h2>
+<div class="card">
+<p>整个系列的 45 个实验里，<b>只有 14 个是该科学家专属的原创实现</b>，其余 31 个来自 9 个被反复复制粘贴的通用模板。功能上都能跑通（滑块接线正确、没有空白画布），问题全部出在<b>内容层</b>：</p>
+<ul>
+  <li><span class="tag t-red">完全重复</span> 2 组函数是<b>字节级 100% 相同</b>的——哥白尼与开普勒各有一对实验一模一样。</li>
+  <li><span class="tag t-amber">换标题不换内容</span> 一个"通用曲线"模板被用在 <b>12 个实验</b>里，横跨玻尔、哥白尼、达尔文、费曼、霍金、开普勒、麦克斯韦、门捷列夫、巴斯德、图灵 10 个站点。</li>
+  <li><span class="tag t-purple">主题错配</span> 若干实验的画面与该科学家的核心命题不符，个别甚至图文自相矛盾（见第 3 节）。</li>
+  <li><span class="tag t-blue">文案污染</span> 一句来自牛顿微积分语境的"万能兜底句"出现在 10 个站点的 12 个实验里。</li>
+</ul>
+</div>
+
+<h2><span class="n">2</span>重复问题：9 个模板簇</h2>
+<p>以函数体相似度 ≥0.95 做连通聚类，得到 9 簇。下表中"同源"表示可认定是从同一份代码复制而来。</p>
+
+<h3>簇 1 · 通用曲线模板（12 个实验）<span class="tag t-red" style="margin-left:8px">最严重</span></h3>
+<p class="small">同一份"画一条曲线 + 两个滑块"的代码，槽位为 <code>param1</code>/<code>param2</code>，通过 <code>expr</code> 参数在 gauss / growth / sine / exp 四种曲线间切换。</p>
+<table>
+<tr><th>站点</th><th>实验卡片标题</th><th>data-lab</th><th>画的曲线</th><th>判定</th></tr>
+<tr><td>玻尔</td><td>谱线在哪里？</td><td><code>lines</code></td><td>高斯峰</td><td><span class="tag t-blue">模板源头</span></td></tr>
+<tr><td>哥白尼</td><td>行星的"逆行"错觉</td><td><code>retro</code></td><td>正弦曲线</td><td><span class="tag t-amber">同源</span></td></tr>
+<tr><td>哥白尼</td><td>越远越慢：距离与周期</td><td><code>speed</code></td><td>增长曲线</td><td><span class="tag t-red">与开普勒完全相同</span></td></tr>
+<tr><td>开普勒</td><td>第三定律：距离与周期</td><td><code>third</code></td><td>增长曲线</td><td><span class="tag t-red">与哥白尼完全相同</span></td></tr>
+<tr><td>达尔文</td><td>选择压力：分布整体偏移</td><td><code>selection</code></td><td>高斯峰</td><td><span class="tag t-amber">同源</span></td></tr>
+<tr><td>费曼</td><td>落点的概率分布</td><td><code>dist</code></td><td>高斯峰</td><td><span class="tag t-amber">同源</span></td></tr>
+<tr><td>霍金</td><td>霍金辐射的温度</td><td><code>temp</code></td><td>高斯峰</td><td><span class="tag t-amber">同源</span></td></tr>
+<tr><td>麦克斯韦</td><td>分子速率分布：钟形的一群</td><td><code>speed</code></td><td>高斯峰</td><td><span class="tag t-amber">同源</span></td></tr>
+<tr><td>门捷列夫</td><td>周期律：性质起起伏伏</td><td><code>trend</code></td><td>正弦曲线</td><td><span class="tag t-amber">同源</span></td></tr>
+<tr><td>门捷列夫</td><td>留白的格子：预言的位置</td><td><code>fill</code></td><td>高斯峰</td><td><span class="tag t-amber">同源</span></td></tr>
+<tr><td>巴斯德</td><td>巴氏杀菌：加热后存活陡降</td><td><code>heat</code></td><td>曲线</td><td><span class="tag t-amber">同源</span></td></tr>
+<tr><td>图灵</td><td>可计算的"波形"</td><td><code>signal</code></td><td>曲线</td><td><span class="tag t-amber">同源</span></td></tr>
+</table>
+<p><b>视觉后果：</b>玻尔的"谱线"、费曼的"落点概率分布"、霍金的"辐射温度"、麦克斯韦的"分子速率分布"、门捷列夫的"缺失格子"——<b>这五张图是同一条高斯钟形曲线</b>，学生跨站浏览时看到的是同一幅画。</p>
+
+<h3>簇 2 · 波动模板（4 个实验）</h3>
+<table>
+<tr><th>站点</th><th>实验</th><th>data-lab</th></tr>
+<tr><td>居里夫人</td><td>X 射线：高频的电磁波</td><td><code>xray</code></td></tr>
+<tr><td>法拉第</td><td>线圈里流出的交流电</td><td><code>ac</code></td></tr>
+<tr><td>费曼</td><td>概率幅的干涉</td><td><code>interfere</code></td></tr>
+<tr><td>麦克斯韦</td><td>电磁波：振荡着向前传</td><td><code>wave</code></td></tr>
+</table>
+<p class="small">相似度 0.99。居里夫人的 X 射线与麦克斯韦的电磁波在物理上本就是同类，重合尚可理解；但费曼的"概率幅干涉"复用同一份代码，就失去了量子叠加的独特性。</p>
+
+<h3>簇 3 · 分叉树模板（3 个实验）</h3>
+<table>
+<tr><th>站点</th><th>实验</th><th>data-lab</th><th>备注</th></tr>
+<tr><td>达尔文</td><td>生命之树：从一根到千万枝</td><td><code>tree</code></td><td><span class="tag t-green">主题原生</span></td></tr>
+<tr><td>巴斯德</td><td>传染扩散：从一例到一片</td><td><code>spread</code></td><td><span class="tag t-amber">类比借用</span></td></tr>
+<tr><td>图灵</td><td>一条规则，万千可能</td><td><code>tree</code></td><td><span class="tag t-amber">类比借用</span></td></tr>
+</table>
+<p class="small">相同度 0.96，连 readout 文案"从一根主干开始，每演化一级就一分为二……"都是同一句。而达尔文页写的是"生命之树"、巴斯德页写的是"传播级数"、图灵页写的是"形态发生"——<b>同一个分叉动画被贴上三个完全不同的标签</b>。</p>
+
+<h3>簇 4–9 · 其余同源对</h3>
+<table>
+<tr><th>簇</th><th>站点 A</th><th>站点 B</th><th>共用的画面</th><th>相似度</th></tr>
+<tr><td>簇 4</td><td>玻尔 · 原子的"楼层"（<code>shells</code>）</td><td>居里夫人 · 放射性原子（<code>atom</code>）</td><td>电子壳层绕核图</td><td>0.99</td></tr>
+<tr><td>簇 5</td><td>玻尔 · 允许的轨道（<code>orbit</code>）</td><td>霍金 · 绕着黑洞转（<code>orbit</code>）</td><td>中心天体 + 环绕点</td><td>0.98</td></tr>
+<tr><td>簇 6</td><td>哥白尼 · 太阳系（<code>solar</code>）</td><td>开普勒 · 太阳系（<code>solar</code>）</td><td>行星绕太阳</td><td><span class="tag t-red">1.00 字节级相同</span></td></tr>
+<tr><td>簇 7</td><td>居里夫人 · 新元素坐在哪（<code>elements</code>）</td><td>门捷列夫 · 排一排（<code>grid</code>）</td><td>完整的元素周期表</td><td>0.99</td></tr>
+<tr><td>簇 8</td><td>达尔文 · 种群增长（<code>population</code>）</td><td>巴斯德 · 细菌增长（<code>colony</code>）</td><td>指数/S 形增长双线图</td><td>0.99</td></tr>
+<tr><td>簇 9</td><td>法拉第 · 铁屑磁力线（<code>lines</code>）</td><td>麦克斯韦 · 电场力线（<code>field</code>）</td><td>箭头力线场</td><td>0.99</td></tr>
+</table>
+
+<div class="fix">
+<b>两处"一字不差"的重灾区</b><br>
+① <b>哥白尼 / 开普勒 的"太阳系"实验</b>：卡片标题、实验说明、控件、绘制代码<b>全部完全相同</b>。两个站第 2 个实验在浏览器里长得一模一样。<br>
+② <b>哥白尼 / 开普勒 的"距离与周期"实验</b>：同样字节级相同，连实验说明"用一条上升曲线示意：距离越大，完成一圈所需的时间越长。"都一字不差——哥白尼页的第 3 个实验，其实就是开普勒第三定律。
+</div>
+
+<h2><span class="n">3</span>不匹配问题：画面与科学家对不上</h2>
+<p>这一类更隐蔽——能跑、好看，但<b>讲错了东西</b>。按严重程度排序：</p>
+
+<table>
+<tr><th>严重度</th><th>站点 / 实验</th><th>问题</th></tr>
+<tr>
+  <td><span class="tag t-red">高</span></td>
+  <td><b>哥白尼 · 越远越慢：距离与周期</b></td>
+  <td>这是<b>开普勒第三定律</b>的内容，引导语写"离太阳越远的行星，公转一圈越久"。哥白尼 1543 年去世，该定律 1619 年才发表——页面出现<b>时代错位</b>，且与开普勒页完全重复。</td>
+</tr>
+<tr>
+  <td><span class="tag t-red">高</span></td>
+  <td><b>居里夫人 · 放射性原子：自发放线</b></td>
+  <td>画的是玻尔的<b>电子壳层绕核图</b>（与玻尔页 0.99 相同），说明文字却写"射线来自原子核内部"。<b>画面与自己的说明相矛盾</b>：放射性是核内过程，壳层图讲的是光谱与化学。</td>
+</tr>
+<tr>
+  <td><span class="tag t-red">高</span></td>
+  <td><b>居里夫人 · 新元素坐在哪？</b></td>
+  <td>直接调用门捷列夫的<b>元素周期表模板</b>，连读数文案都是门捷列夫的口径："纵列（族）同色，表示化学性质相近；横行（周期）代表电子多一层。"居里夫人页面里在讲周期表。</td>
+</tr>
+<tr>
+  <td><span class="tag t-amber">中</span></td>
+  <td><b>玻尔 · 允许的轨道</b></td>
+  <td>玻尔理论的核心是"轨道<b>离散</b>、只能待在某些固定半径"。但这个实验画的是<b>连续绕转</b>，且与哥白尼的行星轨道同源——恰好把玻尔最想否定的"连续任意轨道"画了出来，与主题<b>南辕北辙</b>。</td>
+</tr>
+<tr>
+  <td><span class="tag t-amber">中</span></td>
+  <td><b>霍金 · 绕着黑洞转</b></td>
+  <td>复用玻尔"允许的轨道"模板（0.98），读数输出的是"时间 ≈"。讲黑洞附近的时空轨道，给的却是"时间"参数，且画面与玻尔页几乎一致。</td>
+</tr>
+<tr>
+  <td><span class="tag t-amber">中</span></td>
+  <td><b>图灵 · 可计算的"波形"</b></td>
+  <td>实际就是簇 1 的通用曲线，说明写"参数一动，曲线就变"——与可计算性、图灵机、判定问题<b>没有任何关系</b>，是一句空洞的填充。</td>
+</tr>
+<tr>
+  <td><span class="tag t-amber">中</span></td>
+  <td><b>巴斯德 · 巴氏杀菌</b></td>
+  <td>簇 1 通用曲线，读数输出"用数学描述自然"。杀菌是微生物学的经验曲线，与"用数学描述自然"的牛顿语境无关。</td>
+</tr>
+<tr>
+  <td><span class="tag t-blue">低</span></td>
+  <td><b>门捷列夫 · 留白的格子</b></td>
+  <td>用一条高斯钟形峰表示"这里缺一个元素"，比喻牵强；且与玻尔谱线、费曼分布、霍金温度是同一张图。</td>
+</tr>
+</table>
+
+<h2><span class="n">4</span>文案污染：一句"万能兜底句"</h2>
+<blockquote>"拖动滑块改变参数，看曲线如何随之改变——这是"用数学描述自然"的最小示范。"</blockquote>
+<p>这句话是<b>静态常量</b>，写死在函数里：拖动滑块时<b>这句永远不变</b>，只有曲线在动。它明显来自牛顿"用数学描述自然"（微积分）的语境，却被复制到了下面 10 个站点的 12 个实验：</p>
+<table>
+<tr><th>站点</th><th>落入该文案的实验</th></tr>
+<tr><td>玻尔</td><td>谱线在哪里？（<code>lab_lines</code>）</td></tr>
+<tr><td>哥白尼</td><td>行星的"逆行"错觉（<code>lab_retro</code>）、越远越慢（<code>lab_speed</code>）</td></tr>
+<tr><td>达尔文</td><td>选择压力（<code>lab_selection</code>）</td></tr>
+<tr><td>费曼</td><td>落点的概率分布（<code>lab_dist</code>）</td></tr>
+<tr><td>霍金</td><td>霍金辐射的温度（<code>lab_temp</code>）</td></tr>
+<tr><td>开普勒</td><td>第三定律（<code>lab_third</code>）</td></tr>
+<tr><td>麦克斯韦</td><td>分子速率分布（<code>lab_speed</code>）</td></tr>
+<tr><td>门捷列夫</td><td>周期律（<code>lab_trend</code>）、留白的格子（<code>lab_fill</code>）</td></tr>
+<tr><td>巴斯德</td><td>巴氏杀菌（<code>lab_heat</code>）</td></tr>
+<tr><td>图灵</td><td>可计算的"波形"（<code>lab_signal</code>）</td></tr>
+</table>
+<p class="small">附带影响：因为这句话恒定不变，这类实验的读数区在拖动时<b>没有任何反馈变化</b>。此前的浏览器自动化检查只覆盖每个站的"第一个实验"，所以这批问题没有被拦下来。</p>
+
+<h2><span class="n">5</span>健康的部分</h2>
+<div class="ok">
+<b>3 位科学家的 9 个实验全部原创、互不重复，质量明显在另一个层级：</b>
+<ul>
+  <li><b>牛顿</b>（棱镜分光 / 万有引力 / 抛体运动）—— 代码体量 3300 字符上下，含发射动画</li>
+  <li><b>伽利略</b>（斜面滚球 / 木星卫星 / 单摆周期）—— 各自独立实现</li>
+  <li><b>爱因斯坦</b>（时间膨胀 / 光电效应 / 引力弯曲）—— 各自独立实现</li>
+</ul>
+<p>另有 5 个实验是站点独有的原创：法拉第「磁铁穿过线圈」、费曼「把每一条路都走一遍」、霍金「走近黑洞」、开普勒「椭圆轨道」、图灵「亲手跑一台图灵机」。</p>
+<p class="small">这 3 位正是系列最早建成的子站（牛顿为模板原型，伽利略、爱因斯坦随后手工精修），后期用 <code>tools/build_scientist.py</code> 批量生成的站点则大量复用了模板库。</p>
+</div>
+
+<h2><span class="n">6</span>修复优先级建议</h2>
+<table>
+<tr><th>优先级</th><th>动作</th><th>涉及范围</th></tr>
+<tr><td><span class="tag t-red">P0</span></td><td>重做哥白尼页的实验 2、3，与开普勒去重；哥白尼页移除开普勒第三定律，改为日心说的"本轮简化"或"视差难题"</td><td>2 个实验</td></tr>
+<tr><td><span class="tag t-red">P0</span></td><td>居里夫人页重做实验 1、3：实验 1 改为α/β/γ 三种射线的穿透对比（而非电子壳层）；实验 3 改为"放射性强度的衰减曲线"，不要用周期表</td><td>2 个实验</td></tr>
+<tr><td><span class="tag t-amber">P1</span></td><td>拆除簇 1 通用曲线模板：为玻尔谱线、费曼概率分布、霍金辐射、麦克斯韦速率分布、门捷列夫周期律各写专属实现（至少改成视觉可区分的四类图：谱线组、概率直方、温度-质量反比曲线、周期性折线）</td><td>12 个实验</td></tr>
+<tr><td><span class="tag t-amber">P1</span></td><td>玻尔「允许的轨道」改成"能级阶梯 + 只能落在离散档位"，做出量子化的关键视觉</td><td>1 个实验</td></tr>
+<tr><td><span class="tag t-blue">P2</span></td><td>删除"用数学描述自然"兜底句，替换为各自主题的动态读数（顺带解决拖滑块读数不变的问题）</td><td>12 个实验</td></tr>
+<tr><td><span class="tag t-blue">P2</span></td><td>图灵「可计算的波形」改为真正体现可计算性的实验（如规则 110 / 简单元胞自动机）</td><td>1 个实验</td></tr>
+<tr><td><span class="tag t-green">P3</span></td><td>在 <code>build_scientist.py</code> 与 <code>lab_templates.py</code> 中加入"同簇实验不得超过 X 次"的校验，避免同类模板继续扩散</td><td>构建流程</td></tr>
+</table>
+
+<p class="small" style="margin-top:34px">审计工具：<code>tools/audit_labs.py</code>（结构比对）、<code>tools/audit_labs_bodies.py</code>（函数体相似度聚类）。两项均为只读检查，未改动站点任何文件。</p>
+
+</div>
+</body>
+</html>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>动手玩一玩 · 三个哥白尼小实验 | 读懂哥白尼</title>
-<meta name="description" content="三个可直接在网页上操作的互动演示。拖动滑块，亲眼看见哥白尼讲过的道理。">
+<meta name="description" content="三个可直接在网页上操作的互动演示：太阳在中心的行星次序、火星为什么会在天上倒退、以及恒星视差。拖动滑块，亲眼看见哥白尼要证明的道理。">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-base="">
@@ -22,14 +22,14 @@
 <div class="page-head"><div class="wrap">
 <div class="crumb"><a href="index.html">首页</a> · 玩一玩</div>
 <h1>动手玩一玩</h1>
-<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块，亲眼看见哥白尼讲过的道理。</p>
+<p class="big-claim">光看文字不够直观？下面三个小实验，你直接用鼠标拖动滑块——看行星绕太阳排队、看火星在天上倒退、看恒星视差为什么测不出来。</p>
 </div></div>
 <section><div class="wrap">
-    <h2 id="solar" style="font-size:25px;margin:8px 0 6px">🌞 实验1 · 太阳系：行星绕太阳转</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动“动画速度”，看行星如何按由近及远的次序绕太阳运行。哥白尼让太阳坐到了中心。</p>
+    <h2 id="solar" style="font-size:25px;margin:8px 0 6px">🌞 实验一 · 太阳在中心，行星排队转</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">拖动“动画速度”，看六颗行星按由近及远的次序绕太阳运行。注意地球：它只是第三颗，和别的行星一样在跑——这正是哥白尼最让人难以接受的地方。</p>
     <div class="lab" data-lab="solar">
-      <div class="lab-head"><h4>太阳系：行星绕太阳转</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">水星最快、土星最慢；离太阳越远，转一圈越久。</p>
+      <div class="lab-head"><h4>太阳系：行星各走各的圆</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">离太阳越远，绕一圈就越久；地球排在第三位，并不特殊。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
@@ -39,43 +39,53 @@
       </div>
       <div class="lab-readout"></div>
     </div>
-    <h2 id="retro" style="font-size:25px;margin:46px 0 6px">📉 实验2 · 行星的“逆行”错觉</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动滑块，看一条会“折返”的曲线——这正是地心说要用复杂本轮去硬凑、日心说却自然解释的现象。</p>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>太阳在正中心，六颗行星各走各的圆，地球只是其中普通的一颗。想知道哥白尼为什么敢这么改，去看 <a href="detail/heliocentric.html">日心说：太阳坐到中心</a>。</p>
+    </div>
+
+
+    <h2 id="retro" style="font-size:25px;margin:46px 0 6px">📉 实验二 · 火星为什么会倒退</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">左边是俯视图：地球在内圈跑得快，火星在外圈跑得慢。右边是火星在“天上”的位置随时间的变化——红色那一段，就是它在倒退。</p>
     <div class="lab" data-lab="retro">
-      <div class="lab-head"><h4>行星的“逆行”错觉</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">横轴是时间，纵轴是行星在天上的位置；中间的“折返”就是逆行。</p>
+      <div class="lab-head"><h4>逆行：地球超车时的错觉</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">地球追上并超过火星的那一刻，地球到火星的视线会短暂地反向转动。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
-          <label>振幅 A <span class="v">1.0</span></label>
-          <input type="range" data-ctrl="param1" min="0.5" max="2" value="1" step="0.1">
-        </div>
-        <div class="ctrl">
-          <label>频率 k <span class="v">1.0</span></label>
-          <input type="range" data-ctrl="param2" min="0.5" max="2" value="1" step="0.1">
+          <label>动画速度 <span class="v">1.0×</span></label>
+          <input type="range" data-ctrl="speed" min="0.2" max="3" value="1" step="0.1">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-    <h2 id="speed" style="font-size:25px;margin:46px 0 6px">🐢 实验3 · 越远越慢：距离与周期</h2>
-    <p style="color:var(--ink-2);margin-bottom:18px">拖动滑块改变增长速率，看曲线如何随距离变陡——离太阳越远的行星，公转一圈越久。</p>
-    <div class="lab" data-lab="speed">
-      <div class="lab-head"><h4>越远越慢：距离与周期</h4><span class="badge">可拖动</span></div>
-      <p class="lab-desc">用一条上升曲线示意：距离越大，完成一圈所需的时间越长。</p>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>火星并没有真的倒退——是地球从内圈超车时，我们的视线被迫转了回来。地心说要靠一层套一层的“本轮”才能凑出这个现象，日心说却一句话就解释完了。详见 <a href="detail/earthmotion.html">地球真的在动</a>。</p>
+    </div>
+
+
+    <h2 id="parallax" style="font-size:25px;margin:46px 0 6px">🔭 实验三 · 恒星视差：当年为什么测不出</h2>
+    <p style="color:var(--ink-2);margin-bottom:18px">地球半年走出一段基线，看一颗恒星时，它在背景上的位置应该会来回摆动。拖动“恒星距离”，看这段摆动怎样被拉小——小到当年的仪器根本测不出来。</p>
+    <div class="lab" data-lab="parallax">
+      <div class="lab-head"><h4>恒星视差</h4><span class="badge">可拖动</span></div>
+      <p class="lab-desc">恒星越远，视差越小；距离翻倍，摆动的角度就减半。</p>
       <canvas></canvas>
       <div class="lab-controls">
         <div class="ctrl">
-          <label>速率 r <span class="v">0.6</span></label>
-          <input type="range" data-ctrl="param1" min="0.3" max="1.5" value="0.6" step="0.1">
-        </div>
-        <div class="ctrl">
-          <label>形状 <span class="v">1.0</span></label>
-          <input type="range" data-ctrl="param2" min="0.5" max="2" value="1" step="0.1">
+          <label>恒星距离（秒差距） <span class="v">20</span></label>
+          <input type="range" data-ctrl="dist" min="5" max="60" value="20" step="1">
         </div>
       </div>
       <div class="lab-readout"></div>
     </div>
-<p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/heliocentric.html">读日心说：太阳坐到中心 →</a>
+    <div class="callout" style="margin-top:18px">
+      <span class="ct">🧠 看明白了吗？</span>
+      <p>日心说预言了恒星视差，可当年最好的仪器只能测到约 0.1 角秒，星星的摆动小到根本看不出来——这反倒成了反对日心说的理由。直到 1838 年，贝塞尔才测出第一颗恒星的视差。详见 <a href="detail/copernican.html">哥白尼革命</a>。</p>
+    </div>
+
+
+    <p style="text-align:center;margin-top:40px"><a class="btn ghost" href="detail/heliocentric.html">读日心说：太阳坐到中心 →</a>
 <a class="btn ghost" href="detail/revolutionibus.html">读《天体运行论》 →</a>
 <a class="btn ghost" href="detail/earthmotion.html">读地球真的在动 →</a>
 <a class="btn ghost" href="detail/copernican.html">读哥白尼革命 →</a></p>
@@ -86,7 +96,7 @@
           <li><a href="detail/revolutionibus.html">《天体运行论》</a></li>
           <li><a href="detail/earthmotion.html">地球真的在动</a></li>
           <li><a href="detail/copernican.html">哥白尼革命</a></li></ul></div>
-<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li>          <li><a href="../../index.html">浏览全部 13 位科学家 →</a></li>
+<div><h5>更多</h5><ul><li><a href="labs.html">动手玩一玩</a></li><li><a href="glossary.html">术语词典</a></li><li><a href="about.html">资料来源</a></li>          <li><a href="../../index.html">浏览全部 15 位科学家 →</a></li>
         </ul></div>
 </div><div class="foot-bottom"><span>课堂与自学用途 · 内容依据公开史料编写</span><span>历史图片来自 Wikimedia Commons</span></div></div></footer>
 <button class="to-top" aria-label="回到顶部">↑</button>
