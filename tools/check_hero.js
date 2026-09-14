@@ -31,4 +31,5 @@ const srv = http.createServer((req,res)=>{
     }
   }
   await browser.close(); srv.close();
+  setTimeout(() => process.exit(0), 300);
 })();

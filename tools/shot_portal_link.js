@@ -18,4 +18,5 @@ const srv = http.createServer((q,s)=>{let p=path.join(root,decodeURIComponent(q.
   await pg.click('.nav-toggle'); await pg.waitForTimeout(300);
   await pg.screenshot({path:path.join(SHOTS,'portallink-mobile.png')});
   await b.close(); srv.close(); console.log('ok');
+  setTimeout(() => process.exit(0), 300);
 })();

@@ -196,4 +196,5 @@ const shot = (name) => `${SHOTS}/${ID}_${name}.png`;
 
   fs.writeFileSync(path.join(SHOTS, `e2e_report_${ID}.json`), JSON.stringify(report, null, 2));
   console.log(`\n=== 报告已写 ${path.relative(ROOT, SHOTS)}/e2e_report_${ID}.json ===`);
+  setTimeout(() => process.exit(0), 300);
 })();

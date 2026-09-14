@@ -132,6 +132,7 @@ const setSlider = (idx, which, val) => ({ idx, which, val });
     fs.writeFileSync(path.join(SHOTS, 'new_labs_report.json'), JSON.stringify(report, null, 1));
     console.log(`\n报告已写 ${path.relative(ROOT, SHOTS)}/new_labs_report.json`);
   }
+  setTimeout(() => process.exit(0), 300);
 })();
 
 function idx0(i) { return i; }

@@ -36,4 +36,5 @@ const JOBS = [
   }
   console.log('运行时报错:', errs.length, errs.slice(0,3));
   await b.close(); srv.close();
+  setTimeout(() => process.exit(0), 300);
 })();

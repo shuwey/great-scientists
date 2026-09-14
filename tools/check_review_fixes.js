@@ -91,4 +91,5 @@ const PAGES = [
   }
   console.log(fails === 0 ? '\n✅ 全部通过（0 报错 / 0 缺资源 / 文案与结构断言全过）' : `\n⚠️ ${fails} 项异常`);
   await browser.close(); srv.close();
+  setTimeout(() => process.exit(0), 300);
 })();

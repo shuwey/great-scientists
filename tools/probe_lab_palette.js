@@ -118,4 +118,5 @@ function scan() {
   } finally {
     srv.kill();
   }
+  setTimeout(() => process.exit(0), 300);
 })();

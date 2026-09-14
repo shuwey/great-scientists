@@ -58,4 +58,5 @@ const waitServer = () => new Promise((res, rej) => {
     await browser.close();
     console.log(`\n✅ 已写入 ${OUT}/p0_${STAGE}_*.png`);
   } catch (e) { console.error('❌', e.message); } finally { srv.kill(); }
+  setTimeout(() => process.exit(0), 300);
 })();

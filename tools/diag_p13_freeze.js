@@ -88,4 +88,5 @@ function clickAnim(a) {
     }
     await browser.close();
   } catch (e) { console.error('❌', e.message); } finally { srv.kill(); }
+  setTimeout(() => process.exit(0), 300);
 })();

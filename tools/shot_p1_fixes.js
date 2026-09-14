@@ -92,4 +92,5 @@ function pause(a) {
     await browser.close();
     console.log('\n✅ 全部写入 ' + OUT);
   } catch (e) { console.error('❌', e.message); } finally { srv.kill(); }
+  setTimeout(() => process.exit(0), 300);
 })();

@@ -200,4 +200,5 @@ function installer() {
     fs.writeFileSync(path.join(OUT, '_measured.json'), JSON.stringify(all, null, 1));
     console.log(`\n✅ 实测数据 → ${OUT}/_measured.json（${all.length} 条）`);
   } catch (e) { console.error('❌', e.message); } finally { srv.kill(); }
+  setTimeout(() => process.exit(0), 300);
 })();

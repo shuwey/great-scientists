@@ -69,4 +69,5 @@ function waitServer() {
   } finally {
     srv.kill();
   }
+  setTimeout(() => process.exit(0), 300);
 })();

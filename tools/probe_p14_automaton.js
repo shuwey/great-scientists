@@ -124,4 +124,5 @@ function measure(args) {
     console.log(errs.length ? errs.join('\n') : '  ✅ 无 pageerror / console.error');
     console.log('✅ 截图已写入 ' + OUT);
   } catch (e) { console.error('❌', e.message); } finally { srv.kill(); }
+  setTimeout(() => process.exit(0), 300);
 })();

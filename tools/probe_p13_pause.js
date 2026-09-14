@@ -76,9 +76,10 @@ function clickLaunch(i) {
   const srv = spawn(PY, ['-m', 'http.server', String(PORT), '--directory', ROOT], { stdio: 'ignore' });
   const errs = [];
   let nBtn = 0, nFrozen = 0, nStep = 0, nResume = 0, nAnimated = 0, nDup = 0;
+  let browser = null;
   try {
     await waitServer();
-    const browser = await chromium.launch();
+    browser = await chromium.launch();
     const pg = await browser.newPage({ viewport: { width: VW, height: 1200 }, deviceScaleFactor: 1 });
     pg.setDefaultTimeout(20000);
     pg.on('pageerror', (e) => errs.push('pageerror: ' + e.message));
@@ -169,5 +170,12 @@ function clickLaunch(i) {
     console.log(`   按钮行重复 ${nDup} 个实验`);
     console.log('\n== 运行时错误 ==');
     console.log(errs.length ? errs.join('\n') : '  ✅ 无 pageerror / console.error');
-  } catch (e) { console.error('❌', e.message); } finally { srv.kill(); }
+  } catch (e) { console.error('❌', e.message); }
+  finally {
+    try { if (browser) await browser.close(); } catch (_) {}
+    try { srv.kill(); } catch (_) {}
+    /* 兜底退出：Playwright/Chromium 残留的 socket/pipe 句柄会拖住事件循环，
+       使脚本跑完却永不退出（此前曾挂起 8h）。强制退出收尾。 */
+    setTimeout(() => process.exit(0), 300);
+  }
 })();

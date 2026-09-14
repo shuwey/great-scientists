@@ -21,4 +21,5 @@ const srv = http.createServer((req,res)=>{
   await page.screenshot({path:path.join(SHOTS,'hero-fixed-galileo.png')});
   await browser.close(); srv.close();
   console.log('shots done');
+  setTimeout(() => process.exit(0), 300);
 })();

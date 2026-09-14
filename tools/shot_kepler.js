@@ -20,4 +20,5 @@ const srv = http.createServer((q,s)=>{let p=path.join(root,decodeURIComponent(q.
   await pg.screenshot({path:path.join(SHOTS,'kepler-laws-fixed.png')});
   console.log('hero 加载:',heroOk,'| laws 配图加载:',figOk,'| 报错:',errs.length);
   await b.close(); srv.close();
+  setTimeout(() => process.exit(0), 300);
 })();

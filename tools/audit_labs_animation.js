@@ -240,4 +240,5 @@ const meanAbsDiff = (a, b) => {
   }
   fs.writeFileSync(path.join(OUT, '_summary.json'), JSON.stringify({ stations: Object.keys(summary), summary }, null, 2));
   console.log(`\n=== 数据已写 ${OUT} ===`);
+  setTimeout(() => process.exit(0), 300);
 })();

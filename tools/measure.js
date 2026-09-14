@@ -68,4 +68,5 @@ function waitServer() {
 
     await browser.close();
   } catch (e) { console.error('ERR', e.message); } finally { srv.kill(); }
+  setTimeout(() => process.exit(0), 300);
 })();
