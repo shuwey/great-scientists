@@ -32,7 +32,7 @@
       <p class="lab-desc">每条路都有一个箭头；箭头首尾相接，总长度就是最终的概率幅。</p>
       <p class="lab-guess"><b>先猜一猜：</b>光从 A 到 B 明明有无数条路，为什么我们只看见它走直线？</p>
       <canvas></canvas>
-      <div class="lab-legend"><span class="lg-head">颜色含义</span><span class="lg-item"><i style="background:#DDE0E4"></i>浅灰细线＝21 条可能路径</span><span class="lg-item"><i style="background:#E8590C"></i>橙线＝经典路径</span><span class="lg-item"><i style="background:#1A73E8"></i>蓝＝各路径的相位箭头</span><span class="lg-item"><i style="background:#E03131"></i>红＝首尾相接后的净概率幅</span></div>
+      <div class="lab-legend"><span class="lg-head">颜色含义</span><span class="lg-item"><i style="background:#DDE0E4"></i>浅灰细线＝21 条可能路径</span><span class="lg-item"><i style="background:var(--orange)"></i>橙线＝经典路径</span><span class="lg-item"><i style="background:#1A73E8"></i>蓝＝各路径的相位箭头</span><span class="lg-item"><i style="background:#E03131"></i>红＝首尾相接后的净概率幅</span></div>
       <div class="lab-controls">
         <div class="ctrl">
           <label>ℏ 大小 <span class="v">1.0×</span></label>
@@ -54,7 +54,7 @@
       <p class="lab-desc">波长越短、缝间距越大，条纹越密。红光条纹宽，紫光条纹窄。</p>
       <p class="lab-guess"><b>先猜一猜：</b>把两条缝堵掉一条，明暗条纹还在吗？</p>
       <canvas></canvas>
-      <div class="lab-legend"><span class="lg-head">颜色含义</span><span class="lg-item"><i style="background:linear-gradient(90deg,#E03131,#F76707,#FAB005,#51CF66,#3B5BDB,#5F3DC4,#9C36B5)"></i>波的颜色＝你选的波长（按真实可见光上色）</span><span class="lg-item"><i style="background:#E8590C"></i>橙线＝屏幕上的光强分布</span><span class="lg-item series"><i style="background:#E8590C"></i>暖色（橙／琥珀）＝主体、被观察的对象</span><span class="lg-note">（虚线框＝系列通用约定）</span></div>
+      <div class="lab-legend"><span class="lg-head">颜色含义</span><span class="lg-item"><i style="background:linear-gradient(90deg,#E03131,#F76707,#FAB005,#51CF66,var(--brand),#5F3DC4,#9C36B5)"></i>波的颜色＝你选的波长（按真实可见光上色）</span><span class="lg-item"><i style="background:var(--orange)"></i>橙线＝屏幕上的光强分布</span><span class="lg-item series"><i style="background:var(--orange)"></i>暖色（橙／琥珀）＝主体、被观察的对象</span><span class="lg-note">（虚线框＝系列通用约定）</span></div>
       <div class="lab-controls">
         <div class="ctrl">
           <label>波长（nm） <span class="v">550</span></label>
@@ -80,7 +80,7 @@
       <p class="lab-desc">单次落点不可预测，大量落点的分布却和波的干涉条纹完全一致。</p>
       <p class="lab-guess"><b>先猜一猜：</b>电子一个一个打出去、落点完全随机，屏幕上还会自己长出条纹吗？</p>
       <canvas></canvas>
-      <div class="lab-legend"><span class="lg-head">颜色含义</span><span class="lg-item"><i style="background:#1C6ED6"></i>单个电子的落点</span><span class="lg-item"><i style="background:#E8590C"></i>累积出的干涉条纹</span><span class="lg-item series"><i style="background:#E8590C"></i>暖色（橙／琥珀）＝主体、被观察的对象</span><span class="lg-note">（虚线框＝系列通用约定）</span></div>
+      <div class="lab-legend"><span class="lg-head">颜色含义</span><span class="lg-item"><i style="background:#1C6ED6"></i>单个电子的落点</span><span class="lg-item"><i style="background:var(--orange)"></i>累积出的干涉条纹</span><span class="lg-item series"><i style="background:var(--orange)"></i>暖色（橙／琥珀）＝主体、被观察的对象</span><span class="lg-note">（虚线框＝系列通用约定）</span></div>
       <div class="lab-controls">
         <div class="ctrl">
           <label>已发射电子数 <span class="v">300</span></label>
@@ -105,7 +105,7 @@
 <a class="btn ghost" href="detail/teacher.html">读讲台上的费曼：讲义、冰水与好奇心 →</a></p>
 </div></section>
 <footer class="foot"><div class="wrap"><div class="foot-grid">
-<div><div class="brand-f"><span class="apple" style="width:26px;height:26px;font-size:14px;border-radius:7px;background:linear-gradient(140deg,#3B5BDB,#6E8BFF);display:grid;place-items:center">🍎</span>读懂费曼</div><p style="margin:0;color:#8B96AA;font-size:13.5px">面向中学生的费曼科普小站。</p></div>
+<div><div class="brand-f"><span class="apple" style="width:26px;height:26px;font-size:14px;border-radius:7px;background:linear-gradient(140deg,var(--brand),var(--brand-light));display:grid;place-items:center">🍎</span>读懂费曼</div><p style="margin:0;color:var(--ink-3);font-size:13.5px">面向中学生的费曼科普小站。</p></div>
 <div><h5>四处走走</h5><ul><li><a href="index.html">首页</a></li><li><a href="timeline.html">时间轴</a></li>          <li><a href="detail/qed.html">量子电动力学：光与电子怎么打交道</a></li>
           <li><a href="detail/path.html">路径积分：粒子把每一条路都走一遍</a></li>
           <li><a href="detail/diagram.html">费曼图：把一整页算式画成一张画</a></li>

@@ -32,7 +32,7 @@
       <p class="lab-desc">看状态与步数如何随规则滚动。</p>
       <p class="lab-guess"><b>先猜一猜：</b>规则简单到只有几行，也能算出复杂的结果吗？</p>
       <canvas></canvas>
-      <div class="lab-legend"><span class="lg-head">颜色含义</span><span class="lg-item"><i style="background:#3B5BDB"></i>深蓝格＝纸带上写着 1</span><span class="lg-item"><i style="background:#E7ECF3"></i>浅格＝纸带上写着 0</span><span class="lg-item"><i style="background:#E8590C"></i>橙条＝读写头当前所在格</span></div>
+      <div class="lab-legend"><span class="lg-head">颜色含义</span><span class="lg-item"><i style="background:var(--brand)"></i>深蓝格＝纸带上写着 1</span><span class="lg-item"><i style="background:#E7ECF3"></i>浅格＝纸带上写着 0</span><span class="lg-item"><i style="background:var(--orange)"></i>橙条＝读写头当前所在格</span></div>
       <div class="lab-controls">
         <div class="ctrl">
           <label>速度 <span class="v">1.0×</span></label>
@@ -54,7 +54,7 @@
       <p class="lab-desc">规则只是一张 8 行的对应表，却能长出分形、混沌或空白。</p>
       <p class="lab-guess"><b>先猜一猜：</b>同一张 8 行的规则表，只换一个规则号，长出来的图案会完全不同吗？</p>
       <canvas></canvas>
-      <div class="lab-legend"><span class="lg-head">颜色含义</span><span class="lg-item"><i style="background:#2B3440"></i>深格＝黑（1）</span><span class="lg-item"><i style="background:#E7ECF3"></i>浅格＝白（0）</span><span class="lg-item series"><i style="background:#E8590C"></i>暖色（橙／琥珀）＝主体、被观察的对象</span><span class="lg-note">（虚线框＝系列通用约定）</span></div>
+      <div class="lab-legend"><span class="lg-head">颜色含义</span><span class="lg-item"><i style="background:#2B3440"></i>深格＝黑（1）</span><span class="lg-item"><i style="background:#E7ECF3"></i>浅格＝白（0）</span><span class="lg-item series"><i style="background:var(--orange)"></i>暖色（橙／琥珀）＝主体、被观察的对象</span><span class="lg-note">（虚线框＝系列通用约定）</span></div>
       <div class="lab-controls">
         <div class="ctrl">
           <label>规则号（0–255） <span class="v">110</span></label>
@@ -85,7 +85,7 @@
       <p class="lab-desc">采样太稀会“认错”波形，量化太粗会丢掉细微变化。</p>
       <p class="lab-guess"><b>先猜一猜：</b>采样越密、档位越多，还原就越准——那代价是什么？</p>
       <canvas></canvas>
-      <div class="lab-legend"><span class="lg-head">颜色含义</span><span class="lg-item"><i style="background:#3B5BDB"></i>蓝线＝真实的连续信号</span><span class="lg-item"><i style="background:#E8590C"></i>橙线＝采样量化后机器重建的波形</span><span class="lg-item"><i style="background:#2B3440"></i>底部编码带：深格＝1，浅格＝0</span></div>
+      <div class="lab-legend"><span class="lg-head">颜色含义</span><span class="lg-item"><i style="background:var(--brand)"></i>蓝线＝真实的连续信号</span><span class="lg-item"><i style="background:var(--orange)"></i>橙线＝采样量化后机器重建的波形</span><span class="lg-item"><i style="background:#2B3440"></i>底部编码带：深格＝1，浅格＝0</span></div>
       <div class="lab-controls">
         <div class="ctrl">
           <label>采样密度（点/周期） <span class="v">8</span></label>
@@ -110,7 +110,7 @@
 <a class="btn ghost" href="detail/ai-test.html">读机器能思考吗？图灵测试 →</a></p>
 </div></section>
 <footer class="foot"><div class="wrap"><div class="foot-grid">
-<div><div class="brand-f"><span class="apple" style="width:26px;height:26px;font-size:14px;border-radius:7px;background:linear-gradient(140deg,#3B5BDB,#6E8BFF);display:grid;place-items:center">🍎</span>读懂图灵</div><p style="margin:0;color:#8B96AA;font-size:13.5px">面向中学生的图灵科普小站。</p></div>
+<div><div class="brand-f"><span class="apple" style="width:26px;height:26px;font-size:14px;border-radius:7px;background:linear-gradient(140deg,var(--brand),var(--brand-light));display:grid;place-items:center">🍎</span>读懂图灵</div><p style="margin:0;color:var(--ink-3);font-size:13.5px">面向中学生的图灵科普小站。</p></div>
 <div><h5>四处走走</h5><ul><li><a href="index.html">首页</a></li><li><a href="timeline.html">时间轴</a></li>          <li><a href="detail/turing-machine.html">图灵机：计算的“最小模型”</a></li>
           <li><a href="detail/computability.html">可计算性：有些问题算不出</a></li>
           <li><a href="detail/enigma.html">破译恩尼格玛：密码的战争</a></li>
