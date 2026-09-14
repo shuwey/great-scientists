@@ -139,7 +139,7 @@ SPEC = {
     {"year": 1959, "id": "oxford", "title": "牛津大学", "img": "oxford.jpg", "alt": "牛津", "fig": "在牛津读物理。", "body": "他进入牛津大学攻读物理，展现过人天赋。"},
     {"year": 1962, "id": "cambridge", "title": "剑桥深造", "img": "cambridge.jpg", "alt": "剑桥", "fig": "转向宇宙学。", "body": "他到剑桥大学研究宇宙学，师从丹尼斯·席艾玛。"},
     {"year": 1963, "id": "als", "title": "确诊 ALS", "img": "als.jpg", "alt": "霍金与轮椅", "fig": "身体被禁锢，思想起飞。", "body": "21 岁他被诊断肌萎缩侧索硬化（ALS），医生预言仅剩数年，他却活到了 76 岁。"},
-    {"year": 1965, "id": "singularity", "title": "奇点定理", "img": "singularity.jpg", "alt": "奇点", "fig": "证明奇点必然出现。", "body": "他与彭罗斯证明，在很一般的条件下时空必出现奇点，震动学界。"},
+    {"year": 1965, "id": "singularity", "title": "奇点定理", "img": "singularity.jpg", "alt": "奇点", "fig": "证明奇点必然出现。", "body": "1965 年彭罗斯证明引力坍缩必然产生奇点，霍金随即把这一套用到整个宇宙；1970 年，两人联合证明了著名的奇点定理。"},
     {"year": 1970, "id": "thermo", "title": "黑洞热力学", "img": "blackhole.jpg", "alt": "黑洞", "fig": "黑洞也有温度。", "body": "他提出黑洞面积不减等性质，开启黑洞热力学的研究方向。"},
     {"year": 1974, "id": "radiation", "title": "霍金辐射", "img": "radiation.jpg", "alt": "霍金辐射", "fig": "黑洞会蒸发。", "body": "他把量子效应用于黑洞，证明黑洞会放出辐射并缓慢蒸发——此即霍金辐射。"},
     {"year": 1979, "id": "lucasian", "title": "卢卡斯教授", "img": "cambridge.jpg", "alt": "剑桥讲席", "fig": "接过牛顿的椅子。", "body": "他出任剑桥卢卡斯数学教授，这一讲席曾由牛顿担任。"},

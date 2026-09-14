@@ -6,7 +6,7 @@
 三处入口，覆盖桌面/移动、顶部/底部：
   1. 顶部导航 brand 左侧胶囊  <a class="portal-link">‹ 全部科学家</a>   （桌面显示）
   2. 汉堡菜单首项              <a class="nav-portal">全部科学家</a>       （≤640px 显示）
-  3. 页脚「更多」列            浏览全部 13 位科学家 →                     （全部尺寸）
+  3. 页脚「更多」列            浏览全部科学家 →                        （全部尺寸）
 
 用法：
   python3 tools/add_portal_link.py            # 处理全部子站
@@ -59,7 +59,7 @@ def inject(html, portal):
         new, k = re.subn(
             r'(<h5[^>]*>更多</h5>\s*<ul[^>]*>)(.*?)(</ul>)',
             lambda m: m.group(1) + m.group(2) +
-                      '          <li><a href="%s">浏览全部 15 位科学家 →</a></li>\n        ' % portal +
+                      '          <li><a href="%s">浏览全部科学家 →</a></li>\n        ' % portal +
                       m.group(3),
             html, count=1, flags=re.S)
         if k:

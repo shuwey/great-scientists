@@ -96,17 +96,41 @@ footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);font-si
 </div>
 
 <div class="good" style="margin-top:20px">
-  <p><b>修复进度（2026-09-14 更新）</b>· 本轮按指定范围只处理<b>「玩一玩」实验页</b>相关条目，改完即发布。</p>
-  <p style="margin:9px 0 0"><b>✅ 已修并上线（6 条）</b></p>
+  <p><b>修复进度：26 / 26 全部完成（2026-09-14 两批）</b></p>
+  <p style="margin:9px 0 0"><b>第一批 · 只改「玩一玩」实验页（6 条，已发布上线）</b></p>
   <ul>
-    <li><b>A1</b> 页脚「浏览全部 13 位科学家」→「15 位」<span class="note">（135 页批量；连带修掉 add_portal_link.py 的重复注入缺陷，见文末）</span></li>
-    <li><b>A5</b> 牛顿「把色散调到 0，就还原了判决性实验」（说反）→「把色散调到最大＝牛顿要解释的现象；真正的判决性实验＝让分出的单色光再过一次棱镜」<span class="note">（首页同款说法一并改，避免发布后站内自相矛盾）</span></li>
+    <li><b>A1</b> 页脚人数：13 → 15<span class="note">（第二批进一步统一为「浏览全部科学家」，彻底去掉人数，见下）</span></li>
+    <li><b>A5</b> 牛顿「把色散调到 0，就还原了判决性实验」（说反）→「色散调到最大＝牛顿要解释的现象；真正的判决性实验＝让分出的单色光再过一次棱镜」<span class="note">（首页同款说法一并改）</span></li>
     <li><b>A9</b> 爱因斯坦光电效应单位 <span class="path">THz</span> → <span class="path">×10¹⁴ Hz</span>（滑块标签、实时读数、截止频率三处）</li>
     <li><b>A14</b> 门捷列夫「一起一伏 / 同一周期内单调变化」→「半径自左向右递减、电离能总体递增却带局部下凹（N→O、P→S），两者趋势相反」</li>
     <li><b>B5</b> 八处「详见《…》」链接文字，全部改为目标页真实标题（法拉第 3、巴斯德 3、麦克斯韦 1、霍金 1）</li>
     <li><b>B7</b> 开普勒「八颗行星」补注：开普勒当年只有 6 颗行星的数据，天王星、海王星是后来才发现的，却同样落在这条线上</li>
   </ul>
-  <p style="margin:11px 0 0"><b>⏳ 仍未处理（20 条，均不在「玩一玩」页内）</b>：A2 A3 A4 A6 A7 A8 A10 A11 A12 A13 A15 A16 · B1 B2 B3 B4 B6 B8 B9 B10</p>
+  <p style="margin:11px 0 0"><b>第二批 · 其余 20 条（本次全部修完，尚未发布）</b></p>
+  <ul>
+    <li><b>A2</b> 门捷列夫「118 种人工合成元素」→「118 种元素——其中不少重元素还是人工合成的」</li>
+    <li><b>A3</b> 牛顿「质量＝含有多少东西」→「衡量它有多"难被推动"（惯性大小），也大致反映含物质的多少」<span class="note">（laws 页符号说明 + 术语库 short/plain）</span></li>
+    <li><b>A4</b> 牛顿重量公式 <span class="path">G = mg</span> → <span class="path">W = mg</span><span class="note">（G 在本站"万有引力"条里是引力常数）</span></li>
+    <li><b>A6</b> 牛顿哈雷登门：首页与术语库统一口径，补回「随口答'椭圆'、被追问却拿不出计算稿」这一环，并交代年份 1684</li>
+    <li><b>A7</b> 开普勒：把"太阳在焦点上"（第一定律）与"近快远慢"（第二定律）拆开，不再当因果串起来<span class="note">（laws 页 + 术语库"焦点"条）</span></li>
+    <li><b>A8</b> 爱因斯坦 c²「九千万亿」→「<b>九亿亿</b>」</li>
+    <li><b>A10</b> 麦克斯韦彩色摄影 1855 → <b>1861</b><span class="note">（节点整体搬到 1861，紧跟"方程组初成"，保持时间轴单调）</span></li>
+    <li><b>A11</b> 巴斯德分子不对称 1854 → <b>1848</b></li>
+    <li><b>A12</b> 霍金奇点定理：写明「1965 年彭罗斯证明坍缩必生奇点，霍金随即用到宇宙；1970 年两人联合证明」</li>
+    <li><b>A13</b> 居里：放射性「来自原子<b>本身</b>」，并括注「后来才知道射线来自原子核；α、β、γ 的分类是卢瑟福等人的工作」</li>
+    <li><b>A15</b> 法拉第：8 月 29 日＝<b>铁环实验</b>；「磁铁插入线圈」是同年 10 月<span class="note">（与本站时间轴口径一致）</span></li>
+    <li><b>A16</b> 伽利略：他给出的是等时性与"周期只与摆长有关"；带 g 的精确公式明确归给<b>惠更斯</b></li>
+    <li><b>B1</b> 费曼「与惠勒、以及老师惠勒的启发」病句 →「受老师惠勒启发」</li>
+    <li><b>B2</b> 达尔文正文漏译 <span class="path">environment</span> → 「环境」</li>
+    <li><b>B3</b> 达尔文船名全站统一「小猎犬号」，首次出现处括注「HMS Beagle，又译贝格尔号」</li>
+    <li><b>B4</b> 居里：死因写明「<b>再生障碍性贫血</b>」，时间轴补 <b>1934 逝世</b>与 <b>1995 移灵先贤祠</b>两个节点（新配一张公有领域先贤祠实景照）</li>
+    <li><b>B6</b> 门捷列夫 1900 节点「原子序数登场前夜」→「周期表进入精细打磨期」，点明他 1907 年去世、没等到 1913 年莫塞莱</li>
+    <li><b>B8</b> 图灵「发明的'炸弹机'」→「设计出<b>改进型</b>的'炸弹机'」<span class="note">（与另两处口径统一）</span></li>
+    <li><b>B9</b> 法拉第「苯」的分类 电磁 → <b>化学</b>（分类表 <span class="path">SITE_CATS</span> 同步补"化学"）</li>
+    <li><b>B10</b> 牛顿「是'懒'，不是'停'」→「物体的'懒'，是懒得改变运动状态；不是'不推就停'」</li>
+  </ul>
+  <p style="margin:11px 0 0"><b>页脚统一</b>：135 页的「浏览全部 15 位科学家 →」→「<b>浏览全部科学家 →</b>」，彻底去掉人数——系列将来再增删成员也不会过期；门户页脚标题「全部 15 位科学家」同步改为「全部科学家」。</p>
+  <p style="margin:11px 0 0"><b>顺带同步了生成源</b>：这 20 条里有 14 条落在 12 个「spec 驱动」子站上。只改站点、不改 <span class="path">tools/spec_*.py</span>，将来任何一次重建都会把错文案写回去——所以这次把规格一起改了，并重新生成对应的 <span class="path">.json</span>（已逐一验证 .py 与 .json 等价，且 .py 可编译、.json 可解析）。</p>
 </div>
 
 <h2>一、科学准确性 / 严谨性<span class="cnt">A 类 · 16 条</span></h2>
@@ -117,7 +141,7 @@ footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);font-si
   <div class="lab">问题</div>
   <p>系列已扩到 15 位，页脚文案停留在旧的 13 位。这是全站唯一一处<b>批量、可机检</b>的事实性不一致，读者从子站回门户时会先入为主以为只有 13 位。</p>
   <div class="lab">建议改法</div>
-  <div class="fix"><b>统一改为"15 位"</b>（或干脆改成"全部科学家"以免疫将来增删）。135 个页面可一次性脚本替换。</div>
+  <div class="fix"><b>✅ 已落地：全站 135 页统一改为「浏览全部科学家 →」</b>，直接去掉人数（比改成"15 位"更彻底——系列将来增删成员都不会再过期）；门户页脚标题同步改为「全部科学家」。<span class="note">连带修掉 <span class="path">tools/add_portal_link.py</span> 一个"拿会变文案当结构判据"的缺陷：它原本用字面串「13 位科学家」判断页脚入口是否已存在，页脚一改就判据失效、给 135 页各重复注入一条。现判据改为按「浏览全部…」这条链接本身判断。</span></div>
 </div>
 
 <div class="item a" data-k="a">
@@ -399,6 +423,33 @@ footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);font-si
   </ul>
   <p><b>顺带修掉的工具缺陷（本轮自己踩出来的）</b></p>
   <p><span class="path">tools/add_portal_link.py</span> 原本用字面串「13 位科学家」判断页脚入口是否已存在。本轮把页脚改成「15 位」后判据失效，脚本判定"未注入"，于是给 <b>135 页各多插了一条</b>同样的链接（同一页脚里同时出现 15 位和 13 位）。已把判据改为"按『浏览全部…』这条链接本身判断"（不再依赖字面人数，系列增员也不会复发），并清理掉 135 条重复。<span class="note">教训与 B5 同源：拿会变的文案当结构判据，迟早在改文案时反噬。</span></p>
+</div>
+
+<h2>六、第二批（其余 20 条）改动与复验</h2>
+<div class="plan">
+  <p style="margin-top:14px"><b>批次与顺序</b></p>
+  <ol>
+    <li><b>事实错优先</b>（A2 A4 A8 A10 A11 A12 A15）：单个数字/单位/年份，改动量极小、学生却能直接"背走"。</li>
+    <li><b>因果与归属</b>（A3 A6 A7 A13 A16 B4 B6）：需要重写一两句话，是本次含金量最高的部分。</li>
+    <li><b>一致性</b>（A1 B3 B8 B9）：页脚、译名、分类、口径。</li>
+    <li><b>语句打磨</b>（B1 B2 B10）：三句话。</li>
+  </ol>
+  <p><b>改了哪些文件</b></p>
+  <ul>
+    <li>15 个子站正文/术语库/时间轴共 <b>31 处</b>，以及 <b>135 个页面的页脚</b>。</li>
+    <li><span class="path">tools/spec_{curie,darwin,faraday,feynman,hawking,kepler,maxwell,mendeleev,pasteur,turing}.py</span> 与同名 <span class="path">.json</span> —— 生成源同步（14 条落在这些站上）。</li>
+    <li><span class="path">tools/add_portal_link.py</span>（页脚文案）、<span class="path">tools/build_portal.py</span>（门户页脚标题）+ 重新生成根 <span class="path">index.html</span>。</li>
+    <li>新增图片 <span class="path">scientists/curie/assets/img/history/pantheon.jpg</span>（巴黎先贤祠，Wikimedia Commons，CC BY 2.0，署名已写入该站 CREDITS.json 与 spec）。</li>
+  </ul>
+  <p><b>复验结果</b></p>
+  <ul>
+    <li><span class="path">tools/validate_site.py</span>：<b>通过 106 · 警告 0 · 错误 0</b>。</li>
+    <li><span class="path">tools/check_spec_links.py</span>：160 条链接，坏链 0、链接文字与目标标题不符 0。</li>
+    <li><span class="path">tools/add_portal_link.py</span>：复跑输出「扫描 135 页，修改 0 页，注入 0 处」——幂等性正常。</li>
+    <li><span class="path">tools/check_review_fixes.js</span>（本次新增）：19 个改动页面在浏览器中实测——<b>0 JS 报错、0 资源缺失</b>；居里时间轴 13 个节点、末尾为 1934 逝世与 1995 移灵先贤祠、13/13 图片加载成功；麦克斯韦与巴斯德时间轴年份序列仍单调递增；每页页脚文案均为「浏览全部科学家 →」。</li>
+    <li>规格侧：10 组 <span class="path">spec_*.py</span> 可编译、<span class="path">.json</span> 可解析，且二者逐字等价（防止将来重建回退）。</li>
+  </ul>
+  <p class="note">本轮只改本地与仓库，**未重新发布**——等你确认后再上线。</p>
 </div>
 
 <footer>

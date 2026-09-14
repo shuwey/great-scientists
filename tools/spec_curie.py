@@ -20,7 +20,7 @@ SPEC = {
   "about_claim": "本页说明居里夫子站内容的依据与延伸去处。",
   "about_body": "<h2>资料来源</h2><p>本子站内容依据公开史料与科学史通识编写，核心事实（生卒、钋与镭的发现、两次诺贝尔奖、战时移动 X 光车）与主流科学史一致。历史图片均来自 Wikimedia Commons 公有领域资源。</p><h2>延伸阅读</h2><p>想深入：居里夫人《放射性专论》；以及《居里夫人传》（艾芙·居里）。</p>",
   "tl_desc": "从华沙的少女到巴黎先贤祠的安葬者：居里夫人一生的关键节点。",
-  "tl_claim": "1867 年出生，1934 年逝于贫血（与长期辐射暴露相关）。她让“放射性”从谜团变成可测量、可应用的科学。",
+  "tl_claim": "1867 年出生，1934 年逝于再生障碍性贫血（与长期辐射暴露相关）。她让“放射性”从谜团变成可测量、可应用的科学。",
   "cats": ["物理", "化学", "医学", "历史"],
   "hero_scene": "atom",
   "hero_params": {"label": "原子在自发地放出射线"},
@@ -150,7 +150,9 @@ SPEC = {
     {"year": 1903, "id": "nobel-phys", "title": "诺贝尔物理奖", "img": "nobel.jpg", "alt": "诺贝尔奖", "fig": "与贝克勒尔、皮埃尔分享。", "body": "因放射性研究获诺贝尔物理奖，玛丽成为首位诺奖女性得主。"},
     {"year": 1906, "id": "widow", "title": "皮埃尔离世", "img": "pierre-curie.jpg", "alt": "皮埃尔", "fig": "科研搭档早逝。", "body": "皮埃尔遇车祸去世，玛丽接任其教席，继续推进研究。"},
     {"year": 1911, "id": "nobel-chem", "title": "诺贝尔化学奖", "img": "nobel.jpg", "alt": "诺贝尔奖", "fig": "发现镭与钋元素。", "body": "因发现镭、钋两元素获诺贝尔化学奖，成为首位两获诺奖者。"},
-    {"year": 1914, "id": "war", "title": "战地 X 光车", "img": "xray-car.jpg", "alt": "移动 X 光车", "fig": "把射线用于救人。", "body": "一战期间她组织移动 X 光车上前线，为伤员定位弹片，挽救无数生命。"}
+    {"year": 1914, "id": "war", "title": "战地 X 光车", "img": "xray-car.jpg", "alt": "移动 X 光车", "fig": "把射线用于救人。", "body": "一战期间她组织移动 X 光车上前线，为伤员定位弹片，挽救无数生命。"},
+    {"year": 1934, "id": "died", "title": "逝于再生障碍性贫血", "img": "curie-portrait.jpg", "alt": "居里夫人", "fig": "一生与镭为伴，也被镭所伤。", "body": "7 月 4 日，她因长期辐射暴露导致的再生障碍性贫血去世，享年 66 岁。"},
+    {"year": 1995, "id": "pantheon", "title": "移灵先贤祠", "img": "pantheon.jpg", "alt": "巴黎先贤祠", "fig": "与皮埃尔一同安息于先贤祠。", "body": "法国政府把她的灵柩移入巴黎先贤祠，她成为首位凭自身成就入葬于此的女性。"}
   ],
 
   "images": [
@@ -162,7 +164,8 @@ SPEC = {
     {"file": "becquerel.jpg", "wiki": "File:Henri Becquerel.jpg", "q": "Henri Becquerel portrait", "desc": "贝克勒尔", "author": "Public domain", "license": "Public domain"},
     {"file": "nobel.jpg", "wiki": "File:Nobel Prize.png", "q": "Nobel Prize medal", "desc": "诺贝尔奖", "author": "Public domain", "license": "Public domain"},
     {"file": "curie-lab.jpg", "wiki": "File:Curie laboratory.jpg", "q": "Marie Curie laboratory", "desc": "居里夫人的实验室", "author": "Public domain", "license": "Public domain"},
-    {"file": "xray-car.jpg", "wiki": "File:Petit-Curie radiological car.jpg", "q": "Petit Curie radiological car WWI", "desc": "移动 X 光车", "author": "Public domain", "license": "Public domain"}
+    {"file": "xray-car.jpg", "wiki": "File:Petit-Curie radiological car.jpg", "q": "Petit Curie radiological car WWI", "desc": "移动 X 光车", "author": "Public domain", "license": "Public domain"},
+    {"file": "pantheon.jpg", "wiki": "File:Facade of the Panthéon de Paris, August 2010.jpg", "q": "Pantheon Paris facade", "desc": "巴黎先贤祠", "author": "Kristof Verslype / Wikimedia Commons", "license": "CC BY 2.0"},
   ],
 
   "labs": [

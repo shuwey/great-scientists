@@ -21,7 +21,7 @@ SPEC = {
   "about_body": "<h2>资料来源</h2><p>本子站内容依据公开科学史通识编写，核心事实（1791 年生、1813 年入皇家研究所、1821 年电磁旋转、1831 年电磁感应与圆盘发电机、1833 年电解定律、圣诞讲座、1867 年逝世）与主流科学史一致。历史图片均来自 Wikimedia Commons 公有领域或自由授权资源。</p><h2>延伸阅读</h2><p>想深入：法拉第《蜡烛的故事》（圣诞讲稿，至今仍是科普经典）；传记可看《法拉第传》。</p>",
   "tl_desc": "从装订铺学徒到电磁学之父：一条靠自学走出来的路。",
   "tl_claim": "1791 年出生，1867 年辞世。他没读过多少书，却改写了人类用电的方式。",
-  "cats": ["物理", "电磁", "历史", "科普"],
+  "cats": ["物理", "电磁", "化学", "历史", "科普"],
   "hero_scene": "field",
   "hero_params": {"label": "铁屑自动排成的磁力线"},
 
@@ -29,7 +29,7 @@ SPEC = {
     "induction": {
       "title": "电磁感应：磁铁一动，电就来了",
       "file": "detail/induction.html",
-      "claim": "1831 年 8 月 29 日，法拉第把一根磁铁插进线圈，发现线圈里瞬间冒出了电流——磁铁不动则没有，一动就有。这个现象叫电磁感应，它是一切发电机的祖先。",
+      "claim": "1831 年 8 月 29 日，法拉第用铁环实验第一次看到“变化”的磁生出电流；同年 10 月，他又用磁铁插入线圈反复验证——磁铁不动则没有，一动就有。这个现象叫电磁感应，它是一切发电机的祖先。",
       "tags": ["电磁感应", "磁通量", "1831"],
       "year": "1831",
       "card": "磁，只要“变化”，就能生出电。",
@@ -128,7 +128,7 @@ SPEC = {
     "generator": {"name": "发电机", "cat": "电磁", "short": "把运动变成电", "plain": "发电机利用电磁感应，让线圈在磁场中旋转，把机械能转化为电能。法拉第 1831 年的圆盘发电机是第一台。", "analogy": "一台把“转”换成“亮”的机器。", "page": "generator", "anchor": "#disk", "related": ["induction", "motor"]},
     "motor": {"name": "电动机", "cat": "电磁", "short": "把电变成运动", "plain": "电动机是发电机的逆过程：通电的线圈在磁场中受力而转动。法拉第 1821 年的电磁旋转装置是它的雏形。", "analogy": "发电机反过来开，就是电动机。", "page": "generator", "anchor": "#rotation", "related": ["generator", "current"]},
     "electrolysis": {"name": "电解", "cat": "电磁", "short": "用电推动化学反应", "plain": "电解是让电流通过电解质溶液或熔融物，引起化学分解的过程。法拉第总结出电解定律，指出析出物的质量正比于通过的电量。", "analogy": "用电流当“钥匙”，把化合物拆开。", "page": "chem", "anchor": "#electrolysis", "related": ["current", "faraday"]},
-    "benzene": {"name": "苯", "cat": "电磁", "short": "法拉第发现的分子", "plain": "苯是一种六元环状有机分子。法拉第 1825 年从照明气的残余液体中分离并测定了它，它是芳香族化学的起点。", "analogy": "有机化学里的一块基石。", "page": "chem", "anchor": "#benzene", "related": ["faraday"]},
+    "benzene": {"name": "苯", "cat": "化学", "short": "法拉第发现的分子", "plain": "苯是一种六元环状有机分子。法拉第 1825 年从照明气的残余液体中分离并测定了它，它是芳香族化学的起点。", "analogy": "有机化学里的一块基石。", "page": "chem", "anchor": "#benzene", "related": ["faraday"]},
     "faraday-cage": {"name": "法拉第笼", "cat": "电磁", "short": "金属罩住的安静空间", "plain": "法拉第笼是由金属网或金属壳构成的封闭空间，外部电场无法进入其内部，这就是静电屏蔽。电梯里手机信号变差正是这个原理。", "analogy": "给电磁波装了一道拉不上的门。", "page": "chem", "anchor": "#cage", "related": ["magnetic-field", "faraday"]},
     "christmas-lecture": {"name": "圣诞讲座", "cat": "科普", "short": "讲给孩子听的科学", "plain": "圣诞讲座是英国皇家研究所面向青少年的科学讲座传统，由法拉第创办并主讲十九次。他的讲稿《蜡烛的故事》至今仍是科普经典。", "analogy": "把实验室搬上讲台，搬进孩子心里。", "page": "chem", "anchor": "#lecture", "related": ["faraday", "popular-science"]},
     "popular-science": {"name": "科学普及", "cat": "科普", "short": "把专业讲给大众", "plain": "科学普及是把专业研究用通俗方式讲给公众。法拉第是近代科普的开创者之一，麦克斯韦、霍金、费曼都延续了这条传统。", "analogy": "把实验室的话，翻译成街头的话。", "page": "chem", "anchor": "#lecture", "related": ["christmas-lecture", "faraday"]},

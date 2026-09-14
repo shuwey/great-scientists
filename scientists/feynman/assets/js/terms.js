@@ -112,7 +112,7 @@ window.SITE_TERMS = {
     name: "正电子",
     cat: "量子",
     short: "电子的反粒子",
-    plain: "正电子是电子的反粒子，带正电。费曼（与惠勒、以及老师惠勒的启发）提出过一个著名图像：正电子可以看作在时间中逆行的电子。",
+    plain: "正电子是电子的反粒子，带正电。费曼受老师惠勒启发，提出过一个著名图像：正电子可以看作在时间中逆行的电子。",
     analogy: "像是倒着放的那一段影片。",
     page: "diagram", anchor: "#rules",
     related: ["electron", "feynman-diagram"]

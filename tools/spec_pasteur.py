@@ -143,7 +143,7 @@ SPEC = {
   "timeline": [
     {"year": 1822, "id": "born", "title": "生于多勒", "img": "pasteur-portrait.jpg", "alt": "巴斯德肖像", "fig": "巴斯德 1822 年生于法国多勒。", "body": "12 月 27 日，路易·巴斯德出生。早年资质平平，却以刻苦与好奇后来居上。"},
     {"year": 1847, "id": "chem", "title": "钻研化学", "img": "pasteur-lab.jpg", "alt": "巴斯德的实验室", "fig": "他从化学起步，研究晶体。", "body": "在巴黎高师接受训练，研究酒石酸晶体的不对称性，练就“看微观”的功夫。"},
-    {"year": 1854, "id": "asymmetry", "title": "分子不对称", "img": "pasteur-lab.jpg", "alt": "晶体研究", "fig": "发现分子也有“左右手”。", "body": "他证明某些分子能让偏振光偏转方向不同，开启对分子空间结构的认识。"},
+    {"year": 1848, "id": "asymmetry", "title": "分子不对称", "img": "pasteur-lab.jpg", "alt": "晶体研究", "fig": "发现分子也有“左右手”。", "body": "他证明某些分子能让偏振光偏转方向不同，开启对分子空间结构的认识。"},
     {"year": 1857, "id": "ferment", "title": "发酵之谜", "img": "fermentation.jpg", "alt": "发酵", "fig": "发酵是活物干的。", "body": "他证明乳酸发酵由微生物引起，把“化学现象”重新理解为“生命现象”。"},
     {"year": 1862, "id": "spontaneous", "title": "鹅颈瓶实验", "img": "swan-neck-flask.jpg", "alt": "鹅颈瓶", "fig": "否定生命自然发生。", "body": "用鹅颈瓶证明肉汤变质来自空气中的微生物，而非无中生有，力压自然发生说。"},
     {"year": 1865, "id": "silkworm", "title": "拯救丝绸业", "img": "silkworm.jpg", "alt": "蚕病", "fig": "找出蚕的微粒病病原。", "body": "受政府之托研究蚕病，找出病原与检疫法，挽救法国丝绸产业。"},

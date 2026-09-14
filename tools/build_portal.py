@@ -271,7 +271,7 @@ HTML = u"""<!DOCTYPE html>
         <p style="margin:0;color:#8B96AA;font-size:13.5px">一个面向中学生的科学家科普系列。把难词讲成人话，把天才讲成普通人。</p>
       </div>
       <div>
-        <h5>全部 %(total)d 位科学家</h5>
+        <h5>全部科学家</h5>
         <ul>
 %(footer_sites)s
         </ul>

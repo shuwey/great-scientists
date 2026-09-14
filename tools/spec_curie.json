@@ -16,7 +16,7 @@
   "about_claim": "本页说明居里夫子站内容的依据与延伸去处。",
   "about_body": "<h2>资料来源</h2><p>本子站内容依据公开史料与科学史通识编写，核心事实（生卒、钋与镭的发现、两次诺贝尔奖、战时移动 X 光车）与主流科学史一致。历史图片均来自 Wikimedia Commons 公有领域资源。</p><h2>延伸阅读</h2><p>想深入：居里夫人《放射性专论》；以及《居里夫人传》（艾芙·居里）。</p>",
   "tl_desc": "从华沙的少女到巴黎先贤祠的安葬者：居里夫人一生的关键节点。",
-  "tl_claim": "1867 年出生，1934 年逝于贫血（与长期辐射暴露相关）。她让“放射性”从谜团变成可测量、可应用的科学。",
+  "tl_claim": "1867 年出生，1934 年逝于再生障碍性贫血（与长期辐射暴露相关）。她让“放射性”从谜团变成可测量、可应用的科学。",
   "cats": [
     "物理",
     "化学",
@@ -625,6 +625,24 @@
       "alt": "移动 X 光车",
       "fig": "把射线用于救人。",
       "body": "一战期间她组织移动 X 光车上前线，为伤员定位弹片，挽救无数生命。"
+    },
+    {
+      "year": 1934,
+      "id": "died",
+      "title": "逝于再生障碍性贫血",
+      "img": "curie-portrait.jpg",
+      "alt": "居里夫人",
+      "fig": "一生与镭为伴，也被镭所伤。",
+      "body": "7 月 4 日，她因长期辐射暴露导致的再生障碍性贫血去世，享年 66 岁。"
+    },
+    {
+      "year": 1995,
+      "id": "pantheon",
+      "title": "移灵先贤祠",
+      "img": "pantheon.jpg",
+      "alt": "巴黎先贤祠",
+      "fig": "与皮埃尔一同安息于先贤祠。",
+      "body": "法国政府把她的灵柩移入巴黎先贤祠，她成为首位凭自身成就入葬于此的女性。"
     }
   ],
   "images": [
@@ -699,6 +717,14 @@
       "desc": "移动 X 光车",
       "author": "Public domain",
       "license": "Public domain"
+    },
+    {
+      "file": "pantheon.jpg",
+      "wiki": "File:Facade of the Panthéon de Paris, August 2010.jpg",
+      "q": "Pantheon Paris facade",
+      "desc": "巴黎先贤祠",
+      "author": "Kristof Verslype / Wikimedia Commons",
+      "license": "CC BY 2.0"
     }
   ],
   "labs": [

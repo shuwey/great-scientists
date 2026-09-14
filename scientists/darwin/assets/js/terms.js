@@ -31,7 +31,7 @@ window.SITE_TERMS = {
     name: "小猎犬号",
     cat: "历史",
     short: "达尔文环球航行的船",
-    plain: "1831—1836 年，达尔文以随船博物学家的身份搭乘“小猎犬号”环球考察，目睹各地迥异的生物，是进化思想的重要起点。",
+    plain: "1831—1836 年，达尔文以随船博物学家的身份搭乘“小猎犬号”（HMS Beagle，又译“贝格尔号”）环球考察，目睹各地迥异的生物，是进化思想的重要起点。",
     analogy: "这趟五年航行，像是把他送进了一座露天的“世界生物博物馆”。",
     page: "evolution", anchor: "#before",
     related: ["darwin", "galapagos"]
@@ -49,7 +49,7 @@ window.SITE_TERMS = {
     name: "查尔斯·达尔文",
     cat: "历史",
     short: "进化论的主要提出者",
-    plain: "英国博物学家，以贝格尔号航行观察为基础，提出以自然选择为核心的进化论，深刻改变了生物学与人类自我认知。",
+    plain: "英国博物学家，以小猎犬号航行观察为基础，提出以自然选择为核心的进化论，深刻改变了生物学与人类自我认知。",
     analogy: "他像是把“生物为何这么多样”这个大问题，第一次讲成了可验证的故事。",
     page: "evolution", anchor: "#before",
     related: ["evolution", "wallace"]

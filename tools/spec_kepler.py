@@ -39,7 +39,7 @@ SPEC = {
       "sideterms": ["kepler-first", "kepler-second", "kepler-third", "ellipse-orbit", "focus", "heliocentrism", "newton", "gravity"],
       "sections": [
         {"id": "law1", "h": "一、第一定律：轨道是椭圆", "body": "开普勒发现，行星不是沿完美的圆、而是沿椭圆运行，太阳位于椭圆的一个焦点上。这一下子甩掉了“天体必须走正圆”的千年执念。",
-         "fig": "laws", "figalt": "椭圆轨道与焦点", "figcap": "太阳不在中心，而在一个焦点上——这正是行星近太阳时更快的原因。"},
+         "fig": "laws", "figalt": "椭圆轨道与焦点", "figcap": "太阳不在中心，而在一个焦点上——所以行星时近时远。至于近时快、远时慢，原因在第二定律：连线在相等时间里扫过相等的面积。"},
         {"id": "law2", "h": "二、第二定律：近快远慢", "body": "行星和太阳的连线，在相等时间里扫过相等的面积。于是行星靠近太阳时跑得快、远离时慢。这解释了为什么同样一段弧，用时却不一样。",
          "figalt": "面积速度相等", "figcap": "等时扫等面积：连线扫过的“扇子”面积始终一样大。"},
         {"id": "law3", "h": "三、第三定律：周期与距离", "body": "行星公转周期的平方，正比于它到太阳平均距离的立方（T² ∝ a³）。离太阳越远，转一圈所需时间增长得比距离本身更快。",
@@ -118,7 +118,7 @@ SPEC = {
 
   "terms": {
     "ellipse-orbit": {"name": "椭圆轨道", "cat": "天文", "short": "行星走的不是正圆，是椭圆", "plain": "开普勒第一定律：每颗行星沿椭圆轨道运行，太阳位于椭圆的一个焦点上。椭圆比圆“扁”一点，却更贴合真实观测。", "analogy": "把正圆的“O”轻轻压扁成“0”，行星的轨迹就对了。", "page": "laws", "anchor": "#law1", "related": ["kepler-first", "focus", "heliocentrism"]},
-    "focus": {"name": "焦点", "cat": "天文", "short": "椭圆里那两个特殊点之一", "plain": "椭圆有两个焦点。开普勒把太阳放在其中一个焦点上，而不是椭圆中心——这正是行星近太阳更快的原因。", "analogy": "椭圆像被两端钉住的橡皮圈，那两个钉子就是焦点。", "page": "laws", "anchor": "#law1", "related": ["ellipse-orbit", "kepler-first"]},
+    "focus": {"name": "焦点", "cat": "天文", "short": "椭圆里那两个特殊点之一", "plain": "椭圆有两个焦点。开普勒把太阳放在其中一个焦点上，而不是椭圆中心——于是行星时近时远。至于近时快、远时慢，是第二定律说的：连线在相等时间扫过相等面积。", "analogy": "椭圆像被两端钉住的橡皮圈，那两个钉子就是焦点。", "page": "laws", "anchor": "#law1", "related": ["ellipse-orbit", "kepler-first"]},
     "kepler-first": {"name": "第一定律", "cat": "天文", "short": "轨道是椭圆，太阳在焦点", "plain": "行星沿椭圆运行，太阳位于其中一个焦点。它打破了“天体必走正圆”的古老信念。", "analogy": "以前非要让行星走“正圆跑道”，开普勒改成了“椭圆跑道”。", "page": "laws", "anchor": "#law1", "related": ["ellipse-orbit", "focus", "kepler-second"]},
     "kepler-second": {"name": "第二定律", "cat": "天文", "short": "等时扫等面积", "plain": "行星和太阳的连线在相等时间内扫过相等面积。结果是近太阳时快、远太阳时慢。", "analogy": "甩动系着石子的绳子，离手近时石子明显掠得快——一个道理。", "page": "laws", "anchor": "#law2", "related": ["area-law", "ellipse-orbit"]},
     "area-law": {"name": "面积定律", "cat": "天文", "short": "另一种说法的第二定律", "plain": "“面积定律”是第二定律的别称：太阳—行星连线单位时间扫过的面积恒定。它量化了“近快远慢”。", "analogy": "同一把“扇子”，无论扇面胖瘦，面积都一样大。", "page": "laws", "anchor": "#law2", "related": ["kepler-second"]},

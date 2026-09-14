@@ -101,7 +101,7 @@ window.SITE_TERMS = {
   },
   "benzene": {
     name: "苯",
-    cat: "电磁",
+    cat: "化学",
     short: "法拉第发现的分子",
     plain: "苯是一种六元环状有机分子。法拉第 1825 年从照明气的残余液体中分离并测定了它，它是芳香族化学的起点。",
     analogy: "有机化学里的一块基石。",
@@ -180,4 +180,4 @@ window.SITE_PAGES = {
   "chem": { title: "不止电磁：电解、苯与法拉第笼", url: "detail/chem.html" }
 };
 
-window.SITE_CATS = ["物理", "电磁", "历史", "科普"];
+window.SITE_CATS = ["物理", "电磁", "化学", "历史", "科普"];
