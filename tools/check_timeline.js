@@ -4,6 +4,8 @@ const http = require('http'), fs = require('fs'), path = require('path');
 
 const ROOT = process.cwd();
 const PORT = 8076;
+// 截图输出目录：默认放在项目**外**（不参与静态发布上传），可用 SHOTS_DIR 覆盖
+const SHOTS = process.env.SHOTS_DIR || path.resolve(ROOT, '..', '读懂牛顿-验证产物', 'shots');
 const MIME = {'.html':'text/html','.css':'text/css','.js':'text/javascript','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.json':'application/json'};
 const srv = http.createServer((req,res)=>{
   let p = path.join(ROOT, decodeURIComponent(req.url.split('?')[0]));
@@ -50,8 +52,8 @@ const IDS = (process.argv[2] ? process.argv[2].split(',') : ['curie','bohr','tur
       console.log(`${flag} ${sid} ${vp.tag.padEnd(7)} 条目${r.items} 年代${r.years} 配图${r.imgs} 圆点${r.dots} 重叠${r.overlaps}` +
         (r.worst ? ` 最大重叠 ${r.worst.ox}x${r.worst.oy}px (${r.worst.year})` : '') + ` 报错${errs.length}`);
       if (vp.tag === 'desktop') {
-        fs.mkdirSync('tools/shots', { recursive: true });
-        await page.screenshot({ path: `tools/shots/tl-${sid}.png` });
+        fs.mkdirSync(SHOTS, { recursive: true });
+        await page.screenshot({ path: path.join(SHOTS, `tl-${sid}.png`) });
       }
       await page.close();
     }

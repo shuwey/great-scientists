@@ -53,9 +53,15 @@
 │   ├── new_scientist.py      新科学家子站生成器（骨架）
 │   ├── download_images.py / fetch_commons.py   Wikimedia 历史图片抓取
 │   ├── measure.js / check_angle.js / …  物理演示调试辅助
-│   └── shots/                测试截图（gitignore，不入库）
+│   └── newlabs/              各站「玩一玩」实验生成 spec
 └── .workbuddy/               项目记忆（工作日志/长期笔记）
 ```
+
+> **验证产物不放项目内**：测试截图与 e2e 报告默认写到**项目外**的
+> `../读懂牛顿-验证产物/shots/`（可用环境变量 `SHOTS_DIR` 覆盖）。
+> 原因：发布静态站点时上传的是**整个项目根目录**，截图曾占 153MB（总体积 228MB 的三分之二），
+> 全是验证用中间产物、不参与站点内容，放在项目内只会白白拖慢上传。
+> 历史位置 `tools/shots/` 已迁出，相关脚本已全部改为读 `SHOTS_DIR`。
 
 > 设计取舍：每个子站自带一份引擎与图片副本（自包含），便于单独预览/部署、独立移动。
 > 代价是 `style.css` / `site.js` 会多份重复——**最终整合阶段**会把共享部分提升到根 `assets/` 去重（见第五节）。
@@ -142,9 +148,13 @@ node tools/e2e_portal.js                # 门户：15 张卡片 + 检索过滤 +
 | `tools/lab_templates.py` | Canvas 实验模板库 | 15 种模板；新增 kind 必须同步注册进 `TEMPLATES` |
 | `tools/svg_scenes.py` | 自绘 SVG 线稿库 | 按 page key 生成，注意 `fig` 必须等于 page key |
 | `tools/validate_site.py` | 全站静态校验 | 自动发现 `scientists/*` 逐个校验；ROOT 取脚本父目录，不写死路径。 |
-| `tools/e2e_check.js` | Playwright 双端 e2e | `node tools/e2e_check.js <id>`（默认 `newton`）；截图与报告落在 `tools/shots/`。 |
+| `tools/e2e_check.js` | Playwright 双端 e2e | `node tools/e2e_check.js <id>`（默认 `newton`）；截图与报告落在 `../读懂牛顿-验证产物/shots/`（`SHOTS_DIR` 可覆盖）。 |
 | `tools/e2e_portal.js` | 门户浏览器验证 | 卡片数 / 缩略图 / 检索过滤 / 跳转 / 双端报错 |
 | `tools/new_scientist.py` | 生成新子站骨架 | 见上（路径 B）。 |
+
+> 涉及截图/报告的脚本（`e2e_check.js` / `e2e_portal.js` / `verify_newlabs.js` / `shot_*.js` /
+> `check_timeline.js` / `montage.py` / `build_labs_review.py`）统一写到项目外的
+> `../读懂牛顿-验证产物/shots/`，避免污染静态发布上传体积。
 
 > 历史图片版权：用于课件，优先 Wikimedia Commons 公有领域/CC BY-SA 真实历史照片。
 

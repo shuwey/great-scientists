@@ -3,14 +3,17 @@
 
 用法：python3 tools/montage.py darwin [state]
      state 默认 c（滑块最大值），可选 a/b/c
-产出：tools/shots/montage_<site>_<state>.png
+产出：<项目外的验证产物目录>/montage_<site>_<state>.png
+     （默认 ../读懂牛顿-验证产物/shots，可用 SHOTS_DIR 覆盖）
 """
 import os
 import sys
 from PIL import Image, ImageDraw
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-NEW = os.path.join(ROOT, "tools", "shots", "new")
+# 截图目录默认放在项目**外**（不参与静态发布上传）
+SHOTS = os.environ.get("SHOTS_DIR") or os.path.join(os.path.dirname(ROOT), "读懂牛顿-验证产物", "shots")
+NEW = os.path.join(SHOTS, "new")
 
 
 def main():
@@ -42,7 +45,7 @@ def main():
         y += 24
         canvas.paste(im, (pad, y))
         y += im.height + pad
-    out = os.path.join(ROOT, "tools", "shots", "montage_%s_%s.png" % (site, state))
+    out = os.path.join(SHOTS, "montage_%s_%s.png" % (site, state))
     canvas.save(out)
     print("已写出", out, canvas.size)
 

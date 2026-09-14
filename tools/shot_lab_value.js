@@ -11,7 +11,9 @@ const ROOT = path.resolve(__dirname, '..');
 const PORT = 8123;
 const BASE = `http://localhost:${PORT}`;
 const PY = '/Users/shuwei/.workbuddy/binaries/python/versions/3.13.12/bin/python3';
-const OUT = ROOT + '/tools/shots/new';
+// 截图输出目录：默认放在项目**外**（不参与静态发布上传），可用 SHOTS_DIR 覆盖
+const SHOTS = process.env.SHOTS_DIR || path.resolve(ROOT, '..', '读懂牛顿-验证产物', 'shots');
+const OUT = path.join(SHOTS, 'new');
 fs.mkdirSync(OUT, { recursive: true });
 
 const [site, kind, ctrl, value] = process.argv.slice(2);

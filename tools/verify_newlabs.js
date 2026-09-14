@@ -1,7 +1,8 @@
 /* 新版「玩一玩」实验验证：逐实验截图 + 滑块联动 + 运行时报错
    用法：node tools/verify_newlabs.js copernicus kepler …
         node tools/verify_newlabs.js --all   （跑 tools/newlabs/ 下全部站点）
-   产出：tools/shots/new/<site>_<kind>_{a,b,c}.png  +  new_labs_report.json
+   产出：<项目外的验证产物目录>/new/<site>_<kind>_{a,b,c}.png  +  new_labs_report.json
+        （默认 ../读懂牛顿-验证产物/shots，可用 SHOTS_DIR 覆盖）
 */
 const { chromium } = require('/Users/shuwei/.workbuddy/binaries/node/workspace/node_modules/playwright');
 const { spawn } = require('child_process');
@@ -13,7 +14,9 @@ const ROOT = path.resolve(__dirname, '..');
 const PORT = 8117;
 const BASE = `http://localhost:${PORT}`;
 const PY = '/Users/shuwei/.workbuddy/binaries/python/versions/3.13.12/bin/python3';
-const OUT = ROOT + '/tools/shots/new';
+// 截图输出目录：默认放在项目**外**（不参与静态发布上传），可用 SHOTS_DIR 覆盖
+const SHOTS = process.env.SHOTS_DIR || path.resolve(ROOT, '..', '读懂牛顿-验证产物', 'shots');
+const OUT = path.join(SHOTS, 'new');
 fs.mkdirSync(OUT, { recursive: true });
 
 let ids = process.argv.slice(2);
@@ -126,8 +129,8 @@ const setSlider = (idx, which, val) => ({ idx, which, val });
     console.log('!! 脚本异常: ' + e.message);
   } finally {
     srv.kill();
-    fs.writeFileSync(ROOT + '/tools/shots/new_labs_report.json', JSON.stringify(report, null, 1));
-    console.log('\n报告已写 tools/shots/new_labs_report.json');
+    fs.writeFileSync(path.join(SHOTS, 'new_labs_report.json'), JSON.stringify(report, null, 1));
+    console.log(`\n报告已写 ${path.relative(ROOT, SHOTS)}/new_labs_report.json`);
   }
 })();
 

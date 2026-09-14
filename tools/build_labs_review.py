@@ -2,8 +2,9 @@
 """生成「玩一玩实验重做」本地评审页 tools/labs-review.html。
 
 数据来源：tools/newlabs/<site>.py 的 docstring（改动理由）+ LABS 字段；
-配图来源：tools/shots/new/<site>_<kind>_<state>.png —— 内联为 base64 JPEG，
+配图来源：<项目外的验证产物目录>/new/<site>_<kind>_<state>.png —— 内联为 base64 JPEG，
         使该 HTML 自带全部图片，双击即可看、不依赖相对路径。
+        （默认 ../读懂牛顿-验证产物/shots，可用 SHOTS_DIR 覆盖）
 
 用法：python3 tools/build_labs_review.py
 """
@@ -17,7 +18,9 @@ from PIL import Image
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 NEWLABS = os.path.join(ROOT, "tools", "newlabs")
-SHOTS = os.path.join(ROOT, "tools", "shots", "new")
+# 截图目录默认放在项目**外**（不参与静态发布上传）
+SHOTS = os.environ.get("SHOTS_DIR") or os.path.join(os.path.dirname(ROOT), "读懂牛顿-验证产物", "shots")
+SHOTS = os.path.join(SHOTS, "new")
 
 NAMES = {
     "copernicus": "哥白尼", "kepler": "开普勒", "bohr": "玻尔", "curie": "居里夫人",
@@ -187,7 +190,7 @@ footer.foot{color:var(--mute);font-size:13px;text-align:center;padding:26px 0 50
 不影响任何交互与读数，故本轮未改动它。若你希望，我可以下一步统一放高画布。
 </div>
 %s
-<footer class="foot">本页由 tools/build_labs_review.py 生成 · 图片内联自 tools/shots/new/（已缩图压缩）· 仅供本地评审，尚未发布上线</footer>
+<footer class="foot">本页由 tools/build_labs_review.py 生成 · 图片内联自验证产物目录（已缩图压缩）· 仅供本地评审，尚未发布上线</footer>
 </div></body></html>
 """ % (nav, "\n".join(blocks))
 

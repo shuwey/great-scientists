@@ -10,7 +10,8 @@ const SUB = `scientists/${ID}`;
 const PORT = 8099;
 const BASE = `http://localhost:${PORT}`;
 const PY = '/Users/shuwei/.workbuddy/binaries/python/versions/3.13.12/bin/python3';
-const SHOTS = ROOT + '/tools/shots';
+// 截图/报告输出目录：默认放在项目**外**（不参与静态发布上传），可用 SHOTS_DIR 覆盖
+const SHOTS = process.env.SHOTS_DIR || path.resolve(ROOT, '..', '读懂牛顿-验证产物', 'shots');
 fs.mkdirSync(SHOTS, { recursive: true });
 
 // 按子站的 SITE_PAGES 自动发现详情页，避免写死牛顿专属页（optics/calculus/laws）
@@ -194,5 +195,5 @@ const shot = (name) => `${SHOTS}/${ID}_${name}.png`;
   }
 
   fs.writeFileSync(path.join(SHOTS, `e2e_report_${ID}.json`), JSON.stringify(report, null, 2));
-  console.log(`\n=== 报告已写 tools/shots/e2e_report_${ID}.json ===`);
+  console.log(`\n=== 报告已写 ${path.relative(ROOT, SHOTS)}/e2e_report_${ID}.json ===`);
 })();

@@ -26,7 +26,8 @@ const EXPECTED = (function(){
     return m ? (m[1].match(/^\s*\("/gm) || []).length : 13;
   } catch (e) { return 13; }
 })();
-const SHOTS = ROOT + '/tools/shots';
+// 截图/报告输出目录：默认放在项目**外**（不参与静态发布上传），可用 SHOTS_DIR 覆盖
+const SHOTS = process.env.SHOTS_DIR || path.resolve(ROOT, '..', '读懂牛顿-验证产物', 'shots');
 fs.mkdirSync(SHOTS, { recursive: true });
 
 let server;
