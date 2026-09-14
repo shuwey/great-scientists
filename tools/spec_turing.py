@@ -73,7 +73,7 @@ SPEC = {
     "enigma": {
       "title": "破译恩尼格玛：密码的战争",
       "file": "detail/enigma.html",
-      "claim": "二战中德军使用恩尼格玛密码机加密通信。图灵在布莱切利园设计“炸弹机”，用机电方式大规模搜索密钥，大幅加速了破译。",
+      "claim": "二战中德军使用恩尼格玛密码机加密通信。图灵在布莱切利园设计出改进型的“炸弹机”，用机电方式大规模搜索密钥，大幅加速了破译。",
       "tags": ["恩尼格玛", "炸弹机", "破译"],
       "year": "1939–1945",
       "card": "和密码机赛跑，赢的是速度。",
@@ -84,7 +84,7 @@ SPEC = {
       "sections": [
         {"id": "machine", "h": "一、会变的密码机", "body": "恩尼格玛每天更换接线与转子，可能的密钥多到天文数字。传统人力破译几乎不可能。",
          "fig": "enigma", "figalt": "恩尼格玛密码机", "figcap": "转子一转，密码全变。"},
-        {"id": "bombe", "h": "二、炸弹机", "body": "图灵设计的“炸弹机”用电动机电逻辑瞬间尝试成千上万种组合，自动筛掉不可能的密钥，极大缩短破译时间。",
+        {"id": "bombe", "h": "二、炸弹机", "body": "图灵设计的改进型“炸弹机”用电动机电逻辑瞬间尝试成千上万种组合，自动筛掉不可能的密钥，极大缩短破译时间。它的思路并非凭空而来：战前波兰数学家雷耶夫斯基等人已经首破恩尼格玛、造出前驱装置 Bomba；图灵是在此基础上的改进，布莱切利园的胜利是多国协作的结果。",
          "figalt": "炸弹机", "figcap": "用速度，碾过天文数字的组合。"},
         {"id": "effect", "h": "三、改变了战争", "body": "盟军由此读到德军动向，史家估计破译工作让二战提前结束、挽救了无数生命。图灵的工作是其中的核心。",
          "figalt": "情报的杠杆", "figcap": "读懂敌人，就握住了胜负的开关。"}
@@ -122,7 +122,7 @@ SPEC = {
     "decidability": {"name": "可判定性", "cat": "数学", "short": "有没有通用判官", "plain": "一个问题若存在一个算法总能给出“是/否”答案，就是可判定的。停机问题属于“不可判定”的典型。", "analogy": "有没有一位永远公正的判官，对每件事都给结论？有些事没有。", "page": "computability", "anchor": "#diagonal", "related": ["halting", "computable", "logic"]},
     "logic": {"name": "逻辑", "cat": "数学", "short": "推理的规则", "plain": "逻辑研究正确推理的形式规则。图灵的工作建立在数理逻辑之上，把“推理”与“计算”联系起来。", "analogy": "给思维立规矩，让对错有章可循。", "page": "computability", "anchor": "#diagonal", "related": ["decidability", "computable"]},
     "enigma": {"name": "恩尼格玛", "cat": "密码", "short": "德军的密码机", "plain": "恩尼格玛是二战德军使用的转子密码机，每天更换设置使密钥极多，传统手段难以破译。", "analogy": "一把每天自己换锁芯的锁，钥匙有天文数字种。", "page": "enigma", "anchor": "#machine", "related": ["bombe", "cryptography", "bletchley"]},
-    "bombe": {"name": "炸弹机", "cat": "密码", "short": "破译恩尼格玛的机电装置", "plain": "炸弹机是图灵团队设计的机电装置，通过快速尝试与剔除不可能的密钥组合，大规模加速恩尼格玛的破译。", "analogy": "一台不知疲倦的“试钥匙”机器，用速度碾压组合爆炸。", "page": "enigma", "anchor": "#bombe", "related": ["enigma", "cryptography", "bletchley"]},
+    "bombe": {"name": "炸弹机", "cat": "密码", "short": "破译恩尼格玛的机电装置", "plain": "炸弹机是图灵团队在波兰 Bomba 基础上改进的机电装置，通过快速尝试与剔除不可能的密钥组合，大规模加速恩尼格玛的破译。", "analogy": "一台不知疲倦的“试钥匙”机器，用速度碾压组合爆炸。", "page": "enigma", "anchor": "#bombe", "related": ["enigma", "cryptography", "bletchley"]},
     "cryptography": {"name": "密码学", "cat": "密码", "short": "让信息只有对的人能读", "plain": "密码学研究如何把信息加密，使敌人看不懂、盟友能还原。图灵的破译工作处于密码学的对抗最前线。", "analogy": "把信锁进只有朋友有钥匙的盒子。", "page": "enigma", "anchor": "#machine", "related": ["enigma", "bombe"]},
     "bletchley": {"name": "布莱切利园", "cat": "历史", "short": "二战破译中心", "plain": "布莱切利园是二战中英国破译敌方密码的中心，图灵在此领导恩尼格玛破译，聚集了众多顶尖头脑。", "analogy": "一间改写了战争走向的“密室”。", "page": "enigma", "anchor": "#effect", "related": ["enigma", "bombe", "turing"]},
     "turing-test": {"name": "图灵测试", "cat": "计算", "short": "机器像人吗？", "plain": "图灵测试（模仿游戏）通过一个文字对话实验判断机器是否表现得像人。它是人工智能领域最具影响力的思想实验之一。", "analogy": "隔着屏幕聊，你分不清对面是人还是机器——那它就算“够像”。", "page": "ai-test", "anchor": "#question", "related": ["imitation-game", "ai", "turing-machine"]},
@@ -138,7 +138,7 @@ SPEC = {
     {"year": 1936, "id": "machine", "title": "图灵机论文", "img": "turing-machine.jpg", "alt": "图灵机", "fig": "用纸带定义了“可计算”。", "body": "发表《论可计算数》，提出图灵机，并证明停机问题不可判定。"},
     {"year": 1938, "id": "princeton", "title": "普林斯顿博士", "img": "princeton.jpg", "alt": "普林斯顿", "fig": "跨洋深造。", "body": "他在普林斯顿获博士学位，进一步锤炼了逻辑与计算的理论。"},
     {"year": 1939, "id": "bletchley", "title": "投身破译", "img": "bletchley.jpg", "alt": "布莱切利园", "fig": "战争中的密室。", "body": "二战爆发，他进入布莱切利园，领导德军恩尼格玛密码的破译。"},
-    {"year": 1940, "id": "bombe", "title": "炸弹机", "img": "bombe.jpg", "alt": "炸弹机", "fig": "用机器破机器。", "body": "他设计的炸弹机大规模加速密钥搜索，成为破译的关键装备。"},
+    {"year": 1940, "id": "bombe", "title": "炸弹机", "img": "bombe.jpg", "alt": "炸弹机", "fig": "用机器破机器。", "body": "他设计的改进型炸弹机大规模加速密钥搜索，成为破译的关键装备。"},
     {"year": 1945, "id": "ace", "title": "设计 ACE", "img": "ace.jpg", "alt": "ACE 计算机", "fig": "从理论走向真机。", "body": "战后他参与设计早期的存储程序计算机 ACE，把理论变成实机。"},
     {"year": 1950, "id": "test", "title": "图灵测试", "img": "turing-test.jpg", "alt": "图灵测试", "fig": "机器能思考吗？", "body": "他发表论文提出“模仿游戏”，开创人工智能的思想实验。"},
     {"year": 1952, "id": "morpho", "title": "形态发生研究", "img": "morphogenesis.jpg", "alt": "形态发生", "fig": "用数学解释图案。", "body": "他发表反应—扩散模型，用数学解释生物体上的斑纹与条纹。"},

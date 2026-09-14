@@ -85,7 +85,7 @@ window.SITE_TERMS = {
     name: "炸弹机",
     cat: "密码",
     short: "破译恩尼格玛的机电装置",
-    plain: "炸弹机是图灵团队设计的机电装置，通过快速尝试与剔除不可能的密钥组合，大规模加速恩尼格玛的破译。",
+    plain: "炸弹机是图灵团队在波兰 Bomba 基础上改进的机电装置，通过快速尝试与剔除不可能的密钥组合，大规模加速恩尼格玛的破译。",
     analogy: "一台不知疲倦的“试钥匙”机器，用速度碾压组合爆炸。",
     page: "enigma", anchor: "#bombe",
     related: ["enigma", "cryptography", "bletchley"]

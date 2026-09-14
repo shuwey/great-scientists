@@ -86,7 +86,7 @@ window.SITE_TERMS = {
     cat: "历史",
     short: "用肉眼做出最精密记录的人",
     plain: "丹麦天文学家第谷在没有望远镜的时代，靠精心设计的仪器做出极高精度的恒星与行星位置记录，后来全给了开普勒。",
-    analogy: "没 microscope 的“超级视力”：他用尺子和耐心，量出了别人量不到的精度。",
+    analogy: "没有望远镜的“超级视力”：他用尺子和耐心，量出了别人量不到的精度。",
     page: "mars", anchor: "#tycho",
     related: ["mars-planet", "observation-precision", "rudolphine"]
   },

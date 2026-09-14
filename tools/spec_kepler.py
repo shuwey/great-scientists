@@ -60,7 +60,7 @@ SPEC = {
       "remember": "一句话记住：科学有时不是“想出新点子”，而是“舍不得丢掉那一小点误差”。",
       "sideterms": ["tycho", "mars-planet", "eight-years", "ptolemaic", "observation-precision", "scientific-method", "copernicus"],
       "sections": [
-        {"id": "tycho", "h": "一、第谷留下的宝藏", "body": "丹麦天文学家第谷·布拉赫用肉眼（望远镜还没普及）做出了史上最精确的恒星与行星位置记录。他去世后，这些资料落到开普勒手里——这是开普勒最大的运气。",
+        {"id": "tycho", "h": "一、第谷留下的宝藏", "body": "丹麦天文学家第谷·布拉赫用肉眼（那时望远镜尚未发明）做出了史上最精确的恒星与行星位置记录。他去世后，这些资料落到开普勒手里——这是开普勒最大的运气。",
          "fig": "mars", "figalt": "第谷的精密观测", "figcap": "没有第谷的数据，就没有开普勒的定律。"},
         {"id": "eight", "h": "二、八年的计算", "body": "开普勒拿火星“开刀”，是因为火星轨道偏心率最大、最不圆，最能检验理论。他反反复复算，试图用圆和本轮去拟合，却总差那么一点。",
          "figalt": "反复试错的计算", "figcap": "火星是最“倔”的行星，逼出了真相。"},
@@ -126,7 +126,7 @@ SPEC = {
     "harmonic-law": {"name": "调和定律", "cat": "天文", "short": "第三定律的雅称", "plain": "开普勒把第三定律称作“调和定律”，因为它揭示出行星运动里藏着像音乐一样的比例与和谐。", "analogy": "宇宙像一架大乐器，每颗行星都在按固定的比例“发声”。", "page": "laws", "anchor": "#law3", "related": ["kepler-third", "period"]},
     "period": {"name": "公转周期", "cat": "天文", "short": "绕太阳一圈要多久", "plain": "一颗行星绕太阳运行一周的时间，叫公转周期。地球的周期约 365 天，火星约 687 天。", "analogy": "周期就是“跑完操场一圈用了多少秒”。", "page": "laws", "anchor": "#law3", "related": ["kepler-third", "orbit"]},
     "why-kepler": {"name": "从数据到定律", "cat": "方法", "short": "不是拍脑袋，是算出来的", "plain": "开普勒的定律来自对数以千计的观测点反复拟合，而非先入为主的哲学。这种“让数据说话”的态度，是现代科学的标志。", "analogy": "先收集一堆散点，再找那条最贴合的线——而不是先画线再改数据。", "page": "laws", "anchor": "#why", "related": ["scientific-method", "observation-precision"]},
-    "tycho": {"name": "第谷·布拉赫", "cat": "历史", "short": "用肉眼做出最精密记录的人", "plain": "丹麦天文学家第谷在没有望远镜的时代，靠精心设计的仪器做出极高精度的恒星与行星位置记录，后来全给了开普勒。", "analogy": "没 microscope 的“超级视力”：他用尺子和耐心，量出了别人量不到的精度。", "page": "mars", "anchor": "#tycho", "related": ["mars-planet", "observation-precision", "rudolphine"]},
+    "tycho": {"name": "第谷·布拉赫", "cat": "历史", "short": "用肉眼做出最精密记录的人", "plain": "丹麦天文学家第谷在没有望远镜的时代，靠精心设计的仪器做出极高精度的恒星与行星位置记录，后来全给了开普勒。", "analogy": "没有望远镜的“超级视力”：他用尺子和耐心，量出了别人量不到的精度。", "page": "mars", "anchor": "#tycho", "related": ["mars-planet", "observation-precision", "rudolphine"]},
     "mars-planet": {"name": "火星", "cat": "天文", "short": "开普勒的“试金石”", "plain": "火星轨道偏心率最大、最偏离正圆，最难用圆拟合。开普勒拿它反复试错，最终逼出了椭圆。", "analogy": "最倔强的学生，反而逼出了老师最好的教法。", "page": "mars", "anchor": "#tycho", "related": ["eight-years", "ellipse-orbit"]},
     "eight-years": {"name": "八年计算", "cat": "方法", "short": "为火星耗掉的青春", "plain": "开普勒为拟合火星轨道反复计算了近八年，试过圆、本轮、各种组合，才接受椭圆。科学常是长时间的“笨功夫”。", "analogy": "同一个错题本，改了八年，终于改对了一道大题。", "page": "mars", "anchor": "#eight", "related": ["scientific-method", "mars-planet"]},
     "ptolemaic": {"name": "托勒密体系", "cat": "宇宙观", "short": "地心+本轮的旧框架", "plain": "古代托勒密体系用“地球居中+本轮”拟合天体运动。开普勒发现，连哥白尼的正圆也套不住火星——必须换椭圆。", "analogy": "旧地图怎么描都描不准，不是你画功差，是底图错了。", "page": "mars", "anchor": "#circle", "related": ["geocentrism"]},

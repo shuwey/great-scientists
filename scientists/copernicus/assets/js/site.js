@@ -730,7 +730,7 @@
         out.innerHTML = "恒星距离 = <b>" + d.toFixed(0) + "</b> 秒差距（≈ " + ly.toFixed(0) +
           " 光年）　·　视差角 θ ≈ 1/" + d.toFixed(0) + " = <b>" + theta.toFixed(3) +
           "</b> 角秒　·　" + (theta < 0.1
-            ? "<span style='color:#E03131;font-weight:800'>比当年仪器能测到的 0.1 角秒还小，根本看不出来</span>"
+            ? "<span style='color:#E03131;font-weight:800'>已小到 0.1 角秒以下，早年的仪器根本分辨不出</span>"
             : "距离再翻一倍，摆幅还要减半");
       }
     }

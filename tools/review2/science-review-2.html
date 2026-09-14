@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>「影响世界的15个科学家」第二轮内容复核报告</title>
+<style>
+:root{
+  --bg:#f6f7f9; --card:#fff; --ink:#1f2430; --ink2:#4b5563; --ink3:#7b8494;
+  --line:#e5e7eb; --a:#c0392b; --a-bg:#fdf1ef; --b:#b26a00; --b-bg:#fdf6e8;
+  --ok:#1a7f5a; --ok-bg:#eefaf4; --accent:#2b5fa8; --code:#f3f4f6;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:15px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:1000px;margin:0 auto;padding:38px 22px 90px}
+header.hd{border-bottom:2px solid var(--ink);padding-bottom:22px;margin-bottom:30px}
+h1{font-size:27px;line-height:1.35;margin:0 0 10px}
+h1 small{display:block;font-size:14px;font-weight:400;color:var(--ink3);margin-top:9px;letter-spacing:.3px}
+h2{font-size:20px;margin:44px 0 6px;padding-left:12px;border-left:5px solid var(--accent)}
+h2 .cnt{font-size:13px;font-weight:400;color:var(--ink3);margin-left:8px}
+h3{font-size:15px;margin:0}
+p{margin:9px 0}
+.lede{color:var(--ink2);font-size:14.5px}
+.meta{font-size:13px;color:var(--ink3);margin-top:14px}
+.meta b{color:var(--ink2)}
+
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0 8px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.stat .n{font-size:26px;font-weight:700;line-height:1.15}
+.stat .k{font-size:12.5px;color:var(--ink3);margin-top:3px}
+.stat.a .n{color:var(--a)} .stat.b .n{color:var(--b)} .stat.g .n{color:var(--ok)}
+
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 4px}
+.filters button{border:1px solid var(--line);background:var(--card);color:var(--ink2);
+  padding:6px 13px;border-radius:999px;font-size:13px;cursor:pointer;transition:.15s}
+.filters button:hover{border-color:#c9ced8}
+.filters button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+.item{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--line);
+  border-radius:11px;padding:16px 18px;margin:13px 0}
+.item.a{border-left-color:var(--a)} .item.b{border-left-color:var(--b)}
+.item .hd{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:4px}
+.item h3{font-size:15.5px}
+.tag{font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:5px;letter-spacing:.5px}
+.tag.a{background:var(--a-bg);color:var(--a)} .tag.b{background:var(--b-bg);color:var(--b)}
+.path{font-size:12px;color:var(--ink3);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  background:var(--code);padding:1.5px 7px;border-radius:5px}
+.quote{background:#fafafb;border-left:3px solid #d7dbe2;border-radius:0 7px 7px 0;
+  padding:9px 13px;margin:9px 0;font-size:14px;color:#2b3240}
+.quote::before{content:"原文（已回原文逐字核对）";display:block;font-size:11px;color:var(--ink3);letter-spacing:1px;margin-bottom:3px}
+.lab{font-size:12.5px;font-weight:700;color:var(--ink3);letter-spacing:.5px;margin-top:11px}
+.fix{background:var(--ok-bg);border-radius:8px;padding:9px 13px;margin-top:5px;font-size:14px}
+.fix b{color:var(--ok)}
+.note{font-size:13px;color:var(--ink3);margin-top:7px}
+
+table.sum{width:100%;border-collapse:collapse;margin:16px 0;font-size:13.5px;background:var(--card);
+  border:1px solid var(--line);border-radius:11px;overflow:hidden}
+table.sum th,table.sum td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line)}
+table.sum th{background:#f0f2f5;font-weight:600;font-size:12.5px;color:var(--ink2)}
+table.sum tr:last-child td{border-bottom:none}
+table.sum td.c{text-align:center;font-variant-numeric:tabular-nums}
+
+.good{background:var(--ok-bg);border:1px solid #cdeade;border-radius:11px;padding:16px 18px;margin:14px 0}
+.good ul{margin:8px 0 0;padding-left:20px}
+.good li{margin:5px 0}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:4px 18px 14px;margin:14px 0}
+.plan ol{padding-left:22px}
+.plan li{margin:8px 0}
+footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink3)}
+@media(max-width:720px){.cards3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hd">
+  <h1>「影响世界的 15 个科学家」第二轮内容复核报告
+    <small>换一组 agent 独立重读 + 首轮 26 条回归核对 · 2026-09-14</small>
+  </h1>
+  <p class="lede">复核范围：15 个子站 × 9 个页面，共 <b>136 个页面</b>＋15 份术语库，约 1.3 MB 中文正文。方法：按学科分 <b>6 组独立通读</b>（天文 / 经典物理 / 电磁近代物理 / 化学 / 生物医学 / 计算宇宙学，逐页不抽样）→ 单独 1 组做 <b>首轮 26 条回归核对</b> → 我逐条回原文核对全部引用（防误报）→ 再跑 4 项机器批量核查。</p>
+  <div class="meta"><b>结论：</b>内容整体<b>准确、克制、经得起读</b>。首轮 26 条修复<b>全部真实落地且科学上成立</b>，无一条改错或引入新错。本轮新发现 23 条，其中真正的事实/年代/归属硬伤 10 条 —— 值得注意的是，<b>10 条里有 4 条集中在哥白尼站，且多为"同一事实在不同页面口径不一致"</b>，这是本系列最主要的系统性风险。</div>
+  <div class="meta" style="margin-top:8px"><b>修复状态：</b>本报告 23 条已于 <b>2026-09-14 全部修复</b>——站点侧 26 个文件 33 处、生成源侧 13 个文件 28 处，逐条命中校验后落盘；新增 1 张配图；复验四件套全绿。逐条对照见第五节。</div>
+</header>
+
+<div class="cards3">
+  <div class="stat a"><div class="n">10</div><div class="k">A 类 · 科学准确性 / 严谨性</div></div>
+  <div class="stat b"><div class="n">13</div><div class="k">B 类 · 通俗性 / 内部一致性</div></div>
+  <div class="stat g"><div class="n">26 / 26</div><div class="k">首轮修复回归核对 · 全部落地且正确</div></div>
+</div>
+
+<div class="filters">
+  <button class="on" data-f="all">全部 23 条</button>
+  <button data-f="a">只看 A 类（10）</button>
+  <button data-f="b">只看 B 类（13）</button>
+</div>
+
+<div class="good" style="margin-top:20px">
+  <p><b>✅ 首轮 26 条回归核对：26 / 26 完全落地且科学正确 —— 需要立刻修正的条目：0</b></p>
+  <p style="margin:9px 0 0">本轮专门派了一组 agent 逐条回原文核对首轮 26 条改动的<b>当前实际文案</b>，判据不是"文字是否变了"，而是"<b>改后的新说法科学上是否成立</b>"。结果：完全落地且正确 <b>26</b> 条 / 部分落地 <b>0</b> / 未落地 <b>0</b> / 落地但新文案有误 <b>0</b>。</p>
+  <p class="note">重点复核的易错项全部无误：A2（118 种元素"人工合成"边界）、A8（9×10¹⁶ 中文读作"九亿亿"）、A9（光电频率 ×10¹⁴ Hz 与代码一致）、A10（麦克斯韦彩色摄影 1855→1861 且年份归位）、A12（奇点定理 1965/1970 归属拆分）、A13（α/β/γ 分类不再归居里夫妇）、A16（单摆精确公式归惠更斯）。多页重复出现的条目（A3/A5/A6/A7/A13/A15/B3/B8）逐页确认无遗漏。<br><b>这说明上一轮"站点 + 生成源（spec）同步修改"的做法是有效的</b> —— 否则重建后必然回退。</p>
+</div>
+
+<div class="good" style="border-color:#cdeade;background:#f4fbf8">
+  <p><b>✅ 本报告 23 条已全部修复（2026-09-14）</b></p>
+  <ul>
+    <li><b>站点侧</b>：<code>tools/apply_review_fixes2.py</code> —— 26 个文件、<b>33 处</b>替换，逐条声明"期望命中次数"，任一条不符即整体中止、不写任何文件。</li>
+    <li><b>生成源侧</b>：<code>tools/sync_spec_fixes2.py</code> —— 13 个文件（9 个 <code>spec_&lt;id&gt;.py</code> + 4 个 <code>newlabs/&lt;id&gt;.py</code>）、<b>28 处</b>替换，并重生成 9 个 <code>spec_&lt;id&gt;.json</code>（已逐字校验 <code>.py ↔ .json</code> 等价）。<br>
+      <span class="note">这一步不能省：正文/术语库/时间轴由 <code>spec_&lt;id&gt;.py</code> 产出、「玩一玩」实验由 <code>newlabs/&lt;id&gt;.py</code> 产出；只改站点不改生成源，下次重建修正就会被写回原样。newton / galileo / einstein 三站无 spec，正文即手写 HTML。</span></li>
+    <li><b>新增 1 张配图</b>：<code>scientists/pasteur/assets/img/history/etudes-sur-le-vin.jpg</code> —— 巴斯德《酒的研究》1866 年初版书名页（Wikimedia Commons，<b>Public domain</b>，与本站其余 9 张图片的 PD 惯例一致），已登记进 <code>CREDITS.json</code> 与 spec 的 <code>images</code> 数组。</li>
+    <li><b>复验</b>：<code>validate_site.py</code> 106 通过 / 0 警告 / 0 错误；<code>check_spec_links.py</code> 160 条链接 0 坏链、0 文字不符；<code>check_review_fixes2.js</code> 浏览器实测 23 页文案断言 + 2 条术语库断言 + 4 个实验 slider 联动全过、0 JS 报错 / 0 缺资源；<code>e2e_check.js</code> 15 站全过。</li>
+  </ul>
+</div>
+
+<h2>一、科学准确性 / 严谨性<span class="cnt">A 类 · 10 条</span></h2>
+
+<div class="item a" data-k="a">
+  <div class="hd"><span class="tag a">A1</span><h3>地轴倾斜（黄赤交角）的功劳被挂到开普勒、牛顿名下</h3><span class="path">scientists/copernicus/detail/earthmotion.html</span></div>
+  <div class="quote">哥白尼之后的开普勒、牛顿进一步澄清：地轴是斜的（约 23.5°）。</div>
+  <div class="lab">问题</div>
+  <p>地轴倾斜解释四季，<b>本身就是哥白尼日心模型自带的内容</b>，古希腊也早已知其量值。写成"之后的开普勒、牛顿进一步澄清"，等于暗示哥白尼不知道地轴是斜的，与史实不符 —— 属"把后世结论套在当时人身上"的反向版。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">改为"<b>地轴是斜的（约 23.5°）——哥白尼的日心模型已经用它解释四季；后来开普勒、牛顿进一步给出了力学上的完整解释。</b>"</div>
+</div>
+
+<div class="item a" data-k="a">
+  <div class="hd"><span class="tag a">A2</span><h3>"开普勒修正为椭圆"被标在 1619 年</h3><span class="path">scientists/copernicus/timeline.html</span></div>
+  <div class="quote">开普勒修正为椭圆　（节点时间 1619）</div>
+  <div class="lab">问题</div>
+  <p>年代错。椭圆轨道（第一定律）发表于 <b>1609 年《新天文学》</b>；1619 年《宇宙和谐论》给出的是<b>第三定律（T²∝a³）</b>。更关键的是，这与本站外的<b>开普勒站时间轴自相矛盾</b>（开普勒站：1609 椭圆、1619 第三定律）。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">节点标题改为"<b>开普勒把日心说变成精确体系</b>"，或把"椭圆"单列到 <b>1609</b>；正文保留"1609 椭圆、1619 周期—距离定律"。</div>
+</div>
+
+<div class="item a" data-k="a">
+  <div class="hd"><span class="tag a">A3</span><h3>哥白尼时代"最好的仪器只能测到约 0.1 角秒" —— 精度拔高约 600 倍</h3><span class="path">scientists/copernicus/labs.html（及 assets/js/site.js 第 733 行）</span></div>
+  <div class="quote">可当年最好的仪器只能测到约 0.1 角秒</div>
+  <div class="lab">问题</div>
+  <p>数量级 + 时代双错。哥白尼乃至第谷的<b>望远镜前仪器只能测到角分级（≈1′＝60″）</b>；<b>0.1 角秒</b>的精度要到 19 世纪才具备（贝塞尔 1838 年测恒星视差）。说成 0.1 角秒把精度拔高了约 <b>600 倍</b>，且与本页后文"1838 年贝塞尔才测出"直接打架。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">改为"<b>当年最好的仪器只能测到约 1 角分（60 角秒）的量级，远不足以看出恒星的微小摆动</b>"，或笼统写"精度远远不够"。<span class="note">注意 slogan 文案在 labs.html 与 site.js 各有一份，两处都要改。</span></div>
+</div>
+
+<div class="item a" data-k="a">
+  <div class="hd"><span class="tag a">A4</span><h3>第谷时代"望远镜还没普及" —— 当时尚未发明</h3><span class="path">scientists/kepler/detail/mars.html</span></div>
+  <div class="quote">用肉眼（望远镜还没普及）做出了</div>
+  <div class="lab">问题</div>
+  <p>时代错置。第谷（1571–1601）从事精密观测时，<b>望远镜尚未发明</b>（约 1608 年才出现，1609 年伽利略才用于天文）。"还没普及"暗示当时已有望远镜只是不普遍，与史实不符。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">改为"<b>用肉眼（望远镜尚未发明）做出了……</b>"或"<b>在望远镜问世之前，他靠肉眼做出了……</b>"</div>
+</div>
+
+<div class="item a" data-k="a">
+  <div class="hd"><span class="tag a">A5</span><h3>棱镜实验写成"在剑桥（因为瘟疫回了老家）"—— 括号内自相矛盾</h3><span class="path">scientists/newton/detail/optics.html</span></div>
+  <div class="quote">牛顿在剑桥（因为瘟疫回了老家）做了一件简单到不可思议的事</div>
+  <div class="lab">问题</div>
+  <p>棱镜实验是牛顿 1665–1666 年因瘟疫停课、<b>在老家伍尔索普庄园的家中</b>做的，并非在剑桥。"在剑桥"与括号里"因为瘟疫回了老家"直接互相否定。本站时间轴 1665/1666 节点写的是"回乡／窗户钻小孔"，未写剑桥，可反证。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">改为"<b>牛顿因瘟疫回到老家伍尔索普，在窗户板上钻了一个小孔……</b>"，删去"在剑桥"。</div>
+</div>
+
+<div class="item a" data-k="a">
+  <div class="hd"><span class="tag a">A6</span><h3>生日历法冲突：年份用新历 1643，日期用旧历 12 月 25 日</h3><span class="path">scientists/newton/timeline.html（亦见 index.html）　<span class="note" style="font-weight:600">· 待核</span></span></div>
+  <div class="quote">12 月 25 日 · 英格兰林肯郡伍尔索普庄园　（节点年份 1643）</div>
+  <div class="lab">问题</div>
+  <p>全站以 <b>1643</b> 为出生年（新历），却把生日写成"12 月 25 日／圣诞节" —— 那是<b>旧历 1642 年</b>的日期，对应新历应为 <b>1643 年 1 月 4 日</b>。两个日期放在同一节点上相差约 11 天，站内未加任何历法说明，学生按时间轴对照会困惑。<span class="note">这属"双历法惯例"造成的不一致，改法取决于你希望采用哪套口径，故标注待核。</span></p>
+  <div class="lab">建议改法</div>
+  <div class="fix">择一统一：① 写"<b>1642 年圣诞节（新历 1643 年 1 月 4 日）</b>"；② 或直接标新历"<b>1643 年 1 月 4 日</b>"。首页的"1643–1727"与"圣诞节"表述需同步对齐。</div>
+</div>
+
+<div class="item a" data-k="a">
+  <div class="hd"><span class="tag a">A7</span><h3>"也推翻了牛顿沿用两百多年的引力图景" —— 与本站相对论页自相矛盾</h3><span class="path">scientists/einstein/timeline.html</span></div>
+  <div class="quote">也推翻了牛顿沿用两百多年的引力图景。</div>
+  <div class="lab">问题</div>
+  <p>这正是"相对论推翻牛顿"的过度简化（准确说法是：在强引力／高速下比牛顿更准，牛顿引力是其弱场低速近似）。更严重的是，<b>本站 relativity.html 明确写着"爱因斯坦没有推翻牛顿——在速度远小于光速时，相对论会自然退化为我们熟悉的牛顿力学"</b>，同一站点两页直接对立。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">改为"<b>把牛顿引力扩展到了更强、更极端的情形（牛顿力学是它的弱场低速近似）</b>"，与相对论页口径统一。</div>
+</div>
+
+<div class="item a" data-k="a">
+  <div class="hd"><span class="tag a">A8</span><h3>巴氏杀菌被标成"灭菌" —— 与同页正文自相矛盾</h3><span class="path">scientists/pasteur/detail/pasteurization.html</span></div>
+  <div class="quote">&lt;span class="tag"&gt;灭菌&lt;/span&gt;　（同页正文写"杀死大部分"）</div>
+  <div class="lab">问题</div>
+  <p><b>灭菌（sterilization）指杀灭全部微生物；巴氏杀菌只杀灭大部分致病菌与腐败菌</b>，并保留风味与部分微生物。标签用"灭菌"，与同页正文"杀死大部分"直接冲突，会让学生把两个概念混为一谈 —— 这是中学生物/化学的常见易错点，值得较真。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">标签改为"<b>杀菌</b>"或"<b>减菌</b>"；正文本身正确，不必改。</div>
+</div>
+
+<div class="item a" data-k="a">
+  <div class="hd"><span class="tag a">A9</span><h3>用"天花被消灭"佐证巴斯德的减毒路线 —— 归因过宽</h3><span class="path">scientists/pasteur/detail/vaccine.html</span></div>
+  <div class="quote">天花被消灭，更证明其路线的深远。</div>
+  <div class="lab">问题</div>
+  <p>句中的"其路线"指巴斯德的<b>减毒疫苗思路</b>，但<b>天花疫苗是詹纳（Jenner）1796 年用牛痘制成的</b>，早于巴斯德且不属于减毒路线。用天花被消灭来佐证巴斯德的路线，属把他人成果套在本站人物身上，因果链不成立 —— 与首轮已修的"归属错"同类。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">改为"<b>多种疫苗由此诞生，后来的疫苗更消灭了天花等疫病</b>"，把"其路线"限定在巴斯德确有贡献的减毒疫苗范畴。</div>
+</div>
+
+<div class="item a" data-k="a">
+  <div class="hd"><span class="tag a">A10</span><h3>把"逃逸速度超过光速"当成黑洞的定义</h3><span class="path">scientists/hawking/detail/blackhole.html（labs.html 亦有同框表述）</span></div>
+  <div class="quote">其表面逃逸速度会超过光速。按相对论，光也逃不出</div>
+  <div class="lab">问题</div>
+  <p>"逃逸速度 &gt; c"是<b>牛顿力学下的巧合算法</b>（恰好给出史瓦西半径），并非相对论结论。原文却写成"<b>按相对论</b>，光也逃不出——这就是黑洞"，把入门类比当成了严格定义。真实边界是<b>事件视界／时空曲率</b>。<span class="note">已核实 labs.html 实验一同样用了这个说法（"在视界以内，连最快的逃逸速度也超过光速"），措辞不同但同一问题，两处都要动。</span></p>
+  <div class="lab">建议改法</div>
+  <div class="fix">保留类比但补一句限定："<b>这只是入门近似；真正的边界是事件视界——时空弯曲到连光的世界线都只能向内。</b>"</div>
+</div>
+
+<h2>二、通俗可理解性 / 内部一致性<span class="cnt">B 类 · 13 条</span></h2>
+
+<div class="item b" data-k="b">
+  <div class="hd"><span class="tag b">B1</span><h3>正文混入未翻译英文词 combinations</h3><span class="path">scientists/copernicus/detail/revolutionibus.html</span></div>
+  <div class="quote">用圆和圆 combinations 拟合行星位置</div>
+  <div class="lab">问题</div>
+  <p>核心句里混进英文词，中学生读到会卡住。（与首轮 B 类"未译英文词"同类问题。）</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">改为"<b>用圆的叠加／圆的组合拟合行星位置</b>"。</div>
+</div>
+
+<div class="item b" data-k="b">
+  <div class="hd"><span class="tag b">B2</span><h3>术语库"第谷"条混入 microscope —— 既未翻译又用错词</h3><span class="path">scientists/kepler/assets/js/terms.js</span></div>
+  <div class="quote">没 microscope 的"超级视力"</div>
+  <div class="lab">问题</div>
+  <p>应为<b>望远镜（telescope）</b>，写成了<b>显微镜（microscope）</b>。而且第谷本就活在没有望远镜的时代，此处类比所指应是望远镜。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">改为"<b>没有望远镜的时代，他靠尺子和耐心……</b>"或"<b>没望远镜的"超级视力"</b>"。</div>
+</div>
+
+<div class="item b" data-k="b">
+  <div class="hd"><span class="tag b">B3</span><h3>首页写"查看全部 15 个年份"，时间轴实际只有 14 个节点</h3><span class="path">scientists/newton/index.html</span></div>
+  <div class="quote">查看全部 15 个年份 →</div>
+  <div class="lab">问题</div>
+  <p>已实测点数：时间轴 <code>data-year</code> 共 <b>14</b> 个（1643/1655/1661/1665/1666/1669/1672/1684/1687/1696/1703/1704/1705/1727），与"15 个年份"不符 —— 典型的删节点后文案未同步。这与首轮 A1"页脚人数写死会过期"是同一类病。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">把"15 个年份"改为"<b>14 个年份</b>"，或补回缺失节点（如 1668 反射望远镜）。<b>更稳的做法是别写死数字</b>，改成"<b>查看完整时间轴 →</b>"。</div>
+</div>
+
+<div class="item b" data-k="b">
+  <div class="hd"><span class="tag b">B4</span><h3>正文混入未翻译英文词 Humanity</h3><span class="path">scientists/einstein/detail/mass-energy.html</span></div>
+  <div class="quote">怎么用，是 Humanity 的选择。</div>
+  <div class="lab">问题</div>
+  <p>未译英文词，且出现在收尾金句里。（与首轮 B 类同型。）</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">改为"<b>怎么用，是人类的抉择。</b>"</div>
+</div>
+
+<div class="item b" data-k="b">
+  <div class="hd"><span class="tag b">B5</span><h3>正文混入未翻译英文词 radio</h3><span class="path">scientists/maxwell/index.html</span></div>
+  <div class="quote">今天所有的 radio、Wi-Fi、光纤</div>
+  <div class="lab">问题</div>
+  <p>同一句里 Wi-Fi 是通用外来词、光纤是中文，"radio"却有现成中文译法仍留英文，前后不统一。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">改为"<b>今天所有的无线电、Wi-Fi、光纤</b>"。</div>
+</div>
+
+<div class="item b" data-k="b">
+  <div class="hd"><span class="tag b">B6</span><h3>实验二引言把"稀有气体最高、碱金属最低"说成普遍规律，与自己的演示相反</h3><span class="path">scientists/mendeleev/labs.html（实验二·周期律 引言）</span></div>
+  <div class="quote">每到稀有气体冲到最高，一到碱金属就跌到最低</div>
+  <div class="lab">问题</div>
+  <p>该句把某种性质的变化说成<b>普遍锯齿规律</b>，但实验二可切换的另两种性质里：<b>原子半径是"碱金属最大、稀有气体最小"</b>（趋势相反）、<b>电负性是"卤素最高"</b>。描述与自己的演示互相矛盾，会让学生误以为所有周期趋势都长这样。<span class="note">这是首轮 A14 修正后的"同页引言未同步"遗留。</span></p>
+  <div class="lab">建议改法</div>
+  <div class="fix">改为"<b>以默认的第一电离能为例：稀有气体最高、碱金属最低；换成原子半径等性质，趋势会反过来</b>"，或删去"每到…每到…"的笼统表述。</div>
+</div>
+
+<div class="item b" data-k="b">
+  <div class="hd"><span class="tag b">B7</span><h3>实验三称留了"三个空格"（镓/钪/锗），详解页只讲镓、锗两个</h3><span class="path">scientists/mendeleev/labs.html（实验三·留白的格子）</span></div>
+  <div class="quote">1875 年镓、1879 年钪、1886 年锗——预言全部应验。</div>
+  <div class="lab">问题</div>
+  <p>实验三说有"三个空格"由镓/钪/锗应验，但本站 index、detail/predict、timeline <b>只讲镓、锗两个预言</b>，"钪（1879）"从未在详解页出现。读者在详解页找不到第三个证据，跨页口径不一致。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">在 <b>detail/predict 补一句"钪（1879）是第三个应验的预言"</b>，或与实验三的"三个空格"口径统一。</div>
+</div>
+
+<div class="item b" data-k="b">
+  <div class="hd"><span class="tag b">B8</span><h3>提纯实验一句话内自相矛盾，且数值待核</h3><span class="path">scientists/curie/labs.html（实验二·提纯的代价）</span></div>
+  <div class="quote">约每吨沥青铀矿残渣只能提出 25 毫克镭，而这点量要用掉几吨矿石</div>
+  <div class="lab">问题</div>
+  <p>前句说"每吨残渣得 25 毫克"，后句却说"这 25 毫克要用掉几吨矿石"，<b>句内逻辑相反</b>。另外 25 毫克/吨与常见史料（约 1 吨残渣得 0.1 克氯化镭 ≈ 70 毫克镭）<b>相差约 3 倍，具体数值待核</b>。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">改为"<b>约每吨残渣仅得几十毫克镭；要攒出 0.1 克氯化镭，得处理数吨矿渣</b>"，与本站其它页的"数吨 → 0.1 克氯化镭"口径统一。</div>
+</div>
+
+<div class="item b" data-k="b">
+  <div class="hd"><span class="tag b">B9</span><h3>"一吨矿渣"与本站其它页"数吨矿渣"不一致</h3><span class="path">scientists/curie/index.html（对照 detail/radium.html、timeline.html）</span></div>
+  <div class="quote">她从一吨矿渣里提炼出零点几克镭</div>
+  <div class="lab">问题</div>
+  <p>首页写"<b>一吨</b>"，而 detail/radium、timeline(1902)、labs 均写"<b>数吨</b>矿渣（约 0.1 克氯化镭）"。同一事实相差数倍，读者会困惑到底几吨。已实测：radium.html 三处均为"数吨"。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">首页改为"<b>数吨矿渣</b>"，与本站其它页统一口径。</div>
+</div>
+
+<div class="item b" data-k="b">
+  <div class="hd"><span class="tag b">B10</span><h3>首页成就卡写"1864 巴氏杀菌"，时间轴里没有 1864 节点</h3><span class="path">scientists/pasteur/index.html（对照 timeline.html）</span></div>
+  <div class="quote">1864　巴氏杀菌：用温度管住微生物</div>
+  <div class="lab">问题</div>
+  <p>已实测：时间轴年份为 1822/1847/1848/1857/1862/1865/1868/1877/1881/1885/1888/1895，<b>从 1862（鹅颈瓶）直接跳到 1865（蚕病），没有 1864</b>。读者按时间轴找不到这项成就的年份。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">时间轴补一个 <b>1864「巴氏杀菌」</b>节点；或把首页年份改为"1860 年代"。</div>
+</div>
+
+<div class="item b" data-k="b">
+  <div class="hd"><span class="tag b">B11</span><h3>同一页里"生命之树"的总结句却写成了"网"</h3><span class="path">scientists/darwin/detail/tree.html</span></div>
+  <div class="quote">而是一张彼此相连的网。</div>
+  <div class="lab">问题</div>
+  <p>全页始终用"树／枝丫／根"比喻（标题、配图、各节都如此），唯独"一句话记住"把总结说成"网"，同页内比喻自相矛盾，会把刚建立的"树"的概念冲淡。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">改为"<b>而是同一根上彼此相连的枝丫</b>"或"<b>而是所有生命连成一体的大树</b>"。</div>
+</div>
+
+<div class="item b" data-k="b">
+  <div class="hd"><span class="tag b">B12</span><h3>恩尼格玛破译只归图灵，漏掉波兰数学家的 Bomba 前驱</h3><span class="path">scientists/turing/detail/enigma.html</span></div>
+  <div class="quote">图灵在布莱切利园设计"炸弹机"</div>
+  <div class="lab">问题</div>
+  <p>已实测：该页<b>通篇未出现"波兰"二字</b>。实际上波兰数学家雷耶夫斯基、扎加尔斯基、鲁日茨基在 1930 年代<b>已首破恩尼格玛并造出 Bomba</b>；图灵的炸弹机是在此基础上的改进。现写法易让学生以为图灵凭空发明。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">在恩尼格玛页或术语库补一句："<b>战前波兰三位数学家已首破恩尼格玛并造出 Bomba，图灵的炸弹机是在此基础上的改进；多国协作才撑起布莱切利园。</b>"</div>
+</div>
+
+<div class="item b" data-k="b">
+  <div class="hd"><span class="tag b">B13</span><h3>"改进型"只改了首页，另外三处未同步</h3><span class="path">scientists/turing/（index.html vs detail/enigma.html / timeline.html / assets/js/terms.js）</span></div>
+  <div class="quote">设计出改进型的"炸弹机"，大幅缩短了战争。　（首页）</div>
+  <div class="lab">问题</div>
+  <p>首轮把首页"发明"改成了"设计出<b>改进型</b>的炸弹机"（B8），但已实测：<b>enigma.html（大标题与正文）、timeline.html（"他设计的炸弹机"）、terms.js（bombe 条）仍只写"设计'炸弹机'"</b>，"改进型"三字在这三处都搜不到 —— 跨页口径不一致，属首轮修复的"部分落地"残留。</p>
+  <div class="lab">建议改法</div>
+  <div class="fix">在 enigma.html、timeline.html、terms.js 三处统一加上"<b>改进型</b>"（或反向把首页的"改进型"去掉），四处口径一致。</div>
+</div>
+
+<h2>三、机器批量核查结果<span class="cnt">4 项 · 独立于 agent 通读</span></h2>
+<table class="sum">
+  <tr><th>核查项</th><th>方法</th><th>结果</th></tr>
+  <tr><td>① 页脚／样板陈旧计数</td><td>正则扫 136 页，找"全部 N 位／N 个科学家"</td><td><b>0 命中</b> ✅</td></tr>
+  <tr><td>② 链接文字 vs 目标页标题</td><td><code>tools/check_spec_links.py</code>：抽 href 解析目标文件、与目标页 <code>&lt;h1&gt;</code> 比对</td><td>160 条链接，坏链 <b>0</b>、文字不符 <b>0</b> ✅</td></tr>
+  <tr><td>③ 跨站重复句扫描</td><td>按句切分（≥18 字），统计出现在 ≥2 个站的句子</td><td>仅 <b>3 类</b>，且全是页脚／导航／"关于本站"说明卡样板 → 反证<b>各站内容确实各写各的</b> ✅</td></tr>
+  <tr><td>④ 正文超长句统计</td><td>剔除开发说明页（about/prototype）后按 ≥78 字扫描</td><td>14 条（5 个站），多为 ①②③ 列举式与术语云 → <b>文风无碍</b> ✅</td></tr>
+</table>
+<p class="note">④ 的说明：原始扫描出 75 条"超长句"，但排名靠前的全是牛顿站 <code>about.html</code>／<code>prototype/</code> 里的<b>开发文档表格</b>（如"① 术语弹窗（核心功能）出现位置…"，843 字），并非科普正文。剔除后再看其余 14 条，绝大多数是"①②③"式列举或分号并置，属于该系列的既定文风，未计入问题。唯一值得顺手拆句的是 A5 所指的那句（83 字），但它本来就因为事实问题要改。</p>
+
+<h2>四、做得好的地方<span class="cnt">这些千万别改坏</span></h2>
+<div class="good">
+  <ul>
+    <li><b>跨站内容真的各写各的。</b>机器扫描 136 页，跨 2 站以上的重复句只有 3 类样板文字 —— 在 15 个结构统一、由模板生成的站点里能做到这一点，说明正文是逐站撰写的，没有"换个名字复制一遍"。</li>
+    <li><b>对科学史传闻很克制。</b>比萨斜塔落体、苹果砸头这类"著名故事"都做了澄清或降级处理，没有为了好看而编故事。</li>
+    <li><b>薛定谔/玻尔这类容易出错的地方措辞稳妥。</b>玻尔的互补原理、哥本哈根诠释均明确写成"解释／图像"而非实验事实；达尔文术语库还明示了"达尔文当时不懂遗传机制"，没有把后世遗传学塞给达尔文。</li>
+    <li><b>哥白尼站以外的物理内容量纲与数量级站得住。</b>牛顿站的逃逸速度 11.2 km/s、月球 g=1.6、木星 g=24.8，开普勒站的周期—距离关系，都核对无误。</li>
+    <li><b>首轮修复的"站点 + 生成源同步"做法经受了回归检验</b>：26 条改动全部落地且科学正确，无一条被重建回退或改出新错。</li>
+  </ul>
+</div>
+
+<h2>五、修复执行记录<span class="cnt">23/23 —— 逐条对照</span></h2>
+<div class="plan">
+  <ol>
+    <li><b>先修"跨页自相矛盾" 8 条</b>（A2、A7、A8、B3、B7、B9、B10、B13）—— 这类问题最伤可信度：读者在站内就能撞见两处互相打脸。</li>
+    <li><b>再修"硬事实" 8 条</b>（A1、A3、A4、A5、A6、A9、A10、B2）。</li>
+    <li><b>然后清"未译英文词" 3 条</b>（B1、B4、B5）—— 单点替换，零风险。</li>
+    <li><b>最后是演示文案的自我一致性</b>（B6、B8）与<b>跨页补证</b>（B11、B12）—— 属"玩一玩"实验页与术语库，改 <code>tools/newlabs/&lt;id&gt;.py</code> / <code>spec_&lt;id&gt;.py</code> 后重生成。</li>
+  </ol>
+</div>
+
+<table class="sum">
+  <tr><th style="width:44px">编号</th><th style="width:200px">位置</th><th>落地改法</th></tr>
+  <tr><td class="c"><b>A1</b></td><td><code>copernicus/detail/earthmotion.html</code></td><td>"哥白尼之后的开普勒、牛顿进一步澄清" → <b>"地轴是斜的（约 23.5°）——这不是后来才发现的：哥白尼的日心模型已经用这一点解释四季……；开普勒、牛顿后来又从力学上给出了完整的解释。"</b></td></tr>
+  <tr><td class="c"><b>A2</b></td><td><code>copernicus/timeline.html</code></td><td>1619 节点标题"开普勒修正为椭圆" → <b>"开普勒给出周期定律"</b>；正文补 <b>"先在 1609 年公布行星沿椭圆运行，又在 1619 年给出周期与距离的定量定律"</b>（与开普勒站口径一致）。</td></tr>
+  <tr><td class="c"><b>A3</b></td><td><code>copernicus/labs.html</code> + <code>assets/js/site.js</code></td><td>"当年最好的仪器只能测到约 0.1 角秒" → <b>"这个角度小得可怜——最近的恒星也只有约 0.8 角秒。当年最好的仪器精度只有角分（约 60 角秒）量级，连 0.1 角秒都摸不到"</b>；实验读数同步改 <b>"已小到 0.1 角秒以下，早年的仪器根本分辨不出"</b>（两处文案，labs 与 site.js 各一份）。</td></tr>
+  <tr><td class="c"><b>A4</b></td><td><code>kepler/detail/mars.html</code></td><td>"望远镜还没普及" → <b>"那时望远镜尚未发明"</b>。</td></tr>
+  <tr><td class="c"><b>A5</b></td><td><code>newton/detail/optics.html</code></td><td>"牛顿在剑桥（因为瘟疫回了老家）" → <b>"牛顿因瘟疫停课、回到老家伍尔索普庄园"</b>。</td></tr>
+  <tr><td class="c"><b>A6</b></td><td><code>newton/timeline.html</code> + <code>index.html</code></td><td>采用报告方案①<b>双历法口径</b>：时间轴地点行改 <b>"1643 年 1 月 4 日（旧历 1642 年 12 月 25 日，圣诞节）"</b>；时间轴正文与首页正文同步改 <b>"牛顿出生于旧历 1642 年的圣诞节（新历 1643 年 1 月 4 日）"</b>。保留"圣诞节"这个知识点，同时消除历法歧义。</td></tr>
+  <tr><td class="c"><b>A7</b></td><td><code>einstein/timeline.html</code></td><td>"也推翻了牛顿沿用两百多年的引力图景" → <b>"也把牛顿沿用两百多年的引力图景扩展到了更强、更极端的情形——牛顿引力只是它在弱场、低速下的近似"</b>（与本站 relativity 页"没有推翻牛顿"统一）。</td></tr>
+  <tr><td class="c"><b>A8</b></td><td><code>pasteur/detail/pasteurization.html</code></td><td>标签"灭菌" → <b>"杀菌"</b>；同页配图 <code>alt</code> 与实验室描述里的"加热灭菌"一并改 <b>"加热杀菌"</b>。<span class="note">术语条目"灭菌 = sterilization"（指杀灭全部微生物）<b>保留不改</b>——那才是灭菌的正确用法；鹅颈瓶段"煮沸灭菌"亦属正确用法，保留。</span></td></tr>
+  <tr><td class="c"><b>A9</b></td><td><code>pasteur/detail/vaccine.html</code></td><td>"天花被消灭，更证明其路线的深远。" → <b>"而疫苗技术的持续发展，最终让天花这样的烈性传染病被彻底消灭。"</b>（天花疫苗是詹纳的、且不属减毒路线，不再挂到"其路线"下）。</td></tr>
+  <tr><td class="c"><b>A10</b></td><td><code>hawking/detail/blackhole.html</code> + <code>labs.html</code></td><td>详情页保留类比并补限定：<b>"……连光也逃不出去——这是理解黑洞的入门近似。严格说来，黑洞真正的边界是事件视界：那里的时空弯曲得连光都只能向内走（见下一节）。"</b>；labs 同框表述改 <b>"在事件视界以内，连光都只能向内走（"逃逸速度超过光速"只是入门近似）"</b>。</td></tr>
+  <tr><td class="c"><b>B1</b></td><td><code>copernicus/detail/revolutionibus.html</code></td><td>"用圆和圆 combinations 拟合行星位置" → <b>"用一圈套一圈的圆去拟合行星位置"</b>。</td></tr>
+  <tr><td class="c"><b>B2</b></td><td><code>kepler/assets/js/terms.js</code></td><td>术语"第谷"条 analogy："没 microscope 的"超级视力"" → <b>"没有望远镜的"超级视力""</b>（用词从显微镜改回望远镜，且第谷时代望远镜尚未发明）。</td></tr>
+  <tr><td class="c"><b>B3</b></td><td><code>newton/index.html</code></td><td>"查看全部 15 个年份 →"（时间轴实为 14 个节点）→ <b>"查看完整时间轴 →"</b>，不再写死数字（与页脚"去人数"同一原则）。全站仅此一处硬编码年份数。</td></tr>
+  <tr><td class="c"><b>B4</b></td><td><code>einstein/detail/mass-energy.html</code></td><td>"怎么用，是 Humanity 的选择。" → <b>"怎么用，是人类的抉择。"</b></td></tr>
+  <tr><td class="c"><b>B5</b></td><td><code>maxwell/index.html</code></td><td>"今天所有的 radio、Wi-Fi、光纤" → <b>"今天所有的无线电、Wi-Fi、光纤"</b>。</td></tr>
+  <tr><td class="c"><b>B6</b></td><td><code>mendeleev/labs.html</code></td><td>"会出现规律的锯齿：每到稀有气体冲到最高，一到碱金属就跌到最低，然后周而复始。" → <b>"会出现规律的起伏。以默认的第一电离能为例：稀有气体冲到最高、碱金属跌到最低；换成原子半径等性质，趋势会整体反过来。"</b>（不再把某一种性质的走向说成普遍规律）。</td></tr>
+  <tr><td class="c"><b>B7</b></td><td><code>mendeleev/detail/predict.html</code></td><td>四节标题"四、锗坐实" → <b>"四、钪与锗相继坐实"</b>；正文补 <b>"1879 年，钪被发现，正对应他预言的"类硼"……三个空格全部应验"</b>，与实验三"三个空格"口径一致。<span class="note">锚点 id <code>germanium</code> 未动，站内链接不受影响。</span></td></tr>
+  <tr><td class="c"><b>B8</b></td><td><code>curie/labs.html</code></td><td>"约每吨沥青铀矿残渣只能提出 25 毫克镭，而这点量要用掉几吨矿石。" → <b>"约每吨沥青铀矿残渣只能提出几十毫克镭；要攒出 0.1 克氯化镭，得处理好几吨矿渣。"</b>（修掉句内逻辑相反，并与本站"数吨 → 0.1 克氯化镭"口径统一；实验内部读数仍按每吨 25 毫克计算，与"几十毫克"不矛盾）。</td></tr>
+  <tr><td class="c"><b>B9</b></td><td><code>curie/index.html</code></td><td>首页导语"她从一吨矿渣里提炼出零点几克镭" → <b>"数吨"</b>；成就卡"一吨矿渣，换回一小管会发光的镭。" → <b>"数吨矿渣……"</b>，与 <code>detail/radium.html</code>、<code>timeline.html</code> 统一。</td></tr>
+  <tr><td class="c"><b>B10</b></td><td><code>pasteur/timeline.html</code></td><td>时间轴新增 <b>1864「巴氏杀菌」节点</b>（12 → 13 节点），配图 <code>etudes-sur-le-vin.jpg</code>（《酒的研究》1866 年初版书名页，Wikimedia，Public domain）；首页"1864 巴氏杀菌"成就卡从此在时间轴上找得到对应。<span class="note">与上一轮居里站补 1934/1995 节点同一做法。</span></td></tr>
+  <tr><td class="c"><b>B11</b></td><td><code>darwin/detail/tree.html</code></td><td>"而是一张彼此相连的网。" → <b>"而是同一根上彼此相连的枝丫。"</b>（全页用"树"比喻，总结句不再突然换成"网"）。</td></tr>
+  <tr><td class="c"><b>B12</b></td><td><code>turing/detail/enigma.html</code> + <code>assets/js/terms.js</code></td><td>正文补 <b>"它的思路并非凭空而来：战前波兰数学家雷耶夫斯基等人已经首破恩尼格玛、造出前驱装置 Bomba；图灵是在此基础上的改进，布莱切利园的胜利是多国协作的结果。"</b>；术语库 bombe 条 <code>plain</code> 同步改为"在波兰 Bomba 基础上改进的机电装置"。</td></tr>
+  <tr><td class="c"><b>B13</b></td><td><code>turing/</code> 四处</td><td>"改进型"四处口径统一：首页（原有）+ <b>enigma 页大标题句</b> + <b>enigma 页正文</b> + <b>timeline 1940 节点</b> + <b>terms.js bombe 条</b>，全部为"（改进型）炸弹机"。</td></tr>
+</table>
+<p class="note">另：<code>tools/labs_audit.json</code> 与 <code>tools/labs-review.html</code> 是「玩一玩」重做轮留下的<b>带日期的快照产物</b>（记录当时的文案与截图），不是线上正文，故有意未随本轮改写；如需让它们也跟上，可重跑 <code>tools/build_labs_review.py</code>。</p>
+
+<footer>
+  第二轮复核 · 6 组独立通读（逐页不抽样）+ 1 组回归核对 + 4 项机器核查 · 全部引用已逐条回原文核对（23 处引用全部命中，其中 3 处"未命中"恰好证实了所述缺陷）。<br>
+  本轮 23 条<b>已于 2026-09-14 全部修复</b>并复验：站点侧 <code>tools/apply_review_fixes2.py</code>、生成源侧 <code>tools/sync_spec_fixes2.py</code>、浏览器实测 <code>tools/check_review_fixes2.js</code>。<br>
+  分组原始记录见 <code>tools/review2/</code>；首轮 26 条清单与回归基线见 <code>tools/review2/first-round-26-items.md</code>。
+</footer>
+</body>
+</html>

@@ -101,7 +101,7 @@ SPEC = {
       "card": "树根只有一条，枝丫却有千万——我们都在同一棵树上。",
       "scene": "tree",
       "scene_params": {"label": "从根到枝：共同祖先的分叉"},
-      "remember": "一句话记住：生命之树不是“谁高级谁低级”的梯子，而是一张彼此相连的网。",
+      "remember": "一句话记住：生命之树不是“谁高级谁低级”的梯子，而是同一根上彼此相连的枝丫。",
       "sideterms": ["tree-of-life", "common-ancestor", "extinction", "fossil", "homology"],
       "sections": [
         {"id": "ancestor", "h": "一、共同祖先", "body": "达尔文推测：今日千姿百态的物种，追溯足够久远，会汇聚到少数、甚至单一的共同祖先。亲缘越近，分家越晚。",
