@@ -483,7 +483,7 @@
         ctx.beginPath(); ctx.moveTo(wx, 74); ctx.lineTo(wx, 354); ctx.stroke();
       }
       ctx.globalAlpha = 1;
-      ctx.fillStyle = "#8B96AA"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillStyle = "#5c6b82"; ctx.font = "600 12px -apple-system, sans-serif";
       ctx.fillText("入射波", 60, 62);
       ctx.fillText("两条缝 →", BX - 66, 372);
 
@@ -632,7 +632,7 @@
 
       ctx.fillStyle = "#1B2530"; ctx.font = "700 14px -apple-system, sans-serif";
       ctx.fillText("一个一个发射电子：单次随机，累积成条纹", 60, 34);
-      ctx.fillStyle = "#8B96AA"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillStyle = "#5c6b82"; ctx.font = "600 12px -apple-system, sans-serif";
       ctx.fillText("每一个电子落在哪里都说不准；可它们自己排出的疏密，恰好就是干涉条纹。", 60, 374);
       ctx.restore();
 
@@ -659,72 +659,260 @@
   var out=$(".lab-readout",lab);
   function _vs(el){ return el?el.closest(".ctrl").querySelector(".v"):null; }
   var vH=_vs(sH);
-  var W=820,H=360, t=0, last=0, i;
-  var AX=90, BX=730, AY=158, MIDX=410;
-  var M=21, SPREAD=132;
+  var W=820,H=460, last=0, i;
+  /* P2-3：由"上图下文"改为左右分栏。原来占满整幅的是 21 条路径束（背景性部件），
+     而真正要讲的机制——相位箭头首尾相接、叠加出净概率幅——只有约 130px 宽、
+     缩在左下角用细线画（结论性部件比背景小一个数量级），学生视线会被扇形吸走。
+     现在：左栏保留路径束但淡化收窄；右栏把相位链放大到面板尺寸并给出动态数值。
+     画布加高到 460，是为了让 ℏ 最小（相位最乱、链蜷成一团）时仍能撑满右栏。 */
+  var AX=54, BX=350, AY=170, MIDX=202, SPREAD=74;
+  var PX=372, PY=34, PW=424, PH=390;   /* 相位面板 */
+  var M=21, CL=26;                     /* 固定缩放（canvas 逻辑px / 单位步长）：
+      取 26，使默认 ℏ=1 时链条铺到画布宽的约 40%（实测 21.8 只有 33%，偏小）。
+      注意这里**不能**改成"自动铺满面板"：那样链越蜷缩（ℏ 越小）缩放会越大，
+      红箭头的画布长度被反向放大，看起来和"净概率幅 0.24"自相矛盾。
+      固定缩放后，红箭头长度 = 净概率幅 ×常数，且 ℏ 调小时链会真实地蜷成一团。
+      只在链超出面板时才缩小（见下面的 min）。 */
   var phs=new Array(M), dsv=new Array(M);
-  function arrow(ctx,x,y,ang,len,col,lw){
+  function arrow(ctx,x,y,ang,len,col,lw,hs){
+    hs=hs||5;
     var ex=x+Math.cos(ang)*len, ey=y+Math.sin(ang)*len;
     ctx.strokeStyle=col; ctx.lineWidth=lw; ctx.beginPath();
     ctx.moveTo(x,y); ctx.lineTo(ex,ey); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(ex,ey);
-    ctx.lineTo(ex-Math.cos(ang-0.42)*5,ey-Math.sin(ang-0.42)*5);
-    ctx.lineTo(ex-Math.cos(ang+0.42)*5,ey-Math.sin(ang+0.42)*5);
+    ctx.lineTo(ex-Math.cos(ang-0.42)*hs,ey-Math.sin(ang-0.42)*hs);
+    ctx.lineTo(ex-Math.cos(ang+0.42)*hs,ey-Math.sin(ang+0.42)*hs);
     ctx.closePath(); ctx.fillStyle=col; ctx.fill();
   }
   function draw(ts){
     if(typeof ts!=="number")ts=Date.now();
     if(!last)last=ts; var dt=Math.min(0.05,(ts-last)/1000); last=ts;
     var hb=sH?parseFloat(sH.value):1;
-    t+=dt*0.5;
     for(i=0;i<M;i++){
       var d=-SPREAD+(2*SPREAD/(M-1))*i;
-      dsv[i]=d; phs[i]=0.00045*d*d/hb+t;
+      /* 只保留相对相位（由 ℏ 决定）。原来额外加的"共同相位 +t"在物理上不可观测，
+         却让整条链随时间转动、包围盒不断变化，无法稳定放大；去掉后画面由 ℏ 驱动，
+         拖动滑块即可看到链从"散开互相抵消"变成"排齐指向同一方向"。 */
+      dsv[i]=d; phs[i]=0.00045*d*d/hb;
     }
     var S=setupCanvas(cv,H/W); var ctx=S.ctx,k=S.w/W;
     ctx.save(); ctx.scale(k,k); ctx.clearRect(0,0,W,H);
     ctx.fillStyle="#FBFCFE"; ctx.fillRect(0,0,W,H);
+
+    ctx.textAlign="left";
+    ctx.fillStyle="#1B2530"; ctx.font="700 13px -apple-system,sans-serif";
+    ctx.fillText(P.label||"从 A 到 B：粒子把每一条路都走了一遍", 14, 26);
+    ctx.fillStyle="#56617A"; ctx.font="600 12.5px -apple-system,sans-serif";
+    ctx.fillText("① 粒子把所有可能的路径都试了一遍（越亮＝越接近经典路径）", 54, 60);
+
+    /* --- 左栏：路径束（P2-3 适当淡化、收窄，让出主视觉给机制） --- */
     for(i=0;i<M;i++){
-      var d=dsv[i], cls=Math.abs(d)<(2*SPREAD/(M-1))*0.5;
+      var dd=dsv[i], cls=Math.abs(dd)<(2*SPREAD/(M-1))*0.5;
       ctx.beginPath(); ctx.moveTo(AX,AY);
-      ctx.quadraticCurveTo(MIDX, AY+2*d, BX, AY);
-      ctx.strokeStyle= cls? "rgba(232,89,12,.9)" : "rgba(73,80,87,.26)";
-      ctx.lineWidth= cls? 2.6 : 1.1; ctx.stroke();
-      var px=0.25*AX+0.5*MIDX+0.25*BX, py=AY+d;
-      arrow(ctx,px,py,phs[i],9, cls? "#E8590C" : "#868E96", cls?1.8:1.2);
+      ctx.quadraticCurveTo(MIDX, AY+2*dd, BX, AY);
+      ctx.strokeStyle= cls? "rgba(232,89,12,.72)" : "rgba(73,80,87,.16)";
+      ctx.lineWidth= cls? 2.2 : 0.9; ctx.stroke();
     }
     ctx.fillStyle="#495057"; ctx.font="700 14px -apple-system,sans-serif"; ctx.textAlign="center";
-    ctx.fillText("A",AX,AY+34); ctx.fillText("B",BX,AY+34);
+    ctx.fillText("A",AX,AY+30); ctx.fillText("B",BX,AY+30);
     ctx.fillStyle="#E8590C"; ctx.font="600 12px -apple-system,sans-serif";
-    ctx.fillText("直线＝经典路径（作用量最小）",MIDX,AY+SPREAD+42);
-    var sx=AX, sy=302, cxs=sx, cys=sy, L=6.4;
-    ctx.strokeStyle="rgba(26,115,232,.75)"; ctx.lineWidth=1.4; ctx.beginPath(); ctx.moveTo(cxs,cys);
+    ctx.fillText("橙色直线＝经典路径（作用量最小）",MIDX,AY+SPREAD+38);
+    ctx.textAlign="left";
+    ctx.fillStyle="#56617A"; ctx.font="600 12.5px -apple-system,sans-serif";
+    ctx.fillText("读法：21 条路径＝21 个可能的历史。", 54, AY+SPREAD+96);
+    ctx.fillText("两条路越接近，相位差越小：", 54, AY+SPREAD+118);
+    ctx.fillText("箭头排齐＝互相加强，散开＝互相抵消。", 54, AY+SPREAD+140);
+
+    /* --- 右栏：相位箭头链放大到主视觉位置（P2-3 核心改动） --- */
+    ctx.textAlign="left";
+    ctx.fillStyle="#EDF1F7"; ctx.beginPath();
+    if(ctx.roundRect){ ctx.roundRect(PX,PY,PW,PH,14); } else { ctx.rect(PX,PY,PW,PH); }
+    ctx.fill();
+    ctx.strokeStyle="#D4DBE5"; ctx.lineWidth=1; ctx.stroke();
+    ctx.fillStyle="#1B2530"; ctx.font="700 13px -apple-system,sans-serif";
+    ctx.fillText("② 每条路的相位箭头首尾相接", PX+22, PY+28);
+    ctx.fillStyle="#56617A"; ctx.font="600 12px -apple-system,sans-serif";
+    ctx.fillText("接起来的红箭头 ＝ 抵消后剩下的净概率幅", PX+22, PY+48);
+
+    /* 先按单位步长算出链的形状，再整体缩放铺进面板：不出界、且尽量大 */
+    var pts=[[0,0]], ux=0, uy=0, mnx=0, mxx=0, mny=0, mxy=0;
     for(i=0;i<M;i++){
-      cxs+=Math.cos(phs[i])*L; cys+=Math.sin(phs[i])*L; ctx.lineTo(cxs,cys);
+      ux+=Math.cos(phs[i]); uy+=Math.sin(phs[i]);
+      pts.push([ux,uy]);
+      if(ux<mnx)mnx=ux; if(ux>mxx)mxx=ux;
+      if(uy<mny)mny=uy; if(uy>mxy)mxy=uy;
     }
+    var bw=Math.max(1e-3,mxx-mnx), bh=Math.max(1e-3,mxy-mny);
+    var s=Math.min((PW-76)/bw, (PH-116)/bh, CL);
+    var ox=PX+38-mnx*s, oy=PY+58-mny*s;
+    var sx=ox, sy=oy;
+    ctx.save(); ctx.beginPath(); ctx.rect(PX,PY,PW,PH); ctx.clip();
+    ctx.strokeStyle="rgba(26,115,232,.55)"; ctx.lineWidth=1.6;
+    ctx.beginPath(); ctx.moveTo(ox,oy);
+    for(i=1;i<pts.length;i++){ ctx.lineTo(ox+pts[i][0]*s, oy+pts[i][1]*s); }
     ctx.stroke();
-    arrow(ctx,sx,sy,Math.atan2(cys-sy,cxs-sx),Math.sqrt((cxs-sx)*(cxs-sx)+(cys-sy)*(cys-sy)),"#E03131",2.6);
-    var amp=Math.sqrt((cxs-sx)*(cxs-sx)+(cys-sy)*(cys-sy))/(M*L);
-    ctx.textAlign="left"; ctx.fillStyle="#868E96"; ctx.font="600 12px -apple-system,sans-serif";
-    ctx.fillText("把每条路径的相位箭头首尾相接（红箭头＝叠加后的总概率幅）",sx,sy-14);
-    ctx.fillStyle="#868E96"; ctx.font="600 13px -apple-system,sans-serif";
-    ctx.fillText(P.label||"从 A 到 B：粒子把每一条路都走了一遍", 14, 24);
+    for(i=0;i<M;i++){
+      var x1=ox+pts[i][0]*s, y1=oy+pts[i][1]*s;
+      var x2=ox+pts[i+1][0]*s, y2=oy+pts[i+1][1]*s;
+      var lseg=Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1));
+      if(lseg>2.2) arrow(ctx,x1,y1,Math.atan2(y2-y1,x2-x1),lseg,"rgba(26,115,232,.85)",1.4,4.5);
+    }
+    var ex=ox+pts[M][0]*s, ey=oy+pts[M][1]*s;
+    arrow(ctx,ox,oy,Math.atan2(ey-oy,ex-ox),
+          Math.sqrt((ex-ox)*(ex-ox)+(ey-oy)*(ey-oy)),"#E03131",3.4,9);
+    ctx.restore();
+
+    /* 动态量：红箭头长度 ÷ 满幅 */
+    var amp=Math.sqrt(pts[M][0]*pts[M][0]+pts[M][1]*pts[M][1])/M;
+    var barX=PX+22, barY=PY+PH-30, barW=PW-44;
+    ctx.fillStyle="rgba(27,37,48,.08)"; ctx.fillRect(barX,barY,barW,10);
+    ctx.fillStyle="#E03131"; ctx.fillRect(barX,barY,Math.max(1.5,barW*amp),10);
+    ctx.fillStyle="#56617A"; ctx.font="600 12px -apple-system,sans-serif";
+    ctx.fillText("净概率幅（红箭头 ÷ 满幅）", barX, barY-12);
+    /* 数字改用墨色而非红色：本画布里"红"只应表示"合成后的净概率幅箭头"（图例里已写明），
+       数字再染红会与箭头撞色，也会让像素量测把标签一起算进红箭头长度。 */
+    ctx.fillStyle="#1B2530"; ctx.font="700 18px -apple-system,sans-serif";
+    ctx.textAlign="right"; ctx.fillText(amp.toFixed(2), barX+barW, barY-10);
+    ctx.textAlign="left";
     ctx.restore();
     if(vH)vH.textContent=hb.toFixed(1)+"×";
     if(out)out.innerHTML="约化普朗克常数 <b>"+hb.toFixed(1)+"×</b>：ℏ 越小，相邻路径的相位差越大、互相抵消得越厉害，最后只剩靠近直线的那几条——粒子看起来走直线（经典）。ℏ 越大，越多路径能相干叠加，量子效应越明显。当前净概率幅 <b>"+amp.toFixed(2)+"</b>。";
-    requestAnimationFrame(draw);
   }
   if(sH)sH.addEventListener("input",draw);
-  requestAnimationFrame(draw);
+  window.addEventListener("resize",draw);
+  draw();
 
 }
+
+  /* ------------------------------------------------------------------ */
+  /* 动画闸门：让"画面一直在自己动"的演示能暂停 / 单步                     */
+  /* ------------------------------------------------------------------ */
+  /* 有些演示一打开就在自己跑（行星公转、波形推进、图灵机走格、光点沿轨迹前进……）。
+     老师想说"就停在这一帧，大家看这里"却按不住；学生想对比上一帧 / 这一帧也做不到。
+     这里在 requestAnimationFrame 外面套一层闸门：
+       暂停 —— 干脆不驱动实验的绘制回调，只把 rAF 链自己续下去，画面必然定格。
+              （只冻结时间戳拦不住图灵机这类实验：它每帧固定走几步，与 dt 无关。）
+       单步 —— 放行一次绘制，并把时钟往前推一帧，走一步再停住。
+       继续 —— 恢复后的第一帧也按"过了一帧"计时，避免暂停很久后画面跳一大步。
+     闸门按 .lab 分别记账，同一页上几个实验互不影响。 */
+  var __labNow = null;                  /* 正在初始化 / 正在驱动的 .lab 元素 */
+  var __labAnims = [];                  /* [{lab, paused, step, clock, used, tools, resume}] */
+  var __rafReal = window.requestAnimationFrame.bind(window);
+
+  function __animTrack(lab) {
+    var rec = { lab: lab, paused: false, step: false, clock: 0, used: false, tools: false, resume: false };
+    __labAnims.push(rec);
+    if (!__watchStarted) { __watchStarted = true; setTimeout(__animWatchdog, 1500); }
+    return rec;
+  }
+  var __watchStarted = false;
+
+  /* 兜底探测：有些实验要点了按钮才开始动（如牛顿抛体），初始化时排不到 rAF，
+     闸门抓不住它们。这里对"还没有按钮"的实验做轻量探测——把画布缩到 16×16 比指纹，
+     一旦发现它动起来了就补上按钮。只在确有未决实验时运行，最多约 4 分钟。 */
+  function __animWatchdog() {
+    var probe = document.createElement("canvas");
+    probe.width = 16; probe.height = 16;
+    var pctx = probe.getContext("2d");
+    var ticks = 0;
+    var timer = setInterval(function () {
+      if (++ticks > 340) { clearInterval(timer); return; }
+      if (document.hidden) return;
+      var pending = false, i, r, cv, h, d, k;
+      for (i = 0; i < __labAnims.length; i++) {
+        r = __labAnims[i];
+        if (r.tools || r.dead) continue;
+        pending = true;
+        cv = $("canvas", r.lab);
+        if (!cv) { r.dead = true; continue; }
+        h = 0;
+        try {
+          pctx.clearRect(0, 0, 16, 16);
+          pctx.drawImage(cv, 0, 0, 16, 16);
+          d = pctx.getImageData(0, 0, 16, 16).data;
+          for (k = 0; k < d.length; k += 4) h = (h * 31 + d[k] + d[k + 1] * 3 + d[k + 2] * 7) | 0;
+        } catch (e) { r.dead = true; continue; }
+        if (r.probe !== undefined && r.probe !== h) { r.tools = true; __addAnimTools(r.lab, r); }
+        r.probe = h;
+      }
+      if (!pending) clearInterval(timer);
+    }, 700);
+  }
+  function __animOf(lab) {
+    for (var i = 0; i < __labAnims.length; i++) if (__labAnims[i].lab === lab) return __labAnims[i];
+    return null;
+  }
+
+  window.requestAnimationFrame = function (cb) {
+    var owner = __labNow;
+    var rec = owner ? __animOf(owner) : null;
+    if (rec) {
+      rec.used = true;
+      /* 首次排 rAF 时才注入按钮：这样"打开就在跑"的实验立刻有按钮，
+         "点了发射才开始跑"的实验（如牛顿抛体）也会在启动那一刻拿到按钮。 */
+      if (!rec.tools) { rec.tools = true; __addAnimTools(rec.lab, rec); }
+    }
+    function tick(ts) {
+      var back = __labNow;
+      __labNow = owner;                 /* 回调里再排 rAF 时，归属同一个实验 */
+      try {
+        if (!rec) { cb(ts); return; }                 /* 非实验的 rAF：原样放行 */
+        if (rec.paused && !rec.step) {
+          __rafReal(tick);                            /* 暂停：不驱动绘制，只续住链条 */
+          return;
+        }
+        if (rec.step) {                               /* 单步：时钟 +1 帧，放行一次 */
+          rec.step = false; rec.clock += 1000 / 60; cb(rec.clock); return;
+        }
+        var t2;
+        if (rec.resume) {                             /* 刚恢复：按"过了一帧"接着走 */
+          rec.resume = false; rec.clock += 1000 / 60; t2 = rec.clock;
+        } else { rec.clock = ts; t2 = ts; }
+        cb(t2);
+      } finally { __labNow = back; }
+    }
+    return __rafReal(tick);
+  };
+
+  function __addAnimTools(lab, rec) {
+    if ($(".lab-anim-tools", lab)) return;   /* 已经加过就不再重复（闸门与 initLabs 都可能触发） */
+    var box = document.createElement("div");
+    box.className = "lab-anim-tools";
+    box.innerHTML = '<button type="button" class="lab-anim-btn" data-anim="toggle" title="暂停 / 继续这段动画">⏸ 暂停</button>' +
+                    '<button type="button" class="lab-anim-btn" data-anim="step" title="画面暂停时，向前走一帧">⏭ 单步</button>' +
+                    '<span class="lab-anim-tip">暂停后按「单步」可逐帧对照</span>';
+    var btnToggle = $('[data-anim="toggle"]', box);
+    var btnStep = $('[data-anim="step"]', box);
+    function sync() {
+      btnToggle.textContent = rec.paused ? "▶ 继续" : "⏸ 暂停";
+      btnToggle.classList.toggle("on", rec.paused);
+      box.classList.toggle("paused", rec.paused);
+    }
+    btnToggle.addEventListener("click", function () {
+      rec.paused = !rec.paused;
+      if (!rec.paused) rec.resume = true;
+      sync();
+    });
+    btnStep.addEventListener("click", function () {
+      if (!rec.paused) { rec.paused = true; sync(); }  /* 没暂停就先按下去，再走一帧 */
+      rec.step = true;
+    });
+    var anchor = $(".lab-readout", lab);
+    if (anchor && anchor.parentNode === lab) lab.insertBefore(box, anchor);
+    else lab.appendChild(box);
+  }
 
   function initLabs() {
     $$(".lab").forEach(function (lab) {
       var kind = lab.getAttribute("data-lab");
-      if (kind === "path") lab_path(lab);
-      if (kind === "interfere") lab_interfere(lab);
-      if (kind === "dist") lab_dist(lab);
+      var rec = __animTrack(lab);
+      __labNow = lab;              /* 这段里排的 rAF 都记在这个实验头上 */
+      try {
+        if (kind === "path") lab_path(lab);
+        if (kind === "interfere") lab_interfere(lab);
+        if (kind === "dist") lab_dist(lab);
+      } finally { __labNow = null; }
+      if (rec.used && !rec.tools) __addAnimTools(lab, rec);
     });
   }
 function initGlossary() {

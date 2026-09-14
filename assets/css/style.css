@@ -708,8 +708,7 @@ figure.fig figcaption b { color: var(--ink-2); }
 @media (max-width: 720px) { .bio { grid-template-columns: 1fr; } .bio-photo { width: 100%; } }
 .lab canvas {
   width: 100%; height: auto; display: block; border-radius: 12px;
-  background: #FBFCFE; border: 1px solid var(--line); touch-action: none;
-  max-height: 320px;
+  background: #FBFCFE; border: 1px solid var(--line); touch-action: none;  /* P0修复(2026-09-14)：删除 max-height —— 它会覆盖 setupCanvas 写入的等比行内高度、导致画布纵向压扁；详见 tools/labs-anim-review.html */
 }
 .tl-body figure { margin: 0 0 14px; }
 .tl-body figure img {
@@ -718,3 +717,52 @@ figure.fig figcaption b { color: var(--ink-2); }
   object-fit: contain; background: #F4F6FA;
 }
 .tl-body figcaption { font-size: 13px; color: var(--ink-3); margin-top: 7px; line-height: 1.6; }
+
+/* ===== 动画闸门：暂停 / 单步（把动画的控制权交还使用者） ===== */
+.lab-anim-tools {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  margin: 12px 0 2px; font-size: 13px; color: var(--ink-2);
+}
+.lab-anim-btn {
+  appearance: none; -webkit-appearance: none; cursor: pointer;
+  padding: 5px 12px; border-radius: 999px; font-size: 13px; font-weight: 700;
+  background: var(--bg-alt); border: 1px solid var(--line); color: var(--ink-2);
+  font-family: inherit; line-height: 1.4;
+  transition: background .16s, color .16s, border-color .16s;
+}
+.lab-anim-btn:hover { background: #fff; color: var(--brand); border-color: var(--brand-line); }
+.lab-anim-btn.on { background: var(--brand); border-color: var(--brand); color: #fff; }
+.lab-anim-tip { opacity: .75; }
+.lab-anim-tools.paused .lab-anim-tip { opacity: 1; color: var(--brand); font-weight: 700; }
+
+/* ===== P2-1：先猜一猜（POE 教学法的 Predict 环节，2026-09-14） =====
+   45 个实验原本只有指令式引导语，学生不知道自己要验证什么假设。
+   在每个实验的一句话说明后补一句可验证的猜想：先猜 -> 再拖 -> 后解释。 */
+.lab-guess {
+  font-size: 14px; line-height: 1.62; color: #412402;
+  background: var(--accent-soft); border-left: 3px solid var(--accent);
+  border-radius: 10px; padding: 10px 13px; margin: 0 0 14px;
+}
+.lab-guess b { color: #854F0B; font-weight: 700; margin-right: 2px; }
+
+/* ===== P2-2：画布就地图例（颜色语义，2026-09-14） =====
+   报告指出：45 个实验内部配色各自自洽，但没有跨实验的"视觉词汇表"——
+   同一个暖橙在整套里至少表示光子/光线/磁极/被淘汰个体/物体B/火星/导线 7 种东西。
+   做法不改各实验配好的颜色（改色要重调 45 张图、风险高），而是在每张画布下方
+   就地标出颜色含义；实验自己在画面上写明过的，就照它的说法标注。 */
+.lab-legend {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px;
+  margin: 10px 0 0; font-size: 12.5px; color: var(--ink-2); line-height: 1.5;
+}
+.lab-legend .lg-head {
+  font-weight: 700; color: var(--ink); letter-spacing: .02em;
+  padding-right: 2px; border-right: 1px solid var(--line); margin-right: 4px;
+}
+.lab-legend .lg-item { display: inline-flex; align-items: center; gap: 6px; }
+.lab-legend .lg-item i {
+  width: 15px; height: 11px; border-radius: 3px; flex: 0 0 auto;
+  border: 1px solid rgba(27, 37, 48, .18);
+  background: #ccc;
+}
+.lab-legend .lg-item.series i { border-style: dashed; }
+.lab-legend .lg-note { color: var(--ink-3); font-size: 12px; }

@@ -30,7 +30,9 @@
     <div class="lab" data-lab="path">
       <div class="lab-head"><h4>把每一条路都走一遍</h4><span class="badge">可拖动</span></div>
       <p class="lab-desc">每条路都有一个箭头；箭头首尾相接，总长度就是最终的概率幅。</p>
+      <p class="lab-guess"><b>先猜一猜：</b>光从 A 到 B 明明有无数条路，为什么我们只看见它走直线？</p>
       <canvas></canvas>
+      <div class="lab-legend"><span class="lg-head">颜色含义</span><span class="lg-item"><i style="background:#DDE0E4"></i>浅灰细线＝21 条可能路径</span><span class="lg-item"><i style="background:#E8590C"></i>橙线＝经典路径</span><span class="lg-item"><i style="background:#1A73E8"></i>蓝＝各路径的相位箭头</span><span class="lg-item"><i style="background:#E03131"></i>红＝首尾相接后的净概率幅</span></div>
       <div class="lab-controls">
         <div class="ctrl">
           <label>ℏ 大小 <span class="v">1.0×</span></label>
@@ -50,7 +52,9 @@
     <div class="lab" data-lab="interfere">
       <div class="lab-head"><h4>两条缝叠出的明暗</h4><span class="badge">可拖动</span></div>
       <p class="lab-desc">波长越短、缝间距越大，条纹越密。红光条纹宽，紫光条纹窄。</p>
+      <p class="lab-guess"><b>先猜一猜：</b>把两条缝堵掉一条，明暗条纹还在吗？</p>
       <canvas></canvas>
+      <div class="lab-legend"><span class="lg-head">颜色含义</span><span class="lg-item"><i style="background:linear-gradient(90deg,#E03131,#F76707,#FAB005,#51CF66,#3B5BDB,#5F3DC4,#9C36B5)"></i>波的颜色＝你选的波长（按真实可见光上色）</span><span class="lg-item"><i style="background:#E8590C"></i>橙线＝屏幕上的光强分布</span><span class="lg-item series"><i style="background:#E8590C"></i>暖色（橙／琥珀）＝主体、被观察的对象</span><span class="lg-note">（虚线框＝系列通用约定）</span></div>
       <div class="lab-controls">
         <div class="ctrl">
           <label>波长（nm） <span class="v">550</span></label>
@@ -74,7 +78,9 @@
     <div class="lab" data-lab="dist">
       <div class="lab-head"><h4>随机的点，攒出确定的纹</h4><span class="badge">可拖动</span></div>
       <p class="lab-desc">单次落点不可预测，大量落点的分布却和波的干涉条纹完全一致。</p>
+      <p class="lab-guess"><b>先猜一猜：</b>电子一个一个打出去、落点完全随机，屏幕上还会自己长出条纹吗？</p>
       <canvas></canvas>
+      <div class="lab-legend"><span class="lg-head">颜色含义</span><span class="lg-item"><i style="background:#1C6ED6"></i>单个电子的落点</span><span class="lg-item"><i style="background:#E8590C"></i>累积出的干涉条纹</span><span class="lg-item series"><i style="background:#E8590C"></i>暖色（橙／琥珀）＝主体、被观察的对象</span><span class="lg-note">（虚线框＝系列通用约定）</span></div>
       <div class="lab-controls">
         <div class="ctrl">
           <label>已发射电子数 <span class="v">300</span></label>

@@ -30,7 +30,9 @@
     <div class="lab" data-lab="turing">
       <div class="lab-head"><h4>亲手跑一台图灵机</h4><span class="badge">可拖动</span></div>
       <p class="lab-desc">看状态与步数如何随规则滚动。</p>
+      <p class="lab-guess"><b>先猜一猜：</b>规则简单到只有几行，也能算出复杂的结果吗？</p>
       <canvas></canvas>
+      <div class="lab-legend"><span class="lg-head">颜色含义</span><span class="lg-item"><i style="background:#3B5BDB"></i>深蓝格＝纸带上写着 1</span><span class="lg-item"><i style="background:#E7ECF3"></i>浅格＝纸带上写着 0</span><span class="lg-item"><i style="background:#E8590C"></i>橙条＝读写头当前所在格</span></div>
       <div class="lab-controls">
         <div class="ctrl">
           <label>速度 <span class="v">1.0×</span></label>
@@ -50,12 +52,23 @@
     <div class="lab" data-lab="automaton">
       <div class="lab-head"><h4>一维元胞自动机</h4><span class="badge">可拖动</span></div>
       <p class="lab-desc">规则只是一张 8 行的对应表，却能长出分形、混沌或空白。</p>
+      <p class="lab-guess"><b>先猜一猜：</b>同一张 8 行的规则表，只换一个规则号，长出来的图案会完全不同吗？</p>
       <canvas></canvas>
+      <div class="lab-legend"><span class="lg-head">颜色含义</span><span class="lg-item"><i style="background:#2B3440"></i>深格＝黑（1）</span><span class="lg-item"><i style="background:#E7ECF3"></i>浅格＝白（0）</span><span class="lg-item series"><i style="background:#E8590C"></i>暖色（橙／琥珀）＝主体、被观察的对象</span><span class="lg-note">（虚线框＝系列通用约定）</span></div>
       <div class="lab-controls">
         <div class="ctrl">
           <label>规则号（0–255） <span class="v">110</span></label>
           <input type="range" data-ctrl="rule" min="0" max="255" value="110" step="1">
         </div>
+      </div>
+      <div class="lab-presets">
+        <span>常用规则：</span>
+        <button type="button" data-rule="30">30 混沌</button>
+        <button type="button" data-rule="90">90 分形</button>
+        <button type="button" data-rule="110">110 图灵完备</button>
+        <button type="button" data-rule="150">150 嵌套三角</button>
+        <button type="button" data-rule="255">255 全填满</button>
+        <button type="button" data-rule="0">0 空白</button>
       </div>
       <div class="lab-readout"></div>
     </div>
@@ -70,7 +83,9 @@
     <div class="lab" data-lab="signal">
       <div class="lab-head"><h4>采样 × 量化 = 数字化</h4><span class="badge">可拖动</span></div>
       <p class="lab-desc">采样太稀会“认错”波形，量化太粗会丢掉细微变化。</p>
+      <p class="lab-guess"><b>先猜一猜：</b>采样越密、档位越多，还原就越准——那代价是什么？</p>
       <canvas></canvas>
+      <div class="lab-legend"><span class="lg-head">颜色含义</span><span class="lg-item"><i style="background:#3B5BDB"></i>蓝线＝真实的连续信号</span><span class="lg-item"><i style="background:#E8590C"></i>橙线＝采样量化后机器重建的波形</span><span class="lg-item"><i style="background:#2B3440"></i>底部编码带：深格＝1，浅格＝0</span></div>
       <div class="lab-controls">
         <div class="ctrl">
           <label>采样密度（点/周期） <span class="v">8</span></label>

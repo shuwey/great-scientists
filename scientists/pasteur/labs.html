@@ -30,7 +30,9 @@
     <div class="lab" data-lab="colony">
       <div class="lab-head"><h4>细菌生长的四个阶段</h4><span class="badge">可拖动</span></div>
       <p class="lab-desc">先慢（迟缓）→ 猛涨（对数）→ 持平（稳定）→ 下滑（衰亡）。</p>
+      <p class="lab-guess"><b>先猜一猜：</b>细菌一进新鲜肉汤就立刻疯长，还是先“愣”上一段时间？</p>
       <canvas></canvas>
+      <div class="lab-legend"><span class="lg-head">颜色含义</span><span class="lg-item"><i style="background:#8B96AA"></i>迟缓期</span><span class="lg-item"><i style="background:#1C7ED6"></i>对数期</span><span class="lg-item"><i style="background:#2F9E44"></i>稳定期</span><span class="lg-item"><i style="background:#E03131"></i>衰亡期</span><span class="lg-item"><i style="background:#6741D9"></i>紫线＝当前曲线</span></div>
       <div class="lab-controls">
         <div class="ctrl">
           <label>环境适宜度 <span class="v">1.0×</span></label>
@@ -50,7 +52,9 @@
     <div class="lab" data-lab="heat">
       <div class="lab-head"><h4>温度 × 时间 = 消毒</h4><span class="badge">可拖动</span></div>
       <p class="lab-desc">63℃ 要 30 分钟，72℃ 只要 15 秒：温度高，时间就能大大缩短。</p>
+      <p class="lab-guess"><b>先猜一猜：</b>温度从 63℃ 提到 72℃，消毒时间能缩短几十倍吗？</p>
       <canvas></canvas>
+      <div class="lab-legend"><span class="lg-head">颜色含义</span><span class="lg-item"><i style="background:#2F9E44"></i>绿实线＝当前温度</span><span class="lg-item"><i style="background:#E03131"></i>安全线：杀灭 5 个对数级</span><span class="lg-item series"><i style="background:#E03131"></i>红＝临界、被淘汰或结论</span><span class="lg-note">（虚线框＝系列通用约定）</span></div>
       <div class="lab-controls">
         <div class="ctrl">
           <label>消毒温度（℃） <span class="v">63</span></label>
@@ -74,7 +78,9 @@
     <div class="lab" data-lab="spread">
       <div class="lab-head"><h4>鹅颈瓶实验</h4><span class="badge">可拖动</span></div>
       <p class="lab-desc">瓶颈弯得够厉害时，灰尘全落在弯道里，肉汤放几个月都不腐败。</p>
+      <p class="lab-guess"><b>先猜一猜：</b>瓶口敞开但不弯，肉汤会坏吗？把脖子弯几道之后呢？</p>
       <canvas></canvas>
+      <div class="lab-legend"><span class="lg-head">颜色含义</span><span class="lg-item"><i style="background:rgba(120,132,152,0.62)"></i>灰点＝空气里的灰尘与微生物</span><span class="lg-item"><i style="background:#E03131"></i>红虚线＝微生物直接落进肉汤</span><span class="lg-item"><i style="background:rgba(246,222,148,0.66)"></i>黄＝清澈、不腐</span><span class="lg-item"><i style="background:rgba(150,168,86,0.62)"></i>绿＝浑浊、腐败</span></div>
       <div class="lab-controls">
         <div class="ctrl">
           <label>瓶颈弯曲度 <span class="v">0</span></label>

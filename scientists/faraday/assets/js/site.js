@@ -527,7 +527,7 @@
 
       ctx.fillStyle = "#1B2530"; ctx.font = "700 14px -apple-system, sans-serif";
       ctx.fillText("条形磁铁：铁屑沿磁力线排队", 50, 32);
-      ctx.fillStyle = "#8B96AA"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillStyle = "#5c6b82"; ctx.font = "600 12px -apple-system, sans-serif";
       ctx.fillText("磁力线从 N 极出来 → 绕一大圈 → 回到 S 极，永远闭合，没有起点也没有终点。", 50, 378);
       ctx.restore();
 
@@ -595,7 +595,7 @@
       ctx.setLineDash([4, 4]);
       ctx.beginPath(); ctx.moveTo(cx2, cy2 - ry); ctx.lineTo(cx2, 318); ctx.stroke();
       ctx.setLineDash([]);
-      ctx.fillStyle = "#8B96AA"; ctx.font = "600 11.5px -apple-system, sans-serif";
+      ctx.fillStyle = "#5c6b82"; ctx.font = "600 11.5px -apple-system, sans-serif";
       ctx.fillText("引出导线，送往用电器", 78, 342);
 
       ctx.strokeStyle = "#F59F00"; ctx.lineWidth = 2.4;
@@ -626,13 +626,13 @@
       }
       ctx.strokeStyle = "#9AA7BE"; ctx.lineWidth = 1.4;
       ctx.beginPath(); ctx.moveTo(BX, BY - BH / 2); ctx.lineTo(BX + BW, BY - BH / 2); ctx.stroke();
-      ctx.fillStyle = "#B0BAC9"; ctx.font = "600 11px -apple-system, sans-serif";
+      ctx.fillStyle = "#5c6b82"; ctx.font = "600 11px -apple-system, sans-serif";
       ctx.textAlign = "right";
       ctx.fillText("+", BX - 6, BY - BH / 2 - 26);
       ctx.fillText("0", BX - 6, BY - BH / 2 + 4);
       ctx.fillText("−", BX - 6, BY - BH / 2 + 34);
       ctx.textAlign = "left";
-      ctx.fillStyle = "#8B96AA"; ctx.font = "600 11px -apple-system, sans-serif";
+      ctx.fillStyle = "#5c6b82"; ctx.font = "600 11px -apple-system, sans-serif";
       ctx.fillText("电流方向 + / −", BX, BY + 26);
 
       ctx.strokeStyle = "#2F9E44"; ctx.lineWidth = 2.6;
@@ -648,7 +648,7 @@
       ctx.fillStyle = "#2F9E44";
       ctx.beginPath(); ctx.arc(lx, ly, 5.5, 0, Math.PI * 2); ctx.fill();
 
-      ctx.fillStyle = "#8B96AA"; ctx.font = "600 12px -apple-system, sans-serif";
+      ctx.fillStyle = "#5c6b82"; ctx.font = "600 12px -apple-system, sans-serif";
       ctx.fillText("线圈一转，电流就换方向——这就是交流电（AC）。", 50, 378);
       ctx.restore();
 
@@ -706,7 +706,7 @@
     ctx.fillStyle="#fff"; ctx.font="700 17px -apple-system,sans-serif"; ctx.textAlign="center";
     ctx.fillText("N",mx-mw/4,CY+6); ctx.fillText("S",mx+mw/4,CY+6);
     ctx.textAlign="left";
-    ctx.fillStyle="#FFD43B"; ctx.font="700 12px -apple-system,sans-serif";
+    ctx.fillStyle = "#c1440e"; ctx.font="700 12px -apple-system,sans-serif";
     ctx.fillText("磁铁",mx-mw/2,CY-32);
     var gx=690, gy=286, gr=52;
     ctx.fillStyle="#fff"; ctx.strokeStyle="#343A40"; ctx.lineWidth=2;
@@ -721,7 +721,7 @@
     ctx.strokeStyle="#E03131"; ctx.lineWidth=3;
     ctx.beginPath(); ctx.moveTo(gx,gy); ctx.lineTo(gx+Math.cos(na)*(gr-14),gy+Math.sin(na)*(gr-14)); ctx.stroke();
     ctx.fillStyle="#343A40"; ctx.beginPath(); ctx.arc(gx,gy,4,0,Math.PI*2); ctx.fill();
-    ctx.fillStyle="#868E96"; ctx.font="600 11px -apple-system,sans-serif"; ctx.textAlign="center";
+    ctx.fillStyle = "#5c6b82"; ctx.font="600 11px -apple-system,sans-serif"; ctx.textAlign="center";
     ctx.fillText("电流计",gx,gy+gr-10); ctx.textAlign="left";
     var bx=60, by=300, bw=520, bh=44;
     ctx.strokeStyle="#DEE2E6"; ctx.lineWidth=1; ctx.beginPath();
@@ -734,7 +734,7 @@
     ctx.stroke();
     ctx.fillStyle="#495057"; ctx.font="600 12px -apple-system,sans-serif";
     ctx.fillText("感应电流随时间（磁铁来回穿过线圈）",bx,by-6);
-    ctx.fillStyle="#868E96"; ctx.font="600 13px -apple-system,sans-serif";
+    ctx.fillStyle = "#5c6b82"; ctx.font="600 13px -apple-system,sans-serif";
     ctx.fillText(P.label||"磁铁一动，线圈里就冒出电流", 14, 24);
     ctx.restore();
     if(vS)vS.textContent=sp.toFixed(1)+"×";
@@ -748,12 +748,135 @@
 
 }
 
+  /* ------------------------------------------------------------------ */
+  /* 动画闸门：让"画面一直在自己动"的演示能暂停 / 单步                     */
+  /* ------------------------------------------------------------------ */
+  /* 有些演示一打开就在自己跑（行星公转、波形推进、图灵机走格、光点沿轨迹前进……）。
+     老师想说"就停在这一帧，大家看这里"却按不住；学生想对比上一帧 / 这一帧也做不到。
+     这里在 requestAnimationFrame 外面套一层闸门：
+       暂停 —— 干脆不驱动实验的绘制回调，只把 rAF 链自己续下去，画面必然定格。
+              （只冻结时间戳拦不住图灵机这类实验：它每帧固定走几步，与 dt 无关。）
+       单步 —— 放行一次绘制，并把时钟往前推一帧，走一步再停住。
+       继续 —— 恢复后的第一帧也按"过了一帧"计时，避免暂停很久后画面跳一大步。
+     闸门按 .lab 分别记账，同一页上几个实验互不影响。 */
+  var __labNow = null;                  /* 正在初始化 / 正在驱动的 .lab 元素 */
+  var __labAnims = [];                  /* [{lab, paused, step, clock, used, tools, resume}] */
+  var __rafReal = window.requestAnimationFrame.bind(window);
+
+  function __animTrack(lab) {
+    var rec = { lab: lab, paused: false, step: false, clock: 0, used: false, tools: false, resume: false };
+    __labAnims.push(rec);
+    if (!__watchStarted) { __watchStarted = true; setTimeout(__animWatchdog, 1500); }
+    return rec;
+  }
+  var __watchStarted = false;
+
+  /* 兜底探测：有些实验要点了按钮才开始动（如牛顿抛体），初始化时排不到 rAF，
+     闸门抓不住它们。这里对"还没有按钮"的实验做轻量探测——把画布缩到 16×16 比指纹，
+     一旦发现它动起来了就补上按钮。只在确有未决实验时运行，最多约 4 分钟。 */
+  function __animWatchdog() {
+    var probe = document.createElement("canvas");
+    probe.width = 16; probe.height = 16;
+    var pctx = probe.getContext("2d");
+    var ticks = 0;
+    var timer = setInterval(function () {
+      if (++ticks > 340) { clearInterval(timer); return; }
+      if (document.hidden) return;
+      var pending = false, i, r, cv, h, d, k;
+      for (i = 0; i < __labAnims.length; i++) {
+        r = __labAnims[i];
+        if (r.tools || r.dead) continue;
+        pending = true;
+        cv = $("canvas", r.lab);
+        if (!cv) { r.dead = true; continue; }
+        h = 0;
+        try {
+          pctx.clearRect(0, 0, 16, 16);
+          pctx.drawImage(cv, 0, 0, 16, 16);
+          d = pctx.getImageData(0, 0, 16, 16).data;
+          for (k = 0; k < d.length; k += 4) h = (h * 31 + d[k] + d[k + 1] * 3 + d[k + 2] * 7) | 0;
+        } catch (e) { r.dead = true; continue; }
+        if (r.probe !== undefined && r.probe !== h) { r.tools = true; __addAnimTools(r.lab, r); }
+        r.probe = h;
+      }
+      if (!pending) clearInterval(timer);
+    }, 700);
+  }
+  function __animOf(lab) {
+    for (var i = 0; i < __labAnims.length; i++) if (__labAnims[i].lab === lab) return __labAnims[i];
+    return null;
+  }
+
+  window.requestAnimationFrame = function (cb) {
+    var owner = __labNow;
+    var rec = owner ? __animOf(owner) : null;
+    if (rec) {
+      rec.used = true;
+      /* 首次排 rAF 时才注入按钮：这样"打开就在跑"的实验立刻有按钮，
+         "点了发射才开始跑"的实验（如牛顿抛体）也会在启动那一刻拿到按钮。 */
+      if (!rec.tools) { rec.tools = true; __addAnimTools(rec.lab, rec); }
+    }
+    function tick(ts) {
+      var back = __labNow;
+      __labNow = owner;                 /* 回调里再排 rAF 时，归属同一个实验 */
+      try {
+        if (!rec) { cb(ts); return; }                 /* 非实验的 rAF：原样放行 */
+        if (rec.paused && !rec.step) {
+          __rafReal(tick);                            /* 暂停：不驱动绘制，只续住链条 */
+          return;
+        }
+        if (rec.step) {                               /* 单步：时钟 +1 帧，放行一次 */
+          rec.step = false; rec.clock += 1000 / 60; cb(rec.clock); return;
+        }
+        var t2;
+        if (rec.resume) {                             /* 刚恢复：按"过了一帧"接着走 */
+          rec.resume = false; rec.clock += 1000 / 60; t2 = rec.clock;
+        } else { rec.clock = ts; t2 = ts; }
+        cb(t2);
+      } finally { __labNow = back; }
+    }
+    return __rafReal(tick);
+  };
+
+  function __addAnimTools(lab, rec) {
+    if ($(".lab-anim-tools", lab)) return;   /* 已经加过就不再重复（闸门与 initLabs 都可能触发） */
+    var box = document.createElement("div");
+    box.className = "lab-anim-tools";
+    box.innerHTML = '<button type="button" class="lab-anim-btn" data-anim="toggle" title="暂停 / 继续这段动画">⏸ 暂停</button>' +
+                    '<button type="button" class="lab-anim-btn" data-anim="step" title="画面暂停时，向前走一帧">⏭ 单步</button>' +
+                    '<span class="lab-anim-tip">暂停后按「单步」可逐帧对照</span>';
+    var btnToggle = $('[data-anim="toggle"]', box);
+    var btnStep = $('[data-anim="step"]', box);
+    function sync() {
+      btnToggle.textContent = rec.paused ? "▶ 继续" : "⏸ 暂停";
+      btnToggle.classList.toggle("on", rec.paused);
+      box.classList.toggle("paused", rec.paused);
+    }
+    btnToggle.addEventListener("click", function () {
+      rec.paused = !rec.paused;
+      if (!rec.paused) rec.resume = true;
+      sync();
+    });
+    btnStep.addEventListener("click", function () {
+      if (!rec.paused) { rec.paused = true; sync(); }  /* 没暂停就先按下去，再走一帧 */
+      rec.step = true;
+    });
+    var anchor = $(".lab-readout", lab);
+    if (anchor && anchor.parentNode === lab) lab.insertBefore(box, anchor);
+    else lab.appendChild(box);
+  }
+
   function initLabs() {
     $$(".lab").forEach(function (lab) {
       var kind = lab.getAttribute("data-lab");
-      if (kind === "induction") lab_induction(lab);
-      if (kind === "lines") lab_lines(lab);
-      if (kind === "ac") lab_ac(lab);
+      var rec = __animTrack(lab);
+      __labNow = lab;              /* 这段里排的 rAF 都记在这个实验头上 */
+      try {
+        if (kind === "induction") lab_induction(lab);
+        if (kind === "lines") lab_lines(lab);
+        if (kind === "ac") lab_ac(lab);
+      } finally { __labNow = null; }
+      if (rec.used && !rec.tools) __addAnimTools(lab, rec);
     });
   }
 function initGlossary() {

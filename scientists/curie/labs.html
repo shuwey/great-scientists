@@ -30,7 +30,9 @@
     <div class="lab" data-lab="rays">
       <div class="lab-head"><h4>α / β / γ 的穿透力</h4><span class="badge">可拖动</span></div>
       <p class="lab-desc">α 一张纸就挡住，β 要几毫米铝，γ 得靠几厘米厚铅。</p>
+      <p class="lab-guess"><b>先猜一猜：</b>纸、铝、铅三种材料，哪一种最先被射线穿过去？</p>
       <canvas></canvas>
+      <div class="lab-legend"><span class="lg-head">颜色含义</span><span class="lg-item"><i style="background:#E03131"></i>α 射线（氦核，一张纸就挡住）</span><span class="lg-item"><i style="background:#3B5BDB"></i>β 射线（高速电子）</span><span class="lg-item"><i style="background:#0CA678"></i>γ 射线（高能光子，穿透力最强）</span><span class="lg-item"><i style="background:#B9C3D4"></i>变灰＝被这一厚度的材料挡住</span></div>
       <div class="lab-controls">
         <div class="ctrl">
           <label>屏蔽层厚度 <span class="v">0</span></label>
@@ -50,7 +52,9 @@
     <div class="lab" data-lab="purify">
       <div class="lab-head"><h4>从矿渣里淘出的光</h4><span class="badge">可拖动</span></div>
       <p class="lab-desc">约每吨沥青铀矿残渣只能提出几十毫克镭；要攒出 0.1 克氯化镭，得处理好几吨矿渣。</p>
+      <p class="lab-guess"><b>先猜一猜：</b>处理一整吨矿石，能提出来的镭够装满一小瓶吗？</p>
       <canvas></canvas>
+      <div class="lab-legend"><span class="lg-head">颜色含义</span><span class="lg-item"><i style="background:#6B5744"></i>棕格＝沥青铀矿残渣（每格约 0.5 吨）</span><span class="lg-item"><i style="background:rgba(12,166,120,0.6)"></i>绿光＝提取出来的镭（越多越亮）</span><span class="lg-item series"><i style="background:#9AA7BE"></i>灰＝参照线、网格、未选中</span><span class="lg-note">（虚线框＝系列通用约定）</span></div>
       <div class="lab-controls">
         <div class="ctrl">
           <label>处理矿石（吨） <span class="v">1.0</span></label>
@@ -70,7 +74,9 @@
     <div class="lab" data-lab="decay">
       <div class="lab-head"><h4>半衰期：每 1600 年减一半</h4><span class="badge">可拖动</span></div>
       <p class="lab-desc">不管剩下多少，再过 1600 年就又是一半。这条曲线谁也改不了。</p>
+      <p class="lab-guess"><b>先猜一猜：</b>镭每 1600 年减一半——再过两个 1600 年，是减到零，还是又减一半？</p>
       <canvas></canvas>
+      <div class="lab-legend"><span class="lg-head">颜色含义</span><span class="lg-item"><i style="background:#3B5BDB"></i>蓝线＝还剩多少放射性强度</span><span class="lg-item"><i style="background:#E03131"></i>红虚线＋红点＝当前时刻</span><span class="lg-item"><i style="background:rgba(139,150,170,0.8)"></i>灰虚线＝每一个半衰期</span></div>
       <div class="lab-controls">
         <div class="ctrl">
           <label>已经过去（年） <span class="v">0</span></label>

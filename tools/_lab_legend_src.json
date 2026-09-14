@@ -1,0 +1,934 @@
+{
+ "copernicus/lab_solar": [
+  {
+   "color": "#5c6b82",
+   "label": "太阳",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "离太阳越远，绕一圈越久",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "地球排第三，和别的行星一样在跑",
+   "src": "B"
+  }
+ ],
+ "copernicus/lab_retro": [
+  {
+   "color": "#5c6b82",
+   "label": "太阳",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "内圈快、外圈慢",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "俯视：谁跑得快",
+   "src": "B"
+  },
+  {
+   "color": "#3B7DD8",
+   "label": "地球",
+   "src": "B"
+  },
+  {
+   "color": "#C1553A",
+   "label": "火星",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "火星在天上的位置",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "时间 →",
+   "src": "B"
+  },
+  {
+   "color": "#E03131",
+   "label": "逆行",
+   "src": "B"
+  }
+ ],
+ "copernicus/lab_parallax": [
+  {
+   "color": "#5c6b82",
+   "label": "背景恒星",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "太阳",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "基线：2 天文单位（地球走半年）",
+   "src": "B"
+  },
+  {
+   "color": "#3B7DD8",
+   "label": "1 月",
+   "src": "B"
+  },
+  {
+   "color": "#0CA678",
+   "label": "7 月",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "恒星",
+   "src": "B"
+  },
+  {
+   "color": "#E03131",
+   "label": "摆动幅度",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "地球半年走出一条基线",
+   "src": "B"
+  }
+ ],
+ "galileo/labIncline": [
+  {
+   "color": "#1B2530",
+   "label": "a = g·sin",
+   "src": "B"
+  }
+ ],
+ "galileo/labTelescope": [
+  {
+   "color": "伊奥",
+   "label": "#E8A33D",
+   "src": "A"
+  },
+  {
+   "color": "欧罗巴",
+   "label": "#D7DCE5",
+   "src": "A"
+  },
+  {
+   "color": "盖尼米德",
+   "label": "#C9A06B",
+   "src": "A"
+  },
+  {
+   "color": "卡利斯托",
+   "label": "#8B96AA",
+   "src": "A"
+  },
+  {
+   "color": "#fff",
+   "label": "木星与它的四颗卫星（伽利略卫星）",
+   "src": "B"
+  }
+ ],
+ "galileo/labPendulum": [
+  {
+   "color": "#1B2530",
+   "label": "T = 2π√(L/g) ≈ ",
+   "src": "B"
+  }
+ ],
+ "kepler/lab_areal": [
+  {
+   "color": "#5c6b82",
+   "label": "太阳",
+   "src": "B"
+  },
+  {
+   "color": "#C1553A",
+   "label": "近日点",
+   "src": "B"
+  },
+  {
+   "color": "#3B7DD8",
+   "label": "远日点",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "相同的时间，相同的面积",
+   "src": "B"
+  },
+  {
+   "color": "#5C6B82",
+   "label": "12 个扇形，每块面积相同",
+   "src": "B"
+  },
+  {
+   "color": "#5C6B82",
+   "label": "当前正在扫过的那一块",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "近日点：跑得快",
+   "src": "B"
+  },
+  {
+   "color": "#5C6B82",
+   "label": "又短又胖的一段，几周就走完",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "远日点：跑得慢",
+   "src": "B"
+  },
+  {
+   "color": "#5C6B82",
+   "label": "又长又瘦的一段，要磨很久",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "12 块面积加起来，就是整条轨道",
+   "src": "B"
+  }
+ ],
+ "kepler/lab_third": [
+  {
+   "color": "#5c6b82",
+   "label": "轨道半长轴 a（天文单位，对数轴）",
+   "src": "B"
+  },
+  {
+   "color": "#5C6B82",
+   "label": "红虚线＝离直线还有多远",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "拖动滑块找那条直线",
+   "src": "B"
+  },
+  {
+   "color": "#5C6B82",
+   "label": "从水星到海王星，a 差了 78 倍、",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "对数坐标：直线＝幂律关系",
+   "src": "B"
+  }
+ ],
+ "kepler/lab_ellipse": [
+  {
+   "color": "#1B2530",
+   "label": "离心率 e = ",
+   "src": "B"
+  }
+ ],
+ "newton/labPrism": [
+  {
+   "color": "#F76707",
+   "label": "#E03131",
+   "src": "A"
+  },
+  {
+   "color": "#5B6675",
+   "label": "白光",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "光谱",
+   "src": "B"
+  }
+ ],
+ "newton/labGravity": [
+  {
+   "color": "#5c6b82",
+   "label": "距离 ",
+   "src": "B"
+  },
+  {
+   "color": "#E8590C",
+   "label": "F = ",
+   "src": "B"
+  }
+ ],
+ "newton/labProjectile": [
+  {
+   "color": "#5c6b82",
+   "label": "最高 ",
+   "src": "B"
+  },
+  {
+   "color": "#087F5B",
+   "label": "射程 ",
+   "src": "B"
+  }
+ ],
+ "faraday/lab_lines": [
+  {
+   "color": "#fff",
+   "label": "N",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "条形磁铁：铁屑沿磁力线排队",
+   "src": "B"
+  }
+ ],
+ "faraday/lab_ac": [
+  {
+   "color": "#fff",
+   "label": "N",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "引出导线，送往用电器",
+   "src": "B"
+  },
+  {
+   "color": "#B26A00",
+   "label": "匀速转动",
+   "src": "B"
+  },
+  {
+   "color": "#E8590C",
+   "label": "① 线圈在磁场中转动",
+   "src": "B"
+  },
+  {
+   "color": "#E8590C",
+   "label": "② 输出的交流电",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "+",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "电流方向 + / −",
+   "src": "B"
+  }
+ ],
+ "faraday/lab_induction": [
+  {
+   "color": "#fff",
+   "label": "N",
+   "src": "B"
+  },
+  {
+   "color": "#c1440e",
+   "label": "磁铁",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "电流计",
+   "src": "B"
+  },
+  {
+   "color": "#495057",
+   "label": "感应电流随时间（磁铁来回穿过线圈）",
+   "src": "B"
+  }
+ ],
+ "darwin/lab_population": [
+  {
+   "color": "#1B2530",
+   "label": "环境能养活的个体：60 个位置",
+   "src": "B"
+  },
+  {
+   "color": "#5C6B82",
+   "label": "活下来的：",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "这一代出生：",
+   "src": "B"
+  },
+  {
+   "color": "#C92A2A",
+   "label": "被淘汰：",
+   "src": "B"
+  }
+ ],
+ "darwin/lab_selection": [
+  {
+   "color": "#5C6B82",
+   "label": "原始平均 ",
+   "src": "B"
+  },
+  {
+   "color": "#E8590C",
+   "label": "现在平均 ",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "地雀的喙深 →",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "连续干旱 → 硬壳种子多 → 喙深者更有优势",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "灰柱＝原来的种群　橙柱＝选择之后的种群",
+   "src": "B"
+  }
+ ],
+ "darwin/lab_tree": [
+  {
+   "color": "#5c6b82",
+   "label": "← 越往左，年代越久远（单位：百万年前）",
+   "src": "B"
+  },
+  {
+   "color": "#5C6B82",
+   "label": "现在",
+   "src": "B"
+  }
+ ],
+ "pasteur/lab_colony": [
+  {
+   "color": "#1B2530",
+   "label": "细菌数量（对数刻度）随时间的变化",
+   "src": "B"
+  }
+ ],
+ "pasteur/lab_heat": [
+  {
+   "color": "#E03131",
+   "label": "安全线：杀灭 5 个对数级",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "存活微生物的比例（对数刻度）随时间下降",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "绿实线＝当前温度 ",
+   "src": "B"
+  }
+ ],
+ "pasteur/lab_spread": [
+  {
+   "color": "#5c6b82",
+   "label": "空气里的灰尘与微生物",
+   "src": "B"
+  },
+  {
+   "color": "#E03131",
+   "label": "微生物直接落进肉汤",
+   "src": "B"
+  },
+  {
+   "color": "#5C6B82",
+   "label": "灰尘全落在弯道外面，进不去",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "肉汤状态：",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "瓶颈弯曲度 ",
+   "src": "B"
+  }
+ ],
+ "maxwell/lab_field": [
+  {
+   "color": "#C1440E",
+   "label": "电流 I ↑",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "通电直导线：磁场像一串圆环，套在导线外面",
+   "src": "B"
+  },
+  {
+   "color": "#5C6B82",
+   "label": "小磁针会沿着这些圆环偏转",
+   "src": "B"
+  }
+ ],
+ "maxwell/lab_wave": [
+  {
+   "color": "#8B96AA",
+   "label": "传播方向 →",
+   "src": "B"
+  },
+  {
+   "color": "#1C7ED6",
+   "label": "E",
+   "src": "B"
+  },
+  {
+   "color": "#E8590C",
+   "label": "B",
+   "src": "B"
+  },
+  {
+   "color": "#5C6B82",
+   "label": "90°",
+   "src": "B"
+  }
+ ],
+ "maxwell/lab_speed": [
+  {
+   "color": "#E03131",
+   "label": "最概然速率",
+   "src": "B"
+  },
+  {
+   "color": "#495057",
+   "label": "门槛速率",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "分子速率 →",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "麦克斯韦-玻尔兹曼速率分布",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "最概然 ",
+   "src": "B"
+  }
+ ],
+ "mendeleev/lab_trend": [
+  {
+   "color": "#5c6b82",
+   "label": "第 1 周期",
+   "src": "B"
+  },
+  {
+   "color": "#B0BAC9",
+   "label": "—",
+   "src": "B"
+  },
+  {
+   "color": "#6741D9",
+   "label": "■ 稀有气体（峰顶）",
+   "src": "B"
+  },
+  {
+   "color": "#E03131",
+   "label": "■ 碱金属（谷底）",
+   "src": "B"
+  }
+ ],
+ "mendeleev/lab_fill": [
+  {
+   "color": "#1B2530",
+   "label": "按原子序数排出的元素序列（1—36）",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "1869：留下 3 个空格",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "→",
+   "src": "B"
+  }
+ ],
+ "mendeleev/lab_grid": [],
+ "curie/lab_rays": [
+  {
+   "color": "#5c6b82",
+   "label": "放射源",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "三种射线，穿透力差得很远",
+   "src": "B"
+  }
+ ],
+ "curie/lab_purify": [
+  {
+   "color": "#5c6b82",
+   "label": "沥青铀矿残渣：",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "（每格约 0.5 吨）",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "约 ",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "凑够 1 克镭，需要 40 吨矿石",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "0",
+   "src": "B"
+  }
+ ],
+ "curie/lab_decay": [
+  {
+   "color": "#1B2530",
+   "label": "镭-226：半衰期约 1600 年",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "纵轴＝还剩多少放射性强度",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "再久也一样",
+   "src": "B"
+  },
+  {
+   "color": "#5C6B82",
+   "label": "过了 1600 年剩 50%",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "剩下多少都不影响",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "温度、压强、",
+   "src": "B"
+  }
+ ],
+ "einstein/labTime": [
+  {
+   "color": "#1B2530",
+   "label": "γ = ",
+   "src": "B"
+  }
+ ],
+ "einstein/labPhoton": [
+  {
+   "color": "#3B5BDB",
+   "label": "光子 h·f（频率越高，单个光子能量越大）",
+   "src": "B"
+  },
+  {
+   "color": "#E8590C",
+   "label": "截止电压",
+   "src": "B"
+  }
+ ],
+ "einstein/labBend": [
+  {
+   "color": "#5c6b82",
+   "label": "灰色虚线：没有引力时，光本该笔直走",
+   "src": "B"
+  },
+  {
+   "color": "#fff",
+   "label": "恒星",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "光本应走直线，却被恒星弯曲的时空“掰”向它",
+   "src": "B"
+  }
+ ],
+ "bohr/lab_shells": [
+  {
+   "color": "#5c6b82",
+   "label": "n=",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "原子核",
+   "src": "B"
+  },
+  {
+   "color": "#087F5B",
+   "label": "电子",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "能级不是连续的，是一层一层的",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "两层之间：没有可以停留的位置",
+   "src": "B"
+  }
+ ],
+ "bohr/lab_levels": [
+  {
+   "color": "#C92A2A",
+   "label": "红色区域：电子不许停在这里",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "能量（eV）",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "再往上 n=5、6…",
+   "src": "B"
+  },
+  {
+   "color": "#087F5B",
+   "label": "电子",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "只能站在档位上",
+   "src": "B"
+  },
+  {
+   "color": "#5C6B82",
+   "label": "像楼梯，不像斜坡。上楼只能一级",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "往下一档：放出一份能量",
+   "src": "B"
+  },
+  {
+   "color": "#5C6B82",
+   "label": "这份能量正好等于两档之差，",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "往上一档：吸收一份能量",
+   "src": "B"
+  },
+  {
+   "color": "#5C6B82",
+   "label": "给得不够，它就一步也上不去。",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "这就是“量子”两个字的意思",
+   "src": "B"
+  }
+ ],
+ "bohr/lab_lines": [
+  {
+   "color": "#1B2530",
+   "label": "能级图（示意）",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "n=",
+   "src": "B"
+  },
+  {
+   "color": "#E03131",
+   "label": "n=",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "可见光谱",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "380 nm",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "为什么只有这几条线？",
+   "src": "B"
+  },
+  {
+   "color": "#5C6B82",
+   "label": "因为能级是固定的，落差就只有那么几种——",
+   "src": "B"
+  }
+ ],
+ "turing/lab_automaton": [
+  {
+   "color": "#1B2530",
+   "label": "一维元胞自动机：一条规则，万千图案",
+   "src": "B"
+  },
+  {
+   "color": "#6741D9",
+   "label": "当前规则号 ",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "规则表",
+   "src": "B"
+  },
+  {
+   "color": "#5c6b82",
+   "label": "↓",
+   "src": "B"
+  }
+ ],
+ "turing/lab_signal": [
+  {
+   "color": "#5c6b82",
+   "label": "样本编码（二进制，每一位不是 1 就是 0）",
+   "src": "B"
+  }
+ ],
+ "turing/lab_turing": [],
+ "feynman/lab_interfere": [
+  {
+   "color": "#5c6b82",
+   "label": "入射波",
+   "src": "B"
+  },
+  {
+   "color": "#5C6B82",
+   "label": "缝 A",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "屏幕",
+   "src": "B"
+  },
+  {
+   "color": "#E8590C",
+   "label": "光强",
+   "src": "B"
+  }
+ ],
+ "feynman/lab_dist": [
+  {
+   "color": "#5C6B82",
+   "label": "缝 A",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "屏幕：每一颗都是一个电子",
+   "src": "B"
+  },
+  {
+   "color": "#E8590C",
+   "label": "理论条纹",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "一个一个发射电子：单次随机，累积成条纹",
+   "src": "B"
+  }
+ ],
+ "feynman/lab_path": [
+  {
+   "color": "#495057",
+   "label": "A",
+   "src": "B"
+  },
+  {
+   "color": "#E8590C",
+   "label": "橙色直线＝经典路径（作用量最小）",
+   "src": "B"
+  },
+  {
+   "color": "#56617A",
+   "label": "读法：21 条路径＝21 个可能的历史。",
+   "src": "B"
+  },
+  {
+   "color": "#1B2530",
+   "label": "② 每条路的相位箭头首尾相接",
+   "src": "B"
+  },
+  {
+   "color": "#56617A",
+   "label": "接起来的红箭头 ＝ 抵消后剩下的净概率幅",
+   "src": "B"
+  },
+  {
+   "color": "#56617A",
+   "label": "净概率幅（红箭头 ÷ 满幅）",
+   "src": "B"
+  }
+ ],
+ "hawking/lab_orbit": [
+  {
+   "color": "#fff",
+   "label": "黑洞（视界）",
+   "src": "B"
+  }
+ ],
+ "hawking/lab_temp": [
+  {
+   "color": "#E8EDF5",
+   "label": "视界附近的粒子对",
+   "src": "B"
+  },
+  {
+   "color": "#E8EDF5",
+   "label": "黑洞质量 = ",
+   "src": "B"
+  },
+  {
+   "color": "#AEB9CC",
+   "label": "短波",
+   "src": "B"
+  },
+  {
+   "color": "#FF6B6B",
+   "label": "峰值波长",
+   "src": "B"
+  },
+  {
+   "color": "#AEB9CC",
+   "label": "横轴：辐射波长（对数）　·　竖轴：辐射强度",
+   "src": "B"
+  }
+ ],
+ "hawking/lab_bh": []
+}
