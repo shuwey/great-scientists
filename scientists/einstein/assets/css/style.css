@@ -438,6 +438,11 @@ section.tight { padding: 34px 0; }
   scroll-margin-top: calc(var(--nav-h) + 16px);
 }
 .article h2:first-child { margin-top: 0; }
+
+/* 任何可能作为锚点的元素，跳转时都让开吸顶导航。
+   .article h2 那条只覆盖了 h2，而术语锚点还有挂在 <p>/<li>/<div> 上的，
+   它们会正好停在 y=0 被导航栏压住，跳过去等于没跳到位。 */
+[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
 .article h3 { font-size: 19px; margin: 28px 0 10px; }
 .article p { font-size: 16.5px; color: var(--ink-body); }
 .article ul li, .article ol li { font-size: 16.5px; color: var(--ink-body); }

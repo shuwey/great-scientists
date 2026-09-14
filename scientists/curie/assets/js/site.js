@@ -251,15 +251,36 @@
     setTimeout(function () { $(".modal-close", mask).focus(); }, 60);
   }
 
-  function closeModal() {
+  function closeModal(skipFocus) {
     if (!mask) return;
     mask.classList.remove("show");
     document.body.style.overflow = "";
-    if (lastFocus && lastFocus.focus) lastFocus.focus();
+    if (!skipFocus && lastFocus && lastFocus.focus) lastFocus.focus();
   }
 
   document.addEventListener("click", function (e) {
-    var el = e.target.closest ? e.target.closest(".term, .chip, [data-term]") : null;
+    var t = e.target;
+
+    /* 弹窗里的「了解更多」：术语多半指向它自己所属的那个详解页，
+       而读者常常正停在那一页。此时浏览器对同址跳转"原地不动"，
+       弹窗又仍盖在页面上、body 还锁着滚动 —— 合起来就是"点了没反应"。
+       所以先关弹窗（撤掉遮挡、放开滚动），同页再手动滚到锚点。 */
+    var go = t.closest ? t.closest(".modal-foot a.go") : null;
+    if (go) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return; // 让"新标签打开"走原生
+      var parts = go.href.split("#");
+      closeModal(true);
+      if (parts[0] === location.href.split("#")[0]) {
+        e.preventDefault();
+        var node = parts[1] ? document.getElementById(decodeURIComponent(parts[1])) : null;
+        if (node) node.scrollIntoView({ behavior: "smooth", block: "start" });
+        else window.scrollTo({ top: 0, behavior: "smooth" });
+        try { history.replaceState(null, "", go.getAttribute("href")); } catch (err) {}
+      }
+      return;
+    }
+
+    var el = t.closest ? t.closest(".term, .chip, [data-term]") : null;
     if (!el) return;
     e.preventDefault();
     openTerm(el.getAttribute("data-term"));
