@@ -837,3 +837,12 @@ figure.fig figcaption b { color: var(--ink-2); }
 .refblock .ref-note{margin:14px 0 0;font-size:13px;color:var(--ink-3,#8B96AA);line-height:1.7}
 .refblock a{color:var(--brand,#3B5BDB);text-decoration:none}
 .refblock a:hover{text-decoration:underline}
+
+/* ═══ 历史肖像 · 影调统一（B 方案：去色 + 暖灰） ═════════════════════════════
+   只做展示层：原件不动，把 --hist-tone 改成 none 即整体关闭；
+   单张跳过可加 class="portrait-raw"。
+   目标曲线 = 灰度 → #161310 → #F2EEE8 单色斜坡（对应 shots/tone 的 B 档），
+   纯 CSS 链拟合误差 < 1/255，实测见 tools/check_hist_tone.js。 */
+:root { --hist-tone: grayscale(1) sepia(.07) saturate(1.87) brightness(.99) contrast(.85); }
+img[src*="-portrait"] { filter: var(--hist-tone); }
+img[src*="-portrait"].portrait-raw { filter: none; }
