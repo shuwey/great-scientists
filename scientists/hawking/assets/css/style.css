@@ -389,10 +389,11 @@ section.tight { padding: 34px 0; }
 .tl-panel figure { margin: 0 0 14px; }
 .tl-panel figure img {
   border-radius: 12px; border: 1px solid var(--line);
-  display: block; width: 100%; height: auto; max-height: 360px; object-fit: contain;
+  display: block; width: auto; max-width: 100%; height: auto; max-height: 360px; object-fit: contain;
   background: var(--img-bg); margin: 0 auto;
 }
-.tl-panel figcaption { font-size: 13px; color: var(--ink-3); margin-top: 7px; line-height: 1.6; }
+.tl-panel figure img[src$=".svg"] { width: 100%; max-width: 100%; }  /* 矢量图放大无损，保持满宽 */
+.tl-panel figcaption { font-size: 13px; color: var(--ink-3); margin-top: 7px; line-height: 1.6; text-align: center; }  /* 图片按比例居中后，图注随之居中，保持同一条中轴 */
 .tl-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px; }
 .tag {
   font-size: 12.5px; font-weight: 700; padding: 3px 10px; border-radius: 7px;
@@ -708,8 +709,9 @@ figure.fig figcaption b { color: var(--ink-2); }
 @media (max-width: 720px) { .bio { grid-template-columns: 1fr; } .bio-photo { width: 100%; } }
 .lab canvas { width: 100%; height: auto; display: block; border-radius: 12px; background: var(--bg-elev); border: 1px solid var(--line); touch-action: none;  /* P0修复(2026-09-14)：删除 max-height —— 它会覆盖 setupCanvas 写入的等比行内高度、导致画布纵向压扁；详见 tools/labs-anim-review.html */ }
 .tl-body figure { margin: 0 0 14px; }
-.tl-body figure img { border-radius: 12px; border: 1px solid var(--line); display: block; width: 100%; height: auto; max-height: 280px; object-fit: contain; background: var(--img-bg); }
-.tl-body figcaption { font-size: 13px; color: var(--ink-3); margin-top: 7px; line-height: 1.6; }
+.tl-body figure img { border-radius: 12px; border: 1px solid var(--line); display: block; width: auto; max-width: 100%; height: auto; max-height: 280px; object-fit: contain; background: var(--img-bg); margin: 0 auto; }
+.tl-body figure img[src$=".svg"] { width: 100%; max-width: 100%; }  /* 矢量图放大无损，保持满宽 */
+.tl-body figcaption { font-size: 13px; color: var(--ink-3); margin-top: 7px; line-height: 1.6; text-align: center; }  /* 图片按比例居中后，图注随之居中，保持同一条中轴 */
 
 /* ===== 通用补丁：首页 hero 网格与插画上限（与 .hero-inner 等价） ===== */
 .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 46px; align-items: center; padding: 66px 24px 60px; }
