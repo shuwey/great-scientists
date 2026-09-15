@@ -770,7 +770,7 @@
     {
       "year": 1619,
       "title": "开普勒给出周期定律",
-      "img": "copernicus-kepler.svg",
+      "img": "copernicus-kepler.jpg",
       "alt": "开普勒的椭圆轨道",
       "fig": "开普勒把正圆改成椭圆，日心说更精确。",
       "body": "开普勒先在 1609 年公布行星沿椭圆运行，又在 1619 年给出周期与距离的定量定律，把哥白尼的草图变成精确蓝图。"
@@ -994,7 +994,7 @@
       "license": "Public domain"
     },
     {
-      "file": "copernicus-kepler.svg",
+      "file": "copernicus-kepler.jpg",
       "wiki": "File:Kepler-orbits.svg",
       "q": "Kepler ellipse orbit",
       "desc": "开普勒椭圆轨道",

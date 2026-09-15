@@ -163,7 +163,7 @@ SPEC = {
     {"year": 1543, "id": "de-revolutionibus", "title": "《天体运行论》出版", "img": "copernicus-de-revolutionibus.jpg", "alt": "《天体运行论》", "fig": "1543 年出版的《天体运行论》，现代天文学开端的标志。", "body": "在友人与学生催促下，《天体运行论》终于付印。传说书送到时，哥白尼已临终，只得以目光与之告别。"},
     {"year": 1543, "title": "逝于弗龙堡", "img": "copernicus-tomb.jpg", "alt": "哥白尼之墓", "fig": "哥白尼安葬于弗龙堡。", "body": "5 月 24 日，哥白尼逝世，享年 70 岁。他未能亲见自己的理论如何改变世界。"},
     {"year": 1616, "id": "banned", "title": "被列为禁书", "img": "copernicus-banned.jpg", "alt": "禁书相关史料", "fig": "因伽利略的宣扬，日心说著作受到教会压制。", "body": "教会判定日心说“荒谬且与经文冲突”，《天体运行论》被列为禁书。思想的反扑，来得比预想猛烈。"},
-    {"year": 1619, "title": "开普勒给出周期定律", "img": "copernicus-kepler.svg", "alt": "开普勒的椭圆轨道", "fig": "开普勒把正圆改成椭圆，日心说更精确。", "body": "开普勒先在 1609 年公布行星沿椭圆运行，又在 1619 年给出周期与距离的定量定律，把哥白尼的草图变成精确蓝图。"},
+    {"year": 1619, "title": "开普勒给出周期定律", "img": "copernicus-kepler.jpg", "alt": "开普勒的椭圆轨道", "fig": "开普勒把正圆改成椭圆，日心说更精确。", "body": "开普勒先在 1609 年公布行星沿椭圆运行，又在 1619 年给出周期与距离的定量定律，把哥白尼的草图变成精确蓝图。"},
     {"year": 1687, "title": "牛顿给出引力根基", "img": "copernicus-newton.jpg", "alt": "牛顿与引力", "fig": "牛顿用引力解释行星为何绕日。", "body": "牛顿发表万有引力与运动定律，回答了“行星凭什么绕太阳转”，日心说从此有了完整的力学根基。"},
     {"year": 1835, "title": "从禁书目录移除", "img": "copernicus-monument.jpg", "alt": "哥白尼纪念碑", "fig": "后世为哥白尼立起的纪念碑。", "body": "《天体运行论》终于从教会禁书目录中移除。两个多世纪后，世界承认：那双“看天的眼睛”，确实换对了。"}
   ],
@@ -197,7 +197,7 @@ SPEC = {
     {"file": "copernicus-solar.jpg", "wiki": "File:Heliocentric solar system.png", "q": "heliocentric solar system diagram", "desc": "日心体系示意图", "author": "Public domain", "license": "Public domain"},
     {"file": "copernicus-de-revolutionibus.jpg", "wiki": "File:De revolutionibus-Copernicus Illustrates Heliocentric Order of Planets not Orbits.jpg", "q": "De revolutionibus heliocentric order planets", "desc": "《天体运行论》中的日心秩序图", "author": "Public domain", "license": "Public domain"},
     {"file": "copernicus-banned.jpg", "wiki": "File:Index Librorum Prohibitorum 1.jpg", "q": "Index Librorum Prohibitorum title page", "desc": "禁书目录相关史料", "author": "Public domain", "license": "Public domain"},
-    {"file": "copernicus-kepler.svg", "wiki": "File:Kepler-orbits.svg", "q": "Kepler ellipse orbit", "desc": "开普勒椭圆轨道", "author": "Public domain", "license": "Public domain"},
+    {"file": "copernicus-kepler.jpg", "wiki": "File:Kepler-orbits.svg", "q": "Kepler ellipse orbit", "desc": "开普勒椭圆轨道", "author": "Public domain", "license": "Public domain"},
     {"file": "copernicus-newton.jpg", "wiki": "File:GodfreyKneller-IsaacNewton-1689.jpg", "q": "Isaac Newton portrait Kneller", "desc": "牛顿肖像", "author": "Public domain", "license": "Public domain"},
     {"file": "copernicus-monument.jpg", "wiki": "File:Warsaw 2023 114 Nicolaus Copernicus Monument.jpg", "q": "Copernicus Monument Warsaw", "desc": "华沙哥白尼纪念碑", "author": "Public domain", "license": "Public domain"},
     {"file": "copernicus-tomb.jpg", "wiki": "File:Frombork Copernicus Grave.jpg", "q": "Copernicus grave Frombork", "desc": "弗龙堡主教座堂内哥白尼墓", "author": "Public domain", "license": "Public domain"},
