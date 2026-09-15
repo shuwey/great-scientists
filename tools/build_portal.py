@@ -1,13 +1,10 @@
 # -*- coding: utf-8 -*-
-"""《读懂科学家》系列 · 系列门户（根 index.html）生成器
+"""《读懂科学家》系列 · 系列门户（根 index.html）生成器【已退役 · 仅存档】
 
-把 scientists/<id>/ 下的所有子站接进根目录总览页：
-  - 已上线卡片区（15 张，按出生年份排序，带关键词过滤）
-  - 路线图 roster（全部标记「已上线」并给链接）
-  - 顶部导航、页脚站点目录
-
-子站元数据集中在本文件 SCIENTISTS 列表里；新增/调整科学家只改这里，
-然后 `python3 tools/build_portal.py` 重新生成根 index.html。
+⚠️ 2026-09-15 起，根 index.html 改为**手工维护的「图标桌面」版**（深色首屏 +
+15 张头像图标 + 学科色光晕），不再由本脚本生成。SCIENTISTS 元数据表仍可作
+参考（新增科学家时的名单基准）。若确要重跑，会覆盖手工首页 —— 必须显式
+加 --force 才放行。日常请直接编辑根 index.html。
 """
 
 import io
@@ -322,6 +319,18 @@ HTML = u"""<!DOCTYPE html>
 
 
 def main():
+    import sys
+    if "--force" not in sys.argv:
+        marker = 'class="hp-hero"'   # 结构判据：图标桌面首屏的 header，别用会变的文案
+        try:
+            with io.open(os.path.join(ROOT, "index.html"), encoding="utf-8") as f:
+                cur = f.read()
+            if marker in cur:
+                print("⛔ 根 index.html 已是手工维护的「图标桌面」版（2026-09-15 起退役本脚本）。")
+                print("   请直接编辑根 index.html；确要覆盖请加 --force（会失去手工版）。")
+                return 1
+        except FileNotFoundError:
+            pass
     html = HTML % {
         "total": TOTAL,
         "cards": cards_html2(),
@@ -335,4 +344,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    import sys as _sys
+    _sys.exit(main() or 0)

@@ -14,8 +14,8 @@
 </head>
 <body data-base="">
 
-<!-- ===== 导航 ===== -->
-<nav class="nav">
+<!-- ===== 导航（首页为深色首屏，导航先透明压在上面，滚动后转回常规毛玻璃） ===== -->
+<nav class="nav nav--over">
   <div class="nav-inner">
     <a class="brand" href="index.html"><span class="apple"><img src="assets/img/icon/mark-standard.svg" alt="" width="27" height="27"></span>读懂科学家</a>
     <button class="nav-toggle" aria-label="打开菜单"><i></i><i></i><i></i></button>
@@ -29,24 +29,152 @@
   <div id="progress"></div>
 </nav>
 
-<!-- ===== Hero ===== -->
-<header class="hero">
-  <div class="hero-inner">
-    <div>
-      <span class="sec-kicker">初中 · 高中 都能读得懂</span>
-      <h1>读懂科学家</h1>
-      <p class="sub">一个把天才讲成人话的科普系列</p>
-      <p class="lead">每一个改变了世界的头脑，都曾是会犯错、会卡壳、会对着窗户发呆的普通人。这个系列用你能听懂的话，把一位科学家的一生与核心成就，按时间顺序讲清楚。看到不懂的词，点一下就有解释。</p>
-      <div class="hero-actions">
-        <a class="btn" href="scientists/newton/index.html">从牛顿开始 →</a>
-        <a class="btn ghost" href="#scientists">看看全部 15 位</a>
-      </div>
+<!-- ===== 首屏 · 图标桌面 ===== -->
+<header class="hp-hero" id="scientists">
+  <div class="hp-inner">
+    <span class="hp-kicker">初中 · 高中 都能读得懂</span>
+    <h1>读懂科学家</h1>
+    <p class="hp-sub">一个把天才讲成人话的科普系列</p>
+    <p class="hp-lead">15 位真正改变了世界的头脑，从哥白尼到霍金，正好串起近 550 年科学如何重塑人类世界。每人一个独立站点：一条时间线串起一生，核心成就拆成一篇篇短文，难词点开就有人话解释，还能亲手拖一拖实验。下面这张桌面上，点谁进谁。</p>
+
+    <div class="hp-search">
+      <input id="hp-filter" type="search" placeholder="按姓名、领域或关键词筛选（如「黑洞」「进化」「量子」）…" aria-label="筛选科学家">
+      <span id="hp-count" class="hp-count">15 位</span>
     </div>
-    <div class="hero-art">
-      <figure class="hero-portrait">
-        <img src="scientists/newton/assets/img/history/newton-portrait-1702.jpg" alt="牛顿 1702 年肖像" width="300" height="364">
-        <figcaption>系列第一位完整上线的站点：艾萨克·牛顿（1643–1727）<br>肖像 · 戈弗雷·内勒绘</figcaption>
-      </figure>
+
+    <div class="hp-grid" id="hp-grid">
+
+      <a class="hp-item d-astro" href="scientists/copernicus/index.html" data-sci="尼古拉·哥白尼 Nicolaus Copernicus 1473 1543 天文学 日心说 天文 宇宙 行星" data-full="尼古拉·哥白尼" data-disc="天文学" data-years="1473 – 1543">
+        <span class="hp-tile"><img src="assets/img/homepage/01-copernicus.webp" alt="" width="132" height="132" decoding="async"></span>
+        <span class="hp-name">哥白尼</span>
+        <span class="hp-strip"></span>
+        <span class="hp-years">1473 – 1543</span>
+        <span class="hp-desc">用「日心说」把地球请出宇宙中心，掀起科学革命的第一声惊雷。</span>
+      </a>
+
+      <a class="hp-item d-astro" href="scientists/galileo/index.html" data-sci="伽利略·伽利雷 Galileo Galilei 1564 1642 天文学 望远镜 摆 落体 实验 惯性" data-full="伽利略·伽利雷" data-disc="天文学" data-years="1564 – 1642">
+        <span class="hp-tile"><img src="assets/img/homepage/02-galileo.webp" alt="" width="132" height="132" decoding="async"></span>
+        <span class="hp-name">伽利略</span>
+        <span class="hp-strip"></span>
+        <span class="hp-years">1564 – 1642</span>
+        <span class="hp-desc">用望远镜把天空拉到眼前，用斜面与摆锤重新定义「运动」，近代实验科学之父。</span>
+      </a>
+
+      <a class="hp-item d-astro" href="scientists/kepler/index.html" data-sci="约翰内斯·开普勒 Johannes Kepler 1571 1630 天文学 椭圆 行星 轨道 三大定律" data-full="约翰内斯·开普勒" data-disc="天文学" data-years="1571 – 1630">
+        <span class="hp-tile"><img src="assets/img/homepage/03-kepler.webp" alt="" width="132" height="132" decoding="async"></span>
+        <span class="hp-name">开普勒</span>
+        <span class="hp-strip"></span>
+        <span class="hp-years">1571 – 1630</span>
+        <span class="hp-desc">行星运动三大定律，用椭圆轨道把日心说变成可精确计算的模型。</span>
+      </a>
+
+      <a class="hp-item d-phys" href="scientists/newton/index.html" data-sci="艾萨克·牛顿 Isaac Newton 1643 1727 经典物理 万有引力 微积分 力学 光学 三定律" data-full="艾萨克·牛顿" data-disc="经典物理" data-years="1643 – 1727">
+        <span class="hp-tile"><img src="assets/img/homepage/04-newton.webp" alt="" width="132" height="132" decoding="async"></span>
+        <span class="hp-name">牛顿</span>
+        <span class="hp-strip"></span>
+        <span class="hp-years">1643 – 1727</span>
+        <span class="hp-desc">三大力学定律与万有引力，第一次把天体与地面连成同一种规律；还发明了微积分。</span>
+      </a>
+
+      <a class="hp-item d-phys" href="scientists/faraday/index.html" data-sci="迈克尔·法拉第 Michael Faraday 1791 1867 经典物理 电磁感应 发电机 电场 磁场 力线" data-full="迈克尔·法拉第" data-disc="经典物理" data-years="1791 – 1867">
+        <span class="hp-tile"><img src="assets/img/homepage/05-faraday.webp" alt="" width="132" height="132" decoding="async"></span>
+        <span class="hp-name">法拉第</span>
+        <span class="hp-strip"></span>
+        <span class="hp-years">1791 – 1867</span>
+        <span class="hp-desc">发现电磁感应、造出第一台发电机，提出「场」与力线——今天点亮世界的电，源头在他手上。</span>
+      </a>
+
+      <a class="hp-item d-life" href="scientists/darwin/index.html" data-sci="查尔斯·达尔文 Charles Darwin 1809 1882 生命科学 生物 进化 物种 自然选择 物竞天择" data-full="查尔斯·达尔文" data-disc="生命科学" data-years="1809 – 1882">
+        <span class="hp-tile"><img src="assets/img/homepage/06-darwin.webp" alt="" width="132" height="132" decoding="async"></span>
+        <span class="hp-name">达尔文</span>
+        <span class="hp-strip"></span>
+        <span class="hp-years">1809 – 1882</span>
+        <span class="hp-desc">进化论与「物竞天择」，重新解释所有生命的来处与彼此的关联。</span>
+      </a>
+
+      <a class="hp-item d-life" href="scientists/pasteur/index.html" data-sci="路易·巴斯德 Louis Pasteur 1822 1895 生命科学 医学 疫苗 巴氏杀菌 微生物 细菌" data-full="路易·巴斯德" data-disc="生命科学" data-years="1822 – 1895">
+        <span class="hp-tile"><img src="assets/img/homepage/07-pasteur.webp" alt="" width="132" height="132" decoding="async"></span>
+        <span class="hp-name">巴斯德</span>
+        <span class="hp-strip"></span>
+        <span class="hp-years">1822 – 1895</span>
+        <span class="hp-desc">巴氏杀菌与疫苗，微生物学奠基，实打实拯救了无数人的生命。</span>
+      </a>
+
+      <a class="hp-item d-phys" href="scientists/maxwell/index.html" data-sci="詹姆斯·麦克斯韦 James Clerk Maxwell 1831 1879 经典物理 电磁 方程组 光 电磁波 统计" data-full="詹姆斯·麦克斯韦" data-disc="经典物理" data-years="1831 – 1879">
+        <span class="hp-tile"><img src="assets/img/homepage/08-maxwell.webp" alt="" width="132" height="132" decoding="async"></span>
+        <span class="hp-name">麦克斯韦</span>
+        <span class="hp-strip"></span>
+        <span class="hp-years">1831 – 1879</span>
+        <span class="hp-desc">用一组方程统一电、磁与光，现代通信的全部根基都从这里长出。</span>
+      </a>
+
+      <a class="hp-item d-chem" href="scientists/mendeleev/index.html" data-sci="德米特里·门捷列夫 Dmitri Mendeleev 1834 1907 化学 元素周期表 元素 周期律 预言" data-full="德米特里·门捷列夫" data-disc="化学" data-years="1834 – 1907">
+        <span class="hp-tile"><img src="assets/img/homepage/09-mendeleev.webp" alt="" width="132" height="132" decoding="async"></span>
+        <span class="hp-name">门捷列夫</span>
+        <span class="hp-strip"></span>
+        <span class="hp-years">1834 – 1907</span>
+        <span class="hp-desc">元素周期表，把混乱的化学元素排成可被预言的秩序。</span>
+      </a>
+
+      <a class="hp-item d-chem" href="scientists/curie/index.html" data-sci="玛丽·居里 Marie Curie 1867 1934 化学 放射 镭 钋 诺贝尔奖 原子" data-full="玛丽·居里" data-disc="化学" data-years="1867 – 1934">
+        <span class="hp-tile"><img src="assets/img/homepage/10-curie.webp" alt="" width="132" height="132" decoding="async"></span>
+        <span class="hp-name">居里夫人</span>
+        <span class="hp-strip"></span>
+        <span class="hp-years">1867 – 1934</span>
+        <span class="hp-desc">发现放射性元素钋与镭，两获诺贝尔奖，亲手推开原子时代的大门。</span>
+      </a>
+
+      <a class="hp-item d-modern" href="scientists/einstein/index.html" data-sci="阿尔伯特·爱因斯坦 Albert Einstein 1879 1955 现代物理 相对论 量子 光电效应 质能方程 引力" data-full="阿尔伯特·爱因斯坦" data-disc="现代物理" data-years="1879 – 1955">
+        <span class="hp-tile"><img src="assets/img/homepage/11-einstein.webp" alt="" width="132" height="132" decoding="async"></span>
+        <span class="hp-name">爱因斯坦</span>
+        <span class="hp-strip"></span>
+        <span class="hp-years">1879 – 1955</span>
+        <span class="hp-desc">相对论重写时间、光与引力，E=mc² 成为史上最有名的等式。</span>
+      </a>
+
+      <a class="hp-item d-modern" href="scientists/bohr/index.html" data-sci="尼尔斯·玻尔 Niels Bohr 1885 1962 现代物理 量子 原子模型 跃迁 互补原理 哥本哈根" data-full="尼尔斯·玻尔" data-disc="现代物理" data-years="1885 – 1962">
+        <span class="hp-tile"><img src="assets/img/homepage/12-bohr.webp" alt="" width="132" height="132" decoding="async"></span>
+        <span class="hp-name">玻尔</span>
+        <span class="hp-strip"></span>
+        <span class="hp-years">1885 – 1962</span>
+        <span class="hp-desc">原子模型与量子跃迁，为现代量子力学奠定基石。</span>
+      </a>
+
+      <a class="hp-item d-comp" href="scientists/turing/index.html" data-sci="阿兰·图灵 Alan Turing 1912 1954 计算 计算机 人工智能 图灵机 可计算 密码 恩尼格玛" data-full="阿兰·图灵" data-disc="计算" data-years="1912 – 1954">
+        <span class="hp-tile"><img src="assets/img/homepage/13-turing.webp" alt="" width="132" height="132" decoding="async"></span>
+        <span class="hp-name">图灵</span>
+        <span class="hp-strip"></span>
+        <span class="hp-years">1912 – 1954</span>
+        <span class="hp-desc">图灵机与可计算性，计算机科学与人工智能的思想源头。</span>
+      </a>
+
+      <a class="hp-item d-modern" href="scientists/feynman/index.html" data-sci="理查德·费曼 Richard Feynman 1918 1988 现代物理 量子 路径积分 费曼图 挑战者号 QED" data-full="理查德·费曼" data-disc="现代物理" data-years="1918 – 1988">
+        <span class="hp-tile"><img src="assets/img/homepage/14-feynman.webp" alt="" width="132" height="132" decoding="async"></span>
+        <span class="hp-name">费曼</span>
+        <span class="hp-strip"></span>
+        <span class="hp-years">1918 – 1988</span>
+        <span class="hp-desc">路径积分与费曼图重塑量子力学，用一杯冰水找出挑战者号事故真相，也是最会讲物理的人。</span>
+      </a>
+
+      <a class="hp-item d-modern" href="scientists/hawking/index.html" data-sci="斯蒂芬·霍金 Stephen Hawking 1942 2018 现代物理 宇宙 黑洞 霍金辐射 时间 宇宙学" data-full="斯蒂芬·霍金" data-disc="现代物理" data-years="1942 – 2018">
+        <span class="hp-tile"><img src="assets/img/homepage/15-hawking.webp" alt="" width="132" height="132" decoding="async"></span>
+        <span class="hp-name">霍金</span>
+        <span class="hp-strip"></span>
+        <span class="hp-years">1942 – 2018</span>
+        <span class="hp-desc">黑洞辐射与宇宙学普及，把最前沿的时空之谜讲给全世界听。</span>
+      </a>
+
+    </div>
+
+    <p class="hp-readout" id="hp-readout"><span class="hi">悬停任意一位，看一句话简介；点开进入 TA 的完整站点。</span></p>
+
+    <div class="hp-dock">
+      <span class="k"><b>15</b> 位科学家</span>
+      <span class="k"><b>6</b> 大领域：天文 · 物理 · 化学 · 生命 · 医学 · 计算</span>
+      <div class="acts">
+        <a class="btn" href="scientists/newton/index.html">不知道从哪开始？从牛顿开始 →</a>
+        <a class="btn ghost" href="#howto">怎么读这个系列</a>
+      </div>
     </div>
   </div>
 </header>
@@ -56,7 +184,7 @@
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-kicker">这个系列怎么读</span>
-      <h2>不是背公式，是把"为什么"讲明白</h2>
+      <h2>不是背公式，是把“为什么”讲明白</h2>
       <p>每个科学家站点都遵循同一套结构，方便你一路读下来、也方便老师直接拿去课堂用。</p>
     </div>
     <div class="grid g3">
@@ -70,7 +198,7 @@
       </div>
       <div class="card">
         <h3 style="font-size:17px;margin-bottom:8px">🔍 难词点开就看</h3>
-        <p style="font-size:15px;color:var(--ink-2);margin:0">全站带虚线下划线的词都能点，弹窗给"人话"解释；还有完整术语词典可查。</p>
+        <p style="font-size:15px;color:var(--ink-2);margin:0">全站带虚线下划线的词都能点，弹窗给“人话”解释；还有完整术语词典可查。</p>
       </div>
       <div class="card">
         <h3 style="font-size:17px;margin-bottom:8px">🧪 亲手玩一玩</h3>
@@ -82,363 +210,19 @@
       </div>
       <div class="card">
         <h3 style="font-size:17px;margin-bottom:8px">🔗 一人一站点，已汇成系列</h3>
-        <p style="font-size:15px;color:var(--ink-2);margin:0">15 位科学家各有一个结构统一的子站点，全部从这里进入。</p>
+        <p style="font-size:15px;color:var(--ink-2);margin:0">15 位科学家各有一个结构统一的子站点，从上面那张桌面点进去就是了。</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== 已上线科学家 ===== -->
-<section id="scientists" style="background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+<!-- ===== 系列规划与推进方式 ===== -->
+<section id="roadmap" style="background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="wrap">
     <div class="sec-head">
-      <span class="sec-kicker">全部 15 位 · 已上线</span>
-      <h2>挑一位科学家开始读</h2>
-      <p>点开任意一张卡片，进入 TA 的完整子站点（含时间轴、详解、动手玩一玩与术语词典）。也可以直接搜索。</p>
-    </div>
-    <div class="filter-bar">
-      <input id="sci-filter" type="search" placeholder="搜索科学家、英文名或关键词（如「黑洞」「进化」）…" aria-label="搜索科学家">
-      <span id="sci-count" class="filter-count">15 位</span>
-    </div>
-    <div class="grid g3" id="sci-grid">
-      <a class="ach-card" href="scientists/copernicus/index.html" data-sci="尼古拉·哥白尼 Nicolaus Copernicus 1473 – 1543">
-        <div class="thumb" style="background:#FFF4E6">
-          <img src="scientists/copernicus/assets/img/draw/thumb-heliocentric.svg" alt="尼古拉·哥白尼 示意图">
-        </div>
-        <div class="body">
-          <span class="year">1473 – 1543</span>
-          <h3>尼古拉·哥白尼</h3>
-          <p>用「日心说」把地球请出宇宙中心，掀起科学革命的第一声惊雷。</p>
-          <span class="more">进入哥白尼站 →</span>
-        </div>
-      </a>
-
-      <a class="ach-card" href="scientists/galileo/index.html" data-sci="伽利略·伽利雷 Galileo Galilei 1564 – 1642">
-        <div class="thumb" style="background:#F3EEFB">
-          <img src="scientists/galileo/assets/img/draw/thumb-telescope.svg" alt="伽利略·伽利雷 示意图">
-        </div>
-        <div class="body">
-          <span class="year">1564 – 1642</span>
-          <h3>伽利略·伽利雷</h3>
-          <p>用望远镜把天空拉到眼前，用斜面与摆锤重新定义「运动」，近代实验科学之父。</p>
-          <span class="more">进入伽利略站 →</span>
-        </div>
-      </a>
-
-      <a class="ach-card" href="scientists/kepler/index.html" data-sci="约翰内斯·开普勒 Johannes Kepler 1571 – 1630">
-        <div class="thumb" style="background:#E7F5FF">
-          <img src="scientists/kepler/assets/img/draw/thumb-mars.svg" alt="约翰内斯·开普勒 示意图">
-        </div>
-        <div class="body">
-          <span class="year">1571 – 1630</span>
-          <h3>约翰内斯·开普勒</h3>
-          <p>行星运动三大定律，用椭圆轨道把日心说变成可精确计算的模型。</p>
-          <span class="more">进入开普勒站 →</span>
-        </div>
-      </a>
-
-      <a class="ach-card" href="scientists/newton/index.html" data-sci="艾萨克·牛顿 Isaac Newton 1643 – 1727">
-        <div class="thumb" style="background:var(--green-soft)">
-          <img src="scientists/newton/assets/img/draw/thumb-optics.svg" alt="艾萨克·牛顿 示意图">
-        </div>
-        <div class="body">
-          <span class="year">1643 – 1727</span>
-          <h3>艾萨克·牛顿</h3>
-          <p>三大力学定律与万有引力，第一次把天体与地面连成同一种规律；还发明了微积分。</p>
-          <span class="more">进入牛顿站 →</span>
-        </div>
-      </a>
-
-      <a class="ach-card" href="scientists/faraday/index.html" data-sci="迈克尔·法拉第 Michael Faraday 1791 – 1867">
-        <div class="thumb" style="background:#FFF9DB">
-          <img src="scientists/faraday/assets/img/draw/thumb-induction.svg" alt="迈克尔·法拉第 示意图">
-        </div>
-        <div class="body">
-          <span class="year">1791 – 1867</span>
-          <h3>迈克尔·法拉第</h3>
-          <p>发现电磁感应、造出第一台发电机，提出「场」与力线——今天点亮世界的电，源头在他手上。</p>
-          <span class="more">进入迈克尔·法拉第站 →</span>
-        </div>
-      </a>
-
-      <a class="ach-card" href="scientists/darwin/index.html" data-sci="查尔斯·达尔文 Charles Darwin 1809 – 1882">
-        <div class="thumb" style="background:#EBFBEE">
-          <img src="scientists/darwin/assets/img/draw/thumb-finches.svg" alt="查尔斯·达尔文 示意图">
-        </div>
-        <div class="body">
-          <span class="year">1809 – 1882</span>
-          <h3>查尔斯·达尔文</h3>
-          <p>进化论与「物竞天择」，重新解释所有生命的来处与彼此的关联。</p>
-          <span class="more">进入达尔文站 →</span>
-        </div>
-      </a>
-
-      <a class="ach-card" href="scientists/pasteur/index.html" data-sci="路易·巴斯德 Louis Pasteur 1822 – 1895">
-        <div class="thumb" style="background:#FFF0F6">
-          <img src="scientists/pasteur/assets/img/draw/thumb-vaccine.svg" alt="路易·巴斯德 示意图">
-        </div>
-        <div class="body">
-          <span class="year">1822 – 1895</span>
-          <h3>路易·巴斯德</h3>
-          <p>巴氏杀菌与疫苗，微生物学奠基，实打实拯救了无数人的生命。</p>
-          <span class="more">进入巴斯德站 →</span>
-        </div>
-      </a>
-
-      <a class="ach-card" href="scientists/maxwell/index.html" data-sci="詹姆斯·麦克斯韦 James Clerk Maxwell 1831 – 1879">
-        <div class="thumb" style="background:#EEF1F6">
-          <img src="scientists/maxwell/assets/img/draw/thumb-equations.svg" alt="詹姆斯·麦克斯韦 示意图">
-        </div>
-        <div class="body">
-          <span class="year">1831 – 1879</span>
-          <h3>詹姆斯·麦克斯韦</h3>
-          <p>用一组方程统一电、磁与光，现代通信的全部根基都从这里长出。</p>
-          <span class="more">进入麦克斯韦站 →</span>
-        </div>
-      </a>
-
-      <a class="ach-card" href="scientists/mendeleev/index.html" data-sci="德米特里·门捷列夫 Dmitri Mendeleev 1834 – 1907">
-        <div class="thumb" style="background:#F1F8FF">
-          <img src="scientists/mendeleev/assets/img/draw/thumb-table.svg" alt="德米特里·门捷列夫 示意图">
-        </div>
-        <div class="body">
-          <span class="year">1834 – 1907</span>
-          <h3>德米特里·门捷列夫</h3>
-          <p>元素周期表，把混乱的化学元素排成可被预言的秩序。</p>
-          <span class="more">进入门捷列夫站 →</span>
-        </div>
-      </a>
-
-      <a class="ach-card" href="scientists/curie/index.html" data-sci="玛丽·居里 Marie Curie 1867 – 1934">
-        <div class="thumb" style="background:#FFF5F5">
-          <img src="scientists/curie/assets/img/draw/thumb-radium.svg" alt="玛丽·居里 示意图">
-        </div>
-        <div class="body">
-          <span class="year">1867 – 1934</span>
-          <h3>玛丽·居里</h3>
-          <p>发现放射性元素钋与镭，两获诺贝尔奖，亲手推开原子时代的大门。</p>
-          <span class="more">进入居里夫人站 →</span>
-        </div>
-      </a>
-
-      <a class="ach-card" href="scientists/einstein/index.html" data-sci="阿尔伯特·爱因斯坦 Albert Einstein 1879 – 1955">
-        <div class="thumb" style="background:#EAF0FF">
-          <img src="scientists/einstein/assets/img/draw/thumb-relativity.svg" alt="阿尔伯特·爱因斯坦 示意图">
-        </div>
-        <div class="body">
-          <span class="year">1879 – 1955</span>
-          <h3>阿尔伯特·爱因斯坦</h3>
-          <p>相对论重写时间、光与引力，E=mc² 成为史上最有名的等式。</p>
-          <span class="more">进入爱因斯坦站 →</span>
-        </div>
-      </a>
-
-      <a class="ach-card" href="scientists/bohr/index.html" data-sci="尼尔斯·玻尔 Niels Bohr 1885 – 1962">
-        <div class="thumb" style="background:#F3F0FF">
-          <img src="scientists/bohr/assets/img/draw/thumb-bohr-model.svg" alt="尼尔斯·玻尔 示意图">
-        </div>
-        <div class="body">
-          <span class="year">1885 – 1962</span>
-          <h3>尼尔斯·玻尔</h3>
-          <p>原子模型与量子跃迁，为现代量子力学奠定基石。</p>
-          <span class="more">进入玻尔站 →</span>
-        </div>
-      </a>
-
-      <a class="ach-card" href="scientists/turing/index.html" data-sci="阿兰·图灵 Alan Turing 1912 – 1954">
-        <div class="thumb" style="background:#EDF2FF">
-          <img src="scientists/turing/assets/img/draw/thumb-turing-machine.svg" alt="阿兰·图灵 示意图">
-        </div>
-        <div class="body">
-          <span class="year">1912 – 1954</span>
-          <h3>阿兰·图灵</h3>
-          <p>图灵机与可计算性，计算机科学与人工智能的思想源头。</p>
-          <span class="more">进入图灵站 →</span>
-        </div>
-      </a>
-
-      <a class="ach-card" href="scientists/feynman/index.html" data-sci="理查德·费曼 Richard Feynman 1918 – 1988">
-        <div class="thumb" style="background:#FFF0F6">
-          <img src="scientists/feynman/assets/img/draw/thumb-qed.svg" alt="理查德·费曼 示意图">
-        </div>
-        <div class="body">
-          <span class="year">1918 – 1988</span>
-          <h3>理查德·费曼</h3>
-          <p>路径积分与费曼图重塑量子力学，用一杯冰水找出挑战者号事故真相，也是最会讲物理的人。</p>
-          <span class="more">进入理查德·费曼站 →</span>
-        </div>
-      </a>
-
-      <a class="ach-card" href="scientists/hawking/index.html" data-sci="斯蒂芬·霍金 Stephen Hawking 1942 – 2018">
-        <div class="thumb" style="background:#F1F3F5">
-          <img src="scientists/hawking/assets/img/draw/thumb-blackhole.svg" alt="斯蒂芬·霍金 示意图">
-        </div>
-        <div class="body">
-          <span class="year">1942 – 2018</span>
-          <h3>斯蒂芬·霍金</h3>
-          <p>黑洞辐射与宇宙学普及，把最前沿的时空之谜讲给全世界听。</p>
-          <span class="more">进入霍金站 →</span>
-        </div>
-      </a>
-
-    </div>
-    <p id="sci-empty" class="roster-note" style="display:none">没有匹配的科学家，换个词试试。</p>
-  </div>
-</section>
-
-<!-- ===== 规划 ===== -->
-<section id="roadmap">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-kicker">路线图</span>
-      <h2>影响世界的15个科学家</h2>
-      <p>这个系列要讲透 15 位真正改变了世界的头脑。下面按出生年份排列——全部已上线，点任意一张即可进入对应站点。从哥白尼到霍金，正好串起近 550 年科学如何重塑人类世界。</p>
-    </div>
-
-    <div class="roster">
-      <a class="roster-item done" href="scientists/copernicus/index.html" style="text-decoration:none">
-        <span class="roster-idx">01</span>
-        <h3 class="roster-name">尼古拉·哥白尼</h3>
-        <span class="roster-en">Nicolaus Copernicus</span>
-        <span class="roster-years">1473 – 1543</span>
-        <p class="roster-desc">用「日心说」把地球请出宇宙中心，掀起科学革命的第一声惊雷。</p>
-        <span class="roster-pill pill-done">已上线</span>
-      </a>
-
-      <a class="roster-item done" href="scientists/galileo/index.html" style="text-decoration:none">
-        <span class="roster-idx">02</span>
-        <h3 class="roster-name">伽利略·伽利雷</h3>
-        <span class="roster-en">Galileo Galilei</span>
-        <span class="roster-years">1564 – 1642</span>
-        <p class="roster-desc">用望远镜把天空拉到眼前，用斜面与摆锤重新定义「运动」，近代实验科学之父。</p>
-        <span class="roster-pill pill-done">已上线</span>
-      </a>
-
-      <a class="roster-item done" href="scientists/kepler/index.html" style="text-decoration:none">
-        <span class="roster-idx">03</span>
-        <h3 class="roster-name">约翰内斯·开普勒</h3>
-        <span class="roster-en">Johannes Kepler</span>
-        <span class="roster-years">1571 – 1630</span>
-        <p class="roster-desc">行星运动三大定律，用椭圆轨道把日心说变成可精确计算的模型。</p>
-        <span class="roster-pill pill-done">已上线</span>
-      </a>
-
-      <a class="roster-item done" href="scientists/newton/index.html" style="text-decoration:none">
-        <span class="roster-idx">04</span>
-        <h3 class="roster-name">艾萨克·牛顿</h3>
-        <span class="roster-en">Isaac Newton</span>
-        <span class="roster-years">1643 – 1727</span>
-        <p class="roster-desc">三大力学定律与万有引力，第一次把天体与地面连成同一种规律；还发明了微积分。</p>
-        <span class="roster-pill pill-done">已上线</span>
-      </a>
-
-      <a class="roster-item done" href="scientists/faraday/index.html" style="text-decoration:none">
-        <span class="roster-idx">05</span>
-        <h3 class="roster-name">迈克尔·法拉第</h3>
-        <span class="roster-en">Michael Faraday</span>
-        <span class="roster-years">1791 – 1867</span>
-        <p class="roster-desc">发现电磁感应、造出第一台发电机，提出「场」与力线——今天点亮世界的电，源头在他手上。</p>
-        <span class="roster-pill pill-done">已上线</span>
-      </a>
-
-      <a class="roster-item done" href="scientists/darwin/index.html" style="text-decoration:none">
-        <span class="roster-idx">06</span>
-        <h3 class="roster-name">查尔斯·达尔文</h3>
-        <span class="roster-en">Charles Darwin</span>
-        <span class="roster-years">1809 – 1882</span>
-        <p class="roster-desc">进化论与「物竞天择」，重新解释所有生命的来处与彼此的关联。</p>
-        <span class="roster-pill pill-done">已上线</span>
-      </a>
-
-      <a class="roster-item done" href="scientists/pasteur/index.html" style="text-decoration:none">
-        <span class="roster-idx">07</span>
-        <h3 class="roster-name">路易·巴斯德</h3>
-        <span class="roster-en">Louis Pasteur</span>
-        <span class="roster-years">1822 – 1895</span>
-        <p class="roster-desc">巴氏杀菌与疫苗，微生物学奠基，实打实拯救了无数人的生命。</p>
-        <span class="roster-pill pill-done">已上线</span>
-      </a>
-
-      <a class="roster-item done" href="scientists/maxwell/index.html" style="text-decoration:none">
-        <span class="roster-idx">08</span>
-        <h3 class="roster-name">詹姆斯·麦克斯韦</h3>
-        <span class="roster-en">James Clerk Maxwell</span>
-        <span class="roster-years">1831 – 1879</span>
-        <p class="roster-desc">用一组方程统一电、磁与光，现代通信的全部根基都从这里长出。</p>
-        <span class="roster-pill pill-done">已上线</span>
-      </a>
-
-      <a class="roster-item done" href="scientists/mendeleev/index.html" style="text-decoration:none">
-        <span class="roster-idx">09</span>
-        <h3 class="roster-name">德米特里·门捷列夫</h3>
-        <span class="roster-en">Dmitri Mendeleev</span>
-        <span class="roster-years">1834 – 1907</span>
-        <p class="roster-desc">元素周期表，把混乱的化学元素排成可被预言的秩序。</p>
-        <span class="roster-pill pill-done">已上线</span>
-      </a>
-
-      <a class="roster-item done" href="scientists/curie/index.html" style="text-decoration:none">
-        <span class="roster-idx">10</span>
-        <h3 class="roster-name">玛丽·居里</h3>
-        <span class="roster-en">Marie Curie</span>
-        <span class="roster-years">1867 – 1934</span>
-        <p class="roster-desc">发现放射性元素钋与镭，两获诺贝尔奖，亲手推开原子时代的大门。</p>
-        <span class="roster-pill pill-done">已上线</span>
-      </a>
-
-      <a class="roster-item done" href="scientists/einstein/index.html" style="text-decoration:none">
-        <span class="roster-idx">11</span>
-        <h3 class="roster-name">阿尔伯特·爱因斯坦</h3>
-        <span class="roster-en">Albert Einstein</span>
-        <span class="roster-years">1879 – 1955</span>
-        <p class="roster-desc">相对论重写时间、光与引力，E=mc² 成为史上最有名的等式。</p>
-        <span class="roster-pill pill-done">已上线</span>
-      </a>
-
-      <a class="roster-item done" href="scientists/bohr/index.html" style="text-decoration:none">
-        <span class="roster-idx">12</span>
-        <h3 class="roster-name">尼尔斯·玻尔</h3>
-        <span class="roster-en">Niels Bohr</span>
-        <span class="roster-years">1885 – 1962</span>
-        <p class="roster-desc">原子模型与量子跃迁，为现代量子力学奠定基石。</p>
-        <span class="roster-pill pill-done">已上线</span>
-      </a>
-
-      <a class="roster-item done" href="scientists/turing/index.html" style="text-decoration:none">
-        <span class="roster-idx">13</span>
-        <h3 class="roster-name">阿兰·图灵</h3>
-        <span class="roster-en">Alan Turing</span>
-        <span class="roster-years">1912 – 1954</span>
-        <p class="roster-desc">图灵机与可计算性，计算机科学与人工智能的思想源头。</p>
-        <span class="roster-pill pill-done">已上线</span>
-      </a>
-
-      <a class="roster-item done" href="scientists/feynman/index.html" style="text-decoration:none">
-        <span class="roster-idx">14</span>
-        <h3 class="roster-name">理查德·费曼</h3>
-        <span class="roster-en">Richard Feynman</span>
-        <span class="roster-years">1918 – 1988</span>
-        <p class="roster-desc">路径积分与费曼图重塑量子力学，用一杯冰水找出挑战者号事故真相，也是最会讲物理的人。</p>
-        <span class="roster-pill pill-done">已上线</span>
-      </a>
-
-      <a class="roster-item done" href="scientists/hawking/index.html" style="text-decoration:none">
-        <span class="roster-idx">15</span>
-        <h3 class="roster-name">斯蒂芬·霍金</h3>
-        <span class="roster-en">Stephen Hawking</span>
-        <span class="roster-years">1942 – 2018</span>
-        <p class="roster-desc">黑洞辐射与宇宙学普及，把最前沿的时空之谜讲给全世界听。</p>
-        <span class="roster-pill pill-done">已上线</span>
-      </a>
-
-    </div>
-
-    <p class="roster-note">名单按出生年份排列，涵盖天文、物理、化学、生物、医学、计算六大领域；后续仍可按需增删。</p>
-
-    <div class="sec-head" style="margin-top:52px">
-      <span class="sec-kicker">推进方式</span>
-      <h2>项目怎么一步步长成</h2>
-      <p>本系列采用「一人一子站 → 统一门户」的方式建设：每位科学家先用同一套引擎独立成型并通过校验，最后接进这个总览入口统一发布。</p>
+      <span class="sec-kicker">路线图 · 已全部上线</span>
+      <h2>这 15 位，是怎么一个个长出来的</h2>
+      <p>名单按出生年份排列（就是上面那张桌面从左到右、从上到下的顺序），涵盖天文、物理、化学、生命、医学、计算六大领域；从哥白尼到霍金，正好串起近 550 年科学如何重塑人类世界。后续仍可按需增删。</p>
     </div>
     <div class="grid g3">
       <div class="card">
@@ -454,6 +238,7 @@
         <p style="font-size:15px;color:var(--ink-2);margin:0">子站作为栏目统一部署为一个站点，共享样式与脚本，结构统一、便于持续扩展。</p>
       </div>
     </div>
+    <p class="hp-note">15 位科学家的肖像均取自公有领域或 CC0 授权的历史照片与油画，在展示层统一为暖灰影调，以便并排时像一套。</p>
   </div>
 </section>
 
@@ -504,25 +289,50 @@
 <button class="to-top" aria-label="回到顶部">↑</button>
 <script src="assets/js/site.js"></script>
 <script>
+/* 首屏图标桌面：筛选 + 悬停读数（只做展示层，不动数据） */
 (function () {
-  var input = document.getElementById("sci-filter");
-  var grid = document.getElementById("sci-grid");
-  var count = document.getElementById("sci-count");
-  var empty = document.getElementById("sci-empty");
-  if (!input || !grid) return;
-  var cards = Array.prototype.slice.call(grid.querySelectorAll(".ach-card"));
-  input.addEventListener("input", function () {
-    var q = (input.value || "").trim().toLowerCase();
-    var n = 0;
-    cards.forEach(function (c) {
-      var hay = ((c.getAttribute("data-sci") || "") + " " + (c.textContent || "")).toLowerCase();
-      var hit = !q || hay.indexOf(q) >= 0;
-      c.style.display = hit ? "" : "none";
-      if (hit) n++;
-    });
-    if (count) count.textContent = n + " 位";
-    if (empty) empty.style.display = n === 0 ? "" : "none";
+  var grid = document.getElementById("hp-grid");
+  var input = document.getElementById("hp-filter");
+  var count = document.getElementById("hp-count");
+  var readout = document.getElementById("hp-readout");
+  if (!grid) return;
+  var items = Array.prototype.slice.call(grid.querySelectorAll(".hp-item"));
+  var HINT = readout ? readout.innerHTML : "";
+
+  function descOf(it) {
+    var d = it.querySelector(".hp-desc");
+    return d ? d.textContent : "";
+  }
+  function reset() { if (readout) readout.innerHTML = HINT; }
+  function show(it) {
+    if (!readout) return;
+    readout.innerHTML = '<b></b><span class="hi"></span> — <span class="tx"></span>';
+    readout.querySelector("b").textContent = it.getAttribute("data-full") || "";
+    readout.querySelector(".hi").textContent =
+      "　" + (it.getAttribute("data-disc") || "") + " · " + (it.getAttribute("data-years") || "");
+    readout.querySelector(".tx").textContent = descOf(it);
+  }
+  items.forEach(function (it) {
+    it.addEventListener("mouseenter", function () { show(it); });
+    it.addEventListener("focus", function () { show(it); });
+    it.addEventListener("blur", reset);
   });
+  grid.addEventListener("mouseleave", reset);
+
+  if (input) {
+    input.addEventListener("input", function () {
+      var q = (input.value || "").trim().toLowerCase();
+      var n = 0;
+      items.forEach(function (it) {
+        var hay = ((it.getAttribute("data-sci") || "") + " " + descOf(it)).toLowerCase();
+        var hit = !q || hay.indexOf(q) >= 0;
+        it.classList.toggle("dim", !hit);
+        if (hit) n++;
+      });
+      if (count) count.textContent = n + " 位";
+      if (!n) reset();
+    });
+  }
 })();
 </script>
 </body>

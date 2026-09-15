@@ -67,6 +67,8 @@
   --purple-ink     : #5B30C4;
   --swatch-gray    : #CCCCCC;
   --white          : #FFFFFF;
+  --hero-bg        : #0E1219;   /* 深色首屏底（门户首页 · 图标桌面） */
+  --hero-bg-2      : #171E2B;   /* 深色首屏顶部渐亮端 */
 
   --print-ink      : #000000;
 
@@ -75,6 +77,7 @@
   --shadow-s: 0 1px 2px rgba(27,37,48,.05);
   --shadow-m: 0 4px 16px rgba(27,37,48,.07);
   --shadow-l: 0 18px 50px rgba(27,37,48,.16);
+  --shadow-hero    : 0 12px 28px rgba(0, 0, 0, .5);   /* 深底图标浮起投影 */
 
   --nav-h:   62px;
   --max-w:   1160px;
@@ -823,3 +826,157 @@ figure.fig figcaption b { color: var(--ink-2); }
 :root { --hist-tone: grayscale(1) sepia(.07) saturate(1.87) brightness(.99) contrast(.85); }
 img[src*="-portrait"] { filter: var(--hist-tone); }
 img[src*="-portrait"].portrait-raw { filter: none; }
+
+/* ═══ 门户首页 · 图标桌面（v1.4） ═══════════════════════════════════════════
+   深色首屏把 15 位科学家铺成一张桌面：一眼看全、一眼认人。
+   ① 本节只写在根样式表 —— 子站没有这套结构（令牌仍在 16 份 :root 里保持一致）。
+   ② 学科色是**数据色板**（与 labs.html 的实验图例同一性质）：按语义就地定义，
+      不进全局颜色令牌，也不要当"逃逸颜色"清掉。
+   ③ 光晕（图标底下的学科色发光）只用于悬停/聚焦，且**只在深底成立** ——
+      这是实测结论（浅底上彩色晕会读成"淡彩污渍"）。
+      --disc-a 按 WCAG 相对明度逐色归一化（alpha × L 恒定）：未归一化时
+      黄/蓝强度差 3.3 倍，归一化后 1.03 倍。 */
+.nav--over {
+  background: transparent; border-bottom-color: transparent;
+  backdrop-filter: none; -webkit-backdrop-filter: none;
+  transition: background .25s, border-color .25s, box-shadow .25s;
+}
+.nav--over .brand { color: var(--white); }
+.nav--over .nav-links a { color: var(--foot-link); }
+.nav--over .nav-links a:hover { color: var(--white); background: var(--foot-line); }
+.nav--over .nav-toggle i { background: var(--foot-link); }
+.nav--over.scrolled {
+  background: var(--nav-bg); border-bottom-color: var(--line);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+}
+.nav--over.scrolled .brand { color: var(--ink); }
+.nav--over.scrolled .nav-links a { color: var(--ink-2); }
+.nav--over.scrolled .nav-links a:hover { color: var(--brand); background: var(--brand-soft); }
+.nav--over.scrolled .nav-toggle i { background: var(--ink); }
+
+.hp-hero {
+  position: relative; overflow: hidden;
+  margin-top: calc(-1 * var(--nav-h)); padding-top: var(--nav-h);
+  background: var(--hero-bg);
+  background-image: radial-gradient(130% 82% at 50% -12%, var(--hero-bg-2) 0%, var(--hero-bg) 64%);
+  border-bottom: 1px solid var(--foot-line);
+  scroll-margin-top: 0;   /* 深色底面自己顶到导航底下，不需要锚点补偿 */
+}
+.hp-hero::before {
+  content: ""; position: absolute; left: 50%; top: -300px;
+  width: 1000px; height: 640px; transform: translateX(-50%); pointer-events: none;
+  background: radial-gradient(closest-side, var(--brand-a13), transparent 72%);
+}
+.hp-inner {
+  position: relative; z-index: 1; max-width: var(--max-w); margin: 0 auto;
+  padding: 52px 24px 44px; text-align: center;
+}
+.hp-kicker {
+  display: inline-block; font-size: 12.5px; font-weight: 800; letter-spacing: 1.4px;
+  color: var(--brand-light); background: var(--hero-bg-2);
+  border: 1px solid var(--foot-line); padding: 4px 12px; border-radius: 999px; margin-bottom: 16px;
+}
+.hp-hero h1 { font-size: 58px; letter-spacing: -.035em; color: var(--white); }
+.hp-hero .hp-sub { font-size: 19px; font-weight: 600; color: var(--foot-link); margin: 10px 0 0; }
+.hp-hero .hp-lead { font-size: 15.5px; color: var(--foot-fg); max-width: 62ch; margin: 14px auto 0; line-height: 1.9; }
+
+.hp-search { display: flex; align-items: center; gap: 10px; max-width: 560px; margin: 26px auto 0; }
+.hp-search input {
+  flex: 1; min-width: 0; font-family: inherit; font-size: 14.5px;
+  background: var(--hero-bg-2); border: 1px solid var(--foot-line);
+  color: var(--white); padding: 11px 14px; border-radius: 11px;
+}
+.hp-search input::placeholder { color: var(--foot-dim); }
+.hp-search input:focus { outline: none; border-color: var(--brand-light); box-shadow: 0 0 0 3px var(--brand-a26); }
+.hp-search .hp-count { font-family: var(--mono); font-size: 13px; color: var(--foot-dim); white-space: nowrap; }
+
+.hp-grid {
+  display: grid; grid-template-columns: repeat(5, 132px);
+  gap: 36px 44px; justify-content: center; margin: 38px auto 0;
+}
+.hp-item {
+  position: relative; display: flex; flex-direction: column; align-items: center;
+  color: inherit; text-decoration: none; transition: opacity .2s;
+}
+.hp-item:hover, .hp-item:focus-visible { text-decoration: none; }
+.hp-item::before {
+  content: ""; position: absolute; left: 50%; top: 66px; width: 196px; height: 196px; z-index: 0;
+  transform: translate(-50%, -50%); border-radius: 50%;
+  background: radial-gradient(closest-side, var(--disc, var(--brand)), transparent 100%);
+  filter: blur(8px); opacity: 0; transition: opacity .22s; pointer-events: none;
+}
+.hp-item:hover::before, .hp-item:focus-visible::before { opacity: var(--disc-a, .3); }
+.hp-tile {
+  position: relative; z-index: 1; display: block;
+  width: 132px; height: 132px; border-radius: 30px; overflow: hidden;
+  background: var(--hero-bg-2); box-shadow: var(--shadow-hero);
+}
+/* 用 contain 不用 cover：源图与瓦片同为正方形时二者视觉等价；
+   将来若换非正方形源图，contain 会留白（安全失败），cover 会静默裁脸。
+   全站校验也把 cover 型裁切当错误拦（tools/validate_site.py），别改回去。 */
+.hp-tile img { width: 100%; height: 100%; object-fit: contain; }
+.hp-item .hp-name { position: relative; z-index: 1; margin-top: 13px; font-size: 15px; font-weight: 700; color: var(--white); }
+.hp-item .hp-strip { position: relative; z-index: 1; width: 24px; height: 4px; border-radius: 2px; background: var(--disc, var(--brand)); margin: 6px 0 5px; }
+.hp-item .hp-years { position: relative; z-index: 1; font-family: var(--mono); font-size: 12px; color: var(--foot-dim); }
+.hp-item.dim { opacity: .16; pointer-events: none; }
+/* 一句话简介：视觉隐藏但留在 DOM 里 —— ① 进链接的无障碍名 ② 供首屏读数读取 ③ 保留可被索引的文本 */
+.hp-desc {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
+/* 学科色 · 数据色板（深色首屏专用；与 --brand / --accent 同值的两色已标注） */
+.d-astro  { --disc: #3B5BDB; --disc-a: .65; }   /* 天文学   L=.135 ＝ --brand */
+.d-phys   { --disc: #12B886; --disc-a: .24; }   /* 经典物理 L=.361 */
+.d-life   { --disc: #37B24D; --disc-a: .27; }   /* 生命科学 L=.332 */
+.d-chem   { --disc: #F59F00; --disc-a: .20; }   /* 化学     L=.442 ＝ --accent */
+.d-modern { --disc: #7950F2; --disc-a: .54; }   /* 现代物理 L=.162 */
+.d-comp   { --disc: #1098AD; --disc-a: .34; }   /* 计算     L=.256 */
+
+.hp-readout { min-height: 26px; margin-top: 30px; font-size: 14px; color: var(--foot-fg); }
+.hp-readout b { color: var(--white); font-weight: 700; }
+.hp-readout .hi { color: var(--foot-dim); }
+
+.hp-dock {
+  display: flex; align-items: center; justify-content: center; flex-wrap: wrap;
+  gap: 14px 22px; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--foot-line);
+}
+.hp-dock .k { font-size: 13px; color: var(--foot-dim); }
+.hp-dock .k b { font-family: var(--mono); font-size: 15px; color: var(--white); }
+.hp-dock .acts { display: flex; gap: 12px; flex-wrap: wrap; }
+.hp-dock .btn.ghost { background: transparent; color: var(--white); border-color: var(--foot-line); }
+.hp-dock .btn.ghost:hover { background: var(--hero-bg-2); color: var(--white); }
+.hp-note { color: var(--ink-3); font-size: 14px; margin-top: 18px; }
+
+@media (max-width: 1000px) {
+  .hp-hero h1 { font-size: 46px; }
+  .hp-grid { grid-template-columns: repeat(5, 112px); gap: 30px 28px; }
+  .hp-tile { width: 112px; height: 112px; border-radius: 26px; }
+  .hp-item::before { top: 56px; width: 168px; height: 168px; }
+}
+@media (max-width: 760px) {
+  .hp-inner { padding: 38px 16px 34px; }
+  .hp-hero h1 { font-size: 34px; }
+  .hp-hero .hp-sub { font-size: 16px; }
+  .hp-hero .hp-lead { font-size: 14.5px; }
+  .hp-grid { grid-template-columns: repeat(3, 92px); gap: 26px 20px; margin-top: 30px; }
+  .hp-tile { width: 92px; height: 92px; border-radius: 22px; }
+  .hp-item .hp-name { font-size: 13px; margin-top: 10px; }
+  .hp-item .hp-years { font-size: 11px; }
+  .hp-item::before { top: 46px; width: 140px; height: 140px; }
+  .hp-search { margin-top: 22px; }
+  .hp-readout { font-size: 13px; }
+}
+@media (max-width: 400px) {
+  .hp-grid { grid-template-columns: repeat(3, 84px); gap: 24px 14px; }
+  .hp-tile { width: 84px; height: 84px; border-radius: 20px; }
+}
+@media print {
+  .hp-hero { background: var(--white) !important; background-image: none !important; }
+  .hp-hero h1, .hp-item .hp-name { color: var(--ink); }
+  .hp-hero .hp-sub, .hp-hero .hp-lead { color: var(--ink-2); }
+  .hp-item .hp-years { color: var(--ink-3); }
+  .hp-tile { box-shadow: none; border: 1px solid var(--line); }
+  .hp-search, .hp-readout, .hp-dock .acts { display: none; }
+}
