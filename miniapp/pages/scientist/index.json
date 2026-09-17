@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "科学家",
+  "usingComponents": {
+    "term-popup": "/components/term-popup/index"
+  }
+}

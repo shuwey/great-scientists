@@ -1,0 +1,47 @@
+<view wx:if="{{show}}" class="tp-mask" bindtap="close" catchtouchmove="noop"></view>
+
+<view wx:if="{{show}}" class="tp-sheet" catchtouchmove="noop">
+  <view class="tp-head">
+    <view class="tp-head-main">
+      <text class="tp-name">{{term.name}}</text>
+      <text class="tp-sub" wx:if="{{sciName}}">{{sciName}} · {{term.cat}}</text>
+    </view>
+    <view class="tp-close" bindtap="close" hover-class="tp-close-hover">关闭</view>
+  </view>
+
+  <scroll-view scroll-y class="tp-body">
+    <view class="tp-short" wx:if="{{term.short}}">
+      <rich-text nodes="{{term.short}}"></rich-text>
+    </view>
+
+    <view class="tp-block" wx:if="{{term.plain}}">
+      <text class="tp-label">什么意思</text>
+      <view class="tp-text"><rich-text nodes="{{term.plain}}"></rich-text></view>
+    </view>
+
+    <view class="tp-block" wx:if="{{term.analogy}}">
+      <text class="tp-label">打个比方</text>
+      <view class="tp-text"><rich-text nodes="{{term.analogy}}"></rich-text></view>
+    </view>
+
+    <view class="tp-block" wx:if="{{term.extra}}">
+      <text class="tp-label">补充一句</text>
+      <view class="tp-text"><rich-text nodes="{{term.extra}}"></rich-text></view>
+    </view>
+
+    <view class="tp-block" wx:if="{{related.length > 0}}">
+      <text class="tp-label">相关术语</text>
+      <view class="tp-related">
+        <text
+          class="tp-chip"
+          wx:for="{{related}}"
+          wx:key="k"
+          data-k="{{item.k}}"
+          bindtap="onRelated"
+        >{{item.name}}</text>
+      </view>
+    </view>
+
+    <view class="tp-foot"></view>
+  </scroll-view>
+</view>

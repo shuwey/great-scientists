@@ -1,0 +1,64 @@
+<block wx:if="{{s}}">
+  <view class="head">
+    <image class="head-icon" src="{{s.iconMini}}" mode="aspectFit"></image>
+    <text class="head-name">{{s.fullName}}</text>
+    <text class="head-en" wx:if="{{s.enName}}">{{s.enName}}</text>
+    <view class="head-meta">
+      <text class="head-years">{{s.years}}</text>
+      <view class="head-strip" style="background: {{s.discColor}}"></view>
+      <text class="head-disc">{{s.disc}}</text>
+    </view>
+    <text class="head-tag">{{s.tagline}}</text>
+    <view class="head-tags" wx:if="{{s.keywords.length > 0}}">
+      <text class="head-tag-chip" wx:for="{{s.keywords}}" wx:key="*this">{{item}}</text>
+    </view>
+  </view>
+
+  <view class="search">
+    <input
+      class="search-input"
+      value="{{q}}"
+      placeholder="在这位科学家的 {{s.termCount}} 条术语里搜"
+      placeholder-class="search-ph"
+      bindinput="onSearch"
+    />
+  </view>
+
+  <view wx:for="{{groups}}" wx:key="cat" wx:for-item="g">
+    <view class="section-title">{{g.cat}}</view>
+    <view class="terms">
+      <view
+        class="term"
+        wx:for="{{g.items}}"
+        wx:key="k"
+        data-k="{{item.k}}"
+        bindtap="openTerm"
+        hover-class="term-hover"
+      >
+        <view class="term-top">
+          <text class="term-name">{{item.name}}</text>
+          <text class="term-more">展开</text>
+        </view>
+        <rich-text class="term-short" nodes="{{item.short}}"></rich-text>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:if="{{groups.length === 0}}">
+    <text>没有匹配的术语</text>
+  </view>
+
+  <view class="roadmap">
+    <text class="roadmap-t">下一步</text>
+    <text class="roadmap-c">生平时间轴、成就详解与动手实验，正在从站点迁移过来。</text>
+  </view>
+</block>
+
+<term-popup
+  show="{{show}}"
+  term="{{term}}"
+  sciName="{{s.shortName}}"
+  related="{{related}}"
+  bind:close="closeTerm"
+  bind:related="onRelated"
+/>

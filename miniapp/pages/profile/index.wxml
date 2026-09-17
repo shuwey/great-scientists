@@ -1,0 +1,87 @@
+<view class="ident">
+  <button class="plain-btn avatar-btn" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+    <image class="avatar" src="{{avatarUrl}}" wx:if="{{avatarUrl}}" mode="aspectFill"></image>
+    <view class="avatar avatar-ph" wx:else>
+      <text>点头像</text>
+    </view>
+  </button>
+
+  <view class="ident-main">
+    <input
+      class="nick"
+      type="nickname"
+      value="{{nickName}}"
+      placeholder="填个昵称（可不填）"
+      placeholder-class="nick-ph"
+      bindblur="onNick"
+      bindconfirm="onNick"
+    />
+    <text class="ident-hint">昵称与头像只存在你自己的设备上，不做授权弹窗</text>
+  </view>
+</view>
+
+<view class="stats">
+  <view class="stat">
+    <text class="stat-n">{{stats.streak}}</text>
+    <text class="stat-l">连续打卡（天）</text>
+  </view>
+  <view class="stat">
+    <text class="stat-n">{{stats.terms}}</text>
+    <text class="stat-l">看过的术语</text>
+  </view>
+  <view class="stat">
+    <text class="stat-n">{{stats.scientists}}</text>
+    <text class="stat-l">读过的科学家</text>
+  </view>
+</view>
+
+<view class="section-title">学习档案</view>
+<view class="card prog">
+  <view class="prog-row">
+    <view class="prog-head">
+      <text class="prog-name">科学家</text>
+      <text class="prog-val">{{stats.scientists}} / {{totalScientists}}</text>
+    </view>
+    <view class="prog-bar"><view class="prog-fill" style="width: {{sciPct}}%"></view></view>
+  </view>
+  <view class="prog-row">
+    <view class="prog-head">
+      <text class="prog-name">术语</text>
+      <text class="prog-val">{{stats.terms}} / {{totalTerms}}</text>
+    </view>
+    <view class="prog-bar"><view class="prog-fill" style="width: {{termPct}}%"></view></view>
+  </view>
+  <view class="prog-note">
+    <text>只有你自己能看到这些数字——个人主体不做公开排行榜。</text>
+  </view>
+</view>
+
+<view class="section-title">设置</view>
+<view class="card list">
+  <view class="row" bindtap="goGlossary" hover-class="row-hover">
+    <text class="row-t">去查术语</text>
+    <text class="row-a">词典 ›</text>
+  </view>
+  <view class="row" bindtap="showPrivacy" hover-class="row-hover">
+    <text class="row-t">隐私说明</text>
+    <text class="row-a">›</text>
+  </view>
+  <view class="row" bindtap="showAbout" hover-class="row-hover">
+    <text class="row-t">关于与内容来源</text>
+    <text class="row-a">›</text>
+  </view>
+  <view class="row" bindtap="resetLocal" hover-class="row-hover">
+    <text class="row-t">清空本机记录</text>
+    <text class="row-a">›</text>
+  </view>
+</view>
+
+<view class="cloud {{cloudReady ? 'ok' : ''}}">
+  <text wx:if="{{cloudReady}}">云端档案已连接：进度会跟人走（换设备也能接着读）</text>
+  <text wx:else>云端档案未连接：进度暂存在本机。{{cloudHint}}</text>
+</view>
+
+<view class="foot">
+  <text>读懂科学家 · 个人主体非经营性小程序</text>
+  <text class="foot-2">备案号（备案通过后填写）</text>
+</view>

@@ -1,0 +1,169 @@
+.head {
+  background: var(--card);
+  padding: 40rpx 32rpx 36rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1rpx solid var(--line);
+}
+
+.head-icon {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 28rpx;
+}
+
+.head-name {
+  margin-top: 22rpx;
+  font-size: 42rpx;
+  font-weight: 500;
+  color: var(--ink);
+  text-align: center;
+}
+
+.head-en {
+  margin-top: 6rpx;
+  font-size: 24rpx;
+  color: var(--ink-3);
+  letter-spacing: 0.5rpx;
+}
+
+.head-meta {
+  margin-top: 18rpx;
+  display: flex;
+  align-items: center;
+}
+
+.head-years {
+  font-size: 26rpx;
+  color: var(--ink-2);
+}
+
+.head-strip {
+  margin: 0 16rpx;
+  width: 40rpx;
+  height: 8rpx;
+  border-radius: 4rpx;
+}
+
+.head-disc {
+  font-size: 26rpx;
+  color: var(--ink-2);
+}
+
+.head-tag {
+  margin-top: 22rpx;
+  font-size: 28rpx;
+  color: var(--ink-body);
+  line-height: 1.7;
+  text-align: center;
+}
+
+.head-tags {
+  margin-top: 22rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.head-tag-chip {
+  margin: 8rpx 8rpx 0;
+  padding: 6rpx 18rpx;
+  font-size: 22rpx;
+  color: var(--ink-2);
+  background: var(--bg-alt);
+  border-radius: 999rpx;
+}
+
+/* ---------- 搜索 ---------- */
+.search {
+  margin: 28rpx 32rpx 0;
+  padding: 0 26rpx;
+  height: 84rpx;
+  display: flex;
+  align-items: center;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  border-radius: 42rpx;
+}
+
+.search-input {
+  flex: 1;
+  font-size: 27rpx;
+  color: var(--ink);
+}
+
+.search-ph {
+  color: var(--ink-3);
+  font-size: 26rpx;
+}
+
+/* ---------- 术语列表 ---------- */
+.terms {
+  margin: 0 32rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.term {
+  padding: 26rpx 28rpx;
+  border-bottom: 1rpx solid var(--line);
+}
+
+.term:last-child {
+  border-bottom: none;
+}
+
+.term-hover {
+  background: var(--bg);
+}
+
+.term-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.term-name {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.term-more {
+  font-size: 23rpx;
+  color: var(--brand);
+}
+
+.term-short {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 26rpx;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+
+.roadmap {
+  margin: 36rpx 32rpx 20rpx;
+  padding: 26rpx 28rpx;
+  background: var(--brand-wash);
+  border: 1rpx solid var(--brand-line);
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.roadmap-t {
+  font-size: 24rpx;
+  color: var(--brand);
+  font-weight: 500;
+}
+
+.roadmap-c {
+  margin-top: 8rpx;
+  font-size: 25rpx;
+  color: var(--ink-2);
+  line-height: 1.7;
+}

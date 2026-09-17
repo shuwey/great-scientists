@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "科学词典",
+  "onReachBottomDistance": 120,
+  "usingComponents": {
+    "term-popup": "/components/term-popup/index"
+  }
+}

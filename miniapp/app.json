@@ -1,0 +1,43 @@
+{
+  "pages": [
+    "pages/portal/index",
+    "pages/glossary/index",
+    "pages/scientist/index",
+    "pages/profile/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "读懂科学家",
+    "backgroundColor": "#F7F9FC",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#8B96AA",
+    "selectedColor": "#3B5BDB",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/portal/index",
+        "text": "读懂",
+        "iconPath": "assets/tabbar/portal.png",
+        "selectedIconPath": "assets/tabbar/portal-on.png"
+      },
+      {
+        "pagePath": "pages/glossary/index",
+        "text": "词典",
+        "iconPath": "assets/tabbar/glossary.png",
+        "selectedIconPath": "assets/tabbar/glossary-on.png"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的",
+        "iconPath": "assets/tabbar/profile.png",
+        "selectedIconPath": "assets/tabbar/profile-on.png"
+      }
+    ]
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "sitemapLocation": "sitemap.json"
+}

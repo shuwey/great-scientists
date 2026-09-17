@@ -1,0 +1,169 @@
+<!-- 深色查询区：首屏视觉重心是搜索框，不是内容卡片（类目合规的结构性要求） -->
+<view class="hero">
+  <text class="hero-title">读懂科学家</text>
+  <text class="hero-sub">{{totalScientists}} 位科学家的生平 · {{totalTerms}} 条术语 · {{totalCats}} 个分类，都能直接查</text>
+
+  <view class="search">
+    <icon class="search-ico" type="search" size="15" color="#8B96AA"></icon>
+    <input
+      class="search-input"
+      value="{{q}}"
+      placeholder="查术语、科学家或学科，如「惯性」"
+      placeholder-class="search-ph"
+      confirm-type="search"
+      bindinput="onSearch"
+      bindconfirm="onConfirm"
+    />
+    <text class="search-clear" wx:if="{{q}}" bindtap="onClear">清空</text>
+  </view>
+
+  <view class="hot">
+    <text class="hot-label">试试</text>
+    <text
+      class="hot-chip"
+      wx:for="{{hot}}"
+      wx:key="*this"
+      data-w="{{item}}"
+      bindtap="onHot"
+      hover-class="hot-chip-hover"
+    >{{item}}</text>
+  </view>
+</view>
+
+<!-- ==================== 结果区（有关键词时） ==================== -->
+<block wx:if="{{q}}">
+  <view class="sec" wx:if="{{termTotal > 0}}">
+    <view class="sec-head">
+      <text class="sec-title">术语</text>
+      <text class="sec-count">{{termTotal}} 条</text>
+    </view>
+
+    <view class="tlist">
+      <view
+        class="trow"
+        wx:for="{{termHits}}"
+        wx:key="k"
+        data-sci="{{item.sci}}"
+        data-k="{{item.k}}"
+        bindtap="openTerm"
+        hover-class="trow-hover"
+      >
+        <view class="trow-top">
+          <text class="trow-name">{{item.name}}</text>
+          <text class="trow-cat">{{item.cat}}</text>
+        </view>
+        <view class="trow-short"><rich-text nodes="{{item.short}}"></rich-text></view>
+        <text class="trow-src">{{item.sciName}}</text>
+      </view>
+    </view>
+
+    <view class="more" wx:if="{{termTotal > termHits.length}}" bindtap="goGlossary" hover-class="more-hover">
+      <text>还有 {{termTotal - termHits.length}} 条，去词典看全部</text>
+    </view>
+  </view>
+
+  <view class="sec" wx:if="{{sciHits.length > 0}}">
+    <view class="sec-head">
+      <text class="sec-title">科学家</text>
+      <text class="sec-count">{{sciHits.length}} 位</text>
+    </view>
+
+    <view class="slist">
+      <view
+        class="srow"
+        wx:for="{{sciHits}}"
+        wx:key="id"
+        data-id="{{item.id}}"
+        bindtap="openScientist"
+        hover-class="srow-hover"
+      >
+        <image class="srow-icon" src="{{item.iconMini}}" mode="aspectFit" lazy-load="{{true}}"></image>
+        <view class="srow-main">
+          <text class="srow-name">{{item.shortName}}</text>
+          <view class="srow-meta">
+            <view class="srow-dot" style="background: {{item.discColor}}"></view>
+            <text class="srow-meta-t">{{item.disc}} · {{item.years}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:if="{{termTotal === 0 && sciHits.length === 0}}">
+    <text class="empty-t">没查到「{{q}}」</text>
+    <text class="empty-s">换个说法试试，比如只输入术语名或科学家名字</text>
+    <view class="empty-btn" bindtap="goGlossary" hover-class="empty-btn-hover">
+      <text>去词典翻全部 {{totalTerms}} 条</text>
+    </view>
+  </view>
+</block>
+
+<!-- ==================== 浏览区（没关键词时） ==================== -->
+<block wx:else>
+  <view class="sec" wx:if="{{recent.length > 0}}">
+    <view class="sec-head">
+      <text class="sec-title">最近查过</text>
+      <text class="sec-act" bindtap="onClearRecent">清除</text>
+    </view>
+    <view class="chips">
+      <text
+        class="chip"
+        wx:for="{{recent}}"
+        wx:key="*this"
+        data-w="{{item}}"
+        bindtap="onHot"
+      >{{item}}</text>
+    </view>
+  </view>
+
+  <view class="sec">
+    <view class="sec-head">
+      <text class="sec-title">按学科查</text>
+      <text class="sec-count">点一位，看他的术语与生平</text>
+    </view>
+    <view class="chips">
+      <text
+        class="chip {{disc === '__all__' ? 'on' : ''}}"
+        data-key="__all__"
+        bindtap="onDisc"
+      >全部</text>
+      <text
+        class="chip {{disc === item.key ? 'on' : ''}}"
+        wx:for="{{discs}}"
+        wx:key="key"
+        data-key="{{item.key}}"
+        bindtap="onDisc"
+        style="{{disc === item.key ? 'border-color:' + item.color + ';color:' + item.color : ''}}"
+      >{{item.name}}</text>
+    </view>
+  </view>
+
+  <view class="grid" wx:if="{{list.length > 0}}">
+    <view
+      class="cell"
+      wx:for="{{list}}"
+      wx:key="id"
+      data-id="{{item.id}}"
+      bindtap="openScientist"
+      hover-class="cell-hover"
+    >
+      <image class="cell-icon" src="{{item.iconMini}}" mode="aspectFit" lazy-load="{{true}}"></image>
+      <text class="cell-name">{{item.shortName}}</text>
+      <view class="cell-strip" style="background: {{item.discColor}}"></view>
+      <text class="cell-years">{{item.years}}</text>
+    </view>
+  </view>
+
+  <view class="foot-note">
+    <text>内容整理自公开史料，图片来自 Wikimedia Commons（公有领域 / CC）</text>
+  </view>
+</block>
+
+<term-popup
+  show="{{show}}"
+  term="{{term}}"
+  sciName="{{srcName}}"
+  related="{{related}}"
+  bind:close="closeTerm"
+  bind:related="onRelated"
+></term-popup>

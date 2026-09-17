@@ -1,0 +1,343 @@
+/* 门户：深色查询区 + 浅色结果/浏览区
+ *
+ * 版式服务的是一条合规要求：首屏第一眼必须是「查询工具」，不是「内容列表」。
+ * 所以搜索框是深色区里唯一的白色块——视觉重心天然落在它身上。
+ */
+
+/* ---------- 深色查询区 ---------- */
+.hero {
+  padding: 44rpx 32rpx 40rpx;
+  background: var(--hero-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-title {
+  font-size: 42rpx;
+  font-weight: 500;
+  color: #FFFFFF;
+  letter-spacing: 1rpx;
+}
+
+.hero-sub {
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  color: #A9B4C4;
+  line-height: 1.6;
+}
+
+/* ---------- 搜索框（视觉重心） ---------- */
+.search {
+  display: flex;
+  align-items: center;
+  margin-top: 30rpx;
+  padding: 0 28rpx;
+  height: 96rpx;
+  background: #FFFFFF;
+  border-radius: 48rpx;
+  box-shadow: 0 8rpx 26rpx rgba(0, 0, 0, 0.22);
+}
+
+.search-ico {
+  flex: none;
+  margin-right: 14rpx;
+}
+
+.search-input {
+  flex: 1;
+  font-size: 30rpx;
+  color: var(--ink);
+}
+
+.search-ph {
+  font-size: 28rpx;
+  color: #A6B0BE;
+}
+
+.search-clear {
+  flex: none;
+  padding-left: 18rpx;
+  font-size: 25rpx;
+  color: var(--brand);
+}
+
+/* ---------- 热门 / 示例查询词 ---------- */
+.hot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 18rpx;
+}
+
+.hot-label {
+  margin: 8rpx 14rpx 0 0;
+  font-size: 24rpx;
+  color: #7B8798;
+}
+
+.hot-chip {
+  margin: 8rpx 12rpx 0 0;
+  padding: 8rpx 22rpx;
+  font-size: 24rpx;
+  color: #C7D0DC;
+  border: 1rpx solid rgba(255, 255, 255, 0.16);
+  border-radius: 999rpx;
+}
+
+.hot-chip-hover {
+  opacity: 0.6;
+}
+
+/* ---------- 区块 ---------- */
+.sec {
+  margin: 36rpx 32rpx 0;
+}
+
+.sec-head {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 18rpx;
+}
+
+.sec-title {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.sec-count {
+  margin-left: 14rpx;
+  font-size: 23rpx;
+  color: var(--ink-3);
+}
+
+.sec-act {
+  margin-left: auto;
+  font-size: 24rpx;
+  color: var(--brand);
+}
+
+/* ---------- 术语结果 ---------- */
+.trow {
+  padding: 24rpx 26rpx;
+  margin-bottom: 16rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  border-radius: 20rpx;
+}
+
+.trow-hover {
+  background: var(--brand-wash);
+}
+
+.trow-top {
+  display: flex;
+  align-items: center;
+}
+
+.trow-name {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.trow-cat {
+  margin-left: 14rpx;
+  padding: 2rpx 14rpx;
+  font-size: 21rpx;
+  color: var(--ink-3);
+  background: var(--bg-alt);
+  border-radius: 999rpx;
+}
+
+.trow-short {
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+
+.trow-src {
+  display: block;
+  margin-top: 10rpx;
+  font-size: 22rpx;
+  color: var(--ink-3);
+}
+
+.more {
+  margin-top: 4rpx;
+  padding: 22rpx;
+  text-align: center;
+  font-size: 25rpx;
+  color: var(--brand);
+  background: var(--brand-soft);
+  border-radius: 16rpx;
+}
+
+.more-hover {
+  opacity: 0.72;
+}
+
+/* ---------- 科学家结果 ---------- */
+.srow {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 24rpx;
+  margin-bottom: 16rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  border-radius: 20rpx;
+}
+
+.srow-hover {
+  background: var(--brand-wash);
+}
+
+.srow-icon {
+  flex: none;
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 18rpx;
+}
+
+.srow-main {
+  flex: 1;
+  margin-left: 22rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.srow-name {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.srow-meta {
+  margin-top: 8rpx;
+  display: flex;
+  align-items: center;
+}
+
+.srow-dot {
+  flex: none;
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 6rpx;
+}
+
+.srow-meta-t {
+  margin-left: 10rpx;
+  font-size: 23rpx;
+  color: var(--ink-3);
+}
+
+/* ---------- 空结果 ---------- */
+.empty {
+  padding: 100rpx 48rpx 80rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.empty-t {
+  font-size: 30rpx;
+  color: var(--ink);
+}
+
+.empty-s {
+  margin-top: 14rpx;
+  font-size: 25rpx;
+  color: var(--ink-3);
+  line-height: 1.7;
+  text-align: center;
+}
+
+.empty-btn {
+  margin-top: 36rpx;
+  padding: 20rpx 44rpx;
+  font-size: 26rpx;
+  color: var(--brand);
+  background: var(--brand-soft);
+  border-radius: 999rpx;
+}
+
+.empty-btn-hover {
+  opacity: 0.72;
+}
+
+/* ---------- 筛选 chip ---------- */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.chip {
+  margin: 0 16rpx 16rpx 0;
+  padding: 12rpx 28rpx;
+  font-size: 26rpx;
+  color: var(--ink-2);
+  background: var(--card);
+  border: 1rpx solid var(--line-2);
+  border-radius: 999rpx;
+}
+
+.chip.on {
+  color: var(--brand);
+  border-color: var(--brand);
+  background: var(--brand-wash);
+  font-weight: 500;
+}
+
+/* ---------- 图标桌面 ---------- */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 22rpx 16rpx 0;
+}
+
+.cell {
+  width: 33.33%;
+  padding: 16rpx 8rpx 26rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cell-hover {
+  opacity: 0.72;
+}
+
+.cell-icon {
+  width: 176rpx;
+  height: 176rpx;
+  border-radius: 24rpx;
+}
+
+.cell-name {
+  margin-top: 14rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.cell-strip {
+  margin-top: 10rpx;
+  width: 48rpx;
+  height: 8rpx;
+  border-radius: 4rpx;
+}
+
+.cell-years {
+  margin-top: 8rpx;
+  font-size: 22rpx;
+  color: var(--ink-3);
+}
+
+.foot-note {
+  margin: 30rpx 40rpx 20rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: var(--ink-3);
+  line-height: 1.7;
+}

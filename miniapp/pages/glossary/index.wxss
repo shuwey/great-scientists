@@ -1,0 +1,128 @@
+.bar {
+  padding: 24rpx 32rpx 0;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  padding: 0 26rpx;
+  height: 84rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  border-radius: 42rpx;
+}
+
+.search-input {
+  flex: 1;
+  font-size: 27rpx;
+  color: var(--ink);
+}
+
+.search-ph {
+  color: var(--ink-3);
+  font-size: 26rpx;
+}
+
+.search-clear {
+  flex: none;
+  padding-left: 16rpx;
+  font-size: 25rpx;
+  color: var(--brand);
+}
+
+.count {
+  display: block;
+  margin-top: 16rpx;
+  font-size: 23rpx;
+  color: var(--ink-3);
+}
+
+/* ---------- 筛选条 ---------- */
+.filters {
+  margin-top: 18rpx;
+  white-space: nowrap;
+}
+
+.filters-inner {
+  display: inline-flex;
+  padding: 0 32rpx;
+}
+
+.chip {
+  flex: none;
+  margin-right: 14rpx;
+  padding: 10rpx 24rpx;
+  font-size: 25rpx;
+  color: var(--ink-2);
+  background: var(--card);
+  border: 1rpx solid var(--line-2);
+  border-radius: 999rpx;
+}
+
+.chip.cat {
+  font-size: 24rpx;
+  padding: 8rpx 22rpx;
+}
+
+.chip.on {
+  color: var(--brand);
+  border-color: var(--brand);
+  background: var(--brand-wash);
+  font-weight: 500;
+}
+
+/* ---------- 列表 ---------- */
+.list {
+  margin: 24rpx 32rpx 0;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.item {
+  padding: 26rpx 28rpx;
+  border-bottom: 1rpx solid var(--line);
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.item-hover {
+  background: var(--bg);
+}
+
+.item-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.item-name {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.item-cat {
+  flex: none;
+  margin-left: 16rpx;
+  font-size: 22rpx;
+  color: var(--ink-3);
+}
+
+.item-short {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 26rpx;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+
+.more {
+  padding: 30rpx 40rpx 40rpx;
+  text-align: center;
+  font-size: 23rpx;
+  color: var(--ink-3);
+}

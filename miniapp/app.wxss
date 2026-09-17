@@ -1,0 +1,91 @@
+/* 读懂科学家 · 全局样式
+   设计令牌直接对齐静态站 assets/css/style.css 的 :root（同值，不另发明颜色）。
+   小程序没有 :root，全局令牌挂在 page 上，自定义组件内可直接继承。 */
+
+page {
+  --brand: #3B5BDB;
+  --brand-dark: #2F49AF;
+  --brand-soft: #EDF1FD;
+  --brand-wash: #EEF2FE;
+  --brand-line: #C7D2FE;
+  --accent: #F59F00;
+  --accent-soft: #FFF8E9;
+
+  --bg: #F7F9FC;
+  --bg-alt: #EDF1F7;
+  --card: #FFFFFF;
+  --line: #E3E8EF;
+  --line-2: #D4DBE5;
+
+  --ink: #1B2530;
+  --ink-body: #2B3644;
+  --ink-2: #56617A;
+  --ink-3: #8B96AA;
+
+  --hl-bg: #FFF3BF;
+  --hl-fg: #6B4E12;
+  --hero-bg: #0E1219;
+
+  background: var(--bg);
+  color: var(--ink-body);
+  font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-size: 30rpx;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+view, text, scroll-view, button, input {
+  box-sizing: border-box;
+}
+
+.page {
+  min-height: 100vh;
+  padding-bottom: 40rpx;
+}
+
+/* ---------- 通用块 ---------- */
+.card {
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  border-radius: 20rpx;
+  padding: 28rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: var(--ink);
+  margin: 40rpx 32rpx 20rpx;
+}
+
+.muted {
+  color: var(--ink-3);
+  font-size: 25rpx;
+}
+
+.hl {
+  background: var(--hl-bg);
+  color: var(--hl-fg);
+  padding: 0 6rpx;
+  border-radius: 6rpx;
+  font-weight: 500;
+}
+
+.empty {
+  padding: 120rpx 40rpx;
+  text-align: center;
+  color: var(--ink-3);
+  font-size: 27rpx;
+}
+
+/* 去掉 button 的默认外观，用它承载"头像昵称填写"能力 */
+.plain-btn {
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  line-height: inherit;
+  font-size: inherit;
+}
+.plain-btn::after {
+  border: none;
+}

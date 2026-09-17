@@ -1,0 +1,23 @@
+{
+  "description": "读懂科学家 · 微信小程序",
+  "miniprogramRoot": "./",
+  "compileType": "miniprogram",
+  "appid": "touristappid",
+  "projectname": "read-scientists",
+  "libVersion": "3.6.4",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "coverView": true,
+    "lazyloadPlaceholderEnable": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "ignoreDevUnusedFiles": false,
+    "ignoreUploadUnusedFiles": true
+  },
+  "cloudfunctionRoot": "cloudfunctions/",
+  "condition": {}
+}

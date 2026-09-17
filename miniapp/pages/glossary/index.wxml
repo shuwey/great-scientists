@@ -1,0 +1,79 @@
+<view class="bar">
+  <view class="search">
+    <input
+      class="search-input"
+      value="{{q}}"
+      placeholder="搜术语，如「惯性」「熵」「万有引力」"
+      placeholder-class="search-ph"
+      confirm-type="search"
+      bindinput="onSearch"
+      bindconfirm="onConfirm"
+    />
+    <text class="search-clear" wx:if="{{q}}" bindtap="onClear">清空</text>
+  </view>
+  <text class="count">共 {{total}} 条</text>
+</view>
+
+<scroll-view scroll-x class="filters" enhanced show-scrollbar="{{false}}">
+  <view class="filters-inner">
+    <text class="chip {{sci === '__all__' ? 'on' : ''}}" data-key="__all__" bindtap="onSci">全部科学家</text>
+    <text
+      class="chip {{sci === item.key ? 'on' : ''}}"
+      wx:for="{{scis}}"
+      wx:key="key"
+      data-key="{{item.key}}"
+      bindtap="onSci"
+    >{{item.name}}</text>
+  </view>
+</scroll-view>
+
+<scroll-view scroll-x class="filters" enhanced show-scrollbar="{{false}}">
+  <view class="filters-inner">
+    <text class="chip cat {{cat === '__all__' ? 'on' : ''}}" data-key="__all__" bindtap="onCat">全部分类</text>
+    <text
+      class="chip cat {{cat === item ? 'on' : ''}}"
+      wx:for="{{cats}}"
+      wx:key="*this"
+      data-key="{{item}}"
+      bindtap="onCat"
+    >{{item}}</text>
+  </view>
+</scroll-view>
+
+<view class="list" wx:if="{{list.length > 0}}">
+  <view
+    class="item"
+    wx:for="{{list}}"
+    wx:key="k"
+    data-sci="{{item.sci}}"
+    data-k="{{item.k}}"
+    bindtap="openTerm"
+    hover-class="item-hover"
+  >
+    <view class="item-top">
+      <text class="item-name">{{item.name}}</text>
+      <text class="item-cat">{{item.sciName}} · {{item.cat}}</text>
+    </view>
+    <rich-text class="item-short" nodes="{{item.short}}"></rich-text>
+  </view>
+</view>
+
+<view class="empty" wx:else>
+  <text>没有匹配的术语，换个词试试</text>
+</view>
+
+<view class="more" wx:if="{{list.length > 0 && shown < total}}">
+  <text>上滑加载更多（{{shown}} / {{total}}）</text>
+</view>
+<view class="more" wx:elif="{{total > 0}}">
+  <text>已到底部</text>
+</view>
+
+<term-popup
+  show="{{show}}"
+  term="{{term}}"
+  sciName="{{srcName}}"
+  related="{{related}}"
+  bind:close="closeTerm"
+  bind:related="onRelated"
+/>

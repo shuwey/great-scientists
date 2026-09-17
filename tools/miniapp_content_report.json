@@ -1,0 +1,36 @@
+{
+  "bytes": {
+    "roster.js": 9862,
+    "terms.js": 289119,
+    "total": 298981
+  },
+  "disc_colors": {
+    "astro": "#3B5BDB",
+    "chem": "#F59F00",
+    "comp": "#1098AD",
+    "life": "#37B24D",
+    "modern": "#7950F2",
+    "phys": "#12B886"
+  },
+  "hl_style": "background:#FFF3BF;padding:0 4px;border-radius:4px;font-weight:600;color:#6B4E12",
+  "scientists": 15,
+  "terms_per_scientist": {
+    "bohr": 17,
+    "copernicus": 33,
+    "curie": 20,
+    "darwin": 28,
+    "einstein": 44,
+    "faraday": 19,
+    "feynman": 21,
+    "galileo": 38,
+    "hawking": 17,
+    "kepler": 30,
+    "maxwell": 22,
+    "mendeleev": 18,
+    "newton": 53,
+    "pasteur": 21,
+    "turing": 17
+  },
+  "terms_total": 398,
+  "terms_total_by_regex": 398
+}
