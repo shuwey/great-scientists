@@ -855,3 +855,23 @@ img[src*="-portrait"].portrait-raw { filter: none; }
   .nav-more-cb:checked ~ .nav-more-menu { display: flex; }
   .nav-more-menu a { padding: 9px 10px; font-size: 15px; }
 }
+
+/* ===== 通用补丁：同期中国对照（tools/build_china_era.py 注入，幂等） ===== */
+.cn-note {
+  margin: 14px 0 0; padding: 12px 14px; border-radius: 12px;
+  background: var(--bg-alt); border: 1px solid var(--line);
+  font-size: 14px; line-height: 1.65;
+  grid-column: 3 / -1;  /* 万一直接落在 .tl-item 的 grid 里，跨到正文列，避免被压成竖排 */
+}
+.cn-note .cn-head { font-weight: 700; color: var(--ink); font-size: 13.5px; margin-bottom: 4px; }
+.cn-note .cn-head b { color: var(--brand); }
+.cn-note ul { list-style: none; margin: 0; padding: 0; }
+.cn-note li { margin: 3px 0; color: var(--ink-2); }
+.cn-note .cn-row { display: flex; gap: 8px; align-items: baseline; margin-top: 6px; }
+.cn-k {
+  flex: none; font-weight: 700; font-size: 12px; color: var(--ink);
+  padding: 2px 9px; background: var(--white); border: 1px solid var(--line); border-radius: 999px;
+}
+.cn-fig b { color: var(--ink); }
+.cn-fig i { font-style: normal; font-size: 12.5px; color: var(--ink-2); }
+@media (max-width: 640px) { .cn-note { font-size: 13.5px; padding: 10px 12px; } }
