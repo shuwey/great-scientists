@@ -156,7 +156,7 @@ node tools/e2e_portal.js                # 门户：15 张卡片 + 检索过滤 +
 | `tools/nav_more_menu.py` | 详解页收进「详解 ▾」下拉 | 幂等；`build_scientist.py` 已自动调用，**手工站重建后需单跑**：`python3 tools/nav_more_menu.py [id]`。 |
 | `tools/check_nav.js` | 顶部导航折行实测 | `node tools/check_nav.js all 1440,1280,1024`；判据=链接内文本行数>1 或链接盒溢出 nav。 |
 | `tools/china_data.py` | 「同期中国」对照**唯一数据源** | 朝代/年号/事件/人物四张表。**新增条目必须先核实年份与生卒**，宁缺毋滥。 |
-| `tools/build_china_era.py` | 生成时间轴「同期中国」卡片 | `python3 tools/build_china_era.py [id]`；按 ±20 年窗口切片写入 `assets/js/china.js` 并注入 script。 |
+| `tools/build_china_era.py` | 生成时间轴「同期中国」卡片 | `python3 tools/build_china_era.py [id]`；按 ±20 年窗口切片写入 `assets/js/china.js` 并注入 script。大事按距节点远近取 3；人物按「在世中点」距节点排序取 3（否则名额会被早期人物占满）。 |
 | `tools/check_china.js` | 同期中国卡片实测 | `node tools/check_china.js <id>`；核对年号换算、事件/人物命中、运行时报错。 |
 | `tools/shot_nav_more.js` | 下拉展开实测 + 截图 | 桌面 hover / 移动点击两条路径，量测菜单尺寸与右溢出。 |
 

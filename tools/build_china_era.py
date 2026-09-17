@@ -108,9 +108,15 @@ JS_TMPL = """/* 同期中国对照 —— 由 tools/build_china_era.py 生成，
       box.appendChild(row);
     }
 
+    // 排序口径：「在世中点」离节点年份越近越同期（表本身按年代排列，但同一窗口可能
+    // 命中 5–6 人，按中点排序才不会总被早期人物占满名额）。在世者（卒为 null）用生年+40 估。
     var figs = FIGURES.filter(function (f) {
       var b = f[1], d = f[2] == null ? 9999 : f[2];
       return b <= hi && d >= lo;
+    }).sort(function (a, c) {
+      var ma = (a[1] + (a[2] == null ? a[1] + 40 : a[2])) / 2;
+      var mc = (c[1] + (c[2] == null ? c[1] + 40 : c[2])) / 2;
+      return Math.abs(ma - y) - Math.abs(mc - y);
     }).slice(0, 3);
     if (figs.length) {
       var row2 = el("div", "cn-row");
