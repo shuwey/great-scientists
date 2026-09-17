@@ -808,3 +808,50 @@ figure.fig figcaption b { color: var(--ink-2); }
 :root { --hist-tone: grayscale(1) sepia(.07) saturate(1.87) brightness(.99) contrast(.85); }
 img[src*="-portrait"] { filter: var(--hist-tone); }
 img[src*="-portrait"].portrait-raw { filter: none; }
+
+/* ===== 通用补丁：详解页下拉（由 tools/nav_more_menu.py 注入，幂等） ===== */
+.nav-more { position: relative; display: flex; align-items: center; }
+.nav-more-cb { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.nav-more-btn {
+  display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
+  padding: 7px 13px; border-radius: 9px; font-size: 15px; font-weight: 600;
+  color: var(--ink-2); transition: background .18s, color .18s;
+  -webkit-user-select: none; user-select: none;
+}
+.nav-more-btn::after {
+  content: ""; width: 0; height: 0; margin-top: 3px;
+  border: 4px solid transparent; border-top-color: currentColor; transition: transform .2s;
+}
+.nav-more:hover > .nav-more-btn,
+.nav-more-cb:checked + .nav-more-btn { background: var(--brand-soft); color: var(--brand); }
+.nav-more-cb:checked + .nav-more-btn::after { transform: rotate(180deg); }
+.nav-more-menu {
+  position: absolute; top: calc(100% + 8px); right: 0; z-index: 80;
+  min-width: 300px; max-width: 380px; padding: 6px;
+  background: var(--white); border: 1px solid var(--line); border-radius: 12px;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, .14);
+  display: none; flex-direction: column; gap: 2px;
+}
+.nav-more:hover .nav-more-menu,
+.nav-more-cb:checked ~ .nav-more-menu { display: flex; }
+.nav-more-menu a {
+  padding: 9px 12px; border-radius: 8px; font-size: 14px; font-weight: 600;
+  line-height: 1.45; color: var(--ink-2); white-space: normal;
+}
+.nav-more-menu a:hover { background: var(--brand-soft); color: var(--brand); text-decoration: none; }
+.nav-more-menu a.active { color: var(--brand); background: var(--brand-soft); }
+/* 当前页就在详解菜单里时，让「详解」按钮保持高亮（不支持 :has 的浏览器静默降级） */
+.nav-more:has(.nav-more-menu a.active) > .nav-more-btn { color: var(--brand); background: var(--brand-soft); }
+@media (max-width: 1000px) {
+  .nav-more { flex-direction: column; align-items: stretch; }
+  .nav-more-btn { padding: 12px 14px; font-size: 16px; }
+  .nav-more-menu {
+    position: static; display: none; margin: 2px 0 6px 14px; padding: 0 0 0 12px;
+    background: transparent; border: 0; border-left: 2px solid var(--line);
+    box-shadow: none; min-width: 0; max-width: none; border-radius: 0;
+  }
+  /* 触屏上 hover 会「粘住」，小屏只认点击 */
+  .nav-more:hover .nav-more-menu { display: none; }
+  .nav-more-cb:checked ~ .nav-more-menu { display: flex; }
+  .nav-more-menu a { padding: 9px 10px; font-size: 15px; }
+}

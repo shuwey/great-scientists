@@ -17,6 +17,7 @@ spec.json 结构见 tools/spec_EXAMPLE.json（哥白尼样板）。
 import os, sys, json, shutil, subprocess, urllib.parse, urllib.request, io, time, re
 import svg_scenes
 import lab_templates
+import nav_more_menu
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 NEW_SCI = os.path.join(ROOT, "tools", "new_scientist.py")
@@ -950,6 +951,9 @@ def main():
     patch_sitejs(dst, spec)
     print("▶ 补 CSS")
     patch_css(dst)
+    print("▶ 详解页收进下拉（nav-more）")
+    nav_more_menu.inject_dir(dst)
+    nav_more_menu.patch_css(dst)
     print("▶ 下载历史图（weserv 代理）")
     fails = download_images(dst, spec)
     print("✅ %s 子站生成完毕。" % spec["name"])

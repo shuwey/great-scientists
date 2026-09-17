@@ -129,6 +129,8 @@ python3 tools/build_portal.py
 ### 4. 校验 + 自测
 
 ```bash
+python3 tools/nav_more_menu.py          # 详解页收进顶部「详解 ▾」下拉（幂等，重建子站后补跑）
+node tools/check_nav.js all             # 导航折行实测（判据：链接文本行数 > 1）
 python3 tools/validate_site.py          # 静态：链接/锚点/术语/ SVG / JS / labs 绑定
 node tools/e2e_check.js <id>            # 浏览器级：双端截图 + 运行时报错 + 交互/Canvas
 node tools/e2e_portal.js                # 门户：15 张卡片 + 检索过滤 + 跳转
@@ -151,6 +153,9 @@ node tools/e2e_portal.js                # 门户：15 张卡片 + 检索过滤 +
 | `tools/e2e_check.js` | Playwright 双端 e2e | `node tools/e2e_check.js <id>`（默认 `newton`）；截图与报告落在 `../读懂牛顿-验证产物/shots/`（`SHOTS_DIR` 可覆盖）。 |
 | `tools/e2e_portal.js` | 门户浏览器验证 | 卡片数 / 缩略图 / 检索过滤 / 跳转 / 双端报错 |
 | `tools/new_scientist.py` | 生成新子站骨架 | 见上（路径 B）。 |
+| `tools/nav_more_menu.py` | 详解页收进「详解 ▾」下拉 | 幂等；`build_scientist.py` 已自动调用，**手工站重建后需单跑**：`python3 tools/nav_more_menu.py [id]`。 |
+| `tools/check_nav.js` | 顶部导航折行实测 | `node tools/check_nav.js all 1440,1280,1024`；判据=链接内文本行数>1 或链接盒溢出 nav。 |
+| `tools/shot_nav_more.js` | 下拉展开实测 + 截图 | 桌面 hover / 移动点击两条路径，量测菜单尺寸与右溢出。 |
 
 > 涉及截图/报告的脚本（`e2e_check.js` / `e2e_portal.js` / `verify_newlabs.js` / `shot_*.js` /
 > `check_timeline.js` / `montage.py` / `build_labs_review.py`）统一写到项目外的
