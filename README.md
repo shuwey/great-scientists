@@ -225,7 +225,10 @@ node tools/e2e_portal.js                # 门户：15 张卡片 + 检索过滤 +
   一键同步：`bash tools/deploy_cloudflare.sh`（增量上传，实测只传变更的 2 个文件、约 36 秒）。
 - 根目录 `404.html` 关闭了 Cloudflare Pages 的软 404（缺此文件时未命中路径返回 `200` + 首页，链接失效时用户看到的是首页）。
   ⚠️ 该页样式必须用**绝对路径** `/assets/css/...` —— 它会在任意深度的路径下被返回，相对路径会跟着请求路径变而加载不到。
-- 历史链接下线状态（2026-09-18 实测）：✅ `great-scientists.app.workbuddy.host`、爱因斯坦独立链接 `7f19849c…` **已下线**（任意路径都返回同一个 `404 / 2000B` 的「链接已失效」页，与对照路径一致）；⚠️ **`4e2abcc9f8f84b9dae34f54e08e489ff.app.workbuddy.link` 仍在线**（最早的旧版门户：缺 `china.js` ⇒ 同期中国卡片不显示，无对齐模块、无分享卡片元数据），**待下线**。
+- 历史链接下线状态（2026-09-18 实测）：✅ `great-scientists.app.workbuddy.host`、爱因斯坦独立链接 `7f19849c…` **已下线**（任意路径都返回同一个 `404 / 2000B` 的「链接已失效」页，与对照路径一致）；ℹ️ **`4e2abcc9f8f84b9dae34f54e08e489ff.app.workbuddy.link` 仍在线——已知并接受，不再处理**（最早的旧版门户，只读快照：缺 `china.js` ⇒ 同期中国不显示，无对齐模块、无分享元数据；不影响权威站）。
+  - 为什么面板里找不到它：`4e2abcc9…` 是早期发布记录里的 **`sandboxId`**，不是 `appId`（`appId` 是 2026-09-14 起才有的字段）。「设置—数据管理—应用」是按 `appId` 列的表，沙箱时代的链接天然不在其中。
+  - ⚠️ **不要试图用「按目录下线」清它**：该能力（`workbuddy_sites_unpublish`）只接 `directory`，其定义是「找该目录**最新一条**有效发布记录」⇒ 对本目录会命中**正在用的新链接**。也**不要按名字**删——旧记录 title 也叫「读懂牛顿」，与新 app 同名。认 `appId` / `sandboxId` 字段。
+  - 本地全部发布记录（含 `sandboxId`/`appId`/`conversationId`/`shareLink`）在 `~/.workbuddy/cloudstudio-deploy-history/`。
 - 仓库历史：原为单站 `newton-science-site`，现重组为多科学家 monorepo，根目录为系列总览；2026-09-07 仓库已更名为 **`great-scientists`**（GitHub 旧地址自动重定向）：<https://github.com/shuwey/great-scientists>
 - 关键经验沉淀见 `.workbuddy/memory/`；物理演示曾踩过的坑（全反射、循环步长零守卫、坐标奇点）记录在 `tools/` 调试脚本与记忆里。
 
