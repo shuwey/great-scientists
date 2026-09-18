@@ -239,12 +239,14 @@ CSS_PATCH = """
 .tl-preview .tl-arrow { flex: none; width: 22px; height: 22px; color: var(--ink-3); transition: transform .24s; margin-top: 4px; }
 .tl-preview .tl-panel { display: none; padding: 0 18px 18px; border-top: 1px dashed var(--line); }
 .tl-preview .tl-panel p { font-size: 15.5px; color: var(--ink-2); margin: 14px 0; }
-.tl-preview .tl-panel figure { margin: 14px 0; }
+.tl-preview .tl-panel figure { margin: 0 0 14px; }
 /* 配图必须 width:auto + max-width:100% + margin:0 auto（SVG 例外）——伽利略的 CSS 里
-   连 .tl-panel figure img 都没有，不写这条它的预览图会撑满整张卡片。 */
+   连 .tl-panel figure img 都没有，不写这条它的预览图会撑满整张卡片。
+   max-height 取 360px，与牛顿 .tl-panel figure img 的实际值一致（原先写 280px 是自定的，
+   「以牛顿为准」就不该自定）；改这里必须同步改 check_align.js 的配图高度断言。 */
 .tl-preview .tl-panel figure img {
   border-radius: 12px; border: 1px solid var(--line); display: block;
-  width: auto; max-width: 100%; height: auto; max-height: 280px;
+  width: auto; max-width: 100%; height: auto; max-height: 360px;
   object-fit: contain; background: var(--img-bg); margin: 0 auto;
 }
 .tl-preview .tl-panel figure img[src$=".svg"] { width: 100%; max-width: 100%; }
