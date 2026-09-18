@@ -894,3 +894,62 @@ img[src*="-portrait"].portrait-raw { filter: none; }
 
 /* 同期中国卡片里的名词：下划线调淡（tools/build_china_era.py 注入，幂等） */
 .cn-note .term { border-bottom-color: var(--brand-line); }
+
+/* ===== align:home-modules 首页模块对齐补丁（自动生成，勿手工改）===== */
+
+/* 首页时间轴预览要的是**折叠版**（年 / 轴 / 卡片 三列，点标题展开），而各站 CSS 的状态不一：
+   · 13 个 spec 站：有折叠版样式，但后面又被一条「静态时间轴适配」补丁
+     （.tl-item{grid-template-columns:26px 1fr} + .tl-item > .tl-rail{grid-column:1}）覆盖了两列；
+   · 伽利略：只保留了静态版，折叠版的 .tl-panel/.tl-arrow/.tl-card 整段都不在。
+   所以这里用 .tl-preview 作用域把折叠版**整套**写全（布局 + 显隐 + 箭头 + 卡片态），
+   特异性高于那条补丁，且只作用于首页预览，不动 timeline.html 的静态版。 */
+.tl-preview { position: relative; padding-left: 8px; }
+.tl-preview .tl-item {
+  display: grid; grid-template-columns: 92px 30px 1fr; gap: 0;
+  align-items: start; position: relative; padding-bottom: 8px;
+}
+.tl-preview .tl-item > .tl-rail { grid-column: 2; grid-row: 1; position: relative; display: flex; justify-content: center; height: 100%; }
+.tl-preview .tl-item > .tl-rail::before {
+  content: ""; position: absolute; top: 0; bottom: -8px; left: 50%;
+  width: 2px; transform: translateX(-50%); background: var(--line-2);
+}
+.tl-preview .tl-item:last-child > .tl-rail::before { display: block; bottom: 40%; }
+.tl-preview .tl-year {
+  grid-column: 1; grid-row: 1; font-family: var(--mono); font-size: 15.5px;
+  font-weight: 700; color: var(--brand); padding-top: 15px; text-align: right; padding-right: 18px;
+}
+.tl-preview .tl-card {
+  grid-column: 3; grid-row: 1; background: var(--white); border: 1px solid var(--line);
+  border-radius: 14px; margin: 8px 0; overflow: hidden;
+  box-shadow: var(--shadow-s); transition: box-shadow .2s, border-color .2s;
+}
+.tl-preview .tl-dot {
+  position: relative; z-index: 2; width: 15px; height: 15px; border-radius: 50%;
+  background: var(--white); border: 3px solid var(--brand-line); margin-top: 20px;
+  transition: border-color .2s, transform .2s;
+}
+.tl-preview .tl-head { padding: 15px 18px; cursor: pointer; display: flex; gap: 12px; align-items: flex-start; }
+.tl-preview .tl-head:hover { background: var(--bg-elev); }
+.tl-preview .tl-head .t { font-size: 17.5px; font-weight: 700; margin: 0; color: var(--ink); }
+.tl-preview .tl-arrow { flex: none; width: 22px; height: 22px; color: var(--ink-3); transition: transform .24s; margin-top: 4px; }
+.tl-preview .tl-panel { display: none; padding: 0 18px 18px; border-top: 1px dashed var(--line); }
+.tl-preview .tl-panel p { font-size: 15.5px; color: var(--ink-2); margin: 14px 0; }
+.tl-preview .tl-panel figure { margin: 14px 0; }
+/* 配图必须 width:auto + max-width:100% + margin:0 auto（SVG 例外）——伽利略的 CSS 里
+   连 .tl-panel figure img 都没有，不写这条它的预览图会撑满整张卡片。 */
+.tl-preview .tl-panel figure img {
+  border-radius: 12px; border: 1px solid var(--line); display: block;
+  width: auto; max-width: 100%; height: auto; max-height: 280px;
+  object-fit: contain; background: var(--img-bg); margin: 0 auto;
+}
+.tl-preview .tl-panel figure img[src$=".svg"] { width: 100%; max-width: 100%; }
+.tl-preview .tl-panel figcaption { font-size: 13px; color: var(--ink-3); margin-top: 7px; line-height: 1.6; text-align: center; }
+.tl-preview .tl-item.open .tl-panel { display: block; animation: fadeDown .26s ease; }
+.tl-preview .tl-item.open .tl-card { border-color: var(--brand-line); box-shadow: var(--shadow-m); }
+.tl-preview .tl-item.open .tl-arrow { transform: rotate(180deg); color: var(--brand); }
+.tl-preview .tl-item.open .tl-dot { border-color: var(--brand); transform: scale(1.15); }
+@media (max-width: 640px) {
+  .tl-preview .tl-item { grid-template-columns: 58px 24px 1fr; }
+  .tl-preview .tl-year { font-size: 14px; padding-right: 10px; }
+}
+/* ===== /align:home-modules ===== */

@@ -83,7 +83,14 @@ for hp in htmls:
             path, frag = v.split("#", 1)
         else:
             path, frag = v, None
-        target = os.path.normpath(os.path.join(base, path)) if path else hp
+        # 以 "/" 开头 = 根绝对路径，部署后的语义是「站点根」，不是「当前文件所在目录」，
+        # 必须按 ROOT 解析。典型场景：404.html 会在任意深度路径下被返回
+        # （例如 /scientists/newton/打错的字），所以它的样式表刻意写成 /assets/css/style.css；
+        # 若仍按 base 解析，就会误报「缺失资源」。
+        if path.startswith("/"):
+            target = os.path.normpath(os.path.join(ROOT, path.lstrip("/")))
+        else:
+            target = os.path.normpath(os.path.join(base, path)) if path else hp
         if not os.path.exists(target):
             E("[%s] 缺失资源/链接: %s" % (rel, v))
         elif frag and frag.lstrip("#") not in file_ids.get(target, set()):

@@ -245,7 +245,7 @@ INDEX_TPL = """<!DOCTYPE html>
 <header class="hero">
   <div class="wrap hero-grid">
     <div class="hero-text">
-      <span class="kicker">{{kicker}}</span>
+      <span class="sec-kicker">{{kicker}}</span>
       <h1>读懂<b>{{name}}</b></h1>
       <p class="lede">{{lede}}</p>
       <div class="hero-cta">
@@ -262,7 +262,7 @@ INDEX_TPL = """<!DOCTYPE html>
 <section>
   <div class="wrap">
     <div class="sec-head">
-      <span class="kicker">四大成就</span>
+      <span class="sec-kicker">四大成就</span>
       <h2>他最厉害的四件事</h2>
       <p>点任意一张卡片，进入图文详解；看不懂的词，随时点开弹窗。</p>
     </div>
@@ -275,7 +275,7 @@ INDEX_TPL = """<!DOCTYPE html>
 <section>
   <div class="wrap">
     <div class="sec-head">
-      <span class="kicker">先认识这个人</span>
+      <span class="sec-kicker">先认识这个人</span>
       <h2>{{biotitle}}</h2>
     </div>
     <div class="bio">
@@ -291,7 +291,7 @@ INDEX_TPL = """<!DOCTYPE html>
 <section>
   <div class="wrap">
     <div class="sec-head">
-      <span class="kicker">关于这个站</span>
+      <span class="sec-kicker">关于这个站</span>
       <h2>给谁看、怎么用</h2>
     </div>
     <div class="callout">
