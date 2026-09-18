@@ -171,6 +171,7 @@ node tools/e2e_portal.js                # 门户：15 张卡片 + 检索过滤 +
 | `tools/stage_miniapp_photos.py` | 历史照片压 WebP 备料 | 29.1 MB → 10.6 MB（36%，q=76 最长边 828px）；产物落在项目外，不带进包、不随站发布。 |
 | `tools/validate_miniapp.py` | 小程序静态校验 | 页面跳转/组件/体积/红线词 + **内容层**（节点数、年份升序、同期中国、配图落点、术语悬空、rich-text 白名单）。 |
 | `tools/e2e_miniapp_pages.js` | 页面逻辑无头自测 | 假 `wx` + 真跑 `onLoad`，断言 887 条；专抓静默失败（图片解析成空、术语点开是空、上一篇走空）。 |
+| `tools/preview_miniapp_pages.js` | 页面版式预览（不开开发者工具） | `node tools/preview_miniapp_pages.js` → `../读懂牛顿-验证产物/miniapp-preview/index.html`；**真数据 + 真 wxss**（rpx 折半、`page{}` 选择器映射到 `:root`）在浏览器里看版式。 |
 | `tools/selftest_miniapp_guardrails.py` | 护栏自证 | 注入 6 个人造错误，确认校验器拦得住 + 1 个误报反例。 |
 
 > 涉及截图/报告的脚本（`e2e_check.js` / `e2e_portal.js` / `verify_newlabs.js` / `shot_*.js` /

@@ -161,6 +161,7 @@ python3 tools/build_miniapp_page_assets.py   # 合并云映射，照片点亮
 | `tools/miniapp_terms_dump.js` | 在沙箱里求值各站 `terms.js`，输出 JSON |
 | `tools/validate_miniapp.py` | 小程序静态校验（数据/富文本/内容层/路由/跳转/体积/红线词） |
 | `tools/e2e_miniapp_pages.js` | 页面逻辑无头自测（假 wx，真跑 onLoad，断言 887 条） |
+| `tools/preview_miniapp_pages.js` | 版式预览：真数据 + 真 wxss 渲成网页，不开开发者工具也能目视验收 |
 | `tools/selftest_miniapp_guardrails.py` | 护栏自证：注入人造错误，确认校验器拦得住 |
 | `tools/make_miniapp_tabbar.py` | 生成 tabBar PNG 图标（小程序不支持 SVG） |
 | `tools/miniapp_content_report.json` | 抽取产物报告（计数与体积） |
