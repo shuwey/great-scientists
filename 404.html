@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>这个地址没有内容 · 读懂科学家</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="页面没有找到。">
+<!-- 样式必须用「绝对路径」：本页会在任意深度的路径下被返回
+     （/scientists/newton/输错的字），相对路径会跟着请求路径一起变，从而加载不到 -->
+<link rel="stylesheet" href="/assets/css/style.css">
+<style>
+.e404      { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 48px 0; }
+.e404-card { background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+             padding: 52px 44px; max-width: 640px; margin: 0 auto; text-align: center; }
+.e404-code { font-family: var(--mono); font-size: 64px; font-weight: 800; line-height: 1;
+             letter-spacing: .04em; color: var(--brand); }
+.e404-h    { font-size: 22px; font-weight: 700; color: var(--ink); margin: 20px 0 12px; }
+.e404-p    { font-size: 15px; line-height: 1.85; color: var(--ink-2); margin: 0 0 24px; }
+.e404-path { display: inline-block; max-width: 100%; overflow-wrap: anywhere;
+             font-family: var(--mono); font-size: 13px; color: var(--ink);
+             background: var(--bg-alt); border: 1px solid var(--line);
+             border-radius: 8px; padding: 9px 14px; margin-bottom: 28px; }
+.e404-a    { display: inline-block; background: var(--brand); color: #fff; text-decoration: none;
+             font-size: 15px; font-weight: 600; padding: 12px 28px; border-radius: 10px; }
+.e404-a:hover { background: var(--brand-dark); }
+.e404-tip  { margin: 28px 0 0; font-size: 13px; line-height: 1.8; color: var(--ink-3); }
+@media (max-width: 560px) {
+  .e404-card { padding: 40px 24px; }
+  .e404-code { font-size: 52px; }
+}
+</style>
+</head>
+<body>
+
+<main class="e404">
+  <div class="wrap">
+    <div class="e404-card">
+      <div class="e404-code">404</div>
+      <h1 class="e404-h">这个地址没有内容</h1>
+      <p class="e404-p">你要找的页面可能改了名字、换了位置，或者链接里有个字打错了。</p>
+      <div class="e404-path" id="path">/</div>
+      <p><a class="e404-a" href="/">回到首页</a></p>
+      <p class="e404-tip">首页可以进入 15 位科学家的完整目录。</p>
+    </div>
+  </div>
+</main>
+
+<script>
+/* 把出错的地址显示出来 —— 一眼能区分「链接写错」和「页面确实下掉了」 */
+document.getElementById("path").textContent = location.pathname + location.search;
+</script>
+</body>
+</html>
