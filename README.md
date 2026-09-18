@@ -160,7 +160,7 @@ node tools/e2e_portal.js                # 门户：15 张卡片 + 检索过滤 +
 | `tools/build_china_era.py` | 生成时间轴「同期中国」卡片 | `python3 tools/build_china_era.py [id]`；把 `china_cards.cards()` 的预计算结果写进 `assets/js/china.js`（哑渲染器）并注入 script。卡片按**节点序号**对齐，不按年份做键 —— 同一年可能有两个节点（哥白尼 1543 出版+逝世），按年份做键会让两张卡一模一样。 |
 | `tools/check_china_cards.py` | 同期中国卡片静态护栏 | `python3 tools/check_china_cards.py`；只读生成产物，独立复核**同站不重复**、序号对齐、每节点 ≤3、`data-term` 全可解析、不与站点术语库撞 id。 |
 | `tools/selftest_china_guardrail.py` | 上面那道护栏的自证 | 注入 5 个变异（重复大事/重复人物/名词悬空/序号错位/覆盖站点术语），确认都拦得住并退出码非 0。 |
-| `tools/check_china.js` | 同期中国卡片浏览器实测 | `node tools/check_china.js [id]`；15 站 × 桌面/移动：卡片就位、**同站无重复**、点名词真弹出解释（弹窗标题与术语库比对）、卡片不被三列 grid 压成竖排、0 报错。 |
+| `tools/check_china.js` | 同期中国卡片浏览器实测 | `node tools/check_china.js [id]`；15 站 × 桌面/移动：卡片就位、**同站无重复**、点名词真弹出解释（弹窗标题与术语库比对）、卡片不被三列 grid 压成竖排、0 报错。加 `E2E_BASE=https://…` 前缀即**直连线上**复测（会自动 `--no-proxy-server` 绕过本机代理）。 |
 | `tools/shot_nav_more.js` | 下拉展开实测 + 截图 | 桌面 hover / 移动点击两条路径，量测菜单尺寸与右溢出。 |
 | `tools/e2e_online.js` | **线上**站点抽查（对已发布链接跑） | `node tools/e2e_online.js all 1280,390`；15 站 × 5 类页面，捕获 pageerror/控制台/资源 4xx、并核对时间轴「同期中国」卡与 labs 画布真的画出来了。`E2E_BASE=` 可切本地。 |
 

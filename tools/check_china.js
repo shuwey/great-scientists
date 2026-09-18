@@ -5,10 +5,15 @@
 //   ② 点击名词有没有真的弹出解释（事件委托 + 运行期合并术语库，两侧都可能断）
 //   ③ 同一站里两处出现同一条目（生成器去重后仍可能被别处破坏）
 //
-// 用法：node tools/check_china.js            # 全部 15 站
-//       node tools/check_china.js copernicus # 单站，打印逐节点明细
+// 用法：node tools/check_china.js                  # 本地全 15 站（起 8086 静态服务）
+//       node tools/check_china.js copernicus       # 本地单站，打印逐节点明细
+//       E2E_BASE=https://xxx.app.workbuddy.host node tools/check_china.js hawking   # 直接测线上
+//
+// 线上模式不起本地服务，并用 direct:// 绕过本机 HTTP 代理 —— 本机存在代理，
+// 走代理时 HTTPS 握手会失败，看起来像「线上挂了」，其实是本地网络配置。
 const { chromium } = require('/Users/shuwei/.workbuddy/binaries/node/workspace/node_modules/playwright');
 const http = require('http'), fs = require('fs'), path = require('path');
+const REMOTE = (process.env.E2E_BASE || '').replace(/\/+$/, '');
 const root = process.cwd();
 const OUT = '/Users/shuwei/WorkBuddy/读懂牛顿-验证产物/shots';
 const mime = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg' };
@@ -17,6 +22,7 @@ const srv = http.createServer((q, s) => {
   if (p.endsWith('/')) p += 'index.html';
   fs.readFile(p, (e, d) => { if (e) { s.writeHead(404); s.end(); return; } s.writeHead(200, { 'Content-Type': mime[path.extname(p)] || 'application/octet-stream' }); s.end(d); });
 });
+const origin = REMOTE || 'http://localhost:8086';
 
 const ALL = ['copernicus', 'galileo', 'kepler', 'newton', 'faraday', 'darwin', 'pasteur',
   'maxwell', 'mendeleev', 'curie', 'einstein', 'bohr', 'turing', 'feynman', 'hawking'];
@@ -25,8 +31,15 @@ const VERBOSE = !!process.argv[2];
 
 (async () => {
   fs.mkdirSync(OUT, { recursive: true });
-  await new Promise(r => srv.listen(8086, r));
-  const b = await chromium.launch();
+  if (!REMOTE) await new Promise(r => srv.listen(8086, r));
+  // 本机有 HTTP 代理：Chromium 会读系统代理设置，直接 ERR_PROXY_CONNECTION_FAILED。
+  // 光写 proxy:{server:'direct://'} 盖不住，必须 --no-proxy-server + 清空代理环境变量
+  // （相当于 curl 那边的 --noproxy '*'）。
+  const NO_PROXY = {};
+  ['http_proxy', 'https_proxy', 'all_proxy', 'HTTP_PROXY', 'HTTPS_PROXY', 'ALL_PROXY']
+    .forEach(k => { NO_PROXY[k] = ''; });
+  const b = await chromium.launch(REMOTE
+    ? { args: ['--no-proxy-server'], env: { ...process.env, ...NO_PROXY } } : {});
   const bad = [];
   let totNodes = 0, totCards = 0, totTerms = 0, minW = 1e9;
 
@@ -37,7 +50,7 @@ const VERBOSE = !!process.argv[2];
       page.on('pageerror', e => errs.push('PAGEERROR: ' + e.message));
       page.on('console', m => { if (m.type() === 'error') errs.push('CONSOLE: ' + m.text()); });
       page.on('response', r => { if (r.status() >= 400) errs.push('HTTP ' + r.status() + ' ' + r.url()); });
-      await page.goto('http://localhost:8086/scientists/' + sid + '/timeline.html', { waitUntil: 'networkidle' });
+      await page.goto(origin + '/scientists/' + sid + '/timeline.html', { waitUntil: 'networkidle' });
       await page.waitForTimeout(200);
 
       const r = await page.evaluate(() => {
@@ -123,12 +136,14 @@ const VERBOSE = !!process.argv[2];
         }));
         detail.forEach(d => console.log('    ' + d.y + ' ' + d.head + ' | 条目' + d.n + ' 名词' + d.t));
       }
-      if (!VERBOSE) await page.screenshot({ path: `${OUT}/china-${sid}-${vp.width}.png`, fullPage: vp.width < 500 ? false : true });
+      // 线上模式截图带 online- 前缀，避免覆盖本地那批
+      if (!VERBOSE) await page.screenshot({ path: `${OUT}/${REMOTE ? 'online-' : ''}china-${sid}-${vp.width}.png`, fullPage: vp.width < 500 ? false : true });
       await page.close();
     }
   }
-  await b.close(); srv.close();
-  console.log('\n合计 节点 %d / 卡片 %d / 名词标记 %d；最窄卡片 %dpx', totNodes, totCards, totTerms, Math.round(minW));
+  await b.close(); if (!REMOTE) srv.close();
+  console.log('\n[%s] 合计 节点 %d / 卡片 %d / 名词标记 %d；最窄卡片 %dpx',
+    REMOTE || 'local', totNodes, totCards, totTerms, Math.round(minW));
   if (bad.length) {
     console.log('\n✗ %d 个问题：', bad.length);
     bad.forEach(x => console.log('  - ' + x));
