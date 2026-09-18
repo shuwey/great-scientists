@@ -1,0 +1,99 @@
+<block wx:if="{{p}}">
+  <view class="page">
+
+    <view class="head">
+      <text class="title">{{p.title}}</text>
+      <text class="claim" wx:if="{{p.claim}}">{{p.claim}}</text>
+      <view class="tags" wx:if="{{p.tags.length > 0}}">
+        <text class="tag" wx:for="{{p.tags}}" wx:key="*this">{{item}}</text>
+      </view>
+    </view>
+
+    <scroll-view class="toc" scroll-x enable-flex show-scrollbar="{{false}}" wx:if="{{toc.length > 0}}">
+      <text
+        class="toc-i"
+        wx:for="{{toc}}"
+        wx:key="id"
+        data-anchor="sec-{{item.id}}"
+        bindtap="jump"
+      >{{item.t}}</text>
+    </scroll-view>
+
+    <view class="body">
+      <block wx:for="{{blocks}}" wx:for-item="b" wx:for-index="bi" wx:key="bi">
+
+        <view wx:if="{{b.k === 'h'}}" class="h2" id="{{b.anchor}}">{{b.t}}</view>
+
+        <rich-text wx:elif="{{b.k === 'p'}}" class="para" nodes="{{b.h}}"></rich-text>
+
+        <view wx:elif="{{b.k === 'fig'}}" class="figbox">
+          <image wx:if="{{b.src}}" class="fig" src="{{b.src}}" mode="widthFix" lazy-load></image>
+          <view wx:if="{{b.cap}}" class="cap">
+            <rich-text nodes="{{b.cap}}"></rich-text>
+          </view>
+        </view>
+
+        <view wx:elif="{{b.k === 'note'}}" class="note note-{{b.tone}}">
+          <text class="note-t" wx:if="{{b.t}}">{{b.t}}</text>
+          <rich-text class="note-b" nodes="{{b.h}}"></rich-text>
+        </view>
+
+        <view wx:elif="{{b.k === 'form'}}" class="form">
+          <rich-text class="form-eq" nodes="{{b.expr}}"></rich-text>
+          <text class="form-note" wx:if="{{b.note}}">{{b.note}}</text>
+          <view class="sym" wx:for="{{b.notes}}" wx:for-item="sn" wx:key="index">
+            <rich-text nodes="{{sn}}"></rich-text>
+          </view>
+        </view>
+
+        <view wx:elif="{{b.k === 'ul'}}" class="ul">
+          <view class="li" wx:for="{{b.items}}" wx:for-item="x" wx:key="index">
+            <view class="li-dot"></view>
+            <rich-text class="li-t" nodes="{{x}}"></rich-text>
+          </view>
+        </view>
+
+        <view wx:elif="{{b.k === 'fact'}}" class="fact">
+          <rich-text nodes="{{b.h}}"></rich-text>
+        </view>
+
+        <rich-text wx:else class="para" nodes="{{b.h}}"></rich-text>
+      </block>
+    </view>
+
+    <view class="terms" wx:if="{{termChips.length > 0}}">
+      <text class="terms-t">这篇里的关键概念</text>
+      <view class="terms-l">
+        <view
+          class="term-chip"
+          wx:for="{{termChips}}"
+          wx:key="k"
+          data-k="{{item.k}}"
+          bindtap="openTerm"
+          hover-class="term-chip-hover"
+        >{{item.name}}</view>
+      </view>
+    </view>
+
+    <view class="pager">
+      <view class="pg" wx:if="{{prev}}" data-slug="{{prev.slug}}" bindtap="go" hover-class="pg-hover">
+        <text class="pg-l">← 上一篇</text>
+        <text class="pg-t">{{prev.title}}</text>
+      </view>
+      <view class="pg pg-r" wx:if="{{next}}" data-slug="{{next.slug}}" bindtap="go" hover-class="pg-hover">
+        <text class="pg-l">下一篇 →</text>
+        <text class="pg-t">{{next.title}}</text>
+      </view>
+    </view>
+
+  </view>
+</block>
+
+<term-popup
+  show="{{show}}"
+  term="{{term}}"
+  sciName="{{s.shortName}}"
+  related="{{related}}"
+  bind:close="closeTerm"
+  bind:related="onRelated"
+/>

@@ -1,0 +1,165 @@
+{
+  "bytes": 286270,
+  "china_window_years": 20,
+  "detail": {
+    "pages": 60,
+    "per_scientist": {
+      "bohr": {
+        "blocks": 36,
+        "pages": 4,
+        "terms": 19
+      },
+      "copernicus": {
+        "blocks": 36,
+        "pages": 4,
+        "terms": 20
+      },
+      "curie": {
+        "blocks": 36,
+        "pages": 4,
+        "terms": 20
+      },
+      "darwin": {
+        "blocks": 36,
+        "pages": 4,
+        "terms": 23
+      },
+      "einstein": {
+        "blocks": 73,
+        "pages": 4,
+        "terms": 24
+      },
+      "faraday": {
+        "blocks": 36,
+        "pages": 4,
+        "terms": 16
+      },
+      "feynman": {
+        "blocks": 36,
+        "pages": 4,
+        "terms": 16
+      },
+      "galileo": {
+        "blocks": 70,
+        "pages": 4,
+        "terms": 36
+      },
+      "hawking": {
+        "blocks": 34,
+        "pages": 4,
+        "terms": 16
+      },
+      "kepler": {
+        "blocks": 36,
+        "pages": 4,
+        "terms": 25
+      },
+      "maxwell": {
+        "blocks": 36,
+        "pages": 4,
+        "terms": 19
+      },
+      "mendeleev": {
+        "blocks": 36,
+        "pages": 4,
+        "terms": 18
+      },
+      "newton": {
+        "blocks": 108,
+        "pages": 4,
+        "terms": 28
+      },
+      "pasteur": {
+        "blocks": 36,
+        "pages": 4,
+        "terms": 21
+      },
+      "turing": {
+        "blocks": 32,
+        "pages": 4,
+        "terms": 18
+      }
+    }
+  },
+  "scientists": 15,
+  "timeline": {
+    "nodes": 174,
+    "per_scientist": {
+      "bohr": {
+        "nodes": 10,
+        "with_cn": 10,
+        "with_img": 10
+      },
+      "copernicus": {
+        "nodes": 13,
+        "with_cn": 13,
+        "with_img": 13
+      },
+      "curie": {
+        "nodes": 13,
+        "with_cn": 13,
+        "with_img": 13
+      },
+      "darwin": {
+        "nodes": 11,
+        "with_cn": 11,
+        "with_img": 11
+      },
+      "einstein": {
+        "nodes": 13,
+        "with_cn": 13,
+        "with_img": 7
+      },
+      "faraday": {
+        "nodes": 11,
+        "with_cn": 11,
+        "with_img": 11
+      },
+      "feynman": {
+        "nodes": 11,
+        "with_cn": 11,
+        "with_img": 11
+      },
+      "galileo": {
+        "nodes": 13,
+        "with_cn": 13,
+        "with_img": 13
+      },
+      "hawking": {
+        "nodes": 10,
+        "with_cn": 10,
+        "with_img": 10
+      },
+      "kepler": {
+        "nodes": 11,
+        "with_cn": 11,
+        "with_img": 11
+      },
+      "maxwell": {
+        "nodes": 11,
+        "with_cn": 11,
+        "with_img": 11
+      },
+      "mendeleev": {
+        "nodes": 10,
+        "with_cn": 10,
+        "with_img": 10
+      },
+      "newton": {
+        "nodes": 14,
+        "with_cn": 14,
+        "with_img": 8
+      },
+      "pasteur": {
+        "nodes": 13,
+        "with_cn": 13,
+        "with_img": 13
+      },
+      "turing": {
+        "nodes": 10,
+        "with_cn": 10,
+        "with_img": 10
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "成就详解",
+  "usingComponents": {
+    "term-popup": "/components/term-popup/index"
+  }
+}

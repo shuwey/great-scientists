@@ -1,0 +1,98 @@
+<block wx:if="{{s}}">
+  <view class="page">
+
+    <view class="who">
+      <image class="who-icon" src="{{s.iconMini}}" mode="aspectFit"></image>
+      <view class="who-txt">
+        <text class="who-name">{{s.shortName}}</text>
+        <text class="who-years">{{s.years}} · {{s.disc}}</text>
+      </view>
+    </view>
+
+    <scroll-view class="years" scroll-x enable-flex show-scrollbar="{{false}}">
+      <text
+        class="year-chip"
+        wx:for="{{years}}"
+        wx:key="index"
+        data-i="{{index}}"
+        bindtap="jumpYear"
+      >{{item}}</text>
+    </scroll-view>
+
+    <view class="tl">
+      <view class="node" id="tl-{{index}}" wx:for="{{nodes}}" wx:key="index">
+        <view class="rail">
+          <view class="rail-line"></view>
+          <view class="dot"></view>
+        </view>
+        <view class="card">
+          <view class="nh">
+            <text class="ny">{{item.y}}</text>
+            <text class="nt">{{item.t}}</text>
+          </view>
+          <text class="ns" wx:if="{{item.s}}">{{item.s}}</text>
+
+          <block wx:for="{{item.blocks}}" wx:for-item="b" wx:for-index="bi" wx:key="bi">
+            <image
+              wx:if="{{b.k === 'fig' && b.src}}"
+              class="fig"
+              src="{{b.src}}"
+              mode="widthFix"
+              lazy-load
+            ></image>
+            <view wx:if="{{b.k === 'fig' && b.cap}}" class="cap">
+              <rich-text nodes="{{b.cap}}"></rich-text>
+            </view>
+            <rich-text wx:if="{{b.k === 'p'}}" class="para" nodes="{{b.h}}"></rich-text>
+          </block>
+
+          <view class="tags" wx:if="{{item.tags.length > 0}}">
+            <text class="tag" wx:for="{{item.tags}}" wx:for-item="tg" wx:key="*this">{{tg}}</text>
+          </view>
+
+          <view class="cn" wx:if="{{item.cn}}">
+            <view class="cn-h">
+              <text>同期中国 · </text>
+              <text class="cn-era">{{item.cn.era}}</text>
+            </view>
+            <view class="cn-row" wx:if="{{item.cn.ev.length > 0}}">
+              <text class="cn-k">大事</text>
+              <view class="cn-list">
+                <view class="cn-i" wx:for="{{item.cn.ev}}" wx:for-item="e" wx:key="index">
+                  <text class="cn-y">{{e.y}}</text>
+                  <text class="cn-t">{{e.t}}</text>
+                </view>
+              </view>
+            </view>
+            <view class="cn-row" wx:if="{{item.cn.fig.length > 0}}">
+              <text class="cn-k">人物</text>
+              <view class="cn-list">
+                <view class="cn-i" wx:for="{{item.cn.fig}}" wx:for-item="f" wx:key="index">
+                  <text class="cn-n">{{f.name}}</text>
+                  <text class="cn-life">{{f.life}}</text>
+                  <text class="cn-d">{{f.field}} · {{f.desc}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="more" wx:if="{{details.length > 0}}">
+      <text class="more-t">这位科学家的成就详解</text>
+      <view
+        class="more-i"
+        wx:for="{{details}}"
+        wx:key="slug"
+        data-slug="{{item.slug}}"
+        bindtap="openDetail"
+        hover-class="more-i-hover"
+      >
+        <text class="more-n">{{item.title}}</text>
+        <text class="more-a">›</text>
+      </view>
+    </view>
+
+  </view>
+</block>

@@ -3,6 +3,8 @@
     "pages/portal/index",
     "pages/glossary/index",
     "pages/scientist/index",
+    "pages/timeline/index",
+    "pages/detail/index",
     "pages/profile/index"
   ],
   "window": {

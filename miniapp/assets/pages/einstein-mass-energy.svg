@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 280" font-family="-apple-system,Segoe UI,sans-serif">
+  <rect width="680" height="280" fill="#FBFCFE"/>
+  <text x="20" y="26" font-size="15" font-weight="700" fill="#1B2530">E = mc²：质量 ↔ 能量，可互相“兑换”</text>
+
+  <!-- 质量块 -->
+  <g transform="translate(120,150)">
+    <rect x="-46" y="-46" width="92" height="92" rx="12" fill="#EEF2FB" stroke="#3B5BDB" stroke-width="2.5"/>
+    <text x="0" y="-2" text-anchor="middle" font-size="20" font-weight="800" fill="#3B5BDB">m</text>
+    <text x="0" y="22" text-anchor="middle" font-size="13" fill="#1B2530">质量</text>
+  </g>
+
+  <text x="250" y="160" text-anchor="middle" font-size="34" font-weight="800" fill="#8B96AA">=</text>
+  <text x="250" y="190" text-anchor="middle" font-size="13" fill="#8B96AA">× c²</text>
+
+  <!-- 能量 -->
+  <g transform="translate(390,150)">
+    <circle r="52" fill="url(#sun)"/>
+    <text x="0" y="6" text-anchor="middle" font-size="20" font-weight="800" fill="#fff">E</text>
+  </g>
+  <defs>
+    <radialGradient id="sun" cx="0.4" cy="0.4" r="0.7">
+      <stop offset="0" stop-color="#FFD43B"/>
+      <stop offset="1" stop-color="#F76707"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 闪电/应用 -->
+  <g transform="translate(560,150)" fill="none" stroke="#E8590C" stroke-width="3">
+    <path d="M0,-44 L-14,6 L2,-2 L-8,46 L18,-8 L0,2 Z" fill="#FFE3C2" stroke="#E8590C"/>
+  </g>
+
+  <text x="340" y="248" text-anchor="middle" font-size="12.5" fill="#8B96AA">极小的质量 × 巨大的 c² = 惊人的能量：核电站、太阳发光都靠它</text>
+</svg>

@@ -159,6 +159,19 @@ node tools/e2e_portal.js                # 门户：15 张卡片 + 检索过滤 +
 | `tools/build_china_era.py` | 生成时间轴「同期中国」卡片 | `python3 tools/build_china_era.py [id]`；按 ±20 年窗口切片写入 `assets/js/china.js` 并注入 script。大事按距节点远近取 3；人物按「在世中点」距节点排序取 3（否则名额会被早期人物占满）。 |
 | `tools/check_china.js` | 同期中国卡片实测 | `node tools/check_china.js <id>`；核对年号换算、事件/人物命中、运行时报错。 |
 | `tools/shot_nav_more.js` | 下拉展开实测 + 截图 | 桌面 hover / 移动点击两条路径，量测菜单尺寸与右溢出。 |
+| `tools/e2e_online.js` | **线上**站点抽查（对已发布链接跑） | `node tools/e2e_online.js all 1280,390`；15 站 × 5 类页面，捕获 pageerror/控制台/资源 4xx、并核对时间轴「同期中国」卡与 labs 画布真的画出来了。`E2E_BASE=` 可切本地。 |
+
+**小程序（miniapp/）专用**——内容单向同步：站点 → 小程序，别反向改。
+
+| 工具 | 作用 | 说明 |
+|---|---|---|
+| `tools/export_miniapp_content.py` | 站点 → 术语 + 门户元数据 | 产出 `data/roster.js`、`data/terms.js`；术语条数有独立路径交叉核对。 |
+| `tools/export_miniapp_pages.py` | 站点 → 时间轴 + 成就详解 | 产出 `data/pages.js`；**同期中国在同一处预算好**（与网页端同一数据源、同一 ±20 年口径）。节点无标题直接报错退出。 |
+| `tools/build_miniapp_page_assets.py` | 配图编目：随包 / 上云分流 | SVG 打进包（`assets/pages/`），照片列入 `tools/miniapp_pending_photos.json` 待上云；产出 `data/images.js` 映射表。 |
+| `tools/stage_miniapp_photos.py` | 历史照片压 WebP 备料 | 29.1 MB → 10.6 MB（36%，q=76 最长边 828px）；产物落在项目外，不带进包、不随站发布。 |
+| `tools/validate_miniapp.py` | 小程序静态校验 | 页面跳转/组件/体积/红线词 + **内容层**（节点数、年份升序、同期中国、配图落点、术语悬空、rich-text 白名单）。 |
+| `tools/e2e_miniapp_pages.js` | 页面逻辑无头自测 | 假 `wx` + 真跑 `onLoad`，断言 887 条；专抓静默失败（图片解析成空、术语点开是空、上一篇走空）。 |
+| `tools/selftest_miniapp_guardrails.py` | 护栏自证 | 注入 6 个人造错误，确认校验器拦得住 + 1 个误报反例。 |
 
 > 涉及截图/报告的脚本（`e2e_check.js` / `e2e_portal.js` / `verify_newlabs.js` / `shot_*.js` /
 > `check_timeline.js` / `montage.py` / `build_labs_review.py`）统一写到项目外的

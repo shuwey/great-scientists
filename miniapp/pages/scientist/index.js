@@ -6,6 +6,8 @@
 
 const roster = require('../../data/roster');
 const termsData = require('../../data/terms');
+const pagesData = require('../../data/pages');
+const pageOrder = require('../../utils/pages');
 const store = require('../../utils/store');
 const cloud = require('../../utils/cloud');
 
@@ -13,6 +15,8 @@ Page({
   data: {
     s: null,
     groups: [],
+    details: [],
+    tlStat: null,
     q: '',
     show: false,
     term: null,
@@ -30,13 +34,19 @@ Page({
     }
 
     this.sci = s;
-    this.bundle = termsData.bySci[id] || { terms: {}, cats: [] };
+    this.bundle = termsData.bySci[id] || { terms: {}, cats: [], pages: {} };
+    const tl = pagesData.timeline[id] || [];
 
     wx.setNavigationBarTitle({ title: s.shortName });
     store.markScientist(id);
     cloud.reportProgress({ scientistId: id });
 
-    this.setData({ s: s, groups: this.buildGroups('') });
+    this.setData({
+      s: s,
+      groups: this.buildGroups(''),
+      details: pageOrder.detailOrder(this.bundle, pagesData.detail[id]),
+      tlStat: tl.length ? { nodes: tl.length, from: tl[0].y, to: tl[tl.length - 1].y } : null,
+    });
     wx.setNavigationBarColor({
       frontColor: '#000000',
       backgroundColor: '#FFFFFF',
@@ -105,6 +115,20 @@ Page({
 
   closeTerm() {
     this.setData({ show: false });
+  },
+
+  openTimeline() {
+    if (!this.data.tlStat) {
+      wx.showToast({ title: '这位科学家的时间轴还没迁移过来', icon: 'none' });
+      return;
+    }
+    wx.navigateTo({ url: '/pages/timeline/index?id=' + this.sci.id });
+  },
+
+  openDetail(e) {
+    wx.navigateTo({
+      url: '/pages/detail/index?id=' + this.sci.id + '&slug=' + e.currentTarget.dataset.slug,
+    });
   },
 
   onShareAppMessage() {

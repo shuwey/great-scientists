@@ -14,6 +14,35 @@
     </view>
   </view>
 
+  <view class="entries">
+    <view class="entry" bindtap="openTimeline" hover-class="entry-hover">
+      <view class="entry-main">
+        <text class="entry-t">生平时间轴</text>
+        <text class="entry-s" wx:if="{{tlStat}}">{{tlStat.from}} – {{tlStat.to}} · {{tlStat.nodes}} 个节点，每个节点对照同期中国</text>
+        <text class="entry-s" wx:else>这位科学家的时间轴还没迁移过来</text>
+      </view>
+      <text class="entry-a">›</text>
+    </view>
+
+    <view class="entry" wx:if="{{details.length > 0}}">
+      <view class="entry-main">
+        <text class="entry-t">成就详解</text>
+        <text class="entry-s">把每项成就讲清楚：原理、证据、为什么重要</text>
+      </view>
+    </view>
+    <view
+      class="entry-sub"
+      wx:for="{{details}}"
+      wx:key="slug"
+      data-slug="{{item.slug}}"
+      bindtap="openDetail"
+      hover-class="entry-hover"
+    >
+      <text class="entry-n">{{item.title}}</text>
+      <text class="entry-a">›</text>
+    </view>
+  </view>
+
   <view class="search">
     <input
       class="search-input"
@@ -46,11 +75,6 @@
 
   <view class="empty" wx:if="{{groups.length === 0}}">
     <text>没有匹配的术语</text>
-  </view>
-
-  <view class="roadmap">
-    <text class="roadmap-t">下一步</text>
-    <text class="roadmap-c">生平时间轴、成就详解与动手实验，正在从站点迁移过来。</text>
   </view>
 </block>
 

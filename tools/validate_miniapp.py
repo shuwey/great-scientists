@@ -396,6 +396,183 @@ def check_redline(roster, terms):
     else:
         ok("未命中提审红线词")
 
+    # 内容层（时间轴 / 详解 / 术语 / 元数据）单独扫一遍 —— 这些文字会直接出现在
+    # 用户眼前，比源码里的注释更该过一遍。曾经整段漏扫：pages.js 里带着「直播」
+    # 「培训」而这里是 0 命中，因为只扫了源码目录、跳过了 data/。
+    text_hits = []
+    for sid, blobs in PAGES_TEXTS:
+        for s in blobs:
+            if not s:
+                continue
+            plain = re.sub(r"<[^>]+>", "", s)
+            for w in REDLINE:
+                for m in re.finditer(re.escape(w), plain):
+                    ctx = plain[max(0, m.start() - 14):m.start() + 14]
+                    if any(a in ctx for a in REDLINE_ALLOW):
+                        continue
+                    text_hits.append("%s: …%s…" % (sid, ctx))
+    for sid, bundle in terms["bySci"].items():
+        for k, t in bundle["terms"].items():
+            for f in ("short", "plain", "analogy", "extra", "name"):
+                plain = re.sub(r"<[^>]+>", "", t.get(f) or "")
+                for w in REDLINE:
+                    for m in re.finditer(re.escape(w), plain):
+                        ctx = plain[max(0, m.start() - 14):m.start() + 14]
+                        if any(a in ctx for a in REDLINE_ALLOW):
+                            continue
+                        text_hits.append("术语/%s/%s: …%s…" % (sid, k, ctx))
+    if text_hits:
+        warn("内容层命中 %d 处红线词，逐条确认语境：" % len(text_hits))
+        for h in text_hits[:10]:
+            print("        %s" % h)
+    else:
+        ok("内容层（时间轴/详解/术语）未命中提审红线词")
+
+
+# ------------------------------------------------- 1b. 时间轴与详解内容层
+PAGES_TEXTS = []      # [(sid, [文本…])]：check_pages 收集，check_redline 复用
+
+
+def check_pages(roster, terms):
+    """护栏对象：新增的「生平时间轴 + 成就详解」两块内容。
+
+    这几条都是网页端踩过的坑在端上的对应物：
+      · 图片解析不出 → 页面静默少一张图（不报错、不裂图，最难发现）
+      · 详解页 slug 与 terms.pages 对不上 → 上一篇/下一篇点空
+      · 术语引用悬空 → 点开胶囊是空白弹层
+      · 年份乱序 → 时间轴读起来是错的
+    """
+    print("\n[1b] 时间轴与详解内容")
+    pages = load_module(os.path.join(MP, "data", "pages.js"))
+    images = load_module(os.path.join(MP, "data", "images.js"))
+    by_sci = terms["bySci"]
+    ids = [s["id"] for s in roster["scientists"]]
+
+    tl, dt = pages["timeline"], pages["detail"]
+
+    miss_tl = [i for i in ids if i not in tl]
+    miss_dt = [i for i in ids if i not in dt]
+    if miss_tl or miss_dt:
+        err("pages：缺少内容 -> 时间轴 %s / 详解 %s" % (miss_tl, miss_dt))
+    else:
+        ok("pages：15 位科学家的时间轴与详解均存在")
+
+    nodes = sum(len(v) for v in tl.values())
+    if nodes == 174:
+        ok("pages：时间轴节点 174 个（与静态站一致）")
+    else:
+        warn("pages：时间轴节点 %d 个，静态站基线是 174 个" % nodes)
+    thin = [k for k, v in tl.items() if len(v) < 8]
+    if thin:
+        err("pages：以下科学家的时间轴节点过少(<8) -> %s" % thin)
+    else:
+        ok("pages：每位科学家的时间轴节点均 ≥ 8")
+
+    disordered = [k for k, v in tl.items()
+                  if [n["y"] for n in v] != sorted(n["y"] for n in v)]
+    if disordered:
+        err("pages：时间轴年份未按时间排列 -> %s" % disordered)
+    else:
+        ok("pages：时间轴年份均为升序")
+
+    no_cn = [k for k, v in tl.items() if any(not n.get("cn") for n in v)]
+    if no_cn:
+        err("pages：有节点缺「同期中国」卡 -> %s" % no_cn)
+    else:
+        ok("pages：每个时间轴节点都带同期中国对照")
+
+    pages_n = sum(len(v) for v in dt.values())
+    if pages_n == 60:
+        ok("pages：详解页 60 篇（与静态站一致）")
+    else:
+        warn("pages：详解页 %d 篇，静态站基线是 60 篇" % pages_n)
+
+    # 顺序以站点 SITE_PAGES 为准（只认 detail/ 条目），slug 取 url 的文件名 ——
+    # 这与 miniapp/utils/pages.js 的 detailOrder() 同一套规则，两边必须一致。
+    bad_slug = []
+    for sid, ds in dt.items():
+        order = []
+        for k, pg in (by_sci.get(sid, {}).get("pages") or {}).items():
+            url = pg.get("url") or ""
+            if not url.startswith("detail/"):
+                continue
+            slug = url.split("/")[-1][:-5]
+            if slug in ds and slug not in order:
+                order.append(slug)
+        unreachable = sorted(set(ds) - set(order))
+        dangling = sorted(set(order) - set(ds))
+        if unreachable or dangling:
+            bad_slug.append("%s(不可达 %s / 悬空 %s)" % (sid, unreachable, dangling))
+    if bad_slug:
+        err("pages：详解页顺序解析不完整（上一篇/下一篇会走空）-> %s" % bad_slug)
+    else:
+        ok("pages：60 篇详解页顺序均可解析（导航不会走空）")
+
+    pending = set()
+    pp = os.path.join(ROOT, "tools", "miniapp_pending_photos.json")
+    if os.path.exists(pp):
+        pending = {x["key"] for x in json.loads(read(pp))["items"]}
+
+    unresolved, dangling_term, bad_text = [], [], []
+    allowed = {"span", "b", "strong", "i", "em", "u", "sub", "sup", "br"}
+    for sid in ids:
+        bundle = by_sci.get(sid, {}).get("terms", {})
+        blobs = []
+        for n in tl.get(sid, []):
+            for b in n["blocks"]:
+                if b["k"] == "fig":
+                    blobs.append(b.get("cap") or "")
+                    if b.get("img") and ("%s/%s" % (sid, b["img"])) not in images \
+                            and ("%s/%s" % (sid, b["img"])) not in pending:
+                        unresolved.append("%s/timeline/%s" % (sid, b["img"]))
+                else:
+                    blobs.append(b.get("h") or "")
+        for slug, d in (dt.get(sid) or {}).items():
+            blobs += [d.get("claim") or "", d.get("fact") or ""]
+            for b in d["blocks"]:
+                if b["k"] == "fig":
+                    blobs.append(b.get("cap") or "")
+                    if b.get("img") and ("%s/%s" % (sid, b["img"])) not in images \
+                            and ("%s/%s" % (sid, b["img"])) not in pending:
+                        unresolved.append("%s/detail/%s/%s" % (sid, slug, b["img"]))
+                elif b["k"] == "ul":
+                    blobs += b["items"]
+                elif b["k"] == "form":
+                    blobs += [b.get("expr") or "", b.get("note") or ""] + b["notes"]
+                elif b["k"] == "note":
+                    blobs += [b.get("t") or "", b.get("h") or ""]
+                else:
+                    blobs.append(b.get("h") or "")
+            for k in d["terms"]:
+                if k not in bundle:
+                    dangling_term.append("%s/%s->%s" % (sid, slug, k))
+        for s in blobs:
+            used = set(x.lower() for x in re.findall(r"</?([a-zA-Z][a-zA-Z0-9]*)", s or ""))
+            bad_text += ["%s:%s" % (sid, sorted(used - allowed))] if used - allowed else []
+        # 交给 check_redline 复用：新增的数据文件也必须过红线词扫描。
+        # 曾经漏掉过 —— pages.js 里有「直播」「培训」却报 0 命中，
+        # 因为红线检查只扫了 roster/terms 这两个"老"数据文件。
+        PAGES_TEXTS.append((sid, list(blobs)))
+
+    if unresolved:
+        err("pages：%d 张配图既没打进包也没登记上云 -> %s" % (len(unresolved), unresolved[:5]))
+    else:
+        ok("pages：%d 张配图全部有落点（随包或待上云）" % (len(images) + len(pending)))
+
+    if dangling_term:
+        err("pages：%d 个术语引用在术语库里不存在（点开是空弹层）-> %s"
+            % (len(dangling_term), dangling_term[:5]))
+    else:
+        ok("pages：详解页关联的术语全部可解析")
+
+    if bad_text:
+        err("pages：正文出现 rich-text 白名单外标签 -> %s" % bad_text[:5])
+    else:
+        ok("pages：正文富文本标签均在白名单内")
+
+    strip = sum(1 for sid in ids for d in (dt.get(sid) or {}).values() for b in d["blocks"] if b["k"] == "fig")
+    print("       内容规模：时间轴 %d 节点 · 详解 %d 篇 · 配图块 %d 个" % (nodes, pages_n, strip))
+
 
 def main():
     print("=" * 64)
@@ -403,6 +580,7 @@ def main():
     print("=" * 64)
     roster, terms = check_data()
     check_richtext(terms)
+    check_pages(roster, terms)
     check_routes()
     check_size()
     check_redline(roster, terms)

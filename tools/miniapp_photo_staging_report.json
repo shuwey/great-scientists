@@ -1,0 +1,91 @@
+{
+  "bytes_after": 11165640,
+  "bytes_before": 30556078,
+  "converted": 144,
+  "per_scientist": {
+    "bohr": {
+      "after": 629980,
+      "before": 1921268,
+      "n": 9
+    },
+    "copernicus": {
+      "after": 987222,
+      "before": 2689592,
+      "n": 13
+    },
+    "curie": {
+      "after": 496184,
+      "before": 1603506,
+      "n": 9
+    },
+    "darwin": {
+      "after": 960148,
+      "before": 2758427,
+      "n": 11
+    },
+    "einstein": {
+      "after": 460926,
+      "before": 1414434,
+      "n": 6
+    },
+    "faraday": {
+      "after": 977060,
+      "before": 2338015,
+      "n": 10
+    },
+    "feynman": {
+      "after": 707056,
+      "before": 1727050,
+      "n": 10
+    },
+    "galileo": {
+      "after": 1259090,
+      "before": 3421685,
+      "n": 13
+    },
+    "hawking": {
+      "after": 235002,
+      "before": 775968,
+      "n": 8
+    },
+    "kepler": {
+      "after": 895430,
+      "before": 2403939,
+      "n": 11
+    },
+    "maxwell": {
+      "after": 714796,
+      "before": 1778563,
+      "n": 9
+    },
+    "mendeleev": {
+      "after": 347896,
+      "before": 1056859,
+      "n": 7
+    },
+    "newton": {
+      "after": 663074,
+      "before": 2118259,
+      "n": 9
+    },
+    "pasteur": {
+      "after": 1054644,
+      "before": 2556673,
+      "n": 10
+    },
+    "turing": {
+      "after": 777132,
+      "before": 1991840,
+      "n": 9
+    }
+  },
+  "photos": 144,
+  "ratio": 0.365,
+  "settings": {
+    "format": "webp",
+    "max_width": 828,
+    "quality": 76
+  },
+  "skipped": 0,
+  "staging_dir": "/Users/shuwei/WorkBuddy/读懂牛顿-验证产物/miniapp-photos"
+}

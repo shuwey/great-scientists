@@ -145,25 +145,63 @@
   line-height: 1.6;
 }
 
-.roadmap {
-  margin: 36rpx 32rpx 20rpx;
-  padding: 26rpx 28rpx;
-  background: var(--brand-wash);
-  border: 1rpx solid var(--brand-line);
+/* ---------- 两个内容入口：时间轴 / 成就详解 ---------- */
+.entries {
+  margin: 28rpx 32rpx 0;
+}
+
+.entry {
+  display: flex;
+  align-items: center;
+  padding: 28rpx;
+  margin-bottom: 16rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
   border-radius: 20rpx;
+}
+
+.entry-hover {
+  background: var(--brand-wash);
+}
+
+.entry-main {
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.roadmap-t {
-  font-size: 24rpx;
-  color: var(--brand);
+.entry-t {
+  font-size: 32rpx;
   font-weight: 500;
+  color: var(--ink);
 }
 
-.roadmap-c {
+.entry-s {
   margin-top: 8rpx;
-  font-size: 25rpx;
-  color: var(--ink-2);
-  line-height: 1.7;
+  font-size: 24rpx;
+  color: var(--ink-3);
+  line-height: 1.6;
+}
+
+.entry-a {
+  flex: none;
+  margin-left: 16rpx;
+  color: var(--ink-3);
+  font-size: 36rpx;
+}
+
+.entry-sub {
+  display: flex;
+  align-items: center;
+  padding: 26rpx 28rpx;
+  margin-bottom: 14rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  border-radius: 20rpx;
+}
+
+.entry-n {
+  flex: 1;
+  font-size: 29rpx;
+  color: var(--ink-body);
 }

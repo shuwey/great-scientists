@@ -1,0 +1,1014 @@
+{
+  "bytes": 30556078,
+  "count": 144,
+  "items": [
+    {
+      "bytes": 45711,
+      "file": "scientists/bohr/assets/img/history/bohr-model-diagram.jpg",
+      "key": "bohr/assets/img/history/bohr-model-diagram.jpg",
+      "rel": "assets/img/history/bohr-model-diagram.jpg",
+      "sid": "bohr"
+    },
+    {
+      "bytes": 250136,
+      "file": "scientists/bohr/assets/img/history/bohr-portrait.jpg",
+      "key": "bohr/assets/img/history/bohr-portrait.jpg",
+      "rel": "assets/img/history/bohr-portrait.jpg",
+      "sid": "bohr"
+    },
+    {
+      "bytes": 152736,
+      "file": "scientists/bohr/assets/img/history/cern.jpg",
+      "key": "bohr/assets/img/history/cern.jpg",
+      "rel": "assets/img/history/cern.jpg",
+      "sid": "bohr"
+    },
+    {
+      "bytes": 350196,
+      "file": "scientists/bohr/assets/img/history/complementarity.jpg",
+      "key": "bohr/assets/img/history/complementarity.jpg",
+      "rel": "assets/img/history/complementarity.jpg",
+      "sid": "bohr"
+    },
+    {
+      "bytes": 165896,
+      "file": "scientists/bohr/assets/img/history/copenhagen-institute.jpg",
+      "key": "bohr/assets/img/history/copenhagen-institute.jpg",
+      "rel": "assets/img/history/copenhagen-institute.jpg",
+      "sid": "bohr"
+    },
+    {
+      "bytes": 349421,
+      "file": "scientists/bohr/assets/img/history/einstein-bohr.jpg",
+      "key": "bohr/assets/img/history/einstein-bohr.jpg",
+      "rel": "assets/img/history/einstein-bohr.jpg",
+      "sid": "bohr"
+    },
+    {
+      "bytes": 247772,
+      "file": "scientists/bohr/assets/img/history/manhattan.jpg",
+      "key": "bohr/assets/img/history/manhattan.jpg",
+      "rel": "assets/img/history/manhattan.jpg",
+      "sid": "bohr"
+    },
+    {
+      "bytes": 107093,
+      "file": "scientists/bohr/assets/img/history/nobel.jpg",
+      "key": "bohr/assets/img/history/nobel.jpg",
+      "rel": "assets/img/history/nobel.jpg",
+      "sid": "bohr"
+    },
+    {
+      "bytes": 252307,
+      "file": "scientists/bohr/assets/img/history/rutherford.jpg",
+      "key": "bohr/assets/img/history/rutherford.jpg",
+      "rel": "assets/img/history/rutherford.jpg",
+      "sid": "bohr"
+    },
+    {
+      "bytes": 299592,
+      "file": "scientists/copernicus/assets/img/history/copernicus-banned.jpg",
+      "key": "copernicus/assets/img/history/copernicus-banned.jpg",
+      "rel": "assets/img/history/copernicus-banned.jpg",
+      "sid": "copernicus"
+    },
+    {
+      "bytes": 172359,
+      "file": "scientists/copernicus/assets/img/history/copernicus-bologna.jpg",
+      "key": "copernicus/assets/img/history/copernicus-bologna.jpg",
+      "rel": "assets/img/history/copernicus-bologna.jpg",
+      "sid": "copernicus"
+    },
+    {
+      "bytes": 477268,
+      "file": "scientists/copernicus/assets/img/history/copernicus-canon.jpg",
+      "key": "copernicus/assets/img/history/copernicus-canon.jpg",
+      "rel": "assets/img/history/copernicus-canon.jpg",
+      "sid": "copernicus"
+    },
+    {
+      "bytes": 308735,
+      "file": "scientists/copernicus/assets/img/history/copernicus-de-revolutionibus.jpg",
+      "key": "copernicus/assets/img/history/copernicus-de-revolutionibus.jpg",
+      "rel": "assets/img/history/copernicus-de-revolutionibus.jpg",
+      "sid": "copernicus"
+    },
+    {
+      "bytes": 48361,
+      "file": "scientists/copernicus/assets/img/history/copernicus-frombork.jpg",
+      "key": "copernicus/assets/img/history/copernicus-frombork.jpg",
+      "rel": "assets/img/history/copernicus-frombork.jpg",
+      "sid": "copernicus"
+    },
+    {
+      "bytes": 17558,
+      "file": "scientists/copernicus/assets/img/history/copernicus-kepler.jpg",
+      "key": "copernicus/assets/img/history/copernicus-kepler.jpg",
+      "rel": "assets/img/history/copernicus-kepler.jpg",
+      "sid": "copernicus"
+    },
+    {
+      "bytes": 221817,
+      "file": "scientists/copernicus/assets/img/history/copernicus-krakow.jpg",
+      "key": "copernicus/assets/img/history/copernicus-krakow.jpg",
+      "rel": "assets/img/history/copernicus-krakow.jpg",
+      "sid": "copernicus"
+    },
+    {
+      "bytes": 196184,
+      "file": "scientists/copernicus/assets/img/history/copernicus-manuscript.jpg",
+      "key": "copernicus/assets/img/history/copernicus-manuscript.jpg",
+      "rel": "assets/img/history/copernicus-manuscript.jpg",
+      "sid": "copernicus"
+    },
+    {
+      "bytes": 205887,
+      "file": "scientists/copernicus/assets/img/history/copernicus-monument.jpg",
+      "key": "copernicus/assets/img/history/copernicus-monument.jpg",
+      "rel": "assets/img/history/copernicus-monument.jpg",
+      "sid": "copernicus"
+    },
+    {
+      "bytes": 309121,
+      "file": "scientists/copernicus/assets/img/history/copernicus-newton.jpg",
+      "key": "copernicus/assets/img/history/copernicus-newton.jpg",
+      "rel": "assets/img/history/copernicus-newton.jpg",
+      "sid": "copernicus"
+    },
+    {
+      "bytes": 127563,
+      "file": "scientists/copernicus/assets/img/history/copernicus-portrait.jpg",
+      "key": "copernicus/assets/img/history/copernicus-portrait.jpg",
+      "rel": "assets/img/history/copernicus-portrait.jpg",
+      "sid": "copernicus"
+    },
+    {
+      "bytes": 23495,
+      "file": "scientists/copernicus/assets/img/history/copernicus-solar.jpg",
+      "key": "copernicus/assets/img/history/copernicus-solar.jpg",
+      "rel": "assets/img/history/copernicus-solar.jpg",
+      "sid": "copernicus"
+    },
+    {
+      "bytes": 281652,
+      "file": "scientists/copernicus/assets/img/history/copernicus-tomb.jpg",
+      "key": "copernicus/assets/img/history/copernicus-tomb.jpg",
+      "rel": "assets/img/history/copernicus-tomb.jpg",
+      "sid": "copernicus"
+    },
+    {
+      "bytes": 65673,
+      "file": "scientists/curie/assets/img/history/becquerel.jpg",
+      "key": "curie/assets/img/history/becquerel.jpg",
+      "rel": "assets/img/history/becquerel.jpg",
+      "sid": "curie"
+    },
+    {
+      "bytes": 263671,
+      "file": "scientists/curie/assets/img/history/curie-lab.jpg",
+      "key": "curie/assets/img/history/curie-lab.jpg",
+      "rel": "assets/img/history/curie-lab.jpg",
+      "sid": "curie"
+    },
+    {
+      "bytes": 128469,
+      "file": "scientists/curie/assets/img/history/curie-portrait.jpg",
+      "key": "curie/assets/img/history/curie-portrait.jpg",
+      "rel": "assets/img/history/curie-portrait.jpg",
+      "sid": "curie"
+    },
+    {
+      "bytes": 109243,
+      "file": "scientists/curie/assets/img/history/nobel.jpg",
+      "key": "curie/assets/img/history/nobel.jpg",
+      "rel": "assets/img/history/nobel.jpg",
+      "sid": "curie"
+    },
+    {
+      "bytes": 187639,
+      "file": "scientists/curie/assets/img/history/pantheon.jpg",
+      "key": "curie/assets/img/history/pantheon.jpg",
+      "rel": "assets/img/history/pantheon.jpg",
+      "sid": "curie"
+    },
+    {
+      "bytes": 202940,
+      "file": "scientists/curie/assets/img/history/pierre-curie.jpg",
+      "key": "curie/assets/img/history/pierre-curie.jpg",
+      "rel": "assets/img/history/pierre-curie.jpg",
+      "sid": "curie"
+    },
+    {
+      "bytes": 165690,
+      "file": "scientists/curie/assets/img/history/polonium.jpg",
+      "key": "curie/assets/img/history/polonium.jpg",
+      "rel": "assets/img/history/polonium.jpg",
+      "sid": "curie"
+    },
+    {
+      "bytes": 64213,
+      "file": "scientists/curie/assets/img/history/radium.jpg",
+      "key": "curie/assets/img/history/radium.jpg",
+      "rel": "assets/img/history/radium.jpg",
+      "sid": "curie"
+    },
+    {
+      "bytes": 415968,
+      "file": "scientists/curie/assets/img/history/xray-car.jpg",
+      "key": "curie/assets/img/history/xray-car.jpg",
+      "rel": "assets/img/history/xray-car.jpg",
+      "sid": "curie"
+    },
+    {
+      "bytes": 697552,
+      "file": "scientists/darwin/assets/img/history/darwin-cambridge.jpg",
+      "key": "darwin/assets/img/history/darwin-cambridge.jpg",
+      "rel": "assets/img/history/darwin-cambridge.jpg",
+      "sid": "darwin"
+    },
+    {
+      "bytes": 100717,
+      "file": "scientists/darwin/assets/img/history/darwin-descent.jpg",
+      "key": "darwin/assets/img/history/darwin-descent.jpg",
+      "rel": "assets/img/history/darwin-descent.jpg",
+      "sid": "darwin"
+    },
+    {
+      "bytes": 211029,
+      "file": "scientists/darwin/assets/img/history/darwin-edinburgh.jpg",
+      "key": "darwin/assets/img/history/darwin-edinburgh.jpg",
+      "rel": "assets/img/history/darwin-edinburgh.jpg",
+      "sid": "darwin"
+    },
+    {
+      "bytes": 157656,
+      "file": "scientists/darwin/assets/img/history/darwin-malthus.jpg",
+      "key": "darwin/assets/img/history/darwin-malthus.jpg",
+      "rel": "assets/img/history/darwin-malthus.jpg",
+      "sid": "darwin"
+    },
+    {
+      "bytes": 163806,
+      "file": "scientists/darwin/assets/img/history/darwin-portrait.jpg",
+      "key": "darwin/assets/img/history/darwin-portrait.jpg",
+      "rel": "assets/img/history/darwin-portrait.jpg",
+      "sid": "darwin"
+    },
+    {
+      "bytes": 336939,
+      "file": "scientists/darwin/assets/img/history/darwin-tree.jpg",
+      "key": "darwin/assets/img/history/darwin-tree.jpg",
+      "rel": "assets/img/history/darwin-tree.jpg",
+      "sid": "darwin"
+    },
+    {
+      "bytes": 104369,
+      "file": "scientists/darwin/assets/img/history/galapagos.jpg",
+      "key": "darwin/assets/img/history/galapagos.jpg",
+      "rel": "assets/img/history/galapagos.jpg",
+      "sid": "darwin"
+    },
+    {
+      "bytes": 80538,
+      "file": "scientists/darwin/assets/img/history/hms-beagle.jpg",
+      "key": "darwin/assets/img/history/hms-beagle.jpg",
+      "rel": "assets/img/history/hms-beagle.jpg",
+      "sid": "darwin"
+    },
+    {
+      "bytes": 205298,
+      "file": "scientists/darwin/assets/img/history/origin-title.jpg",
+      "key": "darwin/assets/img/history/origin-title.jpg",
+      "rel": "assets/img/history/origin-title.jpg",
+      "sid": "darwin"
+    },
+    {
+      "bytes": 205777,
+      "file": "scientists/darwin/assets/img/history/wallace.jpg",
+      "key": "darwin/assets/img/history/wallace.jpg",
+      "rel": "assets/img/history/wallace.jpg",
+      "sid": "darwin"
+    },
+    {
+      "bytes": 494746,
+      "file": "scientists/darwin/assets/img/history/westminster-abbey.jpg",
+      "key": "darwin/assets/img/history/westminster-abbey.jpg",
+      "rel": "assets/img/history/westminster-abbey.jpg",
+      "sid": "darwin"
+    },
+    {
+      "bytes": 326044,
+      "file": "scientists/einstein/assets/img/history/einstein-1905.jpg",
+      "key": "einstein/assets/img/history/einstein-1905.jpg",
+      "rel": "assets/img/history/einstein-1905.jpg",
+      "sid": "einstein"
+    },
+    {
+      "bytes": 52337,
+      "file": "scientists/einstein/assets/img/history/einstein-1915.jpg",
+      "key": "einstein/assets/img/history/einstein-1915.jpg",
+      "rel": "assets/img/history/einstein-1915.jpg",
+      "sid": "einstein"
+    },
+    {
+      "bytes": 287992,
+      "file": "scientists/einstein/assets/img/history/einstein-1933.jpg",
+      "key": "einstein/assets/img/history/einstein-1933.jpg",
+      "rel": "assets/img/history/einstein-1933.jpg",
+      "sid": "einstein"
+    },
+    {
+      "bytes": 317974,
+      "file": "scientists/einstein/assets/img/history/einstein-patent-office.jpg",
+      "key": "einstein/assets/img/history/einstein-patent-office.jpg",
+      "rel": "assets/img/history/einstein-patent-office.jpg",
+      "sid": "einstein"
+    },
+    {
+      "bytes": 170552,
+      "file": "scientists/einstein/assets/img/history/einstein-portrait-1921.jpg",
+      "key": "einstein/assets/img/history/einstein-portrait-1921.jpg",
+      "rel": "assets/img/history/einstein-portrait-1921.jpg",
+      "sid": "einstein"
+    },
+    {
+      "bytes": 259535,
+      "file": "scientists/einstein/assets/img/history/einstein-tongue-1951.jpg",
+      "key": "einstein/assets/img/history/einstein-tongue-1951.jpg",
+      "rel": "assets/img/history/einstein-tongue-1951.jpg",
+      "sid": "einstein"
+    },
+    {
+      "bytes": 29355,
+      "file": "scientists/faraday/assets/img/history/benzene.jpg",
+      "key": "faraday/assets/img/history/benzene.jpg",
+      "rel": "assets/img/history/benzene.jpg",
+      "sid": "faraday"
+    },
+    {
+      "bytes": 527799,
+      "file": "scientists/faraday/assets/img/history/bookbind.jpg",
+      "key": "faraday/assets/img/history/bookbind.jpg",
+      "rel": "assets/img/history/bookbind.jpg",
+      "sid": "faraday"
+    },
+    {
+      "bytes": 103577,
+      "file": "scientists/faraday/assets/img/history/cage.jpg",
+      "key": "faraday/assets/img/history/cage.jpg",
+      "rel": "assets/img/history/cage.jpg",
+      "sid": "faraday"
+    },
+    {
+      "bytes": 124243,
+      "file": "scientists/faraday/assets/img/history/davy.jpg",
+      "key": "faraday/assets/img/history/davy.jpg",
+      "rel": "assets/img/history/davy.jpg",
+      "sid": "faraday"
+    },
+    {
+      "bytes": 145699,
+      "file": "scientists/faraday/assets/img/history/electrolysis.jpg",
+      "key": "faraday/assets/img/history/electrolysis.jpg",
+      "rel": "assets/img/history/electrolysis.jpg",
+      "sid": "faraday"
+    },
+    {
+      "bytes": 191554,
+      "file": "scientists/faraday/assets/img/history/faraday-portrait.jpg",
+      "key": "faraday/assets/img/history/faraday-portrait.jpg",
+      "rel": "assets/img/history/faraday-portrait.jpg",
+      "sid": "faraday"
+    },
+    {
+      "bytes": 653705,
+      "file": "scientists/faraday/assets/img/history/induction.jpg",
+      "key": "faraday/assets/img/history/induction.jpg",
+      "rel": "assets/img/history/induction.jpg",
+      "sid": "faraday"
+    },
+    {
+      "bytes": 191301,
+      "file": "scientists/faraday/assets/img/history/lecture.jpg",
+      "key": "faraday/assets/img/history/lecture.jpg",
+      "rel": "assets/img/history/lecture.jpg",
+      "sid": "faraday"
+    },
+    {
+      "bytes": 128028,
+      "file": "scientists/faraday/assets/img/history/ri.jpg",
+      "key": "faraday/assets/img/history/ri.jpg",
+      "rel": "assets/img/history/ri.jpg",
+      "sid": "faraday"
+    },
+    {
+      "bytes": 242754,
+      "file": "scientists/faraday/assets/img/history/rotation.jpg",
+      "key": "faraday/assets/img/history/rotation.jpg",
+      "rel": "assets/img/history/rotation.jpg",
+      "sid": "faraday"
+    },
+    {
+      "bytes": 119393,
+      "file": "scientists/feynman/assets/img/history/challenger.jpg",
+      "key": "feynman/assets/img/history/challenger.jpg",
+      "rel": "assets/img/history/challenger.jpg",
+      "sid": "feynman"
+    },
+    {
+      "bytes": 34606,
+      "file": "scientists/feynman/assets/img/history/diagram.jpg",
+      "key": "feynman/assets/img/history/diagram.jpg",
+      "rel": "assets/img/history/diagram.jpg",
+      "sid": "feynman"
+    },
+    {
+      "bytes": 448116,
+      "file": "scientists/feynman/assets/img/history/feynman-portrait.jpg",
+      "key": "feynman/assets/img/history/feynman-portrait.jpg",
+      "rel": "assets/img/history/feynman-portrait.jpg",
+      "sid": "feynman"
+    },
+    {
+      "bytes": 97448,
+      "file": "scientists/feynman/assets/img/history/helium.jpg",
+      "key": "feynman/assets/img/history/helium.jpg",
+      "rel": "assets/img/history/helium.jpg",
+      "sid": "feynman"
+    },
+    {
+      "bytes": 236294,
+      "file": "scientists/feynman/assets/img/history/lectures.jpg",
+      "key": "feynman/assets/img/history/lectures.jpg",
+      "rel": "assets/img/history/lectures.jpg",
+      "sid": "feynman"
+    },
+    {
+      "bytes": 400195,
+      "file": "scientists/feynman/assets/img/history/los-alamos.jpg",
+      "key": "feynman/assets/img/history/los-alamos.jpg",
+      "rel": "assets/img/history/los-alamos.jpg",
+      "sid": "feynman"
+    },
+    {
+      "bytes": 148109,
+      "file": "scientists/feynman/assets/img/history/mit.jpg",
+      "key": "feynman/assets/img/history/mit.jpg",
+      "rel": "assets/img/history/mit.jpg",
+      "sid": "feynman"
+    },
+    {
+      "bytes": 61637,
+      "file": "scientists/feynman/assets/img/history/nano.jpg",
+      "key": "feynman/assets/img/history/nano.jpg",
+      "rel": "assets/img/history/nano.jpg",
+      "sid": "feynman"
+    },
+    {
+      "bytes": 101215,
+      "file": "scientists/feynman/assets/img/history/nobel.jpg",
+      "key": "feynman/assets/img/history/nobel.jpg",
+      "rel": "assets/img/history/nobel.jpg",
+      "sid": "feynman"
+    },
+    {
+      "bytes": 80037,
+      "file": "scientists/feynman/assets/img/history/path.jpg",
+      "key": "feynman/assets/img/history/path.jpg",
+      "rel": "assets/img/history/path.jpg",
+      "sid": "feynman"
+    },
+    {
+      "bytes": 234722,
+      "file": "scientists/galileo/assets/img/history/galileo-cathedral.jpg",
+      "key": "galileo/assets/img/history/galileo-cathedral.jpg",
+      "rel": "assets/img/history/galileo-cathedral.jpg",
+      "sid": "galileo"
+    },
+    {
+      "bytes": 285965,
+      "file": "scientists/galileo/assets/img/history/galileo-dialogue.jpg",
+      "key": "galileo/assets/img/history/galileo-dialogue.jpg",
+      "rel": "assets/img/history/galileo-dialogue.jpg",
+      "sid": "galileo"
+    },
+    {
+      "bytes": 383752,
+      "file": "scientists/galileo/assets/img/history/galileo-discorsi.jpg",
+      "key": "galileo/assets/img/history/galileo-discorsi.jpg",
+      "rel": "assets/img/history/galileo-discorsi.jpg",
+      "sid": "galileo"
+    },
+    {
+      "bytes": 198454,
+      "file": "scientists/galileo/assets/img/history/galileo-florence.jpg",
+      "key": "galileo/assets/img/history/galileo-florence.jpg",
+      "rel": "assets/img/history/galileo-florence.jpg",
+      "sid": "galileo"
+    },
+    {
+      "bytes": 36270,
+      "file": "scientists/galileo/assets/img/history/galileo-moons.jpg",
+      "key": "galileo/assets/img/history/galileo-moons.jpg",
+      "rel": "assets/img/history/galileo-moons.jpg",
+      "sid": "galileo"
+    },
+    {
+      "bytes": 181218,
+      "file": "scientists/galileo/assets/img/history/galileo-padua.jpg",
+      "key": "galileo/assets/img/history/galileo-padua.jpg",
+      "rel": "assets/img/history/galileo-padua.jpg",
+      "sid": "galileo"
+    },
+    {
+      "bytes": 330686,
+      "file": "scientists/galileo/assets/img/history/galileo-pisa.jpg",
+      "key": "galileo/assets/img/history/galileo-pisa.jpg",
+      "rel": "assets/img/history/galileo-pisa.jpg",
+      "sid": "galileo"
+    },
+    {
+      "bytes": 205286,
+      "file": "scientists/galileo/assets/img/history/galileo-sunspots.jpg",
+      "key": "galileo/assets/img/history/galileo-sunspots.jpg",
+      "rel": "assets/img/history/galileo-sunspots.jpg",
+      "sid": "galileo"
+    },
+    {
+      "bytes": 112815,
+      "file": "scientists/galileo/assets/img/history/galileo-telescope.jpg",
+      "key": "galileo/assets/img/history/galileo-telescope.jpg",
+      "rel": "assets/img/history/galileo-telescope.jpg",
+      "sid": "galileo"
+    },
+    {
+      "bytes": 444604,
+      "file": "scientists/galileo/assets/img/history/galileo-tomb.jpg",
+      "key": "galileo/assets/img/history/galileo-tomb.jpg",
+      "rel": "assets/img/history/galileo-tomb.jpg",
+      "sid": "galileo"
+    },
+    {
+      "bytes": 161087,
+      "file": "scientists/galileo/assets/img/history/galileo-trial.jpg",
+      "key": "galileo/assets/img/history/galileo-trial.jpg",
+      "rel": "assets/img/history/galileo-trial.jpg",
+      "sid": "galileo"
+    },
+    {
+      "bytes": 551598,
+      "file": "scientists/galileo/assets/img/history/galileo-university.jpg",
+      "key": "galileo/assets/img/history/galileo-university.jpg",
+      "rel": "assets/img/history/galileo-university.jpg",
+      "sid": "galileo"
+    },
+    {
+      "bytes": 295228,
+      "file": "scientists/galileo/assets/img/history/galileo-warning.jpg",
+      "key": "galileo/assets/img/history/galileo-warning.jpg",
+      "rel": "assets/img/history/galileo-warning.jpg",
+      "sid": "galileo"
+    },
+    {
+      "bytes": 211269,
+      "file": "scientists/hawking/assets/img/history/als.jpg",
+      "key": "hawking/assets/img/history/als.jpg",
+      "rel": "assets/img/history/als.jpg",
+      "sid": "hawking"
+    },
+    {
+      "bytes": 12980,
+      "file": "scientists/hawking/assets/img/history/blackhole.jpg",
+      "key": "hawking/assets/img/history/blackhole.jpg",
+      "rel": "assets/img/history/blackhole.jpg",
+      "sid": "hawking"
+    },
+    {
+      "bytes": 86185,
+      "file": "scientists/hawking/assets/img/history/brief-history.jpg",
+      "key": "hawking/assets/img/history/brief-history.jpg",
+      "rel": "assets/img/history/brief-history.jpg",
+      "sid": "hawking"
+    },
+    {
+      "bytes": 53221,
+      "file": "scientists/hawking/assets/img/history/cambridge.jpg",
+      "key": "hawking/assets/img/history/cambridge.jpg",
+      "rel": "assets/img/history/cambridge.jpg",
+      "sid": "hawking"
+    },
+    {
+      "bytes": 205004,
+      "file": "scientists/hawking/assets/img/history/hawking-portrait.jpg",
+      "key": "hawking/assets/img/history/hawking-portrait.jpg",
+      "rel": "assets/img/history/hawking-portrait.jpg",
+      "sid": "hawking"
+    },
+    {
+      "bytes": 89169,
+      "file": "scientists/hawking/assets/img/history/oxford.jpg",
+      "key": "hawking/assets/img/history/oxford.jpg",
+      "rel": "assets/img/history/oxford.jpg",
+      "sid": "hawking"
+    },
+    {
+      "bytes": 61785,
+      "file": "scientists/hawking/assets/img/history/radiation.jpg",
+      "key": "hawking/assets/img/history/radiation.jpg",
+      "rel": "assets/img/history/radiation.jpg",
+      "sid": "hawking"
+    },
+    {
+      "bytes": 56355,
+      "file": "scientists/hawking/assets/img/history/singularity.jpg",
+      "key": "hawking/assets/img/history/singularity.jpg",
+      "rel": "assets/img/history/singularity.jpg",
+      "sid": "hawking"
+    },
+    {
+      "bytes": 281697,
+      "file": "scientists/kepler/assets/img/history/kepler-graz.jpg",
+      "key": "kepler/assets/img/history/kepler-graz.jpg",
+      "rel": "assets/img/history/kepler-graz.jpg",
+      "sid": "kepler"
+    },
+    {
+      "bytes": 455045,
+      "file": "scientists/kepler/assets/img/history/kepler-harmony.jpg",
+      "key": "kepler/assets/img/history/kepler-harmony.jpg",
+      "rel": "assets/img/history/kepler-harmony.jpg",
+      "sid": "kepler"
+    },
+    {
+      "bytes": 82832,
+      "file": "scientists/kepler/assets/img/history/kepler-mars.jpg",
+      "key": "kepler/assets/img/history/kepler-mars.jpg",
+      "rel": "assets/img/history/kepler-mars.jpg",
+      "sid": "kepler"
+    },
+    {
+      "bytes": 289177,
+      "file": "scientists/kepler/assets/img/history/kepler-monument.jpg",
+      "key": "kepler/assets/img/history/kepler-monument.jpg",
+      "rel": "assets/img/history/kepler-monument.jpg",
+      "sid": "kepler"
+    },
+    {
+      "bytes": 141527,
+      "file": "scientists/kepler/assets/img/history/kepler-optics.jpg",
+      "key": "kepler/assets/img/history/kepler-optics.jpg",
+      "rel": "assets/img/history/kepler-optics.jpg",
+      "sid": "kepler"
+    },
+    {
+      "bytes": 85878,
+      "file": "scientists/kepler/assets/img/history/kepler-portrait.jpg",
+      "key": "kepler/assets/img/history/kepler-portrait.jpg",
+      "rel": "assets/img/history/kepler-portrait.jpg",
+      "sid": "kepler"
+    },
+    {
+      "bytes": 118070,
+      "file": "scientists/kepler/assets/img/history/kepler-prague.jpg",
+      "key": "kepler/assets/img/history/kepler-prague.jpg",
+      "rel": "assets/img/history/kepler-prague.jpg",
+      "sid": "kepler"
+    },
+    {
+      "bytes": 181697,
+      "file": "scientists/kepler/assets/img/history/kepler-rudolphine.jpg",
+      "key": "kepler/assets/img/history/kepler-rudolphine.jpg",
+      "rel": "assets/img/history/kepler-rudolphine.jpg",
+      "sid": "kepler"
+    },
+    {
+      "bytes": 70803,
+      "file": "scientists/kepler/assets/img/history/kepler-supernova.jpg",
+      "key": "kepler/assets/img/history/kepler-supernova.jpg",
+      "rel": "assets/img/history/kepler-supernova.jpg",
+      "sid": "kepler"
+    },
+    {
+      "bytes": 212517,
+      "file": "scientists/kepler/assets/img/history/kepler-tubingen.jpg",
+      "key": "kepler/assets/img/history/kepler-tubingen.jpg",
+      "rel": "assets/img/history/kepler-tubingen.jpg",
+      "sid": "kepler"
+    },
+    {
+      "bytes": 484696,
+      "file": "scientists/kepler/assets/img/history/tycho-brahe.jpg",
+      "key": "kepler/assets/img/history/tycho-brahe.jpg",
+      "rel": "assets/img/history/tycho-brahe.jpg",
+      "sid": "kepler"
+    },
+    {
+      "bytes": 697552,
+      "file": "scientists/maxwell/assets/img/history/cambridge.jpg",
+      "key": "maxwell/assets/img/history/cambridge.jpg",
+      "rel": "assets/img/history/cambridge.jpg",
+      "sid": "maxwell"
+    },
+    {
+      "bytes": 336305,
+      "file": "scientists/maxwell/assets/img/history/cavendish.jpg",
+      "key": "maxwell/assets/img/history/cavendish.jpg",
+      "rel": "assets/img/history/cavendish.jpg",
+      "sid": "maxwell"
+    },
+    {
+      "bytes": 188732,
+      "file": "scientists/maxwell/assets/img/history/color-photography.jpg",
+      "key": "maxwell/assets/img/history/color-photography.jpg",
+      "rel": "assets/img/history/color-photography.jpg",
+      "sid": "maxwell"
+    },
+    {
+      "bytes": 211029,
+      "file": "scientists/maxwell/assets/img/history/edinburgh.jpg",
+      "key": "maxwell/assets/img/history/edinburgh.jpg",
+      "rel": "assets/img/history/edinburgh.jpg",
+      "sid": "maxwell"
+    },
+    {
+      "bytes": 24044,
+      "file": "scientists/maxwell/assets/img/history/em-wave.jpg",
+      "key": "maxwell/assets/img/history/em-wave.jpg",
+      "rel": "assets/img/history/em-wave.jpg",
+      "sid": "maxwell"
+    },
+    {
+      "bytes": 32120,
+      "file": "scientists/maxwell/assets/img/history/kinetic-theory.jpg",
+      "key": "maxwell/assets/img/history/kinetic-theory.jpg",
+      "rel": "assets/img/history/kinetic-theory.jpg",
+      "sid": "maxwell"
+    },
+    {
+      "bytes": 34864,
+      "file": "scientists/maxwell/assets/img/history/maxwell-equations.jpg",
+      "key": "maxwell/assets/img/history/maxwell-equations.jpg",
+      "rel": "assets/img/history/maxwell-equations.jpg",
+      "sid": "maxwell"
+    },
+    {
+      "bytes": 202062,
+      "file": "scientists/maxwell/assets/img/history/maxwell-portrait.jpg",
+      "key": "maxwell/assets/img/history/maxwell-portrait.jpg",
+      "rel": "assets/img/history/maxwell-portrait.jpg",
+      "sid": "maxwell"
+    },
+    {
+      "bytes": 51855,
+      "file": "scientists/maxwell/assets/img/history/saturn-rings.jpg",
+      "key": "maxwell/assets/img/history/saturn-rings.jpg",
+      "rel": "assets/img/history/saturn-rings.jpg",
+      "sid": "maxwell"
+    },
+    {
+      "bytes": 103842,
+      "file": "scientists/mendeleev/assets/img/history/gallium.jpg",
+      "key": "mendeleev/assets/img/history/gallium.jpg",
+      "rel": "assets/img/history/gallium.jpg",
+      "sid": "mendeleev"
+    },
+    {
+      "bytes": 193018,
+      "file": "scientists/mendeleev/assets/img/history/germanium.jpg",
+      "key": "mendeleev/assets/img/history/germanium.jpg",
+      "rel": "assets/img/history/germanium.jpg",
+      "sid": "mendeleev"
+    },
+    {
+      "bytes": 152132,
+      "file": "scientists/mendeleev/assets/img/history/mendeleev-lab.jpg",
+      "key": "mendeleev/assets/img/history/mendeleev-lab.jpg",
+      "rel": "assets/img/history/mendeleev-lab.jpg",
+      "sid": "mendeleev"
+    },
+    {
+      "bytes": 250442,
+      "file": "scientists/mendeleev/assets/img/history/mendeleev-portrait.jpg",
+      "key": "mendeleev/assets/img/history/mendeleev-portrait.jpg",
+      "rel": "assets/img/history/mendeleev-portrait.jpg",
+      "sid": "mendeleev"
+    },
+    {
+      "bytes": 228251,
+      "file": "scientists/mendeleev/assets/img/history/periodic-modern.jpg",
+      "key": "mendeleev/assets/img/history/periodic-modern.jpg",
+      "rel": "assets/img/history/periodic-modern.jpg",
+      "sid": "mendeleev"
+    },
+    {
+      "bytes": 4217,
+      "file": "scientists/mendeleev/assets/img/history/periodic-table.jpg",
+      "key": "mendeleev/assets/img/history/periodic-table.jpg",
+      "rel": "assets/img/history/periodic-table.jpg",
+      "sid": "mendeleev"
+    },
+    {
+      "bytes": 124957,
+      "file": "scientists/mendeleev/assets/img/history/stpetersburg.jpg",
+      "key": "mendeleev/assets/img/history/stpetersburg.jpg",
+      "rel": "assets/img/history/stpetersburg.jpg",
+      "sid": "mendeleev"
+    },
+    {
+      "bytes": 114726,
+      "file": "scientists/newton/assets/img/history/edmond-halley.jpg",
+      "key": "newton/assets/img/history/edmond-halley.jpg",
+      "rel": "assets/img/history/edmond-halley.jpg",
+      "sid": "newton"
+    },
+    {
+      "bytes": 295363,
+      "file": "scientists/newton/assets/img/history/newton-grave-westminster.jpg",
+      "key": "newton/assets/img/history/newton-grave-westminster.jpg",
+      "rel": "assets/img/history/newton-grave-westminster.jpg",
+      "sid": "newton"
+    },
+    {
+      "bytes": 210905,
+      "file": "scientists/newton/assets/img/history/newton-room-cambridge.jpg",
+      "key": "newton/assets/img/history/newton-room-cambridge.jpg",
+      "rel": "assets/img/history/newton-room-cambridge.jpg",
+      "sid": "newton"
+    },
+    {
+      "bytes": 79538,
+      "file": "scientists/newton/assets/img/history/opticks-queries-1704.jpg",
+      "key": "newton/assets/img/history/opticks-queries-1704.jpg",
+      "rel": "assets/img/history/opticks-queries-1704.jpg",
+      "sid": "newton"
+    },
+    {
+      "bytes": 460294,
+      "file": "scientists/newton/assets/img/history/principia-copy-1687.jpg",
+      "key": "newton/assets/img/history/principia-copy-1687.jpg",
+      "rel": "assets/img/history/principia-copy-1687.jpg",
+      "sid": "newton"
+    },
+    {
+      "bytes": 273956,
+      "file": "scientists/newton/assets/img/history/principia-title-1687.jpg",
+      "key": "newton/assets/img/history/principia-title-1687.jpg",
+      "rel": "assets/img/history/principia-title-1687.jpg",
+      "sid": "newton"
+    },
+    {
+      "bytes": 165501,
+      "file": "scientists/newton/assets/img/history/reflecting-telescope-1668.jpg",
+      "key": "newton/assets/img/history/reflecting-telescope-1668.jpg",
+      "rel": "assets/img/history/reflecting-telescope-1668.jpg",
+      "sid": "newton"
+    },
+    {
+      "bytes": 106926,
+      "file": "scientists/newton/assets/img/history/trinity-college-cambridge.jpg",
+      "key": "newton/assets/img/history/trinity-college-cambridge.jpg",
+      "rel": "assets/img/history/trinity-college-cambridge.jpg",
+      "sid": "newton"
+    },
+    {
+      "bytes": 411050,
+      "file": "scientists/newton/assets/img/history/woolsthorpe-manor.jpg",
+      "key": "newton/assets/img/history/woolsthorpe-manor.jpg",
+      "rel": "assets/img/history/woolsthorpe-manor.jpg",
+      "sid": "newton"
+    },
+    {
+      "bytes": 552446,
+      "file": "scientists/pasteur/assets/img/history/anthrax.jpg",
+      "key": "pasteur/assets/img/history/anthrax.jpg",
+      "rel": "assets/img/history/anthrax.jpg",
+      "sid": "pasteur"
+    },
+    {
+      "bytes": 71510,
+      "file": "scientists/pasteur/assets/img/history/etudes-sur-le-vin.jpg",
+      "key": "pasteur/assets/img/history/etudes-sur-le-vin.jpg",
+      "rel": "assets/img/history/etudes-sur-le-vin.jpg",
+      "sid": "pasteur"
+    },
+    {
+      "bytes": 199081,
+      "file": "scientists/pasteur/assets/img/history/fermentation.jpg",
+      "key": "pasteur/assets/img/history/fermentation.jpg",
+      "rel": "assets/img/history/fermentation.jpg",
+      "sid": "pasteur"
+    },
+    {
+      "bytes": 428135,
+      "file": "scientists/pasteur/assets/img/history/monument.jpg",
+      "key": "pasteur/assets/img/history/monument.jpg",
+      "rel": "assets/img/history/monument.jpg",
+      "sid": "pasteur"
+    },
+    {
+      "bytes": 110150,
+      "file": "scientists/pasteur/assets/img/history/pasteur-institute.jpg",
+      "key": "pasteur/assets/img/history/pasteur-institute.jpg",
+      "rel": "assets/img/history/pasteur-institute.jpg",
+      "sid": "pasteur"
+    },
+    {
+      "bytes": 298358,
+      "file": "scientists/pasteur/assets/img/history/pasteur-lab.jpg",
+      "key": "pasteur/assets/img/history/pasteur-lab.jpg",
+      "rel": "assets/img/history/pasteur-lab.jpg",
+      "sid": "pasteur"
+    },
+    {
+      "bytes": 380424,
+      "file": "scientists/pasteur/assets/img/history/pasteur-portrait.jpg",
+      "key": "pasteur/assets/img/history/pasteur-portrait.jpg",
+      "rel": "assets/img/history/pasteur-portrait.jpg",
+      "sid": "pasteur"
+    },
+    {
+      "bytes": 350534,
+      "file": "scientists/pasteur/assets/img/history/rabies.jpg",
+      "key": "pasteur/assets/img/history/rabies.jpg",
+      "rel": "assets/img/history/rabies.jpg",
+      "sid": "pasteur"
+    },
+    {
+      "bytes": 80028,
+      "file": "scientists/pasteur/assets/img/history/silkworm.jpg",
+      "key": "pasteur/assets/img/history/silkworm.jpg",
+      "rel": "assets/img/history/silkworm.jpg",
+      "sid": "pasteur"
+    },
+    {
+      "bytes": 86007,
+      "file": "scientists/pasteur/assets/img/history/swan-neck-flask.jpg",
+      "key": "pasteur/assets/img/history/swan-neck-flask.jpg",
+      "rel": "assets/img/history/swan-neck-flask.jpg",
+      "sid": "pasteur"
+    },
+    {
+      "bytes": 151494,
+      "file": "scientists/turing/assets/img/history/ace.jpg",
+      "key": "turing/assets/img/history/ace.jpg",
+      "rel": "assets/img/history/ace.jpg",
+      "sid": "turing"
+    },
+    {
+      "bytes": 146943,
+      "file": "scientists/turing/assets/img/history/bletchley.jpg",
+      "key": "turing/assets/img/history/bletchley.jpg",
+      "rel": "assets/img/history/bletchley.jpg",
+      "sid": "turing"
+    },
+    {
+      "bytes": 137885,
+      "file": "scientists/turing/assets/img/history/bombe.jpg",
+      "key": "turing/assets/img/history/bombe.jpg",
+      "rel": "assets/img/history/bombe.jpg",
+      "sid": "turing"
+    },
+    {
+      "bytes": 697552,
+      "file": "scientists/turing/assets/img/history/cambridge.jpg",
+      "key": "turing/assets/img/history/cambridge.jpg",
+      "rel": "assets/img/history/cambridge.jpg",
+      "sid": "turing"
+    },
+    {
+      "bytes": 27938,
+      "file": "scientists/turing/assets/img/history/morphogenesis.jpg",
+      "key": "turing/assets/img/history/morphogenesis.jpg",
+      "rel": "assets/img/history/morphogenesis.jpg",
+      "sid": "turing"
+    },
+    {
+      "bytes": 441256,
+      "file": "scientists/turing/assets/img/history/princeton.jpg",
+      "key": "turing/assets/img/history/princeton.jpg",
+      "rel": "assets/img/history/princeton.jpg",
+      "sid": "turing"
+    },
+    {
+      "bytes": 6406,
+      "file": "scientists/turing/assets/img/history/turing-machine.jpg",
+      "key": "turing/assets/img/history/turing-machine.jpg",
+      "rel": "assets/img/history/turing-machine.jpg",
+      "sid": "turing"
+    },
+    {
+      "bytes": 143129,
+      "file": "scientists/turing/assets/img/history/turing-portrait.jpg",
+      "key": "turing/assets/img/history/turing-portrait.jpg",
+      "rel": "assets/img/history/turing-portrait.jpg",
+      "sid": "turing"
+    },
+    {
+      "bytes": 239237,
+      "file": "scientists/turing/assets/img/history/turing-test.jpg",
+      "key": "turing/assets/img/history/turing-test.jpg",
+      "rel": "assets/img/history/turing-test.jpg",
+      "sid": "turing"
+    }
+  ]
+}

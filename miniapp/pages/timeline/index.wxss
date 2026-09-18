@@ -1,0 +1,248 @@
+/* 生平时间轴 */
+
+.who {
+  display: flex;
+  align-items: center;
+  padding: 32rpx 32rpx 20rpx;
+}
+.who-icon {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 24rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  flex: none;
+}
+.who-txt {
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+.who-name {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: var(--ink);
+}
+.who-years {
+  margin-top: 6rpx;
+  font-size: 24rpx;
+  color: var(--ink-3);
+}
+
+/* 年份快速跳转 */
+.years {
+  white-space: nowrap;
+  padding: 0 32rpx 12rpx;
+}
+.year-chip {
+  display: inline-block;
+  margin-right: 14rpx;
+  padding: 8rpx 20rpx;
+  border-radius: 999rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  color: var(--ink-2);
+  font-size: 24rpx;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 时间轴主体 */
+.tl {
+  padding: 12rpx 32rpx 0;
+}
+.node {
+  display: flex;
+  align-items: stretch;
+}
+.rail {
+  width: 44rpx;
+  flex: none;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.rail-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2rpx;
+  background: var(--line-2);
+}
+.dot {
+  position: relative;
+  margin-top: 26rpx;
+  width: 18rpx;
+  height: 18rpx;
+  border-radius: 50%;
+  background: var(--brand);
+  box-shadow: 0 0 0 6rpx var(--brand-soft);
+}
+.node:first-child .rail-line {
+  top: 26rpx;
+}
+
+.card {
+  flex: 1;
+  margin: 0 0 32rpx 16rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  border-radius: 20rpx;
+  padding: 24rpx;
+}
+
+.nh {
+  display: flex;
+  align-items: baseline;
+}
+.ny {
+  flex: none;
+  font-size: 32rpx;
+  font-weight: 700;
+  color: var(--brand);
+  font-variant-numeric: tabular-nums;
+  margin-right: 16rpx;
+}
+.nt {
+  font-size: 31rpx;
+  font-weight: 600;
+  color: var(--ink);
+}
+.ns {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: var(--ink-3);
+}
+
+.fig {
+  width: 100%;
+  margin-top: 20rpx;
+  border-radius: 14rpx;
+  background: var(--bg-alt);
+}
+.cap {
+  margin-top: 10rpx;
+  font-size: 23rpx;
+  color: var(--ink-3);
+  line-height: 1.6;
+}
+
+.para {
+  display: block;
+  margin-top: 16rpx;
+  font-size: 29rpx;
+  line-height: 1.75;
+  color: var(--ink-body);
+}
+
+.tags {
+  margin-top: 16rpx;
+}
+.tag {
+  display: inline-block;
+  margin: 0 12rpx 8rpx 0;
+  padding: 6rpx 18rpx;
+  border-radius: 999rpx;
+  background: var(--bg-alt);
+  color: var(--ink-2);
+  font-size: 23rpx;
+}
+
+/* 同期中国 */
+.cn {
+  margin-top: 22rpx;
+  padding: 20rpx 22rpx;
+  border-radius: 16rpx;
+  background: var(--bg-alt);
+  border: 1rpx solid var(--line);
+}
+.cn-h {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 10rpx;
+}
+.cn-era {
+  color: var(--brand);
+  font-weight: 700;
+}
+.cn-row {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 12rpx;
+}
+.cn-k {
+  flex: none;
+  margin-right: 14rpx;
+  padding: 4rpx 16rpx;
+  border-radius: 999rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  color: var(--ink);
+  font-size: 22rpx;
+  font-weight: 600;
+}
+.cn-list {
+  flex: 1;
+}
+.cn-i {
+  margin-bottom: 8rpx;
+  font-size: 25rpx;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.cn-y {
+  font-weight: 700;
+  color: var(--ink);
+  margin-right: 8rpx;
+  font-variant-numeric: tabular-nums;
+}
+.cn-t {
+  color: var(--ink-2);
+}
+.cn-n {
+  font-weight: 600;
+  color: var(--ink);
+  margin-right: 10rpx;
+}
+.cn-life {
+  color: var(--ink-3);
+  font-size: 23rpx;
+  margin-right: 10rpx;
+}
+.cn-d {
+  color: var(--ink-2);
+}
+
+/* 底部：通往成就详解 */
+.more {
+  margin: 8rpx 32rpx 40rpx;
+}
+.more-t {
+  display: block;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 16rpx;
+}
+.more-i {
+  display: flex;
+  align-items: center;
+  padding: 26rpx 24rpx;
+  margin-bottom: 14rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  border-radius: 18rpx;
+}
+.more-i-hover {
+  background: var(--brand-wash);
+}
+.more-n {
+  flex: 1;
+  font-size: 29rpx;
+  color: var(--ink);
+}
+.more-a {
+  color: var(--ink-3);
+  font-size: 34rpx;
+}

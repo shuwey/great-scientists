@@ -16,15 +16,18 @@
 | 工程骨架：app.json / app.js / app.wxss / 主题令牌 | ✅ |
 | 门户页（**查询优先**：搜索框 → 跨库结果 → 图标桌面） | ✅ |
 | 词典页（398 条 + 搜索 + 双筛选 + 触底分页） | ✅ |
-| 科学家档案页（术语按分类分组 + 弹层） | ✅ |
+| 科学家档案页（术语按分类分组 + 两个内容入口 + 弹层） | ✅ |
+| **生平时间轴**（174 个节点，每节点带同期中国对照） | ✅ 内容已迁移（历史照片待上云） |
+| **成就详解**（60 篇：小节/配图/提示框/公式符号表/概念胶囊） | ✅ 内容已迁移（3 张配图待上云） |
 | 我的（学习档案 / 打卡 / 头像昵称填写能力 / 隐私入口） | ✅ |
 | 账号与云端：静默登录、进度上报（云函数 ×2） | ✅ 代码就绪，**待部署** |
-| 学生物时间轴 / 成就详解 | ⬜ 待迁移（数据层尚无 timeline，见下） |
+| 历史照片上云（144 张，压后 10.6MB） | ⬜ 待云环境就绪后上传 |
 | 动手实验室（15 种 Canvas） | ⬜ 待移植 |
 | 术语自测 + 成绩海报 | ⬜ 待开发 |
-| 分包拆分的落地 | ⬜ v1 全在主包（596KB，余量充足） |
+| 分包拆分的落地 | ⬜ v1 全在主包（1010KB，余量充足） |
 
-静态校验：`python3 tools/validate_miniapp.py` → **24 项通过 / 0 错误 / 0 警告**。
+静态校验：`python3 tools/validate_miniapp.py` → **34 项通过 / 0 错误 / 0 警告**。
+页面自测：`node tools/e2e_miniapp_pages.js` → **887 条断言 / 0 问题**（假 wx 真跑 onLoad）。
 护栏自证：`python3 tools/selftest_miniapp_guardrails.py` → **6 个人造错误全部拦住 + 1 个误报反例通过**。
 
 ---
@@ -102,9 +105,12 @@ const CLOUD_ENV = '';   // 填成 cloud1-xxxxxxxx
 ```
 改静态站内容（spec_*.py / terms.js / index.html）
         ↓
-python3 tools/export_miniapp_content.py      # 抽取 → miniapp/data/*.js
+python3 tools/export_miniapp_content.py      # 术语 + 门户元数据 → data/roster.js、data/terms.js
+python3 tools/export_miniapp_pages.py        # 时间轴 + 成就详解   → data/pages.js
+python3 tools/build_miniapp_page_assets.py   # 配图编目        → assets/pages/、data/images.js
         ↓
 python3 tools/validate_miniapp.py            # 静态校验
+node    tools/e2e_miniapp_pages.js            # 页面逻辑无头自测
         ↓
 微信开发者工具上传新版本
 ```
@@ -112,16 +118,54 @@ python3 tools/validate_miniapp.py            # 静态校验
 抽取器有两条独立路径交叉核对术语条数（Node 求值 vs 正则数键），
 不一致直接退出——防"静默丢内容"。
 
+### 内容层新增了什么（2026-09-18）
+
+小程序原先是"门户 + 术语词典"，缺了主站最核心的两块内容。现在补齐：
+
+| 页面 | 内容 | 规模 |
+|---|---|---|
+| `pages/timeline/index` | 生平时间轴，每个节点带**同期中国**对照卡（朝代年号 / 同期大事 / 同期人物） | 174 个节点 |
+| `pages/detail/index` | 成就详解：小节 + 配图 + 提示框 + 公式符号表 + 关键概念胶囊 | 60 篇 |
+
+同期中国与网页端**同一份数据源**（`tools/china_data.py`）、**同一套 ±20 年窗口口径**，
+只是导出时预算好（小程序端不适合再带一份计算引擎进来）。
+
+### 配图怎么走（重要）
+
+| 类型 | 体积 | 去处 |
+|---|---|---|
+| 示意图 SVG | 65 张 / 96 KB | **打进包** → `assets/pages/`，矢量不失真 |
+| 历史照片 JPG | 144 张 / 29 MB | **云存储** → 压到 10.6 MB 后上传 |
+
+历史照片换成云存储不是选择而是**唯一出路**：个人主体无法给外部域名做 ICP 备案，
+`downloadFile` 白名单根本加不了；而 29 MB 也远超主包 2 MB 上限。
+
+`data/images.js` 是"路径 → 实际资源"的映射表。照片还没上云时解析为空字符串，
+**页面据此不渲染图片 —— 绝不出现裂图**。上传完成后把 fileID 写进
+`tools/miniapp_cloud_images.json` 再重跑一次配图脚本，照片自动点亮，页面代码一行都不用改。
+
+```bash
+python3 tools/stage_miniapp_photos.py        # 压缩备料 → ../读懂牛顿-验证产物/miniapp-photos/
+# 上传该目录到云存储 → 写 tools/miniapp_cloud_images.json
+python3 tools/build_miniapp_page_assets.py   # 合并云映射，照片点亮
+```
+
 ### 相关工具
 
 | 工具 | 作用 |
 |---|---|
-| `tools/export_miniapp_content.py` | 站点 → 小程序内容层（幂等、确定性） |
+| `tools/export_miniapp_content.py` | 站点 → 小程序内容层（术语 + 元数据，幂等、确定性） |
+| `tools/export_miniapp_pages.py` | 站点 → 时间轴 + 成就详解（含同期中国预计算） |
+| `tools/build_miniapp_page_assets.py` | 配图编目：随包 / 上云分流，产出 `data/images.js` |
+| `tools/stage_miniapp_photos.py` | 历史照片压 WebP 备料 + 量出上云体积 |
 | `tools/miniapp_terms_dump.js` | 在沙箱里求值各站 `terms.js`，输出 JSON |
-| `tools/validate_miniapp.py` | 小程序静态校验（数据/富文本/路由/跳转/体积/红线词） |
+| `tools/validate_miniapp.py` | 小程序静态校验（数据/富文本/内容层/路由/跳转/体积/红线词） |
+| `tools/e2e_miniapp_pages.js` | 页面逻辑无头自测（假 wx，真跑 onLoad，断言 887 条） |
 | `tools/selftest_miniapp_guardrails.py` | 护栏自证：注入人造错误，确认校验器拦得住 |
 | `tools/make_miniapp_tabbar.py` | 生成 tabBar PNG 图标（小程序不支持 SVG） |
 | `tools/miniapp_content_report.json` | 抽取产物报告（计数与体积） |
+| `tools/miniapp_pages_report.json` | 时间轴/详解抽取报告 |
+| `tools/miniapp_pending_photos.json` | 待上云照片清单（上传脚本读它） |
 
 ---
 
@@ -134,20 +178,27 @@ miniapp/
 ├── sitemap.json
 ├── data/                             由抽取器生成，不要手改
 │   ├── roster.js                     15 位元数据 + 设计令牌 + 学科色
-│   └── terms.js                      bySci（全量）+ flatIndex（列表/搜索索引）
+│   ├── terms.js                      bySci（全量）+ flatIndex（列表/搜索索引）
+│   ├── pages.js                      timeline（174 节点，含同期中国）+ detail（60 篇）
+│   └── images.js                     图片映射表（包内路径 / 云 fileID；未就绪则为空）
 ├── assets/
 │   ├── icons/                        15 张首屏图标（webp，228KB，走包内）
+│   ├── pages/                        65 张详解页示意图（SVG，96KB，走包内）
 │   └── tabbar/                       tabBar 图标（PNG，4 组 × 2 态）
 ├── components/term-popup/            术语弹层（rich-text 渲染高亮）
 ├── pages/
 │   ├── portal/                       门户（tab）· 查询优先
 │   ├── glossary/                     词典（tab）· 与门户共用检索层
 │   ├── profile/                      我的（tab）
-│   └── scientist/                    科学家档案（非 tab，必须在 app.json 里登记）
+│   ├── scientist/                    科学家档案（非 tab，必须在 app.json 里登记）
+│   ├── timeline/                     生平时间轴（含同期中国对照）
+│   └── detail/                       成就详解
 ├── utils/
 │   ├── search.js                     检索层（排序与匹配的唯一实现）
 │   ├── store.js                      本地学习档案（打卡/已读/术语/查询记录）
-│   └── cloud.js                      云调用封装（未配环境则静默降级）
+│   ├── cloud.js                      云调用封装（未配环境则静默降级）
+│   ├── img.js                        图片解析（未上云的照片返回空，页面不渲染占位）
+│   └── pages.js                      详解页顺序解析（SITE_PAGES 顺序 + 文件名 slug）
 └── cloudfunctions/
     ├── login/                        静默登录 / 建档
     └── report/                       进度与成绩上报（幂等 upsert）

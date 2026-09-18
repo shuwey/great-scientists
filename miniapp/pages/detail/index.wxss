@@ -1,0 +1,231 @@
+/* 成就详解页 */
+
+.head {
+  padding: 36rpx 32rpx 8rpx;
+}
+.title {
+  display: block;
+  font-size: 44rpx;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--ink);
+}
+.claim {
+  display: block;
+  margin-top: 18rpx;
+  font-size: 30rpx;
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+.tags {
+  margin-top: 18rpx;
+}
+.tag {
+  display: inline-block;
+  margin: 0 12rpx 8rpx 0;
+  padding: 6rpx 18rpx;
+  border-radius: 999rpx;
+  background: var(--brand-soft);
+  color: var(--brand);
+  font-size: 23rpx;
+}
+
+/* 小节导航 */
+.toc {
+  white-space: nowrap;
+  padding: 16rpx 32rpx 8rpx;
+}
+.toc-i {
+  display: inline-block;
+  margin-right: 14rpx;
+  padding: 10rpx 22rpx;
+  border-radius: 999rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  color: var(--ink-2);
+  font-size: 24rpx;
+}
+
+/* 正文 */
+.body {
+  padding: 12rpx 32rpx 0;
+}
+.h2 {
+  margin: 40rpx 0 16rpx;
+  font-size: 34rpx;
+  font-weight: 600;
+  color: var(--ink);
+  padding-left: 18rpx;
+  border-left: 6rpx solid var(--brand);
+  line-height: 1.4;
+}
+.para {
+  display: block;
+  margin-top: 16rpx;
+  font-size: 30rpx;
+  line-height: 1.8;
+  color: var(--ink-body);
+}
+
+.figbox {
+  margin-top: 24rpx;
+}
+.fig {
+  width: 100%;
+  border-radius: 16rpx;
+  background: var(--bg-alt);
+}
+.cap {
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  line-height: 1.65;
+  color: var(--ink-3);
+}
+
+/* 提示框 */
+.note {
+  margin-top: 24rpx;
+  padding: 22rpx 24rpx;
+  border-radius: 16rpx;
+  border-left: 6rpx solid var(--accent);
+  background: var(--accent-soft);
+}
+.note-green {
+  border-left-color: #37B24D;
+  background: #EBFBEE;
+}
+.note-t {
+  display: block;
+  font-size: 27rpx;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 10rpx;
+}
+.note-b {
+  display: block;
+  font-size: 28rpx;
+  line-height: 1.75;
+  color: var(--ink-body);
+}
+
+/* 公式 + 符号表 */
+.form {
+  margin-top: 24rpx;
+  padding: 24rpx;
+  border-radius: 16rpx;
+  background: #F8F9FC;
+  border: 1rpx solid var(--line);
+}
+.form-eq {
+  display: block;
+  text-align: center;
+  font-size: 36rpx;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.6;
+}
+.form-note {
+  display: block;
+  margin-top: 10rpx;
+  text-align: center;
+  font-size: 23rpx;
+  color: var(--ink-3);
+}
+.sym {
+  margin-top: 14rpx;
+  padding-top: 14rpx;
+  border-top: 1rpx dashed var(--line-2);
+  font-size: 26rpx;
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+
+/* 列表 */
+.ul {
+  margin-top: 18rpx;
+}
+.li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12rpx;
+}
+.li-dot {
+  flex: none;
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background: var(--brand-line);
+  margin: 16rpx 16rpx 0 4rpx;
+}
+.li-t {
+  flex: 1;
+  font-size: 29rpx;
+  line-height: 1.75;
+  color: var(--ink-body);
+}
+
+/* 一句话记住 */
+.fact {
+  margin-top: 28rpx;
+  padding: 22rpx 24rpx;
+  border-radius: 16rpx;
+  background: var(--brand-wash);
+  border: 1rpx solid var(--brand-line);
+  font-size: 28rpx;
+  line-height: 1.75;
+  color: var(--ink);
+}
+
+/* 关键概念胶囊 */
+.terms {
+  margin: 40rpx 32rpx 0;
+}
+.terms-t {
+  display: block;
+  font-size: 27rpx;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 16rpx;
+}
+.term-chip {
+  display: inline-block;
+  margin: 0 14rpx 14rpx 0;
+  padding: 12rpx 24rpx;
+  border-radius: 999rpx;
+  background: var(--card);
+  border: 1rpx solid var(--brand-line);
+  color: var(--brand);
+  font-size: 26rpx;
+}
+.term-chip-hover {
+  background: var(--brand-soft);
+}
+
+/* 上一篇 / 下一篇 */
+.pager {
+  margin: 36rpx 32rpx 48rpx;
+}
+.pg {
+  padding: 24rpx;
+  margin-bottom: 16rpx;
+  border-radius: 18rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+}
+.pg-r {
+  text-align: right;
+}
+.pg-hover {
+  background: var(--brand-wash);
+}
+.pg-l {
+  display: block;
+  font-size: 23rpx;
+  color: var(--ink-3);
+  margin-bottom: 6rpx;
+}
+.pg-t {
+  display: block;
+  font-size: 29rpx;
+  color: var(--ink);
+}
