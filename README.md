@@ -163,6 +163,7 @@ node tools/e2e_portal.js                # 门户：15 张卡片 + 检索过滤 +
 | `tools/check_china.js` | 同期中国卡片浏览器实测 | `node tools/check_china.js [id]`；15 站 × 桌面/移动：卡片就位、**同站无重复**、点名词真弹出解释（弹窗标题与术语库比对）、卡片不被三列 grid 压成竖排、0 报错。加 `E2E_BASE=https://…` 前缀即**直连线上**复测（会自动 `--no-proxy-server` 绕过本机代理）。 |
 | `tools/shot_nav_more.js` | 下拉展开实测 + 截图 | 桌面 hover / 移动点击两条路径，量测菜单尺寸与右溢出。 |
 | `tools/e2e_online.js` | **线上**站点抽查（对已发布链接跑） | `node tools/e2e_online.js all 1280,390`；15 站 × 5 类页面，捕获 pageerror/控制台/资源 4xx、并核对时间轴「同期中国」卡与 labs 画布真的画出来了。`E2E_BASE=` 可切本地。 |
+| `tools/deploy_cloudflare.sh` | Cloudflare Pages 一键同步（备用镜像） | `bash tools/deploy_cloudflare.sh`；自动定位 wrangler、rsync 出项目外 staging（排除 `miniapp/` `tools/` `.git/` `.workbuddy/` `.wbapp_*`）、取 git HEAD 作 `--commit-hash`、部署后打印回测命令。★ `pages deploy` **没有 `--exclude`**，过滤只能靠 staging 目录。 |
 
 **小程序（miniapp/）专用**——内容单向同步：站点 → 小程序，别反向改。
 
@@ -217,10 +218,14 @@ node tools/e2e_portal.js                # 门户：15 张卡片 + 检索过滤 +
 
 ## 六、部署与历史
 
-- **当前线上（系列门户，15 位全集）**：<https://4e2abcc9f8f84b9dae34f54e08e489ff.app.workbuddy.link>
+- **当前线上（系列门户，15 位全集 · 权威域名）**：<https://great-scientists-05806.app.workbuddy.host/>
   部署的是**项目根目录**，因此一个链接即可访问全部 15 个子站（`/scientists/<id>/...`）。
-- 该链接复用了此前「牛顿子站」的发布沙箱——**原先那个只讲牛顿的链接现在指向整个系列门户**，牛顿站仍可在 `/scientists/newton/` 访问。
-- 爱因斯坦子站另有一个独立的历史链接（`7f19849c…`），内容同样可从新门户进入，可按需下线。
+  门户的 `canonical` / `og:url` / 分享图都指向该域名；换域名时**只需改 `index.html` 里那 6 处绝对网址**（声明：子站零硬编码）。
+- **备用镜像（Cloudflare Pages）**：<https://great-scientists-caq.pages.dev/>
+  一键同步：`bash tools/deploy_cloudflare.sh`（增量上传，实测只传变更的 2 个文件、约 36 秒）。
+- 根目录 `404.html` 关闭了 Cloudflare Pages 的软 404（缺此文件时未命中路径返回 `200` + 首页，链接失效时用户看到的是首页）。
+  ⚠️ 该页样式必须用**绝对路径** `/assets/css/...` —— 它会在任意深度的路径下被返回，相对路径会跟着请求路径变而加载不到。
+- 历史链接（内容停在旧版，建议在「设置—数据管理—应用」里下线）：`great-scientists.app.workbuddy.host`（**缺 `china.js` ⇒ 同期中国卡片不显示**）、`4e2abcc9….app.workbuddy.link`、爱因斯坦独立链接 `7f19849c…`。
 - 仓库历史：原为单站 `newton-science-site`，现重组为多科学家 monorepo，根目录为系列总览；2026-09-07 仓库已更名为 **`great-scientists`**（GitHub 旧地址自动重定向）：<https://github.com/shuwey/great-scientists>
 - 关键经验沉淀见 `.workbuddy/memory/`；物理演示曾踩过的坑（全反射、循环步长零守卫、坐标奇点）记录在 `tools/` 调试脚本与记忆里。
 
