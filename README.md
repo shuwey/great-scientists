@@ -155,9 +155,12 @@ node tools/e2e_portal.js                # 门户：15 张卡片 + 检索过滤 +
 | `tools/new_scientist.py` | 生成新子站骨架 | 见上（路径 B）。 |
 | `tools/nav_more_menu.py` | 详解页收进「详解 ▾」下拉 | 幂等；`build_scientist.py` 已自动调用，**手工站重建后需单跑**：`python3 tools/nav_more_menu.py [id]`。 |
 | `tools/check_nav.js` | 顶部导航折行实测 | `node tools/check_nav.js all 1440,1280,1024`；判据=链接内文本行数>1 或链接盒溢出 nav。 |
-| `tools/china_data.py` | 「同期中国」对照**唯一数据源** | 朝代/年号/事件/人物四张表。**新增条目必须先核实年份与生卒**，宁缺毋滥。 |
-| `tools/build_china_era.py` | 生成时间轴「同期中国」卡片 | `python3 tools/build_china_era.py [id]`；按 ±20 年窗口切片写入 `assets/js/china.js` 并注入 script。大事按距节点远近取 3；人物按「在世中点」距节点排序取 3（否则名额会被早期人物占满）。 |
-| `tools/check_china.js` | 同期中国卡片实测 | `node tools/check_china.js <id>`；核对年号换算、事件/人物命中、运行时报错。 |
+| `tools/china_data.py` | 「同期中国」对照**唯一数据源** | 朝代/年号/事件/人物/名词五张表。**新增条目必须先核实年份与生卒**，宁缺毋滥；名词解释的年份数字同样只写有把握的。 |
+| `tools/china_cards.py` | 卡片计算的**唯一实现**（网页端与小程序共用） | `era_head()` 年号换算、`assign()` 全局去重分配、`mark()` 名词标注。两端都不许再写第二份，否则口径必然漂移。 |
+| `tools/build_china_era.py` | 生成时间轴「同期中国」卡片 | `python3 tools/build_china_era.py [id]`；把 `china_cards.cards()` 的预计算结果写进 `assets/js/china.js`（哑渲染器）并注入 script。卡片按**节点序号**对齐，不按年份做键 —— 同一年可能有两个节点（哥白尼 1543 出版+逝世），按年份做键会让两张卡一模一样。 |
+| `tools/check_china_cards.py` | 同期中国卡片静态护栏 | `python3 tools/check_china_cards.py`；只读生成产物，独立复核**同站不重复**、序号对齐、每节点 ≤3、`data-term` 全可解析、不与站点术语库撞 id。 |
+| `tools/selftest_china_guardrail.py` | 上面那道护栏的自证 | 注入 5 个变异（重复大事/重复人物/名词悬空/序号错位/覆盖站点术语），确认都拦得住并退出码非 0。 |
+| `tools/check_china.js` | 同期中国卡片浏览器实测 | `node tools/check_china.js [id]`；15 站 × 桌面/移动：卡片就位、**同站无重复**、点名词真弹出解释（弹窗标题与术语库比对）、卡片不被三列 grid 压成竖排、0 报错。 |
 | `tools/shot_nav_more.js` | 下拉展开实测 + 截图 | 桌面 hover / 移动点击两条路径，量测菜单尺寸与右溢出。 |
 | `tools/e2e_online.js` | **线上**站点抽查（对已发布链接跑） | `node tools/e2e_online.js all 1280,390`；15 站 × 5 类页面，捕获 pageerror/控制台/资源 4xx、并核对时间轴「同期中国」卡与 labs 画布真的画出来了。`E2E_BASE=` 可切本地。 |
 
@@ -166,11 +169,11 @@ node tools/e2e_portal.js                # 门户：15 张卡片 + 检索过滤 +
 | 工具 | 作用 | 说明 |
 |---|---|---|
 | `tools/export_miniapp_content.py` | 站点 → 术语 + 门户元数据 | 产出 `data/roster.js`、`data/terms.js`；术语条数有独立路径交叉核对。 |
-| `tools/export_miniapp_pages.py` | 站点 → 时间轴 + 成就详解 | 产出 `data/pages.js`；**同期中国在同一处预算好**（与网页端同一数据源、同一 ±20 年口径）。节点无标题直接报错退出。 |
+| `tools/export_miniapp_pages.py` | 站点 → 时间轴 + 成就详解 | 产出 `data/pages.js`；**同期中国调用 `tools/china_cards.py`**（网页端同一份实现，所以端上与网页的卡片内容天然一致），端上只做「翻译」成纯文本。节点无标题直接报错退出；另有一道闸门核对 `.tl-item` 序列与 `data-year` 序列一致。 |
 | `tools/build_miniapp_page_assets.py` | 配图编目：随包 / 上云分流 | SVG 打进包（`assets/pages/`），照片列入 `tools/miniapp_pending_photos.json` 待上云；产出 `data/images.js` 映射表。 |
 | `tools/stage_miniapp_photos.py` | 历史照片压 WebP 备料 | 29.1 MB → 10.6 MB（36%，q=76 最长边 828px）；产物落在项目外，不带进包、不随站发布。 |
-| `tools/validate_miniapp.py` | 小程序静态校验 | 页面跳转/组件/体积/红线词 + **内容层**（节点数、年份升序、同期中国、配图落点、术语悬空、rich-text 白名单）。 |
-| `tools/e2e_miniapp_pages.js` | 页面逻辑无头自测 | 假 `wx` + 真跑 `onLoad`，断言 887 条；专抓静默失败（图片解析成空、术语点开是空、上一篇走空）。 |
+| `tools/validate_miniapp.py` | 小程序静态校验 | 页面跳转/组件/体积/红线词 + **内容层**（节点数、年份升序、同期中国去重、历史名词可解析、弹层组件已挂、配图落点、术语悬空、rich-text 白名单）。 |
+| `tools/e2e_miniapp_pages.js` | 页面逻辑无头自测 | 假 `wx` + 真跑 `onLoad`；抓静默失败（图片解析成空、术语点开是空、上一篇走空、同期中国条目重复、名词胶囊解析不到）。 |
 | `tools/preview_miniapp_pages.js` | 页面版式预览（不开开发者工具） | `node tools/preview_miniapp_pages.js` → `../读懂牛顿-验证产物/miniapp-preview/index.html`；**真数据 + 真 wxss**（rpx 折半、`page{}` 选择器映射到 `:root`）在浏览器里看版式。 |
 | `tools/selftest_miniapp_guardrails.py` | 护栏自证 | 注入 6 个人造错误，确认校验器拦得住 + 1 个误报反例。 |
 

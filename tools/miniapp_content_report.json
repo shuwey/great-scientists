@@ -1,9 +1,10 @@
 {
   "bytes": {
     "roster.js": 9862,
-    "terms.js": 289113,
-    "total": 298975
+    "terms.js": 317522,
+    "total": 327384
   },
+  "cn_terms_total": 85,
   "disc_colors": {
     "astro": "#3B5BDB",
     "chem": "#F59F00",

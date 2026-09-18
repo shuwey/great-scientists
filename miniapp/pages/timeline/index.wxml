@@ -53,7 +53,7 @@
           <view class="cn" wx:if="{{item.cn}}">
             <view class="cn-h">
               <text>同期中国 · </text>
-              <text class="cn-era">{{item.cn.era}}</text>
+              <text class="cn-era" data-k="cn-nianhao" bindtap="openTerm">{{item.cn.era}}</text>
             </view>
             <view class="cn-row" wx:if="{{item.cn.ev.length > 0}}">
               <text class="cn-k">大事</text>
@@ -73,6 +73,18 @@
                   <text class="cn-d">{{f.field}} · {{f.desc}}</text>
                 </view>
               </view>
+            </view>
+
+            <view class="cn-chips" wx:if="{{item.cn.chips.length > 0}}">
+              <text
+                class="cn-chip"
+                wx:for="{{item.cn.chips}}"
+                wx:for-item="c"
+                wx:key="k"
+                data-k="{{c.k}}"
+                bindtap="openTerm"
+                hover-class="cn-chip-hover"
+              >{{c.name}}</text>
             </view>
           </view>
         </view>
@@ -96,3 +108,11 @@
 
   </view>
 </block>
+
+<term-popup
+  show="{{show}}"
+  term="{{term}}"
+  sciName="同期中国"
+  related="{{related}}"
+  bind:close="closeTerm"
+/>

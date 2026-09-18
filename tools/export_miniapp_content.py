@@ -32,6 +32,9 @@ import shutil
 import subprocess
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import china_data as CHINA  # noqa: E402
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_DIR = os.path.join(ROOT, "miniapp", "data")
 REPORT_PATH = os.path.join(ROOT, "tools", "miniapp_content_report.json")
@@ -295,6 +298,26 @@ def write_module(path, var_obj, header):
     return os.path.getsize(path)
 
 
+def build_cn_terms():
+    """「同期中国」卡片里的名词解释（源：tools/china_data.py 的 TERMS）。
+
+    刻意放在**独立的 `cn` 命名空间**，不并进 `bySci`：这些不是某位科学家的
+    科学术语，混进去会让「术语词典」页多出一批历史名词、也会污染按人聚合的计数。
+
+    字段名对齐 term-popup 组件（name/cat/short/plain/analogy/extra）；
+    正文是纯文本，没有标记要转，所以不用走 richify。
+    """
+    out = {}
+    for t in CHINA.TERMS:
+        tid, name, _aliases, cat, short, plain, extra = t
+        out[tid] = {"name": name, "cat": cat, "short": short,
+                    "plain": plain, "analogy": "", "extra": extra}
+    if len(out) != len(CHINA.TERMS):
+        raise SystemExit("！名词 id 有重复：%d 条定义只得到 %d 个键"
+                         % (len(CHINA.TERMS), len(out)))
+    return out
+
+
 def main():
     roster, discs = parse_roster()
     if len(roster) != EXPECTED_SCIENTISTS:
@@ -321,14 +344,17 @@ def main():
     }
     size_roster = write_module(os.path.join(OUT_DIR, "roster.js"), roster_obj,
                                "小程序 · 门户与科学家元数据")
+    cn_terms = build_cn_terms()
     size_terms = write_module(os.path.join(OUT_DIR, "terms.js"),
-                              {"bySci": by_sci, "flatIndex": flat},
-                              "小程序 · 术语库（398 条，已转 rich-text 兼容富文本）")
+                              {"bySci": by_sci, "flatIndex": flat, "cn": cn_terms},
+                              "小程序 · 术语库（科学 %d 条 + 同期中国名词 %d 条）"
+                              % (len(flat), len(cn_terms)))
 
     report = {
         "scientists": len(roster),
         "terms_total": len(flat),
         "terms_total_by_regex": src_total,
+        "cn_terms_total": len(cn_terms),
         "terms_per_scientist": per_counts,
         "disc_colors": discs,
         "bytes": {"roster.js": size_roster, "terms.js": size_terms,

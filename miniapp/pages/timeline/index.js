@@ -15,6 +15,12 @@ const cloud = require('../../utils/cloud');
 const img = require('../../utils/img');
 const pageOrder = require('../../utils/pages');
 
+/* 「同期中国」卡片里的历史名词（年号、科举、虎门销烟…）走独立命名空间 termsData.cn，
+   不是 bySci 里的科学术语。年号那一条由卡片标题那行专门承担（标题本身就是可点的），
+   就不在胶囊里再重复一遍。 */
+const CN_TERMS = termsData.cn || {};
+const ERA_TERM = 'cn-nianhao';
+
 function lifeOf(f) {
   const b = f[1];
   const d = f[2];
@@ -27,6 +33,9 @@ Page({
     nodes: [],
     details: [],
     years: [],
+    show: false,
+    term: null,
+    related: [],
   },
 
   onLoad(options) {
@@ -72,6 +81,11 @@ Page({
         fig: (n.cn.fig || []).map((f) => ({
           name: f[0], life: lifeOf(f), field: f[3], desc: f[4],
         })),
+        // 网页端是在正文里把名词标成可点的 <span class="term">，但 rich-text 不认事件，
+        // 所以端上降级成卡片末尾的可点胶囊 —— 与详解页「关键概念」同一套做法。
+        chips: (n.cn.terms || [])
+          .filter((k) => k !== ERA_TERM && CN_TERMS[k])
+          .map((k) => ({ k: k, name: CN_TERMS[k].name })),
       };
     }
     return { y: n.y, t: n.t, s: n.s || '', tags: n.tags || [], blocks: blocks, cn: cn };
@@ -90,6 +104,20 @@ Page({
 
   openLabs() {
     wx.showToast({ title: '动手实验还在迁移中', icon: 'none' });
+  },
+
+  /** 点卡片里的历史名词（含标题那行的年号）→ 弹出解释 */
+  openTerm(e) {
+    const k = e.currentTarget.dataset.k;
+    const t = CN_TERMS[k];
+    if (!t) return;
+    /* 刻意**不**写 store.markTerm / cloud.reportProgress：术语进度是按「科学术语」
+       统计的，把 cn-* 混进同一个数组会污染词典页的掌握计数与后台报表。 */
+    this.setData({ show: true, term: t, related: [] });
+  },
+
+  closeTerm() {
+    this.setData({ show: false });
   },
 
   onShareAppMessage() {

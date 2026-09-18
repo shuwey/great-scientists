@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "生平时间轴",
-  "usingComponents": {}
+  "usingComponents": {
+    "term-popup": "/components/term-popup/index"
+  }
 }

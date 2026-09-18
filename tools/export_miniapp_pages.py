@@ -38,14 +38,13 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import china_data as D  # noqa: E402
+import china_cards as C  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCIENTISTS = os.path.join(ROOT, "scientists")
 OUT = os.path.join(ROOT, "miniapp", "data", "pages.js")
 REPORT = os.path.join(ROOT, "tools", "miniapp_pages_report.json")
 
-WIN = 20
 EXPECTED_SCIENTISTS = 15
 EXPECTED_DETAIL_PER = 4
 
@@ -167,56 +166,40 @@ def norm_img(src, sid, where, missing):
 
 
 # --------------------------------------------------------------------------- #
-# 同期中国（与 tools/build_china_era.py 的 JS 版本逐条同口径）
+# 同期中国
+#
+# 计算全部交给 tools/china_cards.py（网页端生成器用的是同一份代码）——
+# 这里只做「翻译」：把共用结构翻成 rich-text / WXML 好消费的纯文本形态。
+# 端上不跑计算引擎，也不该有第二份去重规则。
 # --------------------------------------------------------------------------- #
-CN = "零一二三四五六七八九"
+def attach_china(nodes):
+    """给整站节点按序号分配「同期中国」卡片（同站不重复）。
 
-
-def num2cn(n):
-    if n == 1:
-        return "元"
-    if n < 10:
-        return CN[n]
-    if n == 10:
-        return "十"
-    if n < 20:
-        return "十" + CN[n - 10]
-    t, r = divmod(n, 10)
-    s = CN[t] + "十"
-    return s + CN[r] if r else s
-
-
-def era_of(y):
-    for e in D.ERAS:
-        if e[0] <= y <= e[1]:
-            return {"dyn": e[3], "era": e[2], "n": y - e[0] + 1}
-    for d in D.DYNASTIES:
-        if d[0] <= y <= d[1]:
-            return {"dyn": d[2], "era": "", "n": 0}
-    return None
-
-
-def china_card(y):
-    """按节点年份算一张对照卡（无内容则返回 None）。"""
-    er = era_of(y)
-    head = ""
-    if er:
-        head = (er["dyn"] + "·" + er["era"] + num2cn(er["n"]) + "年") if er["era"] else er["dyn"]
-
-    lo, hi = y - WIN, y + WIN
-    evs = sorted([e for e in D.EVENTS if lo <= e[0] <= hi],
-                 key=lambda e: abs(e[0] - y))[:3]
-    figs = [f for f in D.FIGURES if f[1] <= hi and (f[2] if f[2] is not None else 9999) >= lo]
-    figs.sort(key=lambda f: abs((f[1] + (f[2] if f[2] is not None else f[1] + 40)) / 2.0 - y))
-    figs = figs[:3]
-
-    if not head and not evs and not figs:
-        return None
-    return {
-        "era": head,
-        "ev": [[e[0], e[1]] for e in evs],
-        "fig": [[f[0], f[1], f[2], f[3], f[4]] for f in figs],
-    }
+    注意传的是**节点年份列表**而不是集合：同一年可能有两个节点
+    （哥白尼 1543 既是《天体运行论》出版、又是逝世），按年份做键会让两个
+    节点拿到同一张卡 —— 那正是要消灭的重复。
+    """
+    years = [n["y"] for n in nodes]
+    got = C.assign(years)
+    for n, g in zip(nodes, got):
+        head = C.era_head(n["y"])
+        ev, terms = [], []
+        for e in g["ev"]:
+            ev.append([e[0], e[1]])
+            terms += C.mark(e[1])[1]
+        fig = []
+        for f in g["fg"]:
+            fig.append([f[0], f[1], f[2], f[3], f[4]])
+            terms += C.mark(f[4])[1]
+        if head:
+            terms.append(C.NIANHAO)
+        if not head and not ev and not fig:
+            continue
+        # terms 是「网页端会标出来的名词」，端上渲染成页尾胶囊 —— rich-text 不认事件，
+        # 所以不能把 <span class="term"> 搬过去，只能换成可点的胶囊。
+        n["cn"] = {"era": head, "ev": ev, "fig": fig,
+                   "terms": sorted(set(terms))}
+    return nodes
 
 
 # --------------------------------------------------------------------------- #
@@ -268,10 +251,18 @@ def parse_timeline(sid, missing):
         tags = [text_of(x) for x in re.findall(r'<span class="tag[^"]*"[^>]*>(.*?)</span>', frag, re.S)]
         node = {"y": y, "t": title, "s": sub, "blocks": [b for b in blocks if b.get("h") or b.get("img")],
                 "tags": [t for t in tags if t]}
-        cn = china_card(y)
-        if cn:
-            node["cn"] = cn
         nodes.append(node)
+    # 闸门：站点侧 china.js 是按 `[data-year]` 的出现顺序对齐卡片的
+    # （见 build_china_era.py 与它生成脚本里的 c.y !== y 守卫）。这里用的是
+    # `.tl-item` 的顺序 —— 两者一旦不一致，端上与网页的同期中国卡片就会各说各话，
+    # 而两边都不会报错。把它变成显式断言，结构漂移时立刻炸出来。
+    dy = [int(x) for x in re.findall(r'data-year="(\d{4})"', src)]
+    if dy != [n["y"] for n in nodes]:
+        raise SystemExit("！%s：`data-year` 序列与 tl-item 序列不一致（端上卡片会与网页错位）\n"
+                         "   data-year %s\n   tl-item   %s"
+                         % (sid, dy[:8], [n["y"] for n in nodes][:8]))
+    # 卡片必须在**收齐整站节点之后**再分配：去重是全局的（同一条目只落一个节点）
+    attach_china(nodes)
     return src, nodes
 
 
@@ -438,7 +429,7 @@ def main():
         "timeline": {"nodes": tl_nodes, "per_scientist": tl_stats},
         "detail": {"pages": dt_pages, "per_scientist": dt_stats},
         "bytes": size,
-        "china_window_years": WIN,
+        "china_window_years": C.WIN,
     }
     with open(REPORT, "w", encoding="utf-8") as f:
         json.dump(report, f, ensure_ascii=False, indent=2, sort_keys=True)

@@ -154,6 +154,10 @@ function renderTimeline(s) {
         + n.cn.ev.map(e => '<div class="cn-i"><span class="cn-y">' + e[0] + '</span><span class="cn-t">' + esc(e[1]) + '</span></div>').join('') + '</div></div>';
       if (n.cn.fig.length) h += '<div class="cn-row"><span class="cn-k">人物</span><div class="cn-list">'
         + n.cn.fig.map(f => '<div class="cn-i"><span class="cn-n">' + esc(f[0]) + '</span><span class="cn-life">' + life(f) + '</span><span class="cn-d">' + esc(f[3]) + ' · ' + esc(f[4]) + '</span></div>').join('') + '</div></div>';
+      // 历史名词胶囊：与页面同一条规则（去掉年号那一条，它由标题那行承担）
+      const cchips = (n.cn.terms || []).filter(k => k !== 'cn-nianhao' && TERMS.cn && TERMS.cn[k]);
+      if (cchips.length) h += '<div class="cn-chips">'
+        + cchips.map(k => '<span class="cn-chip">' + esc(TERMS.cn[k].name) + '</span>').join('') + '</div>';
       h += '</div>';
     }
     h += '</div></div>';

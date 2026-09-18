@@ -58,12 +58,15 @@ function instantiate(def) {
 // ---------------- 断言 ----------------
 const problems = [];
 const stats = { timelines: 0, nodes: 0, cnCards: 0, details: 0, blocks: 0, figs: 0, chips: 0 };
-let checks = 0;
+let htmlChecks = 0;   // 富文本清洗检查（每个正文块一次）
+let cnChecks = 0;     // 「同期中国」去重 / 名词可解析
 
 function bad(msg) { problems.push(msg); }
+/** 记一次断言：条件不成立就记问题。计数是为了让汇总里的数字真的对应跑过的检查。 */
+function chk(cond, msg) { cnChecks++; if (!cond) bad(msg); }
 function htmlIssues(label, s) {
   if (typeof s !== 'string' || !s) return;
-  checks++;
+  htmlChecks++;
   if (/\bclass\s*=/.test(s)) bad(`${label}：rich-text 里残留 class=（小程序不认）`);
   if (/var\(--/.test(s)) bad(`${label}：rich-text 里残留 var(--*)（渲染成黑字）`);
   if (/data-page-node-id/.test(s)) bad(`${label}：残留 Ardot 标记 data-page-node-id`);
@@ -118,6 +121,55 @@ for (const id of IDS) {
   stats.cnCards += cnOk;
   if (cnOk !== tp.data.nodes.length) bad(`${id}/timeline：同期中国卡 ${cnOk}/${tp.data.nodes.length}`);
 
+  // ---- 同期中国：同站不重复（照数据独立数一遍，不复用生成器的分配逻辑）----
+  const seenEv = new Map(), seenFg = new Map();
+  tp.data.nodes.forEach((n, i) => {
+    if (!n.cn) return;
+    chk(n.cn.ev.length <= 3 && n.cn.fig.length <= 3,
+      `${id}/timeline[${i}] ${n.y}：同期中国条目超限（大事 ${n.cn.ev.length} / 人物 ${n.cn.fig.length}）`);
+    n.cn.ev.forEach((e) => {
+      chk(!seenEv.has(e.t),
+        `${id}/timeline：大事重复「${e.t.slice(0, 14)}」（节点 ${seenEv.get(e.t)} 与 ${n.y}）`);
+      seenEv.set(e.t, n.y);
+    });
+    n.cn.fig.forEach((f) => {
+      chk(!seenFg.has(f.name),
+        `${id}/timeline：人物重复「${f.name}」（节点 ${seenFg.get(f.name)} 与 ${n.y}）`);
+      seenFg.set(f.name, n.y);
+    });
+  });
+
+  // ---- 同期中国的名词：id 必须能查到解释，否则胶囊点了毫无反应（静默失败）----
+  const cnTerms = termsData.cn || {};
+  let chipTotal = 0, eraOk = 0;
+  raw.forEach((rn, i) => {
+    const rcn = rn.cn || {};
+    const vn = tp.data.nodes[i];
+    (rcn.terms || []).forEach((k) => {
+      chk(!!cnTerms[k], `${id}/timeline[${i}] ${rn.y}：名词 ${k} 在术语库里查不到（胶囊点了没反应）`);
+    });
+    if (!vn || !vn.cn) return;
+    // 页面把能解析的做成胶囊，数量应等于原始 terms 去掉年号那一条
+    const wantChips = (rcn.terms || []).filter((k) => k !== 'cn-nianhao' && cnTerms[k]).length;
+    chk(vn.cn.chips.length === wantChips,
+      `${id}/timeline[${i}] ${rn.y}：名词胶囊 ${vn.cn.chips.length} 个，应为 ${wantChips} 个`);
+    chipTotal += vn.cn.chips.length;
+    if (vn.cn.chips.length) {
+      tp.openTerm({ currentTarget: { dataset: { k: vn.cn.chips[0].k } } });
+      chk(!!(tp.data.show && tp.data.term && tp.data.term.plain),
+        `${id}/timeline[${i}] ${rn.y}：点名词没弹出解释（${vn.cn.chips[0].k}）`);
+      tp.closeTerm();
+    }
+    // 标题那行的年号也是入口，单独点一次
+    tp.openTerm({ currentTarget: { dataset: { k: 'cn-nianhao' } } });
+    chk(!!(tp.data.show && tp.data.term && tp.data.term.name === '年号纪年'),
+      `${id}/timeline[${i}] ${rn.y}：点年号没弹出解释`);
+    if (tp.data.term && tp.data.term.name === '年号纪年') eraOk++;
+    tp.closeTerm();
+  });
+  stats.chips += chipTotal;
+  chk(eraOk === raw.length, `${id}/timeline：年号名词只弹出了 ${eraOk}/${raw.length} 个节点`);
+
   // ---------- 详解页（4 篇串起来）----------
   const chain = [];
   sp.data.details.forEach((d) => {
@@ -169,7 +221,7 @@ const expectDetails = Object.values(pagesData.detail).reduce((a, b) => a + Objec
 console.log('\n===== 汇总 =====');
 console.log(`科学家 ${IDS.length} 位 · 时间轴节点 ${stats.nodes}/${expectNodes} · 同期中国卡 ${stats.cnCards}`);
 console.log(`详解页入口 ${stats.details} · 正文块 ${stats.blocks} · 已解析配图 ${stats.figs} · 术语胶囊 ${stats.chips}`);
-console.log(`断言 ${checks} 条 · 页内报错 ${toasts.length}${toasts.length ? '（' + toasts.slice(0, 3).join(' / ') + '）' : ''}`);
+console.log(`检查 富文本清洗 ${htmlChecks} 处 · 同期中国断言 ${cnChecks} 项 · 页内报错 ${toasts.length}${toasts.length ? '（' + toasts.slice(0, 3).join(' / ') + '）' : ''}`);
 if (toasts.length) problems.push(`有页面 onLoad 报错弹提示：${toasts.slice(0, 5).join(' / ')}`);
 console.log(problems.length ? `❌ 问题 ${problems.length} 项：\n - ${problems.slice(0, 25).join('\n - ')}` : '✅ 全部通过，0 问题');
 process.exit(problems.length ? 1 : 0);

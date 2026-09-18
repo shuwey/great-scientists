@@ -900,3 +900,6 @@ img[src*="-portrait"].portrait-raw { filter: none; }
 .cn-fig b { color: var(--ink); }
 .cn-fig i { font-style: normal; font-size: 12.5px; color: var(--ink-2); }
 @media (max-width: 640px) { .cn-note { font-size: 13.5px; padding: 10px 12px; } }
+
+/* 同期中国卡片里的名词：下划线调淡（tools/build_china_era.py 注入，幂等） */
+.cn-note .term { border-bottom-color: var(--brand-line); }

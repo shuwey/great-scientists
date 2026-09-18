@@ -421,12 +421,23 @@ def check_redline(roster, terms):
                         if any(a in ctx for a in REDLINE_ALLOW):
                             continue
                         text_hits.append("术语/%s/%s: …%s…" % (sid, k, ctx))
+    # 「同期中国」的历史名词解释（terms.js 的 cn 命名空间）也是新数据，一并扫。
+    # 同一个坑在 pages.js 上踩过一次：新数据文件不加进扫描就永远是"0 命中"。
+    for k, t in (terms.get("cn") or {}).items():
+        for f in ("short", "plain", "analogy", "extra", "name"):
+            plain = re.sub(r"<[^>]+>", "", t.get(f) or "")
+            for w in REDLINE:
+                for m in re.finditer(re.escape(w), plain):
+                    ctx = plain[max(0, m.start() - 14):m.start() + 14]
+                    if any(a in ctx for a in REDLINE_ALLOW):
+                        continue
+                    text_hits.append("历史名词/%s: …%s…" % (k, ctx))
     if text_hits:
         warn("内容层命中 %d 处红线词，逐条确认语境：" % len(text_hits))
         for h in text_hits[:10]:
             print("        %s" % h)
     else:
-        ok("内容层（时间轴/详解/术语）未命中提审红线词")
+        ok("内容层（时间轴/详解/术语/历史名词）未命中提审红线词")
 
 
 # ------------------------------------------------- 1b. 时间轴与详解内容层
@@ -527,6 +538,11 @@ def check_pages(roster, terms):
                         unresolved.append("%s/timeline/%s" % (sid, b["img"]))
                 else:
                     blobs.append(b.get("h") or "")
+            # 「同期中国」卡片的文字也要进红线词扫描（新数据必须同步纳入）
+            cn = n.get("cn") or {}
+            blobs.append(cn.get("era") or "")
+            blobs += [e[1] for e in (cn.get("ev") or [])]
+            blobs += [" ".join(str(x) for x in f) for f in (cn.get("fig") or [])]
         for slug, d in (dt.get(sid) or {}).items():
             blobs += [d.get("claim") or "", d.get("fact") or ""]
             for b in d["blocks"]:
@@ -570,8 +586,75 @@ def check_pages(roster, terms):
     else:
         ok("pages：正文富文本标签均在白名单内")
 
+    # ---- 「同期中国」：同站不重复 + 名词能点开 ----
+    # 站点侧在生成时已全局去重（tools/china_cards.py），这里复核**产物**真的没重复 ——
+    # 复用同一份计算逻辑等于自己给自己判卷，所以照数据独立数一遍。
+    cn_terms = terms.get("cn") or {}
+    if not cn_terms:
+        err("pages：术语库缺 cn 命名空间（同期中国的名词解释没下发，点胶囊是空弹层）")
+    else:
+        lack = [k for k, t in cn_terms.items()
+                if not all(t.get(f) for f in ("name", "cat", "short", "plain"))]
+        if lack:
+            err("pages：历史名词缺字段 -> %s" % lack[:5])
+        else:
+            ok("pages：历史名词解释 %d 条，字段齐备" % len(cn_terms))
+
+    # 名词胶囊点了要有反应 —— 组件没注册 / 没挂到页面上都会静默失效（点了什么都不发生）
+    tl_json = read(os.path.join(MP, "pages", "timeline", "index.json"))
+    tl_wxml = read(os.path.join(MP, "pages", "timeline", "index.wxml"))
+    if "term-popup" not in tl_json:
+        err("pages：时间轴页没注册 term-popup 组件（点名词不会有任何反应）")
+    elif "<term-popup" not in tl_wxml:
+        err("pages：时间轴页注册了 term-popup 却没挂到 wxml 上")
+    else:
+        ok("pages：时间轴页已接上术语弹层组件")
+
+    dup_ev, dup_fg, no_head, over, dangling_cn = [], [], [], [], []
+    cn_cards = 0
+    for sid in ids:
+        seen_ev, seen_fg = {}, {}
+        for n in tl.get(sid, []):
+            cn = n.get("cn") or {}
+            if not cn:
+                continue
+            cn_cards += 1
+            if not cn.get("era"):
+                no_head.append("%s/%s" % (sid, n["y"]))
+            if len(cn.get("ev") or []) > 3 or len(cn.get("fig") or []) > 3:
+                over.append("%s/%s" % (sid, n["y"]))
+            for e in cn.get("ev") or []:
+                if e[1] in seen_ev:
+                    dup_ev.append("%s：%s（节点 %s 与 %s）"
+                                  % (sid, e[1][:14], seen_ev[e[1]], n["y"]))
+                seen_ev[e[1]] = n["y"]
+            for f in cn.get("fig") or []:
+                if f[0] in seen_fg:
+                    dup_fg.append("%s：%s（节点 %s 与 %s）"
+                                  % (sid, f[0], seen_fg[f[0]], n["y"]))
+                seen_fg[f[0]] = n["y"]
+            for k in cn.get("terms") or []:
+                if k not in cn_terms:
+                    dangling_cn.append("%s/%s->%s" % (sid, n["y"], k))
+
+    if dup_ev:
+        err("pages：同一站内大事重复出现 -> %s" % dup_ev[:5])
+    elif dup_fg:
+        err("pages：同一站内人物重复出现 -> %s" % dup_fg[:5])
+    else:
+        ok("pages：同期中国条目在同一站内均不重复（%d 张卡片）" % cn_cards)
+    if over:
+        err("pages：同期中国单节点条目超限 -> %s" % over[:5])
+    if no_head:
+        err("pages：同期中国缺朝代年号标题 -> %s" % no_head[:5])
+    if dangling_cn:
+        err("pages：同期中国名词引用悬空 -> %s" % dangling_cn[:5])
+    else:
+        ok("pages：同期中国名词均可解析（点胶囊不会空弹层）")
+
     strip = sum(1 for sid in ids for d in (dt.get(sid) or {}).values() for b in d["blocks"] if b["k"] == "fig")
-    print("       内容规模：时间轴 %d 节点 · 详解 %d 篇 · 配图块 %d 个" % (nodes, pages_n, strip))
+    print("       内容规模：时间轴 %d 节点 · 详解 %d 篇 · 配图块 %d 个 · 历史名词 %d 条"
+          % (nodes, pages_n, strip, len(cn_terms)))
 
 
 def main():

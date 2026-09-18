@@ -246,3 +246,27 @@
   color: var(--ink-3);
   font-size: 34rpx;
 }
+
+/* ---------- 「同期中国」里的历史名词 ---------- */
+/* 标题那行的年号本身就是名词入口，虚线提示可点（与网页端同一处） */
+.cn-era {
+  border-bottom: 3rpx dotted var(--brand);
+}
+/* rich-text 不认事件，所以事件/人物行里的名词在端上改成卡片末尾的胶囊 */
+.cn-chips {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 16rpx;
+}
+.cn-chip {
+  margin: 0 12rpx 10rpx 0;
+  padding: 6rpx 20rpx;
+  border-radius: 999rpx;
+  background: var(--brand-soft);
+  color: var(--brand);
+  font-size: 22rpx;
+  font-weight: 600;
+}
+.cn-chip-hover {
+  opacity: 0.65;
+}
